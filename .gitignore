@@ -1,0 +1,5 @@
+*.pyc
+._*
+ckanext_berlintheme.egg-info/**
+
+.DS_Store
