@@ -1,4 +1,4 @@
-# ckanext-berlin-ui
+# ckanext-berlintheme
 
 Developed by Knud Möller for [BerlinOnline](http://berlinonline.de)
 
