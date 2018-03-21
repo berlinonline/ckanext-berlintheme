@@ -1,27 +1,142 @@
-{% ckan_extends %}
+{% block header_wrapper %}
+<div class="html5-header content-header" role="banner">
+  <div class="row"><!-- above main nav -->
+    {% block header_logo %}
+    <div class="span5"> <!-- Logo -->
+      <div class="html5-section section-logo ">
+        <div class="html5-figure image">
+          <a href="{{ h.url_for('home') }}" title="Link zu: Datenportal Startseite">
+            <img src="/images/opendatalogo.png" alt="Bild zeigt: Logo Berlin Open Data" title="Link zu: Datenportal Startseite">
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
 
-{% block header_site_navigation_tabs %}
-  {% if c.userobj.sysadmin %}
-    {{ h.build_nav_main(
-      ('search', _('Datasets')),
-      ('organizations_index', _('Organizations')),
-      ('group_index', _('Kategorien')),
-      ('user_index', _('User')),
-    ) }}
-    <li><a href="/harvest">Harvest</a></li>
-    {{ h.build_nav_main(
-      ('about', _('About'))
-    ) }}
-  {% elif c.userobj %}
-    {{ h.build_nav_main(
-      ('search', _('Datasets')),
-      ('organizations_index', _('Organizations')),
-      ('group_index', _('Kategorien')),
-      ('about', _('About'))
-    ) }}
-  {% else %}
-    {{ h.build_nav_main(
-      ('about', _('About'))
-    ) }}
-  {% endif %}
+    <div class="span7"> <!-- right from logo -->
+
+      <div class="html5-nav meta-navi"><!-- Navi 2 -->
+        <!-- 4 template-path: tmpl_default/header/meta.php -->
+        <ul class="nav">
+          <li><a href="#">Nutzungsbedingungen</a></li>
+          <li><a href="#">Suche</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="https://twitter.com/OpenDataBerlin" target="_blank" class="ic-fa-twitter" title="Auf Twitter folgen">Twitter</a></li> 
+          {% block header_account %}
+            {% block header_account_container_content %}
+              {% if c.userobj %}
+                {% block header_account_logged %}
+                  {% if c.userobj.sysadmin %}
+                    <li>
+                      <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  {% endif %}
+                  <li>
+                    <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
+                      {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=22) }}
+                    </a>
+                  </li>
+                  {% set new_activities = h.new_activities() %}
+                  <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+                    {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+                    <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
+                      <i class="fa fa-tachometer" aria-hidden="true"></i>
+                      <span class="badge">{{ new_activities }}</span>
+                    </a>
+                  </li>
+                  {% block header_account_log_out_link %}
+                    <li>
+                      <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+                        <span class="text">{{ _('Log out') }}</span>
+                      </a>
+                    </li>
+                  {% endblock %}
+                {% endblock %}
+              {% else %}
+                <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+              {% endif %}
+            {% endblock %}
+          {% endblock %}
+        </ul>
+      </div>
+
+      {% block header_site_search %}
+      <div class="html5-section search navbar"> <!-- Search -->
+        <div class="navbar-inner">
+          <div class="nav-collapse search-collapse collapse">
+            <form role="search" action="{% url_for controller='package', action='search' %}" method="get">
+              <div class="control-group searchform">
+                <p id="aural_datensatzsuche" class="aural">
+                  Suche auf der Internetseite 'Offene Daten Berlin':                        
+                </p>
+                <input type="search" title="Hier können Sie einen Text eingeben, um auf der Internetseite 'Offene Daten Berlin' nach offenen Datensätzen zu suchen." aria-labelledby="aural_datensatzsuche" name="q" placeholder="Geben Sie ein Stichwort ein">
+                <button type="submit" class="btn">Suchen</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+{% block header_site_navigation %}
+<div class="row"><!-- main nav -->
+  <div class="span12">
+    <span class="mobile-blue-line hidden-desktop hidden-tablet"></span>
+    <div class="content-navi-wrapper navbar hidden-phone">
+      <div class="html5-nav content-navi-top navbar-inner">
+
+        <nav class="nav-collapse mainnav-collapse collapse" aria-label="Hauptnavigation">
+          <ul class="nav level1">
+            {{ h.build_nav_main(
+                ('home', _('Startseite')),
+                ('search', _('Datasets'))
+              ) }}
+            <li>
+              <a href="#">Anwendungen</a>
+            </li>
+            <li>
+              <a href="#">Datenbereitsteller</a>
+            </li>
+            {{ h.build_nav_main(
+                ('interaction_index', _('Interaktion'))
+            ) }}
+            {% if c.userobj.sysadmin %}
+            <li class="has-submenu">
+              <a href="#">Admin</a>
+              <ul class="nav">
+                {{ h.build_nav_main(
+                    ('organizations_index', _('Organizations')),
+                    ('group_index', _('Groups')),
+                    ('user_index', _('User'))
+                ) }}
+                <li><a href="/harvest">Harvest</a></li>
+              </ul>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+            <div class="beberlin">
+          <img alt="Bild zeigt: Logo beBerlin" src="/i9f/v4/css/images/logo_beberlin_darkblue.png" />
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{#
+  {% block header_debug %}
+    {% if g.debug and not g.debug_supress_header %}
+      <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+    {% endif %}
+  {% endblock %}
+#}
+
 {% endblock %}
