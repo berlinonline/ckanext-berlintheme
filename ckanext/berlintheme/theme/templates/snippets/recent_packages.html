@@ -1,0 +1,30 @@
+{#
+Construct a list of recent packages.
+
+package_type
+  The type of package to list. Default is "dataset".
+
+sort_by
+  The SOLR "sort_by" term. Default is "metadata_created desc"
+
+header_title
+  The string to be included at the top of the result box.
+
+#}
+
+{% set package_type = package_type if package_type else 'dataset' %}
+{% set sort_by = sort_by if sort_by else 'metadata_created desc' %}
+{% set header_title = header_title if header_title else _('Die neuesten Datensätze') %}
+
+<div class="block block-views contextual-links-region first odd">
+  <div class="html5-nav content-navi-right">
+    <h3 class="title">{{ header_title }}</h3>
+    <div class="content">
+      <ul class="list">
+        {% for package in h.berlin_recent_packages() %}
+          <li>{{ h.dataset_link(package) }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

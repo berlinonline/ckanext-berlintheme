@@ -1,5 +1,4 @@
 {% extends "page.html" %}
-{% set homepage_style = ( g.homepage_style or '1' ) %}
 
 {% block subtitle %}{{ _("Welcome") }}{% endblock %}
 
@@ -7,12 +6,140 @@
 {% block toolbar %}{% endblock %}
 
 {% block content %}
-  <div class="homepage layout-{{ homepage_style }}">
+  <div class="homepage">
     <div class="container">
       {{ self.flash() }}
     </div>
+
+    <h6 class="aural" id="aural_maincontent">Inhaltsspalte</h6>
     {% block primary_content %}
-      {% snippet "home/layout{0}.html".format(homepage_style) %}
+
+      <div class="row" role="main">
+        <div class="span12">
+
+          <div class="row">
+            <div class="span8">
+              <!-- 4 template-path: tmpl_default/modul/modul_land_buehne_teaser.php -->
+              <!-- template start: land_buehne_teaser -->
+              <div class="html5-section balconycontainer layout-toggle ">
+                <div class="balcony-toggler-controls" style="display: block;">
+                  <a class="balcony-toggler toggler-on" role="button" href="#" onclick="this.blur(0);return false;"
+                     title="Bildwechsel anhalten" style="display: block;"><span class="icon-pause"></span>Bildwechsel
+                    anhalten</a>
+                  <a class="balcony-toggler toggler-off" role="button" href="#" onclick="this.blur(0);return false;"
+                     title="Bildwechsel starten" style="display: none;"><span class="icon-play"></span>Bildwechsel
+                    starten</a>
+                </div>
+                <div class="html5-header header">
+                  <div class="html5-nav">
+                    <ul class="nav" style="display: block;">
+                      <li class="">
+                        <a href="#balconyid1">Titel eins</a>
+                        <span class="up"></span>
+                      </li>
+                      <li class="">
+                        <a href="#balconyid2">Titel zwei</a>
+                        <span class="up"></span>
+                      </li>
+                      <li class="active">
+                        <a href="#balconyid3">Titel drei</a>
+                        <span class="up"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="html5-section body">
+                  <div id="balconyid1" class="html5-section teaser module-buehne-teaser"
+                       style="display: none; opacity: 1;">
+                    <div class="html5-figure image main-image type-buehne">
+                      <a href="#">
+                        <img alt="Bildbeschreibung" src="images/land/dummy_image_620x310.jpg">
+                      </a>
+                      <div class="caption">
+                        <span class="copyright">Bild: Max Mustermann</span>
+                      </div>
+                    </div>
+                    <div class="html5-section body">
+                      <h3 class="title">Titel eins</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        <span class="copyright"><strong>Bild:</strong> © Max Mustermann</span>
+                        <a class="more" title="weiterlesen"
+                           href="/template/master/v4/index.php?content=artikel&amp;page=article&amp;showlanguage=true&amp;title=Artikel">Weitere
+                          Informationen </a>
+                      </p>
+                    </div>
+                  </div>
+                  <div id="balconyid2" class="html5-section teaser module-buehne-teaser"
+                       style="display: block; opacity: 1;">
+                    <div class="html5-figure image main-image type-buehne">
+                      <a href="#">
+                        <img alt="Bildbeschreibung" src="images/land/dummy_image_620x310.jpg">
+                      </a>
+                      <div class="caption">
+                        <span class="copyright">Bild: Max Mustermann</span>
+                      </div>
+                    </div>
+                    <div class="html5-section body">
+                      <h3 class="title">Titel zwei</h3>
+                      <p>
+                        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus.
+                        <span class="copyright"><strong>Bild:</strong> © Max Mustermann</span>
+                        <a class="more" title="weiterlesen"
+                           href="/template/master/v4/index.php?content=artikel&amp;page=article&amp;showlanguage=true&amp;title=Artikel">Weitere
+                          Informationen </a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div id="balconyid3" class="html5-section teaser module-buehne-teaser active"
+                       style="display: block; opacity: 0.9879583809693737;">
+                    <div class="html5-figure image main-image type-buehne">
+                      <a href="#">
+                        <img alt="Bildbeschreibung" src="images/land/dummy_image_620x310.jpg">
+                      </a>
+                      <div class="caption">
+                        <span class="copyright">Bild: Max Mustermann</span>
+                      </div>
+                    </div>
+                    <div class="html5-section body">
+                      <h3 class="title">Titel drei</h3>
+                      <p>
+                        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis
+                        enim.
+                        <span class="copyright"><strong>Bild:</strong> © Max Mustermann</span>
+                        <a class="more" title="weiterlesen"
+                           href="/template/master/v4/index.php?content=artikel&amp;page=article&amp;showlanguage=true&amp;title=Artikel">Weitere
+                          Informationen </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <a class="balcony-control left btn prev" href="#" data-slide="prev" title="zurück"><span
+                        class="inner">‹</span></a>
+                <a class="balcony-control right btn next" href="#" data-slide="next" title="weiter"><span class="inner">›</span></a>
+              </div>
+
+
+              <!-- template end: land_buehne_teaser -->
+            </div>
+            <div class="span4">
+              <div class="html5-section infocontainer">
+                <div class="html5-header header">
+                  <div class="callout-wrap">
+                    <h1 class="title">Offene Daten lesbar für Mensch und Maschine. Das ist das Ziel.</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section_splitter"></div>
+
+        </div>
+      </div>
+
     {% endblock %}
   </div>
 {% endblock %}

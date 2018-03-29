@@ -68,6 +68,7 @@
       <link rel="stylesheet" type="text/css" href="/i9f/v4/css/bde-bootstrap.css" />
       <link rel="stylesheet" type="text/css" href="/i9f/v4/css/bde-index.css" />
       <link rel="stylesheet" type="text/css" href="/i9f/v4/css/vendor.css" />
+      <link rel="stylesheet" type="text/css" href="/css/berlintheme.css" />
       {# {% resource g.main_css[6:] %} #}
     {% endblock %}
 
@@ -88,42 +89,8 @@
 
   {# Allows custom attributes to be added to the <body> tag #}
   <body{% block bodytag %} data-site-root="{{ h.url_for('/', locale='default', qualified=true) }}" data-locale-root="{{ h.url_for('/', qualified=true) }}" class="locale_de "{% endblock %}>
-<!-- template start: header_portal -->
-    <div class="container-wrapper container-portal-header">
-        
-        <div class="container">
-            <div class="row" role="banner">
-                <div class="span12">
-                    <div class="html5-header portal-header hidden-phone">
-                        <div class="red-line"></div>
-                        <div class="html5-figure main-image">
-                            <a href="https://www.berlin.de/" title="Link führt zur Startseite von Berlin.de">
-                                <img class="portal-logo" src="/i9f/images/berlin_de.png" alt="Bild zeigt: Berlin.de Logo" title="Link führt zur Startseite von Berlin.de" />
-                            </a>
-                        </div>
-                        <p class="navSkip">Navigiere direkt zu:</p>
-                        <ul class="navSkip">
-                            <li><a href="#aural_institutionssuche">Suche</a></li>
-                            <li><a href="#aural_maincontent">Inhalt</a></li>
-                        </ul>
-                        <div class="html5-nav" aria-label="Globale Portal-Links" role="navigation">
-                            <p id="bo-portalnavilinkslabel" class="aural">Besuchen Sie auch unsere anderen Themen-Bereiche:</p>
-                            <ul class="portal-navi" id="bo-portalnavilinks" aria-labelledby="bo-portalnavilinkslabel">
-                                <li class="active"><a href="https://www.berlin.de/politik-verwaltung-buerger/">Politik, Verwaltung, Bürger</a></li>
-                                <li><a href="https://www.berlin.de/kultur-und-tickets/">Kultur & Ausgehen</a></li>
-                                <li><a href="https://www.berlin.de/tourismus/">Tourismus</a></li>
-                                <li><a href="https://www.berlin.de/wirtschaft/">Wirtschaft</a></li>
-                                <li><a href="https://www.berlin.de/special/">Themen</a></li>
-                                <li><a href="https://www.berlin.de/adressen/">BerlinFinder</a></li>
-                                <li><a href="https://www.berlin.de/stadtplan/">Stadtplan</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- /template end: header_portal -->
+
+    {% include "snippets/portal_header.html" %}
 
     {#
     The page block allows you to add content to the page. Most of the time it is
@@ -139,18 +106,25 @@
     #}
     {%- block page %}{% endblock -%}
 
+    {% include "snippets/portal_footer.html" %}
+
+
     {#
     DO NOT USE THIS BLOCK FOR ADDING SCRIPTS
     Scripts should be loaded by the {% resource %} tag except in very special
     circumstances
     #}
     {%- block scripts %}
+      <script type="text/javascript" src="/i9f/v4/js/bo-foot.js"></script>
+      <script type="text/javascript">
+        // script to make nav elements with active children also active
+        $('ul.nav>li:has(li[class*="active"])').addClass('active')
+      </script>
     {% endblock -%}
 
     {% block body_extras -%}
       {# defined in the config.ini under "ckan.template_footer_end" #}
       {{ g.template_footer_end | safe }}
     {%- endblock %}
-    <script type="text/javascript" src="/i9f/v4/js/bo-foot.js"></script>
   </body>
 </html>

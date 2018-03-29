@@ -1,5 +1,8 @@
 *.pyc
 ._*
 ckanext_berlintheme.egg-info/**
+.idea/
+Reference/
+ckanext/berlintheme/theme/public/i9f/
 
 .DS_Store

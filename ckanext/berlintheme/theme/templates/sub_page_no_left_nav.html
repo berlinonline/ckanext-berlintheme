@@ -1,0 +1,33 @@
+{% extends "page.html" %}
+
+{% block primary %}
+
+  <h6 class="aural" id="aural_maincontent">Inhaltsspalte</h6>
+
+  <div class="span9 column-content">
+    {% block berlin_main %}
+      <article>
+        {% block page_header %}
+        {% endblock %}
+        <div class="module-content">
+          {% if self.page_primary_action() | trim %}
+            <div class="page_primary_action">
+              {% block page_primary_action %}{% endblock %}
+            </div>
+          {% endif %}
+          {% block primary_content_inner %}
+          {% endblock %}
+        </div>
+      </article>
+    {% endblock %}
+  </div>
+
+  <div class="span3 column-right html5-aside" role="complementary">
+    {% block berlin_right %}
+      <div class="html5-section content-marginal">
+        {{ h.snippet('snippets/recent_packages.html') }}
+      </div>
+    {% endblock %}
+  </div>
+  
+{% endblock %}

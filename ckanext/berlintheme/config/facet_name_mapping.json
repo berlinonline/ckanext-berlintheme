@@ -1,0 +1,29 @@
+{
+  "license_id": {
+    "Creative Commons Attribution": "cc-by",
+    "Creative Commons Zero": "cc-zero",
+    "Creative Commons Attribution Share-Alike": "cc-by-sa",
+    "Creative Commons Non-Commercial (Any)": "cc-nc",
+    "Datenlizenz Deutschland 2.0": "dl-de-2-0",
+    "GeoNutzV": "geonutzv",
+    "GeoNutzV-Berlin": "geonutzv-berlin",
+    "Open Data Commons Open Database License (ODbL)": "odc-odbl",
+    "Siehe Website des Datensatzes": "other-closed"
+  } ,
+  "berlin_type": {
+    "datensatz": "Datensatz" , 
+    "dokument": "Dokument"
+  } ,
+  "groups": {
+    "Sozialleistungen": "Soziales" ,
+    "Öffentliche Verwaltung, Haushalt und Steuern": "Verwaltung" ,
+    "Geographie und Stadtplanung": "Geographie" ,
+    "Protokolle und Beschlüsse": "Protokolle" ,
+    "Kunst und Kultur": "Kultur" ,
+    "Umwelt und Klima": "Umwelt" ,
+    "Sport und Erholung": "Sport / Erholung" ,
+    "Ver- und Entsorgung": "Ver-/ Entsorgung" ,
+    "Transport und Verkehr": "Verkehr" ,
+    "Wohnen und Immobilien": "Wohnen"
+  }
+}

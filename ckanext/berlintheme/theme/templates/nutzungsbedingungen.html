@@ -1,0 +1,69 @@
+{% extends "sub_page_no_left_nav.html" %}
+
+{% block subtitle %}{{ _('Nutzungsbedingungen') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active"><a href="/nutzungsbedingungen">{{ _('Nutzungsbedingungen') }}</a></li>
+{% endblock %}
+
+{% block berlin_main %}
+  <article class="module">
+    <div class="module-content">
+      {% block about %}
+        <h1>Nutzungsbedingungen</h1>
+        <p>Mit dem Zugriff auf daten.berlin.de stimmen Sie den Nutzungsbedingungen zu.</p>
+        <p>Die Stadt Berlin veröffentlicht Daten für die weitere Nutzung durch die Bevölkerung, die Wirtschaft, die
+          Medien und die Institutionen.</p>
+        <p>Für verzeichneten Datensatz gilt – soweit nicht anders gekennzeichnet – die Lizenz:</p>
+        <p>„Creative Commons Namensnennung 3.0 Deutschland“<br>(CC-BY 3.0 <a
+                href="http://creativecommons.org/licenses/by/3.0/de">http://creativecommons.org/licenses/by/3.0/de</a>)
+        </p>
+        <p>Für die Zusammenstellung der Daten auf daten.berlin.de gilt die Lizenz:</p>
+        <p>„Open Data Commons Attribution“<br>(ODC-BY <a href="http://okfn.de/licence/odc-by/">http://okfn.de/licence/odc-by/</a>)
+        </p>
+        <p><strong>Einladung zur Mitarbeit:</strong><br>Das Berliner Datenportal wird durch jeden konstruktiven Beitrag
+          gestärkt:</p>
+        <ul>
+          <li>Anbieter von Anwendungen und Dienste werden gebeten, aktiv über diesezu informieren.</li>
+          <li>Nutzer und Anbieter werden gebeten, auf mögliche (Daten-)Fehler hinzuweisen.</li>
+          <li>Informieren Sie uns über Ihre Wünsche und Anregungen zum Portal, zu den Datensätzen und Anwendungen</li>
+        </ul><p><strong>Hinweise</strong></p>
+        <p>Diese Lizenzen ermöglichen <em>nicht</em> die Nutzung folgender ggf. enthaltener Inhalte</p>
+        <ul>
+          <li>Hoheits- und Wahrzeichen der Stadt Berlin</li>
+          <li>Personenbezogene Daten</li>
+          <li>Unrechtmäßig veröffentlichtes Material</li>
+        </ul><p>Die Stadt Berlin</p>
+        <ul>
+          <li>ist berechtigt, Informationen über Anwendungen und Dienste auf Basis dieser Daten zu veröffentlichen und
+            für eine Berichterstattung zu verwenden. Eine Veröffentlichung (Verknüpfung) der Anwendungen und Dienste im
+            Rahmen des Webauftritts daten.berlin.de ist gestattet.
+          </li>
+          <li>freut sich über Anregungen zur Seite, aber untersagt die Verbreitung von beleidigendem oder anderweitig
+            unrechtmäßigen Materialien und anderen Handlungen.
+          </li>
+          <li>behält sich das Recht vor, nach freiem Ermessen Material und Daten zu entfernen, das ungeeignet oder
+            unangemessen ist bzw. die Nutzungsbedingungen verletzt.
+          </li>
+          <li>garantiert nicht die Aktualität und Vollständigkeit der aufgeführten Datensätze.</li>
+        </ul><p>Die Nutzer von daten.berlin.de</p>
+        <ul>
+          <li>dürfen die Daten für alle Zwecke verwenden, so lange nicht gegen die Nutzungsbedingungen und geltendes
+            Recht verstoßen wird.
+          </li>
+          <li>respektieren das Recht auf Privatheit.</li>
+        </ul><p>Anwendungs- und Dienste-Anbieter, die Daten von daten.berlin.de nutzen</p>
+        <ul>
+          <li>dürfen nicht – weder implizit noch explizit – angeben, dass eine Anwendung oder ein Dienst Dritter die
+            Bewilligung, Zugehörigkeit oder Unterstützung der Stadt Berlin hat.
+          </li>
+          <li>sind durch den Einsatz von daten.berlin.de nicht berechtigt, ihre Produkte mit Hoheitszeichen oder
+            Wahrzeichen der Stadt Berlin zu kennzeichnen.
+          </li>
+        </ul>
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

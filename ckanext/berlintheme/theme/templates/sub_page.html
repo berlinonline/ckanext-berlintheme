@@ -1,0 +1,25 @@
+{% extends "page.html" %}
+
+{% block primary %}
+
+  <div class="span2 column-left">
+    {% block berlin_left %}
+    {% endblock %}
+  </div>
+
+  <h6 class="aural" id="aural_maincontent">Inhaltsspalte</h6>
+
+  <div class="span7 column-content">
+    {% block berlin_main %}
+    {% endblock %}
+  </div>
+
+  <div class="span3 column-right html5-aside" role="complementary">
+    {% block berlin_right %}
+      <div class="html5-section content-marginal">
+        {{ h.snippet('snippets/recent_packages.html') }}
+      </div>
+    {% endblock %}
+  </div>
+  
+{% endblock %}

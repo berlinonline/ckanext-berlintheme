@@ -1,0 +1,189 @@
+.content-navigation-left.navbar ul.nav li>a.read-more {
+  font-weight: bold;
+}
+
+.content-navigation-left.navbar ul.nav>li>ul>li a {
+  padding-bottom: 9px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 9px; 
+}
+
+.page-header.tab-nav {
+  border-bottom: none;
+}
+
+.page-header.tab-nav .content_action {
+  float: right;
+}
+
+.facet-header {
+  padding-bottom: 9px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 9px;
+  border-bottom-color: rgb(218, 218, 218);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.facet-header>.facet-title {
+  font-size: 15.011232376098633px;
+  font-weight: bold;
+}
+
+button.hidden {
+  display: none;
+}
+
+.page_primary_action {
+  margin-bottom: 10px;
+}
+
+ul.search-result-results>li {
+  border-bottom: 1px solid #c6c6c6;
+  margin-bottom: 15px;
+}
+
+.package-metadata {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.package-metadata-item {
+  margin-bottom: 5px;
+}
+
+.package-metadata-item .field-label {
+  font-weight: bold;
+}
+
+.dataset-content {
+  margin-bottom: 15px;
+}
+
+h3.dataset-heading {
+  color: #b5050e;
+}
+
+h3 a {
+  color: inherit;
+}
+
+.download .download-btn .btn {
+    width: 5em;
+}
+
+/* Straight from CKAN CSS: */
+
+.format-label, .format-label--large {
+  *margin-right: .3em;
+  display: inline-block;
+  vertical-align: text-bottom;
+  position: relative;
+  top: 2px;
+  width: 32px;
+  height: 35px;
+  text-indent: -900em;
+  background: url("../../../base/images/sprite-resource-icons.png") no-repeat 0 0;
+  background-position: 0 -62px;
+}
+
+.format-label[data-format=rdf],
+.format-label[data-format*=rdf] {
+  background-position: -32px -62px;
+}
+.format-label[data-format=pdf],
+.format-label[data-format*=pdf] {
+  background-position: -64px -62px;
+}
+.format-label[data-format=api],
+.format-label[data-format*=api] {
+  background-position: -96px -62px;
+}
+.format-label[data-format=zip],
+.format-label[data-format*=zip] {
+  background-position: -128px -62px;
+}
+.format-label[data-format=xls],
+.format-label[data-format*=xls] {
+  background-position: -160px -62px;
+}
+.format-label[data-format=csv],
+.format-label[data-format*=csv] {
+  background-position: -192px -62px;
+}
+.format-label[data-format=txt],
+.format-label[data-format*=txt] {
+  background-position: -224px -62px;
+}
+.format-label[data-format=xml],
+.format-label[data-format*=xml] {
+  background-position: -256px -62px;
+}
+.format-label[data-format=json],
+.format-label[data-format*=json] {
+  background-position: -288px -62px;
+}
+.format-label[data-format=html],
+.format-label[data-format*=html] {
+  background-position: -320px -62px;
+}
+
+
+/*
+  Large versions of the format labels: those were already in the sprite file,
+  but don't seem to be used in the original CKAN CSS.
+ */
+
+.format-label--large {
+  width: 58px;
+  height: 62px;
+  background-position: 0 0;
+}
+
+.format-label--large[data-format=rdf],
+.format-label--large[data-format*=rdf] {
+  background-position: -58px 0;
+}
+.format-label--large[data-format=pdf],
+.format-label--large[data-format*=pdf] {
+  background-position: -116px 0;
+}
+.format-label--large[data-format=api],
+.format-label--large[data-format*=api] {
+  background-position: -174px 0;
+}
+.format-label--large[data-format=zip],
+.format-label--large[data-format*=zip] {
+  background-position: -232px 0;
+}
+.format-label--large[data-format=xls],
+.format-label--large[data-format*=xls] {
+  background-position: -290px 0;
+}
+.format-label--large[data-format=csv],
+.format-label--large[data-format*=csv] {
+  background-position: -348px 0;
+}
+.format-label--large[data-format=txt],
+.format-label--large[data-format*=txt] {
+  background-position: -406px 0;
+}
+.format-label--large[data-format=xml],
+.format-label--large[data-format*=xml] {
+  background-position: -464px 0;
+}
+.format-label--large[data-format=json],
+.format-label--large[data-format*=json] {
+  background-position: -522px 0;
+}
+.format-label--large[data-format=html],
+.format-label--large[data-format*=html] {
+  background-position: -580px 0;
+}
+
+.resource-item__format-icon {
+  top: 0;
+  margin-right: 10px;
+}

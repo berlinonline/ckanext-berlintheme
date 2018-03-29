@@ -18,7 +18,7 @@
       <div class="html5-nav meta-navi"><!-- Navi 2 -->
         <!-- 4 template-path: tmpl_default/header/meta.php -->
         <ul class="nav">
-          <li><a href="#">Nutzungsbedingungen</a></li>
+          <li><a href="/nutzungsbedingungen">Nutzungsbedingungen</a></li>
           <li><a href="#">Suche</a></li>
           <li><a href="#">FAQ</a></li>
           <li><a href="https://twitter.com/OpenDataBerlin" target="_blank" class="ic-fa-twitter" title="Auf Twitter folgen">Twitter</a></li> 
@@ -94,11 +94,9 @@
           <ul class="nav level1">
             {{ h.build_nav_main(
                 ('home', _('Startseite')),
-                ('search', _('Datasets'))
+                ('search', _('Datasets')),
+                ('application_search', _('Anwendungen'))
               ) }}
-            <li>
-              <a href="#">Anwendungen</a>
-            </li>
             <li>
               <a href="#">Datenbereitsteller</a>
             </li>

@@ -1,0 +1,35 @@
+{% extends "sub_page_no_left_nav.html" %}
+
+{% set pkg = c.pkg_dict or pkg_dict %}
+
+{% block breadcrumb_content_selected %} class="active"{% endblock %}
+
+{% block subtitle %}{{ _('Datasets') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  {% if pkg %}
+    {% set dataset = h.dataset_display_name(pkg) %}
+    <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
+    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset|truncate(50), controller='package', action='read', id=pkg.name %}</li>
+  {% else %}
+    <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
+    <li class="active"><a href="">{{ _('Create Dataset') }}</a></li>
+  {% endif %}
+{% endblock %}
+
+{% block page_header %}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    <header class="module-content page-header tab-nav">
+      <div>
+        {% if self.content_action() | trim %}
+          <div class="content_action">
+            {% block content_action %}{% endblock %}
+          </div>
+        {% endif %}
+        <ul class="nav nav-tabs">
+          {% block content_primary_nav %}{% endblock %}
+        </ul>
+      </div>
+    </header>
+  {%  endif %}
+{% endblock %}

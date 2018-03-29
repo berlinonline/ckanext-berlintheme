@@ -1,0 +1,148 @@
+{#
+Displays a single package.
+
+package        - A package to display.
+item_class     - The class name to use on the list item.
+hide_resources - If true hides the resources (default: false).
+banner         - If true displays a popular banner (default: false).
+truncate       - The length to trucate the description to (default: 180)
+truncate_title - The length to truncate the title to (default: 80).
+num_tags       - Number of tags to show.
+
+Example:
+
+  {% snippet 'snippets/package_item.html', package=c.datasets[0] %}
+
+#}
+{% set truncate = truncate or 180 %}
+{% set truncate_title = truncate_title or 80 %}
+{% set title = package.title or package.name %}
+{% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
+{% set num_tags = num_tags or 3 %}
+
+{% block package_item %}
+  <li class="{{ item_class or "dataset-item" }}">
+    {% block content %}
+      <div class="dataset-content html5-section row-fluid">
+        {% block heading %}
+        <div class="span12">
+          <h3 class="dataset-heading title">
+            {% block heading_private %}
+              {% if package.private %}
+                <span class="dataset-private label label-inverse">
+                  <i class="fa fa-lock"></i>
+                  {{ _('Private') }}
+                </span>
+              {% endif %}
+            {% endblock %}
+            {% block heading_title %}
+              {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
+            {% endblock %}
+            {% block heading_meta %}
+              {% if package.get('state', '').startswith('draft') %}
+                <span class="label label-info">{{ _('Draft') }}</span>
+              {% elif package.get('state', '').startswith('deleted') %}
+                <span class="label label-important">{{ _('Deleted') }}</span>
+              {% endif %}
+              {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
+            {% endblock %}
+          </h3>
+        {% endblock %}
+        {% block banner %}
+          {% if banner %}
+            <span class="banner">{{ _('Popular') }}</span>
+          {% endif %}
+        {% endblock %}
+        {% block notes %}
+          {% if notes %}
+            <div>{{ notes|urlize }}</div>
+          {% else %}
+            <p class="empty">{{ _("This dataset has no description") }}</p>
+          {% endif %}
+        {% endblock %}
+
+        {% block metadata %}
+        <div class="package-metadata">
+          <div class="row-fluid package-metadata-item">
+            <div class="span3">
+              <span class="field-label">{{_('Letzte Änderung')}}:</span>
+            </div>
+            <div class="span9">
+              {% if package.date_updated is not undefined %}
+                {{ h.render_datetime(package.date_updated) }}
+              {% else %}
+                {{ h.render_datetime(package.date_released) }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="row-fluid package-metadata-item">
+            <div class="span3">
+              <span class="field-label">{{_('Kategorie')}}:</span>
+            </div>
+            <div class="span9">
+              {% set separator = joiner("|") %}
+              {% for group in package.groups %}
+                {{ separator() }} <a href='{{ h.add_url_param(new_params={"groups": group.name}) }}'>{{ group.display_name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row-fluid package-metadata-item">
+            <div class="span3">
+              <span class="field-label">{{_('Tags')}}:</span>
+            </div>
+            <div class="span9">
+              <div class="tags-{{package.id}}">
+                {% set separator = joiner("|") %}
+                {% for tag in package.tags[:num_tags] %}
+                  {{ separator() }} <a href='{{ h.add_url_param(new_params={"tags": tag.name}) }}'>{{ tag.display_name }}</a>
+                {% endfor %}
+                {% if package.tags|length > num_tags %}
+                ...(<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{ package.tags|length - num_tags }} {{_('weitere')}}</a>)
+              </div>
+              <div class="tags-{{package.id}}" style="display: none;">
+                {% set separator = joiner("|") %}
+                {% for tag in package.tags %}
+                  {{ separator() }} <a href='{{ h.add_url_param(new_params={"tags": tag.name}) }}'>{{ tag.display_name }}</a>
+                {% endfor %}
+                (<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{(_('weniger Tags zeigen'))}}</a>)
+              </div>
+              {% else %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row-fluid package-metadata-item">
+            <div class="span3">
+              <span class="field-label">{{_('License')}}:</span>
+            </div>
+            <div class="span9">
+              <a href='{{ h.add_url_param(new_params={"license_id": package.license_id}) }}'>{{ package.license_title }} ({{ package.license_id}})</a>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+
+        {% block resources %}
+        <div class="package-resources">
+          <div class="row-fluid">
+            {% if package.resources and not hide_resources %}
+              {% block resources_outer %}
+                <ul class="dataset-resources inline">
+                  {% block resources_inner %}
+                    {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+                    <li>
+                      <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}" class="label" data-format="{{ resource.lower() }}">{{ resource }}</a>
+                    </li>
+                    {% endfor %}
+                  {% endblock %}
+                </ul>
+              {% endblock %}
+            {% endif %}
+          </div>
+        </div>
+        {% endblock %}
+      {% endblock %}
+      </div>
+    </div>
+  </li>
+{% endblock %}
