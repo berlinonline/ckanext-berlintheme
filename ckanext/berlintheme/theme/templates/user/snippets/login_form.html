@@ -1,0 +1,85 @@
+{#
+Renders the login form.
+
+action        - The url that the form should be submitted to.
+error_summary - A tuple/list of form errors.
+
+Example:
+
+  {% snippet "user/snippets/login_form.html", action=c.login_handler, error_summary=error_summary %}
+
+#}
+{% import 'macros/form.html' as form %}
+
+{% set username_error = true if error_summary %}
+{% set password_error = true if error_summary %}
+
+<form action="{{ action }}" method="post" class="form-land">
+  <fieldset class="well">
+    {{ form.errors(errors=error_summary) }}
+
+    {{ form.input('login', label=_("Username"), id='field-login', value="", error=username_error, classes=["control-medium"], is_required=true) }}
+
+    {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"], is_required=true) }}
+
+    {{ form.checkbox('remember', label=_("Remember me"), id='field-remember', checked=true, value="63072000") }}
+
+    <div class="control-group">
+      <div class="controls">
+        {% block login_button %}
+          <button class="btn btn-primary" type="submit">{{ _('Anmelden') }}</button>
+        {% endblock %}
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+
+
+<!--
+<div class="control-group control-medium">
+  <label class="control-label" for="field-login">Benutzername</label>
+  <div class="controls ">
+
+    <input id="field-login" type="text" name="login" value="" placeholder="">
+
+
+  </div>
+</div>
+
+<form class="form-land" action="#" method="post">
+  <fieldset class="well">
+    <div class="row-fluid">
+      <div class="control-group error">
+        <label for="email" class="control-label required"
+               title="Bitte geben Sie eine gültige E-Mail-Adresse ein. Dieses Feld muss zwingend ausgefüllt sein.">E-Mail-Adresse
+          * </label>
+        <div class="controls">
+          <input name="email" class="email required" id="email"
+                 accept="(?:[A-z0-9][A-z0-9\._\-]*|)[A-z0-9]@[A-z0-9][A-z0-9\._\-]*[A-z0-9]\.[A-z]+"
+                 title="Bitte geben Sie eine gültige E-Mail-Adresse ein. Dieses Feld muss zwingend ausgefüllt sein."
+                 type="text">
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="pwd" class="control-label required" title="Dieses Feld muss zwingend ausgefüllt sein.">Passwort
+          * </label>
+        <div class="controls">
+          <input name="pwd" class="password required" id="pwd" title="Dieses Feld muss zwingend ausgefüllt sein."
+                 type="password">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">&nbsp;</label>
+        <div class="controls">
+          <button class="btn" type="submit">Anmelden</button>
+        </div>
+      </div>
+      <input name="from" id="from" class="hidden" type="hidden">
+
+      <a href="#">Ich bin neu und möchte meine Institution für den Formularservice anmelden</a>
+
+    </div>
+  </fieldset>
+-->
+</form>

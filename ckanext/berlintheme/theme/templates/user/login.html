@@ -1,0 +1,29 @@
+{% extends "sub_page_no_left_nav.html" %}
+
+{% block subtitle %}{{ _('Login') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Login'), controller='user', action='login') }}</li>
+{% endblock %}
+
+{% block berlin_main %}
+  <section class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{% block page_heading %}{{ _('Login') }}{% endblock %}</h1>
+      {% block form %}
+        {% snippet "user/snippets/login_form.html", action=c.login_handler, error_summary=error_summary %}
+      {% endblock %}
+    </div>
+    {% block help_forgotten %}
+      <h2 class="module-heading">{{ _('Forgotten your password?') }}</h2>
+        <p>{% trans %}No problem, use our password recovery form to reset it.{% endtrans %}</p>
+        <p class="action">
+          {% block help_forgotten_button %}
+            <a class="btn"
+               href="{{ h.url_for(controller='user', action='request_reset') }}">{{ _('Forgot your password?') }}</a>
+          {% endblock %}
+        </p>
+    {% endblock %}
+  </section>
+{% endblock %}
+
