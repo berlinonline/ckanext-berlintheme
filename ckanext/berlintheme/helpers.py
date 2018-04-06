@@ -6,7 +6,7 @@ import logging
 import ckan.lib.helpers as h
 import ckan.logic as logic
 import ckan.model as model
-from ckan.common import _, c, response
+from ckan.common import _, c, config, response
 
 log = logging.getLogger(__name__)
 
@@ -15,6 +15,9 @@ NotAuthorized = logic.NotAuthorized
 
 _facet_mapping = {}
 
+
+def breadcrumb_length():
+  return config.get("breadcrumb_length", 35)
 
 def read_facet_mapping():
   path = os.path.abspath(__file__)
@@ -91,3 +94,51 @@ def resource_label(resource):
     label = name
 
   return label
+
+
+def http_status_code_mapping(status):
+  mapping = {
+    "400 Bad Request": "Bad Request",
+    "401 Unauthorized": "Unauthorized",
+    "402 Payment Required": "Payment Required",
+    "403 Forbidden": "Forbidden",
+    "404 Not Found": "Not Found",
+    "405 Method Not Allowed": "Method Not Allowed",
+    "406 Not Acceptable": "Not Acceptable",
+    "407 Proxy Authentication Required": "Proxy Authentication Required",
+    "408 Request Timeout": "Request Timeout",
+    "409 Conflict": "Conflict",
+    "410 Gone": "Gone",
+    "411 Length Required": "Length Required",
+    "412 Precondition Failed": "Precondition Failed",
+    "413 Payload Too Large": "Payload Too Large",
+    "414 Request-URI Too Long": "Request-URI Too Long",
+    "415 Unsupported Media Type": "Unsupported Media Type",
+    "416 Requested Range Not Satisfiable": "Requested Range Not Satisfiable",
+    "417 Expectation Failed": "Expectation Failed",
+    "418 I'm a teapot": "I'm a teapot",
+    "421 Misdirected Request": "Misdirected Request",
+    "422 Unprocessable Entity": "Unprocessable Entity",
+    "423 Locked": "Locked",
+    "424 Failed Dependency": "Failed Dependency",
+    "426 Upgrade Required": "Upgrade Required",
+    "428 Precondition Required": "Precondition Required",
+    "429 Too Many Requests": "Too Many Requests",
+    "431 Request Header Fields Too Large": "Request Header Fields Too Large",
+    "444 Connection Closed Without Response": "Connection Closed Without Response",
+    "451 Unavailable For Legal Reasons": "Unavailable For Legal Reasons",
+    "499 Client Closed Request": "Client Closed Request",
+    "500 Internal Server Error": "Internal Server Error",
+    "501 Not Implemented": "Not Implemented",
+    "502 Bad Gateway": "Bad Gateway",
+    "503 Service Unavailable": "Service Unavailable",
+    "504 Gateway Timeout": "Gateway Timeout",
+    "505 HTTP Version Not Supported": "HTTP Version Not Supported",
+    "506 Variant Also Negotiates": "Variant Also Negotiates",
+    "507 Insufficient Storage": "Insufficient Storage",
+    "508 Loop Detected": "Loop Detected",
+    "510 Not Extended": "Not Extended",
+    "511 Network Authentication Required": "Network Authentication Required",
+    "599 Network Connect Timeout Error": "Network Connect Timeout Error",
+  }
+  return mapping[status]

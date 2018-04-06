@@ -29,6 +29,7 @@ class BerlinTheme(plugins.SingletonPlugin):
 
         config['ckan.site_logo'] = "/images/berlin_open_data.png"
         config['ckan.favicon'] = "/favicon.ico"
+        config['breadcrumb_length'] = 60
 
         theme_helpers.read_facet_mapping()
 
@@ -43,4 +44,6 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_render_datetime': theme_helpers.render_datetime ,
             'berlin_recent_packages': theme_helpers.recent_packages ,
             'berlin_resource_label': theme_helpers.resource_label ,
+            'berlin_breadcrumb_length': theme_helpers.breadcrumb_length ,
+            'berlin_http_status_codes': theme_helpers.http_status_code_mapping ,
         }
