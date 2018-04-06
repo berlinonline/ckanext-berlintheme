@@ -1,0 +1,59 @@
+{% extends "page.html" %}
+
+{% set status = request.environ.get('pylons.original_response').status %}
+{% set status_code = c.code[0] %}
+{% set status_text = h.berlin_http_status_codes(status) %}
+
+{% block subtitle %}{{ gettext('Error %(error_code)s', error_code=c.code[0]) }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="span2 column-left">
+      <!-- 3 template-path: tmpl_default/navi/navi_left_error.php -->
+      <!-- /template end: content-navi-left_error -->
+
+
+      <!-- /template end: content-navi-left_error -->
+    </div>
+
+    <h6 class="aural" id="aural_maincontent">Inhaltsspalte</h6>
+
+    <div class="span7 column-content">
+      <div class="html5-section article" role="main">
+        <!-- 3 template-path: tmpl_default/content/content_error.php -->
+        <div class="html5-header header">
+          <h1 class="title">{{ status_code }} - {{ _(status_text) }}</h1>
+        </div>
+        <div class="html5-section body">
+          <p>Die gewünschte Seite wurde möglicherweise entfernt oder umbenannt, oder sie ist vorübergehend nicht
+            erreichbar.</p>
+          <div class="section_splitter"></div>
+          <h4>Kontakt</h4>
+          <ul class="list">
+            <li>Bürgerservice, Verwaltung, Politik und Hauptstadt <a href="mailto:landesredaktion@senatskanzlei.berlin.de">Anfrage an die
+              Landesredaktion</a></li>
+            <li>Tourismus, Hotels, Kultur, Tickets, Wirtschaftsstandort, allgemeine Themen <a href="mailto:info@berlin.de">Anfrage
+              an BerlinOnline</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="span3 column-right html5-aside " role="complementary">
+      <!-- 3 template-path: tmpl_default/navi/navi_marginal_error.php -->
+    </div>
+
+  </div>{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block flash %}
+  {# eat the flash messages caused by the 404 #}
+  {% set flash_messages = h.flash.pop_messages() %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+
+

@@ -105,11 +105,11 @@
             ) }}
             {% if c.userobj.sysadmin %}
             <li class="has-submenu">
-              <a href="#">Admin</a>
+              <a href="/ckan-admin">Admin</a>
               <ul class="nav">
                 {{ h.build_nav_main(
                     ('organizations_index', _('Organizations')),
-                    ('group_index', _('Groups')),
+                    ('group_index', _('Kategorien')),
                     ('user_index', _('User'))
                 ) }}
                 <li><a href="/harvest">Harvest</a></li>

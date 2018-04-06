@@ -13,36 +13,34 @@ Example:
 #}
 {% set url = h.url_for(organization.type ~ '_read', action='read', id=organization.name) %}
 {% block item %}
-<li class="media-item">
-  {% block item_inner %}
-  {% block image %}
-    <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" class="media-image">
-  {% endblock %}
-  {% block title %}
-    <h3 class="media-heading">{{ organization.display_name }}</h3>
-  {% endblock %}
-  {% block description %}
-    {% if organization.description %}
-      <p>{{ h.markdown_extract(organization.description, extract_length=80) }}</p>
-    {% endif %}
-  {% endblock %}
-  {% block datasets %}
-    {# This fix is included in 2.5.1 anyway, so we can remove this file after
-    upgrading #}
-    {% if organization.package_count %}
-      <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
-    {% else %}
-      <span class="count">{{ _('0 Datasets') }}</span>
-    {% endif %}
-  {% endblock %}
-  {% block link %}
-  <a href="{{ url }}" title="{{ _('View {organization_name}').format(organization_name=organization.display_name) }}" class="media-view">
-    <span>{{ _('View {organization_name}').format(organization_name=organization.display_name) }}</span>
-  </a>
-  {% endblock %}
-  {% endblock %}
-</li>
+  <div class="group-dashboard__item well">
+    {% block item_inner %}
+      {% block image %}
+        <div class="group-dashboard__image">
+          <a href="{{ url }}"><img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization_portrait.png') }}"
+               alt="{{ organization.name }}" class="media-image"></a>
+        </div>
+      {% endblock %}
+      <div class="group-dashboard__right">
+        {% block title %}
+          <h3>{{ h.link_to(h.truncate(organization.display_name, 90), h.url_for(controller='organization', action='read', id=organization.name)) }}</h3>
+        {% endblock %}
+        <div class="group-dashboard__lower">
+          {% block datasets %}
+            {% if organization.package_count %}
+              <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
+            {% else %}
+              <span class="count">{{ _('0 Datasets') }}</span>
+            {% endif %}
+          {% endblock %}
+          {% block capacity %}
+            {% if show_capacity and organization.capacity %}
+              <p><span class="label">{{ h.roles_translated().get(organization.capacity, organization.capacity) }}</span>
+              </p>
+            {% endif %}
+          {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
+  </div>
 {% endblock %}
-{% if position is divisibleby 3 %}
-  <li class="clearfix js-hide"></li>
-{% endif %}

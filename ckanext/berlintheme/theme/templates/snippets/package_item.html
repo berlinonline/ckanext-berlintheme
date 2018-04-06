@@ -8,6 +8,7 @@ banner         - If true displays a popular banner (default: false).
 truncate       - The length to trucate the description to (default: 180)
 truncate_title - The length to truncate the title to (default: 80).
 num_tags       - Number of tags to show.
+faceted        - If true generates links for faceted search (default: false)
 
 Example:
 
@@ -19,6 +20,7 @@ Example:
 {% set title = package.title or package.name %}
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
 {% set num_tags = num_tags or 3 %}
+{% set faceted = faceted or false %}
 
 {% block package_item %}
   <li class="{{ item_class or "dataset-item" }}">
@@ -63,65 +65,88 @@ Example:
 
         {% block metadata %}
         <div class="package-metadata">
-          <div class="row-fluid package-metadata-item">
-            <div class="span3">
-              <span class="field-label">{{_('Letzte Änderung')}}:</span>
+          {% if package.date_updated or package.date_released %}
+            <div class="row-fluid package-metadata-item">
+              <div class="span3">
+                <span class="field-label">{{_('Letzte Änderung')}}:</span>
+              </div>
+              <div class="span9">
+                {% if package.date_updated is not undefined %}
+                  {{ h.render_datetime(package.date_updated) }}
+                {% else %}
+                  {{ h.render_datetime(package.date_released) }}
+                {% endif %}
+              </div>
             </div>
-            <div class="span9">
-              {% if package.date_updated is not undefined %}
-                {{ h.render_datetime(package.date_updated) }}
-              {% else %}
-                {{ h.render_datetime(package.date_released) }}
-              {% endif %}
-            </div>
-          </div>
-          <div class="row-fluid package-metadata-item">
-            <div class="span3">
-              <span class="field-label">{{_('Kategorie')}}:</span>
-            </div>
-            <div class="span9">
-              {% set separator = joiner("|") %}
-              {% for group in package.groups %}
-                {{ separator() }} <a href='{{ h.add_url_param(new_params={"groups": group.name}) }}'>{{ group.display_name }}</a>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="row-fluid package-metadata-item">
-            <div class="span3">
-              <span class="field-label">{{_('Tags')}}:</span>
-            </div>
-            <div class="span9">
-              <div class="tags-{{package.id}}">
+          {% endif %}
+          {% if package.groups %}
+            <div class="row-fluid package-metadata-item">
+              <div class="span3">
+                <span class="field-label">{{_('Kategorie')}}:</span>
+              </div>
+              <div class="span9">
                 {% set separator = joiner("|") %}
-                {% for tag in package.tags[:num_tags] %}
-                  {{ separator() }} <a href='{{ h.add_url_param(new_params={"tags": tag.name}) }}'>{{ tag.display_name }}</a>
+                {% for group in package.groups %}
+                  {% set url = "/dataset?groups=" + group.name %}
+                  {% if faceted %}
+                    {% set url = h.add_url_param(new_params={"groups": group.name}) %}
+                  {% endif %}
+                  {{ separator() }} <a href='{{ url }}'>{{ group.display_name }}</a>
                 {% endfor %}
-                {% if package.tags|length > num_tags %}
-                ...(<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{ package.tags|length - num_tags }} {{_('weitere')}}</a>)
               </div>
-              <div class="tags-{{package.id}}" style="display: none;">
-                {% set separator = joiner("|") %}
-                {% for tag in package.tags %}
-                  {{ separator() }} <a href='{{ h.add_url_param(new_params={"tags": tag.name}) }}'>{{ tag.display_name }}</a>
-                {% endfor %}
-                (<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{(_('weniger Tags zeigen'))}}</a>)
+            </div>
+          {% endif %}
+          {% if package.tags %}
+            <div class="row-fluid package-metadata-item">
+              <div class="span3">
+                <span class="field-label">{{_('Tags')}}:</span>
               </div>
-              {% else %}
+              <div class="span9">
+                <div class="tags-{{package.id}}">
+                  {% set separator = joiner("|") %}
+                  {% for tag in package.tags[:num_tags] %}
+                    {% set url = "/dataset?tags=" + tag.name %}
+                    {% if faceted %}
+                      {% set url = h.add_url_param(new_params={"tags": tag.name}) %}
+                    {% endif %}
+                    {{ separator() }} <a href='{{ url }}'>{{ tag.display_name }}</a>
+                  {% endfor %}
+                  {% if package.tags|length > num_tags %}
+                  ...(<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{ package.tags|length - num_tags }} {{_('weitere')}}</a>)
+                </div>
+                <div class="tags-{{package.id}}" style="display: none;">
+                  {% set separator = joiner("|") %}
+                  {% for tag in package.tags %}
+                    {% set url = "/dataset?tags=" + tag.name %}
+                    {% if faceted %}
+                      {% set url = h.add_url_param(new_params={"tags": tag.name}) %}
+                    {% endif %}
+                    {{ separator() }} <a href='{{ url }}'>{{ tag.display_name }}</a>
+                  {% endfor %}
+                  (<a style="cursor:pointer;" onclick="$('.tags-{{package.id}}').toggle()">{{(_('weniger Tags zeigen'))}}</a>)
+                </div>
+                {% else %}
+                </div>
+                {% endif %}
               </div>
-              {% endif %}
             </div>
-          </div>
-          <div class="row-fluid package-metadata-item">
-            <div class="span3">
-              <span class="field-label">{{_('License')}}:</span>
+          {% endif %}
+          {% if package.license_id %}
+            {% set url = "/dataset?license_id=" + package.license_id %}
+            {% if faceted %}
+              {% set url = h.add_url_param(new_params={"license_id": package.license_id}) %}
+            {% endif %}
+            <div class="row-fluid package-metadata-item">
+              <div class="span3">
+                <span class="field-label">{{_('License')}}:</span>
+              </div>
+              <div class="span9">
+                <a href='{{ url }}'>{{ package.license_title }} ({{ package.license_id}})</a>
+              </div>
             </div>
-            <div class="span9">
-              <a href='{{ h.add_url_param(new_params={"license_id": package.license_id}) }}'>{{ package.license_title }} ({{ package.license_id}})</a>
-            </div>
-          </div>
+          {% endif %}
         </div>
         {% endblock %}
-
         {% block resources %}
         <div class="package-resources">
           <div class="row-fluid">
@@ -141,6 +166,7 @@ Example:
           </div>
         </div>
         {% endblock %}
+
       {% endblock %}
       </div>
     </div>

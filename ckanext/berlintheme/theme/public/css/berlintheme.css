@@ -40,7 +40,7 @@ button.hidden {
   margin-bottom: 10px;
 }
 
-ul.search-result-results>li {
+li.dataset-item {
   border-bottom: 1px solid #c6c6c6;
   margin-bottom: 15px;
 }
@@ -74,7 +74,146 @@ h3 a {
     width: 5em;
 }
 
+.content-marginal .block.context-info {
+  padding-top: 14px;
+}
+
+.context-info .image img {
+  border-radius: 2px;
+}
+
+.context-info dl dd {
+    margin-bottom: 0;
+}
+
+.nums.org-list ul {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+  display: block;
+  margin-bottom: 0;
+}
+
+
+/* Group list flex layout */
+
+.group-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group-dashboard__item {
+  margin-right: 10px;
+  width: 318px;
+  height: 125px;
+  display: flex;
+}
+
+.group-dashboard__item img {
+  max-height: 100%;
+}
+
+.group-dashboard__image {
+  min-width: 110px;
+  max-width: 110px;
+  margin-right: 10px;
+}
+
+.group-dashboard__item.well {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.group-dashboard__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.group-dashboard__lower p {
+  margin-bottom: 0px;
+}
+
 /* Straight from CKAN CSS: */
+
+.context-info .image img, .context-info .image a {
+    display: block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.context-info p {
+    overflow: auto
+}
+
+.context-info h3.title {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto
+}
+
+.context-info .info dl dd {
+    margin-top: 3px;
+    margin-left: 0
+}
+
+.context-info .nums:before, .context-info .nums:after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+
+.context-info .nums:after {
+    clear: both
+}
+
+.context-info .nums dl {
+    float: left;
+    width: 50%;
+    margin: 5px 0 0 0;
+    color: #444444
+}
+
+.context-info .nums dl dd {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 36px;
+    margin-left: 0
+}
+
+.context-info .nums dl dd .smallest {
+    font-size: 13px
+}
+
+.context-info .nums dl dd .smaller {
+    font-size: 16px
+}
+
+.context-info .nums dl dd .small {
+    font-size: 21px
+}
+
+.context-info .follow_button {
+    margin-top: 15px
+}
+
+.context-info.editing .module-content {
+    margin-top: 0
+}
+
+
+
+
+.empty {
+    color: #aaaaaa;
+    font-style: italic
+}
 
 .format-label, .format-label--large {
   *margin-right: .3em;
@@ -186,4 +325,178 @@ h3 a {
 .resource-item__format-icon {
   top: 0;
   margin-right: 10px;
+}
+
+
+/*
+ * Copied from CKAN CSS
+ */
+
+.activity {
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+  background: transparent url('../../../base/images/dotted.png') 14px 0 repeat-y;
+}
+.activity .item {
+  position: relative;
+  margin: 0 0 15px 0;
+  padding: 0;
+  *zoom: 1;
+}
+.activity .item:before,
+.activity .item:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.activity .item:after {
+  clear: both;
+}
+/* .icon renamed to .ckan-icon to avoid conflict with Landeslayout */
+.activity .item .ckan-icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+  margin-right: 10px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.activity .item .gravatar {
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+.activity .item .actor .gravatar {
+  position: absolute;
+  top: 0;
+  left: 40px;
+}
+.activity .item p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 5px 0 0 80px;
+}
+.activity .item .date {
+  color: #999;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.activity .item .new {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  top: -3px;
+  left: -3px;
+  width: 10px;
+  height: 10px;
+  background-color: #A35647;
+  border: 1px solid #FFF;
+  text-indent: -1000px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.activity .item.no-avatar p {
+  margin-left: 40px;
+}
+.activity .load-less {
+  margin-bottom: 15px;
+}
+
+.activity .item .ckan-icon {
+  background-color: #999999;
+}
+.activity .item.failure .ckan-icon {
+  background-color: #b95252;
+}
+.activity .item.success .ckan-icon {
+  background-color: #69a67a;
+}
+.activity .item.added-tag .ckan-icon {
+  background-color: #6995a6;
+}
+.activity .item.changed-group .ckan-icon {
+  background-color: #767dce;
+}
+.activity .item.changed-package .ckan-icon {
+  background-color: #8c76ce;
+}
+.activity .item.changed-package_extra .ckan-icon {
+  background-color: #769ace;
+}
+.activity .item.changed-resource .ckan-icon {
+  background-color: #aa76ce;
+}
+.activity .item.changed-user .ckan-icon {
+  background-color: #76b8ce;
+}
+.activity .item.changed-organization .ckan-icon {
+  background-color: #699fa6;
+}
+.activity .item.deleted-group .ckan-icon {
+  background-color: #b95252;
+}
+.activity .item.deleted-package .ckan-icon {
+  background-color: #b97452;
+}
+.activity .item.deleted-package_extra .ckan-icon {
+  background-color: #b95274;
+}
+.activity .item.deleted-resource .ckan-icon {
+  background-color: #b99752;
+}
+.activity .item.deleted-organization .ckan-icon {
+  background-color: #b95297;
+}
+.activity .item.new-group .ckan-icon {
+  background-color: #69a67a;
+}
+.activity .item.new-package .ckan-icon {
+  background-color: #69a68e;
+}
+.activity .item.new-package_extra .ckan-icon {
+  background-color: #6ca669;
+}
+.activity .item.new-resource .ckan-icon {
+  background-color: #81a669;
+}
+.activity .item.new-user .ckan-icon {
+  background-color: #69a6a3;
+}
+.activity .item.new-organization .ckan-icon {
+  background-color: #81a669;
+}
+.activity .item.removed-tag .ckan-icon {
+  background-color: #b95297;
+}
+.activity .item.deleted-related-item .ckan-icon {
+  background-color: #b9b952;
+}
+.activity .item.follow-dataset .ckan-icon {
+  background-color: #767dce;
+}
+.activity .item.follow-user .ckan-icon {
+  background-color: #8c76ce;
+}
+.activity .item.new-related-item .ckan-icon {
+  background-color: #95a669;
+}
+.activity .item.follow-group .ckan-icon {
+  background-color: #8ba669;
 }
