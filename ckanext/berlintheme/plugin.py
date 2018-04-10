@@ -29,7 +29,7 @@ class BerlinTheme(plugins.SingletonPlugin):
 
         config['ckan.site_logo'] = "/images/berlin_open_data.png"
         config['ckan.favicon'] = "/favicon.ico"
-        config['breadcrumb_length'] = 60
+        config['berlintheme.breadcrumb_length'] = 60
 
         theme_helpers.read_facet_mapping()
 

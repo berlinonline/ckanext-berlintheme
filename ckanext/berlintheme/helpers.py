@@ -17,7 +17,7 @@ _facet_mapping = {}
 
 
 def breadcrumb_length():
-  return config.get("breadcrumb_length", 35)
+  return config.get("berlintheme.breadcrumb_length", 35)
 
 def read_facet_mapping():
   path = os.path.abspath(__file__)
