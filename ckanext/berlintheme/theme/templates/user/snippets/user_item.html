@@ -1,0 +1,49 @@
+{#
+Renders a box-like user item in a flex layout.
+
+user - a user dict
+
+Example:
+
+    <div class="box-list">
+      {% for user in users %}
+        {% snippet "users/snippets/user_item.html", user=user %}
+      {% endfor %}
+    </div>
+#}
+{% set user_object = h.berlin_user_object(user) %}
+{% set user_link = h.url_for(controller='user', action='read', id=user_object.name) %}
+
+{% block item %}
+  <div class="box-list__item well">
+    <div class="box-list__image">
+      <a href="{{ user_link }}">
+        {{ h.gravatar(email_hash=user_object.email_hash, size=125) }}
+      </a>
+    </div>
+    <div class="box-list__right space-between">
+      <div>
+        <h3>
+          {{ h.link_to(h.truncate(user_object.display_name, 90), user_link) }}
+        </h3>
+        <div class="box-list__lower">
+          {% set user_orgs = h.berlin_user_orgs(user_object.name) %}
+          {% if user_orgs %}
+            <div class="nums org-list">
+              <ul>
+                {% if h.berlin_is_sysadmin(user_object.name) %}
+                  <li>Sysadmin</li>
+                {% else %}
+                  {% for organization in user_orgs %}
+                    <li>{{ organization['display_name'] }} - <span class="member-capacity">{{ _(organization['capacity']|title) }}</span></li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {% block lower_info %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

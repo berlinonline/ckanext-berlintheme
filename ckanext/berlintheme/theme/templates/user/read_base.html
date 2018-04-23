@@ -67,14 +67,17 @@
       <div class="html5-section block context-info boxmerge">
         <section class="module-content">
           <div class="html5-section body">
-            {% if h.berlin_user_orgs(user.name) %}
+            {% set user_orgs = h.berlin_user_orgs(user.name) %}
+            {% if user_orgs %}
               <div class="nums org-list">
                 <ul>
                   {% if h.berlin_is_sysadmin(user.name) %}
                     <li>Sysadmin</li>
                   {% else %}
-                    {% for organization in h.berlin_user_orgs(user.name) %}
-                      <li><a href="/organization/{{ organization['name'] }}">{{ organization['display_name'] }}</a>
+                    {% for organization in user_orgs %}
+                      <li>
+                        <a href="/organization/{{ organization['name'] }}">{{ organization['display_name'] }}</a>
+                       - <span class="member-capacity">{{ _(organization['capacity']|title) }}</span>
                       </li>
                     {% endfor %}
                   {% endif %}

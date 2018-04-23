@@ -1,0 +1,16 @@
+<form class="module-content field-bordered" action="{% url_for controller='user', action='index' %}" method="get"
+      id="user-search-form">
+  <div class="search-input control-group">
+    <input type="text" id="field-user-search" class="search" name="q" placeholder="{{ _('Benutzer suchen...') }}"
+           value="{{ c.q }}"/>
+    <button class="hidden" type="submit" value="search">
+      <i class="fa fa-search"></i>
+      <span>{{ _('Submit') }}</span>
+    </button>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <h2>{{ c.page.item_count }} {{ _('Benutzer gefunden') }}</h2>
+    </div>
+  </div>
+</form>
