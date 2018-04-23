@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block primary_content_inner %}
+  <div class="box-list">
+    {% for user in c.sysadmins %}
+      {% snippet 'user/snippets/user_item.html', user=user %}
+    {% endfor %}
+  </div>
+{% endblock %}
