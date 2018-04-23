@@ -1,36 +1,36 @@
 {#
-Renders a media item for a group. This should be used in a list.
+Renders a box-like group item in a flex layout.
 
-group - A group dict.
+group - a group dict
 
 Example:
 
-    <ul class="media-grid">
+    <div class="box-list">
       {% for group in groups %}
         {% snippet "group/snippets/group_item.html", group=group %}
       {% endfor %}
-    </ul>
+    </div>
 #}
 {% set type = group.type or 'group' %}
 {% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
 {% block item %}
-  <div class="group-dashboard__item well">
+  <div class="box-list__item well">
     {% block item_inner %}
       {% block image %}
-        <div class="group-dashboard__image">
+        <div class="box-list__image">
           <a href="{{ url }}">
             <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group_portrait.png') }}"
                  alt="{{ group.name }}" class="media-image">
           </a>
         </div>
       {% endblock %}
-      <div class="group-dashboard__right">
+      <div class="box-list__right space-between">
         {% block title %}
-          <h3 class="media-heading">
+          <h3>
             {{ h.link_to(h.truncate(group.display_name, 90), h.url_for(controller='group', action='read', id=group.name)) }}
           </h3>
         {% endblock %}
-        <div class="group-dashboard__lower">
+        <div class="box-list__lower">
           {% block description %}
             {% if group.description %}
               <p>{{ h.markdown_extract(group.description, extract_length=80) }}</p>

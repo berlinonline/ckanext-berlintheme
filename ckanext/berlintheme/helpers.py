@@ -1,12 +1,16 @@
 # coding: utf-8
 
 import os
+import re
 import json
 import logging
+import ckan as ckan
 import ckan.lib.helpers as h
 import ckan.logic as logic
+import ckan.logic.action.get as ckanget
 import ckan.model as model
-from ckan.common import _, c, config, response
+from ckan.common import _, c, config, response, request
+from webhelpers.html import literal
 
 log = logging.getLogger(__name__)
 
@@ -14,6 +18,19 @@ get_action = logic.get_action
 NotAuthorized = logic.NotAuthorized
 
 _facet_mapping = {}
+
+_path_patterns = {
+  "home" : [ "/nutzungsbedingungen", "/impressum" , "/faq" , "/contact", "/user/.*", "/dashboard(/.*)?", "/" ] ,
+  "dataset": [ "/dataset(/.*)?" ] ,
+  "apps": [ "/anwendungen" ] ,
+  "contributors": [ "/datenbereitsteller" ] ,
+  "interaktion": [ "/interaktion" ] ,
+  "admin": [ "/ckan-admin(/.*)?" ] ,
+  "organization": [ "/organization(/.*)?" ] ,
+  "group": [ "/group(/.*)?" ] ,
+  "user-list": [ "/user" ] ,
+  "harvest": [ "/harvest(/.*)?" ],
+}
 
 
 def breadcrumb_length():
@@ -95,6 +112,15 @@ def resource_label(resource):
 
   return label
 
+def user_object(user_name):
+  log.info("user_name: {}".format(user_name))
+  user_name = unicode(user_name)
+  user = model.User.get(user_name)
+  if not user:
+    return None
+  else:
+    return user
+
 
 def http_status_code_mapping(status):
   mapping = {
@@ -142,3 +168,64 @@ def http_status_code_mapping(status):
     "599 Network Connect Timeout Error": "Network Connect Timeout Error",
   }
   return mapping[status]
+
+
+def compile_path_patterns():
+  for menu, patterns in _path_patterns.iteritems():
+    patterns =[re.compile("^{}$".format(pattern)) for pattern in patterns]
+    _path_patterns[menu] = patterns
+  log.info(_path_patterns)
+
+
+def _is_active(item):
+  for pattern in _path_patterns[item[0]]:
+    if pattern.match(request.path):
+      return True
+  return False
+
+
+def build_menu_item(item):
+  link = u"<a href='{}'>{}</a>".format(item[2], item[1])
+  list_classes = []
+  submenu = ""
+  if len(item) > 3:
+    sub_items = []
+    for sub_item in item[3]:
+      sub_items.append(build_menu_item(sub_item))
+    submenu = "<ul class='nav'>{}</ul>".format("".join(sub_items))
+    list_classes.append("has-submenu")
+
+  is_active = _is_active(item)
+  if is_active:
+    list_classes.append("active")
+  if len(list_classes) > 0:
+    list_classes = " class='{}'".format(" ".join(list_classes))
+  else:
+    list_classes = ""
+  return literal(u"<li{}>{}{}</li>".format(list_classes, link, submenu))
+
+
+# @ckan.logic.side_effect_free
+# def user_list(context, data_dict):
+#   _user_list = ckanget.user_list(context, data_dict)
+#   log.info(_user_list)
+#
+#   restricted = data_dict.get('restricted', True)
+#   if restricted:
+#     non_list_users = unicode(config.get("berlin.non_list_users", ""))
+#     non_list_users = non_list_users.split(" ")
+#     log.info(non_list_users)
+#     q = _user_list.filter(ckan.model.User.name not in non_list_users)
+#     log.info(_user_list)
+#     # _user_list is a query, not a list, so cannot use list comprehension
+#     for user in _user_list:
+#       log.info(user.__class__)
+#     #   if not unicode(user.name) in non_list_users:
+#     #     result_list.append(user)
+#     #     log.info(user.name)
+#
+#   return _user_list
+
+def log_this(_object):
+  log.info(_object)
+  log.info(_object.__class__)

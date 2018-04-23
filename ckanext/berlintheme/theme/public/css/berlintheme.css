@@ -97,41 +97,52 @@ h3 a {
 
 /* Group list flex layout */
 
-.group-dashboard {
+.box-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.group-dashboard__item {
+.box-list__item {
   margin-right: 10px;
   width: 318px;
   height: 125px;
   display: flex;
 }
 
-.group-dashboard__item img {
+.box-list__item img {
   max-height: 100%;
 }
 
-.group-dashboard__image {
+.box-list__image {
   min-width: 110px;
   max-width: 110px;
   margin-right: 10px;
 }
 
-.group-dashboard__item.well {
+.box-list__item.well {
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.group-dashboard__right {
+.box-list__right {
   display: flex;
   flex-direction: column;
+}
+
+.space-between {
   justify-content: space-between;
 }
 
-.group-dashboard__lower p {
+.box-list__lower p {
   margin-bottom: 0px;
+}
+
+.member-capacity {
+  font-style: italic;
+}
+
+.meta-navi ul.nav>li a.icon:hover, .meta-navi ul.nav>li a.icon:focus {
+text-decoration: none;
 }
 
 /* Straight from CKAN CSS: */

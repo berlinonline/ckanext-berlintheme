@@ -1,31 +1,31 @@
 {#
-Renders a media item for a organization. This should be used in a list.
+Renders a box-like organization item in a flex layout.
 
-organization - A organization dict.
+organization - an organization dict
 
 Example:
 
-    <ul class="media-grid">
+    <div class="box-list">
       {% for organization in organizations %}
         {% snippet "organization/snippets/organization_item.html", organization=organization %}
       {% endfor %}
-    </ul>
+    </div>
 #}
 {% set url = h.url_for(organization.type ~ '_read', action='read', id=organization.name) %}
 {% block item %}
-  <div class="group-dashboard__item well">
+  <div class="box-list__item well">
     {% block item_inner %}
       {% block image %}
-        <div class="group-dashboard__image">
+        <div class="box-list__image">
           <a href="{{ url }}"><img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization_portrait.png') }}"
                alt="{{ organization.name }}" class="media-image"></a>
         </div>
       {% endblock %}
-      <div class="group-dashboard__right">
+      <div class="box-list__right">
         {% block title %}
           <h3>{{ h.link_to(h.truncate(organization.display_name, 90), h.url_for(controller='organization', action='read', id=organization.name)) }}</h3>
         {% endblock %}
-        <div class="group-dashboard__lower">
+        <div class="box-list__lower">
           {% block datasets %}
             {% if organization.package_count %}
               <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
