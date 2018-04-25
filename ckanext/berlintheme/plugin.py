@@ -66,3 +66,14 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_user_orgs': theme_helpers.organizations_for_user ,
             'berlin_is_sysadmin': theme_helpers.is_sysadmin ,
         }
+
+    # -------------------------------------------------------------------
+    # Implementation IActions
+    # -------------------------------------------------------------------
+
+    def get_actions(self):
+        return {
+            # this was meant to restrict the list of users returned
+            # by user_list, but it's not working yet
+            # "user_list": theme_helpers.user_list ,
+        }
