@@ -172,7 +172,6 @@ def compile_path_patterns():
   for menu, patterns in _path_patterns.iteritems():
     patterns =[re.compile("^{}$".format(pattern)) for pattern in patterns]
     _path_patterns[menu] = patterns
-  log.info(_path_patterns)
 
 
 def _is_active(item):
