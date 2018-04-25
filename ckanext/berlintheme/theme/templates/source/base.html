@@ -15,9 +15,24 @@
   {% if source.organization %}
     {% set org = source.organization %}
     <li>{{ h.nav_link(_('Harvest Sources'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
-    <li{{ self.breadcrumb_content_root_selected() }}>{{ h.nav_link(c.harvest_source.title|truncate(10), named_route='{0}_read'.format(c.dataset_type), id=c.harvest_source.name) }}</li>
+    <li{{ self.breadcrumb_content_root_selected() }}>{{ h.nav_link(c.harvest_source.title|truncate(10), named_route='{0}_about'.format(c.dataset_type), id=c.harvest_source.name) }}</li>
   {% else %}
     <li>{{ h.nav_link(_('Harvest Sources'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
-    <li{{ self.breadcrumb_content_root_selected() }}>{{ h.nav_link(c.harvest_source.title|truncate(30), named_route='{0}_read'.format(c.dataset_type), id=c.harvest_source.name) }}</li>
+    <li{{ self.breadcrumb_content_root_selected() }}>{{ h.nav_link(c.harvest_source.title|truncate(30), named_route='{0}_about'.format(c.dataset_type), id=c.harvest_source.name) }}</li>
   {% endif %}
+{% endblock %}
+
+{% block page_header %}
+    <header class="module-content page-header tab-nav">
+      <div>
+        {% if self.content_action() | trim %}
+          <div class="content_action">
+            {% block content_action %}{% endblock %}
+          </div>
+        {% endif %}
+        <ul class="nav nav-tabs">
+          {% block content_primary_nav %}{% endblock %}
+        </ul>
+      </div>
+    </header>
 {% endblock %}

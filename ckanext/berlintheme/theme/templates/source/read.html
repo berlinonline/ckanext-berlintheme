@@ -1,0 +1,10 @@
+{% extends "source/read_base.html" %}
+
+{% block primary_content_inner %}
+  <section class="module-content">
+    {% set count =  h.package_count_for_source(c.harvest_source.id) %}
+    {% set message = ungettext('{number} dataset found', '{number} datasets found', count) %}
+    <h1 class="hide-heading">{{ message.format(number=h.localised_number(count)) }}</h1>
+    {{ h.package_list_for_source(source.id)  }}
+  </section>
+{% endblock %}
