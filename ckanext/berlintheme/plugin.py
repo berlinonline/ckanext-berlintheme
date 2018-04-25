@@ -56,15 +56,13 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_http_status_codes': theme_helpers.http_status_code_mapping ,
             'berlin_user_object': theme_helpers.user_object ,
             'berlin_log_this': theme_helpers.log_this ,
-        }
-
-    # -------------------------------------------------------------------
-    # Implementation IActions
-    # -------------------------------------------------------------------
-
-    def get_actions(self):
-        return {
-            # this was meant to restrict the list of users returned
-            # by user_list, but it's not working yet
-            # "user_list": theme_helpers.user_list ,
+            'berlin_dataset_type_mapping': theme_helpers.dataset_type_mapping ,
+            'berlin_type_mapping_select_options': theme_helpers.type_mapping_select_options ,
+            'berlin_temporal_granularity_select_options': theme_helpers.temporal_granularity_select_options ,
+            'berlin_geo_granularity_select_options': theme_helpers.geo_granularity_select_options ,
+            'berlin_geo_coverage_select_options':
+                theme_helpers.geo_coverage_select_options ,
+            'berlin_state_mapping': theme_helpers.state_mapping ,
+            'berlin_user_orgs': theme_helpers.organizations_for_user ,
+            'berlin_is_sysadmin': theme_helpers.is_sysadmin ,
         }
