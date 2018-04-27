@@ -6,6 +6,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 from pylons import config
+from ckan.common import c, OrderedDict
 
 log = logging.getLogger(__name__)
 
@@ -14,6 +15,7 @@ class BerlinTheme(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IFacets, inherit=True)
 
     # -------------------------------------------------------------------
     # Implementation IConfigurer
@@ -77,3 +79,25 @@ class BerlinTheme(plugins.SingletonPlugin):
             # by user_list, but it's not working yet
             # "user_list": theme_helpers.user_list ,
         }
+
+    # -------------------------------------------------------------------
+    # Implementation IFacets
+    # -------------------------------------------------------------------
+    
+    def dataset_facets(self, facets_dict, package_type):
+        if package_type == 'dataset':
+            facets_dict = OrderedDict()
+            facets_dict['groups'] = toolkit._(u'Kategorien')
+            facets_dict['author_string'] = toolkit._(u'Quellen')
+            facets_dict['geographical_coverage'] = toolkit._(u'Geografische Abdeckung')
+            facets_dict['geographical_granularity'] = toolkit._(u'Geografische Granularität')
+            facets_dict['temporal_granularity'] = toolkit._(u'Zeitliche Granularität')
+            facets_dict['res_format'] = toolkit._(u'Formate')
+            facets_dict['license_id'] = toolkit._(u'Lizenzen')
+            facets_dict['tags'] = toolkit._(u'Tags')
+            facets_dict['berlin_type'] = toolkit._(u'Typ')
+            if c.userobj:
+                if c.userobj.sysadmin:
+                    facets_dict['organization'] = toolkit._(u'Organisationen')
+        return facets_dict
+        
