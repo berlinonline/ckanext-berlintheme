@@ -46,7 +46,7 @@
                     <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
                       {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
                       <a href="{{ h.url_for(controller='user', action='dashboard') }}"
-                         title="{{ notifications_tooltip }}" class="icon">
+                         title="{{ notifications_tooltip }}" class="ckan-icon">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span class="badge">{{ new_activities }}</span>
                       </a>
