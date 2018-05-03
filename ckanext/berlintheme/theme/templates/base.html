@@ -90,6 +90,19 @@
   {# Allows custom attributes to be added to the <body> tag #}
   <body{% block bodytag %} data-site-root="{{ h.url_for('/', locale='default', qualified=true) }}" data-locale-root="{{ h.url_for('/', qualified=true) }}" class="locale_de "{% endblock %}>
 
+    {% if not request.url.startswith('https://datenregister.berlin.de') %}
+      {% set ribbon_title=none %}
+      {% set color=none %}
+      {% if request.url.startswith('http://datenregister.local:5000') %}
+        {% set ribbon_title="DEVEL" %}
+      {% elif request.url.startswith('https://datenregister.stage.berlinonline.net') %}
+        {% set ribbon_title="STAGE" %}
+      {% elif request.url.startswith('https://datenregister.live.berlinonline.net') %}
+        {% set ribbon_title="PRE-LIVE" %}
+      {% endif %}
+      {% snippet "snippets/corner_ribbon.html", ribbon_title=ribbon_title, color=color %}
+    {% endif %}
+    
     {% include "snippets/portal_header.html" %}
 
     {#
