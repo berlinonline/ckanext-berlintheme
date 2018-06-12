@@ -17,6 +17,7 @@ def dataset_type_mapping():
 
 def geo_coverage_select_options():
     return [
+        {u'id': u'Keine', u'label': u'Keine'},
         {u'id': u'Adlershof', u'label': u'Adlershof'},
         {u'id': u'Alt-Hohenschönhausen', u'label': u'Alt-Hohenschönhausen'},
         {u'id': u'Alt-Treptow', u'label': u'Alt-Treptow'},
@@ -141,6 +142,7 @@ def temporal_granularity_select_options():
 # ids should be URIs, not just the label string
 def geo_granularity_select_options():
     return [
+        {u'id': u'Keine', u'label': u'Keine'},
         {u'id': u'Deutschland', u'label': u'Deutschland'},
         {u'id': u'Berlin', u'label': u'Berlin'},
         {u'id': u'Bezirk', u'label': u'Bezirk'},
