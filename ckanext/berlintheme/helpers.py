@@ -159,7 +159,7 @@ def geo_granularity_select_options():
         {u'id': u'Wohnanlage', u'label': u'Wohnanlage'},
         {u'id': u'Wahlkreis', u'label': u'Wahlkreis'},
         {u'id': u'Adresse', u'label': u'Adresse'},
-        {u'id': u'Koordinaten', u'label': u'Koordinaten'},
+        {u'id': u'GPS-Koordinaten', u'label': u'GPS-Koordinaten'},
     ]
 
 
