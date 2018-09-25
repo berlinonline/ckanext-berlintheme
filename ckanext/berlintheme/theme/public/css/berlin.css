@@ -95,3 +95,25 @@ th[scope="col"] {
   list-style-type: none;
   margin: 0px;
 }
+
+
+/* required fields in dataset form */
+
+/* Potential Icons:
+- https://fontawesome.com/v4.7.0/icon/exclamation - f12a
+- https://fontawesome.com/v4.7.0/icon/asterisk - f069
+- https://fontawesome.com/v4.7.0/icon/star - f005
+- https://fontawesome.com/v4.7.0/icon/info-circle - f05a
+- https://fontawesome.com/v4.7.0/icon/exclamation-circle - f06a
+
+*/
+
+.datasetform-required .control-label::before {
+  font-family: FontAwesome;
+  padding-right: 10px;
+  content: "\f069";
+  display: inline-block;
+  vertical-align: middle;
+  color: #e43;
+}
+
