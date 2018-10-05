@@ -3,9 +3,21 @@
 import logging
 import ckan.logic as logic
 import ckan.model as model
+from ckan.common import c
+from ckanext.berlin_dataset_schema.schema import Schema
 
 log = logging.getLogger(__name__)
+get_action = logic.get_action
 
+def required(attribute):
+    return Schema().required(attribute)
+
+def classes_for_attribute(attribute, classes, as_string=False):
+    if required(attribute):
+        classes.append('datasetform-required')
+    if as_string:
+        classes = " ".join(classes)
+    return classes
 
 def dataset_type_mapping():
     return {
@@ -14,6 +26,20 @@ def dataset_type_mapping():
         'app': 'Anwendung'
     }
 
+def group_mapping():
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': c.user,
+        'for_view': True,
+        'auth_user_obj': c.userobj,
+        'use_cache': False
+    }
+    context['is_member'] = True
+
+    users_groups = get_action('group_list_authz')(context, {})
+    mapping = [ { "text": group['display_name'], "value": group['name']} for group in users_groups ]
+    return mapping
 
 def geo_coverage_select_options():
     return [
@@ -120,6 +146,13 @@ def type_mapping_select_options():
         options.append({'text': human, 'value': machine})
     return options
 
+def group_select_options():
+    options = [ { 
+        'text': u'Bitte eine Kategorie auswählen' ,
+        'value': u'empty'
+    }]
+    options = options + group_mapping()
+    return options
 
 # eventually, these values should come from a JSON API
 # ids should be URIs, not just the label string
@@ -183,3 +216,8 @@ def is_sysadmin(user_name):
     user = model.User.get(unicode(user_name))
     return user.sysadmin
 
+def first_group_name(data_dict):
+    groups = data_dict.get('groups', [])
+    if len(groups) > 0:
+        return groups[0].get('name', None)
+    return None
