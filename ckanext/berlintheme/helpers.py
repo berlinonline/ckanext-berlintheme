@@ -13,11 +13,12 @@ def required(attribute):
     return Schema().required(attribute)
 
 def classes_for_attribute(attribute, classes=[], as_string=False):
+    _classes = [] + classes
     if required(attribute):
-        classes.append('datasetform-required')
+        _classes.append('datasetform-required')
     if as_string:
-        classes = " ".join(classes)
-    return classes
+        _classes = " ".join(_classes)
+    return _classes
 
 def dataset_type_mapping():
     return {
