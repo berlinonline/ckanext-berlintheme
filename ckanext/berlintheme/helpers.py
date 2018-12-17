@@ -5,6 +5,8 @@ import ckan.logic as logic
 import ckan.model as model
 from ckan.common import c
 from ckanext.berlin_dataset_schema.schema import Schema
+import ckan.plugins.toolkit as toolkit
+from pylons import config
 
 log = logging.getLogger(__name__)
 get_action = logic.get_action
@@ -222,3 +224,14 @@ def first_group_name(data_dict):
     if len(groups) > 0:
         return groups[0].get('name', None)
     return None
+
+def show_warning():
+    '''Return the setting for the berlintheme.show_warning config setting.'''
+    _show_warning = toolkit.asbool(config.get('berlintheme.show_warning', False))
+    log.debug("show_warning(): {}".format(_show_warning))
+    return _show_warning
+
+def warning_text():
+    '''Return the warning text as set in the berlintheme.warning config setting,
+    or the default 'Warning'.'''
+    return config.get('berlintheme.warning', 'Warning').decode('utf-8')

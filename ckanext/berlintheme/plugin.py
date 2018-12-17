@@ -51,4 +51,6 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_classes_for_attribute': theme_helpers.classes_for_attribute ,
             'berlin_group_select_options': theme_helpers.group_select_options ,
             'berlin_first_group_name': theme_helpers.first_group_name ,
+            'berlin_show_warning': theme_helpers.show_warning ,
+            'berlin_warning_text': theme_helpers.warning_text ,
         }
