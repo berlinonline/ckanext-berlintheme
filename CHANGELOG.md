@@ -2,6 +2,11 @@
 
 ## Development
 
+## 0.2.1
+
+* Add license (AGPL-3.0).
+* Small updates to readme.
+
 ## 0.2.0
 
 * Start a real changelog.
