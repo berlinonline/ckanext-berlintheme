@@ -3,3 +3,4 @@
 ckanext_berlintheme.egg-info/**
 
 .DS_Store
+.vscode
