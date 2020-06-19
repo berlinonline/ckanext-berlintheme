@@ -7,6 +7,9 @@
           <ul class="unstyled">
             {% block footer_links %}
               <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('Über {0} / Impressum').format(g.site_title) }}</a></li>
+              <li><a
+                  href="{{ h.url_for(controller='ckanext.berlintheme.page_controller:PageController', action='privacy_policy') }}">{{ _('Datenschutzerklärung') }}</a>
+              </li>
             {% endblock %}
           </ul>
           <ul class="unstyled">

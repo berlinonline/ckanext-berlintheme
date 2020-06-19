@@ -13,6 +13,7 @@ class BerlinTheme(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IRoutes, inherit=True)
 
     # -------------------------------------------------------------------
     # Implementation IConfigurer
@@ -54,3 +55,16 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_show_warning': theme_helpers.show_warning ,
             'berlin_warning_text': theme_helpers.warning_text ,
         }
+
+    # -------------------------------------------------------------------
+    # IRoutes
+    # -------------------------------------------------------------------
+
+    def before_map(self, _map):
+
+        controller = 'ckanext.berlintheme.page_controller:PageController'
+
+        _map.connect('privacy_policy', '/datenschutzerklaerung',
+                     controller=controller, action='privacy_policy')
+
+        return _map
