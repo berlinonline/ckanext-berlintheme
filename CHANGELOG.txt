@@ -1,9 +1,0 @@
-CKANEXT-BERLIN CHANGELOG
-++++++++++++++++++++++++
-
-v0.1
-====
-
-* initial setup
-* theming moved here from ckanext-berlin
-
