@@ -4,6 +4,7 @@
 
 - Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
 - Switch assets from Fanstatic to Webassets.
+- Add unit tests.
 - Reformat changelog, add dates and version links.
 
 
