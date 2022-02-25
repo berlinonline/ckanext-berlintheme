@@ -3,10 +3,9 @@
 import logging
 import ckan.logic as logic
 import ckan.model as model
-from ckan.common import c
+from ckan.common import c, config
 from ckanext.berlin_dataset_schema.schema import Schema
 import ckan.plugins.toolkit as toolkit
-from pylons import config
 
 log = logging.getLogger(__name__)
 get_action = logic.get_action
