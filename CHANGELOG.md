@@ -3,19 +3,30 @@
 ## Development
 
 - Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
+- Reformat changelog, add dates and version links.
 
-* Add license (AGPL-3.0).
-* Small updates to readme.
 
-## 0.2.0
+## [0.2.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.2.1)
 
-* Start a real changelog.
-* Add privacy policy page ("Datenschutzerklärung")
-* Various helpers added.
-* Implement theming of required metadata.
-* Implement theming of validation.
+_(2020-06-19)_
 
-## 0.1.0
+- Add license (AGPL-3.0).
+- Small updates to readme.
+- This is the last version to work with Python 2 / CKAN versions < 2.9.
 
-* initial setup
-* theming moved here from ckanext-berlin
+## [0.2.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.2.0)
+
+_(2020-06-19)_
+
+- Start a real changelog.
+- Add privacy policy page ("Datenschutzerklärung")
+- Various helpers added.
+- Implement theming of required metadata.
+- Implement theming of validation.
+
+## [0.1.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.1.0)
+
+_(2018-05-19)_
+
+- initial setup
+- theming moved here from ckanext-berlin
