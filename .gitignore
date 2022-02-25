@@ -1,6 +1,8 @@
 *.pyc
 ._*
 ckanext_berlintheme.egg-info/**
+.coverage
+htmlcov/
 
 .DS_Store
 .vscode
