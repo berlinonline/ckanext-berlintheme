@@ -1,13 +1,10 @@
 # coding: utf-8
 
 import os
-import logging
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
-from pylons import config
 
-log = logging.getLogger(__name__)
 
 class BerlinTheme(plugins.SingletonPlugin):
 
