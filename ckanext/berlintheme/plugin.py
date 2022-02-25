@@ -20,14 +20,14 @@ class BerlinTheme(plugins.SingletonPlugin):
     def update_config(self, config):  
         our_public_dir = os.path.join('theme', 'public')
         template_dir = os.path.join('theme', 'templates')
-        fanstatic_dir = os.path.join('theme', 'fanstatic')
+        assets_dir = os.path.join('theme', 'assets')
 
         # overriding configuration fields:
         # set our local template and resource overrides
         toolkit.add_public_directory(config, our_public_dir)
         toolkit.add_template_directory(config, template_dir)
 
-        toolkit.add_resource(fanstatic_dir, 'berlintheme')
+        toolkit.add_resource(assets_dir, 'berlintheme')
 
         config['ckan.site_logo'] = "/images/berlin_open_data.png"
         config['ckan.favicon'] = "/favicon.ico"

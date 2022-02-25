@@ -3,6 +3,7 @@
 ## Development
 
 - Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
+- Switch assets from Fanstatic to Webassets.
 - Reformat changelog, add dates and version links.
 
 

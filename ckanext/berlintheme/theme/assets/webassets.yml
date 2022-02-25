@@ -1,0 +1,7 @@
+corner_ribbon_css:
+  content:
+    - css/corner_ribbon.css
+
+global_warning_css:
+  content:
+    - css/global_warning.css

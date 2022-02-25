@@ -3,7 +3,7 @@
 {% block subtitle %}{{ _('Datenschutzerklärung') }}{% endblock %}
 
 {% block breadcrumb_content %}
-<li class="active">{% link_for _('Datenschutzerklärung'), controller='ckanext.berlintheme.page_controller:PageController', action='privacy_policy' %}</li>
+<li class="active">{% link_for _('Datenschutzerklärung'), named_route='page_blueprint.privacy_policy' %}</li>
 {% endblock %}
 
 {% block primary %}
