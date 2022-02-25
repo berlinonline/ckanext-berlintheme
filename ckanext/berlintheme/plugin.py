@@ -5,12 +5,13 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 
+from ckanext.berlintheme import page_blueprint
 
 class BerlinTheme(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
-    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IBlueprint)
 
     # -------------------------------------------------------------------
     # Implementation IConfigurer
@@ -54,14 +55,13 @@ class BerlinTheme(plugins.SingletonPlugin):
         }
 
     # -------------------------------------------------------------------
-    # IRoutes
+    # IBlueprint
     # -------------------------------------------------------------------
 
-    def before_map(self, _map):
+    def get_blueprint(self):
+        """
+        Implementation of
+        https://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.IBlueprint.get_blueprint
+        """
 
-        controller = 'ckanext.berlintheme.page_controller:PageController'
-
-        _map.connect('privacy_policy', '/datenschutzerklaerung',
-                     controller=controller, action='privacy_policy')
-
-        return _map
+        return page_blueprint.page_blueprint

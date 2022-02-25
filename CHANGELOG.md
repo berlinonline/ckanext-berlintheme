@@ -2,7 +2,7 @@
 
 ## Development
 
-## 0.2.1
+- Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
 
 * Add license (AGPL-3.0).
 * Small updates to readme.

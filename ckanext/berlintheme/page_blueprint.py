@@ -1,22 +1,13 @@
 # encoding: utf-8
 
-import ckan.logic as logic
+from flask import Blueprint
+
 import ckan.lib.base as base
-import ckan.model as model
 
-from ckan.common import _, c
 
-class PageController(base.BaseController):
-    repo = model.repo
+def privacy_policy():
+    return base.render('home/privacy_policy.html')
 
-    def __before__(self, action, **env):
-        try:
-            base.BaseController.__before__(self, action, **env)
-            context = {'model': model, 'user': c.user,
-                       'auth_user_obj': c.userobj}
-            logic.check_access('site_read', context)
-        except logic.NotAuthorized:
-            base.abort(403, _('Not authorized to see this page'))
+page_blueprint = Blueprint('page_blueprint', __name__)
+page_blueprint.add_url_rule(u'/datenschutzerklaerung', methods=[u'GET'], view_func=privacy_policy)
 
-    def privacy_policy(self):
-        return base.render('home/privacy_policy.html')
