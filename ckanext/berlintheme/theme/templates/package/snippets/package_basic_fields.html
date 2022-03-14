@@ -2,8 +2,8 @@
 
   {{ form.input('title', id='field-title', label=_('Title'), placeholder=_('Kurzer, bezeichnender Freitext. Soll eindeutig auf den Inhalt schließen lassen.'), value=data.title, error=errors.title, classes=h.berlin_classes_for_attribute('title', ['control-full']), attrs={'data-module': 'slug-preview-target'}) }}
 
-  {% set prefix = h.url_for(controller='package', action='read', id='') %}
-  {% set domain = h.url_for(controller='package', action='read', id='', qualified=true) %}
+  {% set prefix = h.url_for('dataset.read', id='') %}
+  {% set domain = h.url_for('dataset.read', id='', qualified=true) %}
   {% set domain = domain|replace("http://", "")|replace("https://", "") %}
   {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<dataset>'} %}
 
