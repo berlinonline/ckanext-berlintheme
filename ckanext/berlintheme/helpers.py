@@ -227,10 +227,9 @@ def first_group_name(data_dict):
 def show_warning():
     '''Return the setting for the berlintheme.show_warning config setting.'''
     _show_warning = toolkit.asbool(config.get('berlintheme.show_warning', False))
-    log.debug("show_warning(): {}".format(_show_warning))
     return _show_warning
 
 def warning_text():
     '''Return the warning text as set in the berlintheme.warning config setting,
     or the default 'Warning'.'''
-    return config.get('berlintheme.warning', 'Warning').decode('utf-8')
+    return config.get('berlintheme.warning', 'Warning')
