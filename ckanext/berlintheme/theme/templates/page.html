@@ -5,12 +5,10 @@
     {% if not request.url.startswith('https://datenregister.berlin.de') %}
         {% set ribbon_title=none %}
         {% set color=none %}
-        {% if request.url.startswith('http://datenregister.local:5000') %}
-            {% set ribbon_title="DEVEL" %}
-        {% elif request.url.startswith('https://datenregister.stage.berlinonline.net') %}
+        {% if request.url.startswith('https://datenregister.stage.berlinonline.net') %}
             {% set ribbon_title="STAGE" %}
-        {% elif request.url.startswith('https://datenregister.live.berlinonline.net') %}
-            {% set ribbon_title="PRE-LIVE" %}
+        {% else %}
+            {% set ribbon_title="DEVEL" %}
         {% endif %}
         {% snippet "snippets/corner_ribbon.html", ribbon_title=ribbon_title, color=color %}
     {% endif %}
