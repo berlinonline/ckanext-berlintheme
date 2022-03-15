@@ -215,7 +215,7 @@ def organizations_for_user(user, permission='create_dataset'):
 
 
 def is_sysadmin(user_name):
-    user = model.User.get(unicode(user_name))
+    user = model.User.get(str(user_name))
     return user.sysadmin
 
 def first_group_name(data_dict):
