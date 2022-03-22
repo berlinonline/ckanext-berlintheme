@@ -24,8 +24,7 @@ def classes_for_attribute(attribute, classes=[], as_string=False):
 def dataset_type_mapping():
     return {
         'datensatz': 'Datensatz',
-        'dokument': 'Dokument',
-        'app': 'Anwendung'
+        'dokument': 'Dokument'
     }
 
 def group_mapping():
