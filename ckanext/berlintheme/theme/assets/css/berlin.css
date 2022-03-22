@@ -108,12 +108,11 @@ th[scope="col"] {
 
 */
 
-.datasetform-required .control-label::before {
-  font-family: FontAwesome;
-  padding-right: 10px;
-  content: "\f069";
-  display: inline-block;
-  vertical-align: middle;
-  color: #e43;
+.control-label.datasetform-required::before {
+    font-family: FontAwesome;
+    content: "\f069";
+    display: block;
+    color: #e43;
+    position: absolute;
+    margin-left: -25px;
 }
-
