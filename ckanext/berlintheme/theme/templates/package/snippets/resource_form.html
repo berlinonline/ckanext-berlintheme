@@ -1,0 +1,59 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {% block basic_fields_url %}
+    {{ form.input(
+      'url',
+      label=_('URL'),
+      id='field-url',
+      placeholder=_('https://example.com/data/statistik.csv'),
+      value=data.url,
+      error=errors.url,
+      doc_link='url'
+    )}}
+  {% endblock %}
+
+  {% block basic_fields_name %}
+    {{ form.input(
+      'name',
+      label=_('Titel'),
+      id='field-name',
+      placeholder=_('eg. January 2011 Gold Prices'),
+      value=data.name,
+      error=errors.name,
+      doc_link='titel-1'
+    )}}
+  {% endblock %}
+
+  {% block basic_fields_description %}
+    {{ form.markdown(
+      'description',
+      id='field-description',
+      label=_('Description'),
+      placeholder=_('Some useful notes about the data'),
+      value=data.description,
+      error=errors.description,
+      doc_link='beschreibung-1'
+    )}}
+  {% endblock %}
+
+  {% block basic_fields_format %}
+    {% set format_attrs = {'data-module': 'autocomplete', 'data-module-source': '/api/2/util/resource/format_autocomplete?incomplete=?'} %}
+    {% call form.input(
+      'format',
+      id='field-format',
+      label=_('Format'),
+      placeholder=_('eg. CSV, XML or JSON'),
+      value=data.format,
+      error=errors.format,
+      classes=['control-medium'],
+      attrs=format_attrs,
+      doc_link='format'
+    ) %}
+      <span class="info-block info-block-small">
+        <i class="fa fa-info-circle"></i>
+        {{ _('This will be guessed automatically. Leave blank if you wish') ~ "." }}
+      </span>
+    {% endcall %}
+  {% endblock %}
+{% endblock basic_fields %}
