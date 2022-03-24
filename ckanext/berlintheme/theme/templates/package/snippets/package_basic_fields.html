@@ -274,7 +274,7 @@
 {% block package_berlin_fields_geographical %}
 
   <div class="form-group">
-    {% if h.berlin_required('temporal_granularity') %}
+    {% if h.berlin_required('geographical_granularity') %}
       <label class="control-label datasetform-required" for="field-geographical_granularity" title="{{ _("This field is required") }}">{{ _("Geografische Auflösung") }}</label>
     {% else %}
       <label class="control-label" for="field-geographical_granularity">{{ _("Geografische Auflösung") }}</label>
@@ -296,8 +296,8 @@
     </div>
   </div>
 
-  <div class="control-group">
-    {% if h.berlin_required('temporal_granularity') %}
+  <div class="form-group">
+    {% if h.berlin_required('geographical_coverage') %}
       <label class="control-label" for="field-geographical_coverage datasetform-required" title="{{ _("This field is required") }}">{{ _("Geografische Abdeckung") }}</label>
     {% else %}
       <label class="control-label" for="field-geographical_coverage">{{ _("Geografische Abdeckung") }}</label>
