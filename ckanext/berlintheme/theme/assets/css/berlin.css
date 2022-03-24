@@ -27,15 +27,12 @@
   background-color: #726E60;
 }
 
-
 .account-masthead {
   background: #726E60;
-  /*background: #726E60 url("../../../base/images/bg.png");*/
 }
 
 .masthead {
   background: #98B06F;
-  /*background: #98B06F url("../../../base/images/bg.png");*/
 }
 
 .masthead .navigation .nav-pills li.active a {
@@ -48,7 +45,6 @@
 
 .site-footer {
   background: #98B06F;
-  /*background: #98B06F url("../../../base/images/bg.png");*/
 }
 
 .site-footer .navigation .nav-pills li.active a {
@@ -61,7 +57,6 @@
 
 body {
   background: #98B06F;
-  /*background: #98B06F url("../../../base/images/bg.png");*/
 }
 
 /*
@@ -79,15 +74,8 @@ th[scope="col"] {
 }
 
 .control-label {
-/*-ms-word-break: break-all;
-     word-break: break-all;
-
-     word-break: break-word;
-*/
--webkit-hyphens: manual;
-/*   -moz-hyphens: auto;
-        hyphens: auto;
-*/}
+  -webkit-hyphens: manual;
+}
 
 /* User Organzation List */
 
