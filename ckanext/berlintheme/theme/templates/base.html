@@ -1,5 +1,8 @@
 {% ckan_extends %}
 
+{% block bodytag %} class="berlin" data-site-root="{{ h.url_for('/', locale='default', qualified=true) }}" data-locale-root="{{
+h.url_for('/', qualified=true) }}" {% endblock %}
+
 {% block styles %}
   {{ super() }}
   {% asset 'berlintheme/berlin_css' %}
