@@ -1,0 +1,30 @@
+{#
+A generic block for displaying metadata from the dataset. Checks for 
+presence and emptiness of the value. Missing values are replaced with
+a stylable "undefiniert".
+
+label - A human readable label.
+value - The actual database value of this field.
+display_value - Optional value of this field to be shown on the page (possibly mapped 
+to a human readable representation, turned into a link etc.)
+
+Example:
+
+{% import 'macros/read.html' as read %}
+{{ read.metadata_field(
+  label=_("State"),
+  value=pkg_dict.state,
+  display_value=h.berlin_state_mapping()[_(pkg_dict.state)]
+)}}
+#}
+
+{% macro metadata_field(label, value, display_value=None) %}
+  <tr>
+    <th scope="row" class="dataset-label">{{ label }}</th>
+    {% if value is not none and value|length %}
+      <td class="dataset-details">{% if display_value %}{{ display_value }}{% else %}{{ value }}{% endif %}</th>
+    {% else %}
+      <td class="dataset-details none-value">{{ _("undefiniert") }}</th>
+    {% endif %}
+  </tr>
+{% endmacro %}
