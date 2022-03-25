@@ -291,16 +291,22 @@ options     - A list/tuple of fields to be used as <options>.
     <label class="control-label" for="{{ for }}">{{ label or _('Custom') }}</label>
   {% endif %}
   <div class="controls{{ " " ~ control_classes | join(' ') }}">
-  <div class="row">
-    <div class="col-xs-11">
-      {{ caller() }}
-      {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
-      {{ extra_html }}
+  {% if doc_link is not none and doc_link|length %}
+    <div class="row">
+      <div class="col-xs-11">
+        {{ caller() }}
+        {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+        {{ extra_html }}
+      </div>
+      <div class="col-xs-1">
+        <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+      </div>
     </div>
-    <div class="col-xs-1">
-      <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-    </div>
-  </div>
+  {% else %}
+    {{ caller() }}
+    {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+    {{ extra_html }}
+  {% endif %}
   </div>
   </div>
   {% endmacro %}
