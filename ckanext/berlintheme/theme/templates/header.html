@@ -1,5 +1,9 @@
 {% ckan_extends %}
 
+{% block header_logo %}
+    <a class="logo" href="{{ h.url_for('home') }}">{% snippet 'snippets/berlin_open_data_logo.html' %}</a>
+{% endblock %}
+
 {% block header_site_navigation_tabs %}
   {% if c.userobj.sysadmin %}
     {{ h.build_nav_main(

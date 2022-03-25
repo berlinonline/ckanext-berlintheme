@@ -41,6 +41,30 @@
   margin-bottom: 20px;
 }
 
+.berlin .homepage .module {
+    margin-top: 20px;
+}
+
+.berlin-homepage-logo {
+  height: 100px;
+}
+
+.berlin hgroup {
+  padding-top: 6px;
+}
+
+.berlin hgroup .logo svg {
+  fill: #fff;
+  height: 48px;
+  width: 55px;
+}
+
+.berlin .berlin-homepage-logo svg {
+  width: 125px;
+  height: 100px;
+  fill: #4f4c4c;
+}
+
 /* 
   Farben:
   - 01 (darkest): 726E60
