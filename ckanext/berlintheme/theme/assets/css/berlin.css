@@ -24,6 +24,23 @@
   margin-right: -30px;
 }
 
+#s2id_field-add_group {
+  max-width: 220px;
+}
+
+#s2id_field-add_group .select2-choice {
+  min-height: 28px;
+}
+
+.berlin .berlin-add-group button {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.berlin form.berlin-add-group {
+  margin-bottom: 20px;
+}
+
 /* 
   Farben:
   - 01 (darkest): 726E60
