@@ -1,11 +1,15 @@
 <div role="main" class="hero">
   <div class="container">
+    {% if h.berlin_show_warning() %}
+      {% snippet "snippets/global_warning.html" %}
+    {% endif %}
     <div class="row row1">
-      <div class="span12">
+      <div class="col-12">
         <div class="module-content box">
           <header>
-            <div style="float: left; padding: 0px 20px 0px 0px;">
-              <img src="/images/opendatalogo.png"/>
+            <div style="float: left; padding: 0px 20px 0px 0px;" class="berlin-homepage-logo">
+              {% snippet 'snippets/berlin_open_data_logo.html' %}
+              {# <img src="/images/logo-od-berlin.svg" class="berlin-homepage-logo" alt="Logo von 'Berlin Open Data', mit stilisiertem Berliner Fernsehturm"/> #}
             </div>
             <h1 class="page-heading">Wilkommen bei datenregister.berlin.de</h1>
             <p>
@@ -16,7 +20,7 @@
       </div>
     </div>
     <div class="row row2">
-      <div class="span12">
+      <div class="col-12">
         {% block search %}
           {% snippet 'home/snippets/search.html' %}
         {% endblock %}

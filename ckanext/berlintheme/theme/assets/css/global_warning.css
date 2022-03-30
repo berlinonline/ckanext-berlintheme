@@ -1,0 +1,15 @@
+.berlintheme-warning {
+    color: #f0f0f0;
+    background-color: #e43;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border: 1px solid #f0f0f0;
+    margin-bottom: 5px;
+}
+
+.berlintheme-warning_text {
+    font-size: 150%;
+    line-height: 1.5;
+}

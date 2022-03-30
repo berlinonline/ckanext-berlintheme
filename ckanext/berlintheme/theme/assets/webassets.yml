@@ -1,0 +1,14 @@
+berlin_css:
+  contents:
+    - css/berlin.css
+  output: berlintheme/%(version)s_berlin.css
+
+corner_ribbon_css:
+  contents:
+    - css/corner_ribbon.css
+  output: berlintheme/%(version)s_corner_ribbon.css
+
+global_warning_css:
+  contents:
+    - css/global_warning.css
+  output: berlintheme/%(version)s_global_warning.css

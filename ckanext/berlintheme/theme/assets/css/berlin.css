@@ -1,0 +1,173 @@
+/* Fix paddings etc. */
+.berlin .navbar {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.berlin .masthead .navbar-collapse {
+  padding-top: 10px;
+}
+
+.berlin .module > .page-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.berlin div.primary[class*=" col-"]
+{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.berlin .primary .media-grid {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+#s2id_field-add_group {
+  max-width: 220px;
+}
+
+#s2id_field-add_group .select2-choice {
+  min-height: 28px;
+}
+
+.berlin .berlin-add-group button {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.berlin form.berlin-add-group {
+  margin-bottom: 20px;
+}
+
+.berlin .homepage .module {
+    margin-top: 20px;
+}
+
+.berlin-homepage-logo {
+  height: 100px;
+}
+
+.berlin hgroup {
+  padding-top: 6px;
+}
+
+.berlin hgroup .logo svg {
+  fill: #fff;
+  height: 48px;
+  width: 55px;
+}
+
+.berlin .berlin-homepage-logo svg {
+  width: 125px;
+  height: 100px;
+  fill: #4f4c4c;
+}
+
+/* 
+  Farben:
+  - 01 (darkest): 726E60
+  - 02: 98B06F
+  - 03: B6DC76
+  - 04 (lightest): DBFF76
+  - contrast: 442B48
+*/
+
+.banner {
+  background-color: #98B06F;
+}
+
+.media-view.hovered {
+  border-color: #98B06F;
+}
+
+.media-view.hovered .banner {
+  background-color: #98B06F;
+}
+
+.homepage .module-search .module-content {
+  background-color: #98B06F;
+}
+
+.homepage .module-search .tags {
+  background-color: #726E60;
+}
+
+.account-masthead {
+  background: #726E60;
+}
+
+.masthead {
+  background: #98B06F;
+}
+
+.masthead .navigation .nav-pills li.active a {
+  background-color: #726E60;
+}
+
+.masthead .btn-navbar[disabled] {
+  background-color: #726E60;
+}
+
+.site-footer {
+  background: #98B06F;
+}
+
+.site-footer .navigation .nav-pills li.active a {
+  background-color: #726E60;
+}
+
+.site-footer .btn-navbar[disabled] {
+  background-color: #726E60;
+}
+
+body {
+  background: #98B06F;
+}
+
+/*
+* Forms
+*/
+
+.none-value {
+  font-style: italic;
+  color: lightgrey;
+}
+
+th[scope="col"] {
+  background-color: #726E60; 
+  color: #D9E7EB;
+}
+
+.control-label {
+  -webkit-hyphens: manual;
+}
+
+/* User Organzation List */
+
+.org-list ul {
+  list-style-type: none;
+  margin: 0px;
+}
+
+
+/* required fields in dataset form */
+
+/* Potential Icons:
+- https://fontawesome.com/v4.7.0/icon/exclamation - f12a
+- https://fontawesome.com/v4.7.0/icon/asterisk - f069
+- https://fontawesome.com/v4.7.0/icon/star - f005
+- https://fontawesome.com/v4.7.0/icon/info-circle - f05a
+- https://fontawesome.com/v4.7.0/icon/exclamation-circle - f06a
+
+*/
+
+.control-label.datasetform-required::before {
+    font-family: FontAwesome;
+    content: "\f069";
+    display: block;
+    color: #e43;
+    position: absolute;
+    margin-left: -25px;
+}

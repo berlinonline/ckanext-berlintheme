@@ -1,0 +1,203 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Datenschutzerklärung') }}{% endblock %}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Datenschutzerklärung'), named_route='page_blueprint.privacy_policy' %}</li>
+{% endblock %}
+
+{% block primary %}
+<article class="module">
+    <div class="module-content">
+        <h1 class="page-heading">{{ _('Datenschutzerklärung für das Datenregister') }}</h1>
+
+        <h2 id="name-und-anschrift-der-verantwortlichen-stelle">Name und Anschrift der verantwortlichen Stelle</h2>
+        <p>Die verantwortliche Stelle im Sinne des Art. 4 Nr. 7 Datenschutz-Grundverordnung ist:</p>
+        <p><strong>Senatsverwaltung für Wirtschaft, Energie und Betriebe</strong></p>
+        <p>Anschrift:<br /> Referat III B<br />Martin-Luther-Straße 105<br /> 10825 Berlin</p>
+        <p>Telefon: 030 / 9013 – 8250<br /> Telefax: 030 / 9013 – 7478<br /> E-Mail: <a
+                href="mailto:opendata@senweb.berlin.de">opendata@senweb.berlin.de</a></p>
+        <h2 id="kontaktdaten-des-dsb-datenschutzbeauftragten">Kontaktdaten des DSB (Datenschutzbeauftragten)</h2>
+        <p>Der Datenschutzbeauftragte der Verantwortlichen ist erreichbar unter:</p>
+        <p>Anschrift:<br /> Martin-Luther-Straße 105<br /> 10825 Berlin</p>
+        <p>Telefon: 030 / 9013 - 8431<br /> E-Mail: <a
+                href="mailto:datenschutz@senweb.berlin.de">datenschutz@senweb.berlin.de</a></p>
+        <h2 id="registrierung-im-datenregister">Registrierung im Datenregister</h2>
+        <h3 id="beschreibung-und-umfang-der-datenverarbeitung">Beschreibung und Umfang der Datenverarbeitung</h3>
+        <p>Auf unserer Internetseite gibt es die Möglichkeit, einen Nutzeraccount zu registrieren. Nutzeraccounts können
+            nicht
+            eigenständig, sondern nur auf Anfrage an <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> vom
+            Systemadministrator erstellt werden, und nur für MitarbeiterInnen der Berliner Verwaltung. Mit einem
+            Nutzeraccount
+            können Beiträge im Bereich „Datensätze“ erstellt werden. Während der Registrierung werden die folgenden
+            Daten
+            erhoben:</p>
+        <ul>
+            <li>E-Mail-Adresse</li>
+            <li>Vor- und Nachname</li>
+            <li>Arbeitgeber / Behörde</li>
+        </ul>
+        <h3 id="zweck-der-datenverarbeitung">Zweck der Datenverarbeitung</h3>
+        <p>Die Verarbeitung der personenbezogenen Daten des Nutzers dient zur personalisierten Nutzung des
+            Datenregisters, sowie
+            zur Regulierung der Schreib- und Leserechte im Bereich „Datensätze“.</p>
+        <h3 id="dauer-der-speicherung">Dauer der Speicherung</h3>
+        <p>Die zu einem Nutzeraccount gehörenden Daten werden gelöscht, sobald der Nutzeraccount gelöscht wird. Die
+            Löschung des
+            Nutzeraccounts kann beim Systemadministrator unter <a
+                href="mailto:opendata@berlin.de">opendata@berlin.de</a>
+            beantragt werden. Sämtliche durch diesen Nutzeraccount erstellen Inhalte im Bereich „Datensätze“ werden
+            aufbewahrt.
+            Der Nutzername des gelöschten Accounts wird zu Dokumentationszwecken als Information zur Herkunft dieser
+            Inhalte
+            (Ersteller) ebenfalls aufbewahrt.</p>
+        <h2 id="erstellung-von-inhalten-im-bereich-datensätze">Erstellung von Inhalten im Bereich „Datensätze“</h2>
+        <h3 id="beschreibung-und-umfang-der-datenverarbeitung-1">Beschreibung und Umfang der Datenverarbeitung</h3>
+        <p>Registrierte Nutzer haben die Möglichkeit, Inhalte im Datenregister im Bereich „Datensätze“ zu erstellen. Bei
+            den
+            Inhalten handelt es sich um Datensätze: eine Reihe von beschreibenden Metadaten sowie der Link auf an
+            anderer Stelle
+            im Internet verfügbare primäre Daten. Die so erstellten Datensätze sind zunächst nicht öffentlich und nur
+            für andere
+            registrierte Nutzer des Datenregisters einsehbar. Nachdem die Datensätze vom Nutzer dafür freigeschaltet
+            wurden,
+            sind sie auch öffentlich im zentralen Datenportal des Landes Berlin (daten.berlin.de) zu sehen.</p>
+        <p>Beim Anlegen von Datensätzen wird neben dem Inhalt selbst erfasst, welcher Nutzer den Inhalt verfasst hat und
+            wann
+            dies geschehen ist. Auch beim nachträglichen Modifizieren von Datensätzen werden Nutzer und Zeitpunkt
+            erfasst. Diese
+            Informationen werden im nicht-öffentlichen Datenregister (datenregister.berlin.de) im Rahmen des Inhalts
+            dargestellt. Dabei wird der frei wählbare Benutzername des Nutzers angezeigt. Im öffentlichen Datenportal
+            (daten.berlin.de) wird diese Information nicht angezeigt.</p>
+        <h3 id="zweck-der-datenverarbeitung-1">Zweck der Datenverarbeitung</h3>
+        <p>Da Nutzer Datensätze im Namen ihrer Behörde veröffentlichen, muss zu Dokumentationszwecken nachgehalten
+            werden,
+            welcher Nutzer die Veröffentlichung durchgeführt hat. Außerdem dient die Verknüpfung von Datensätzen mit
+            Nutzern der
+            Regelung der Schreibrechte (nur die Nutzer einer Behörde haben Schreibrechte auf die Datensätze dieser
+            Behörde).</p>
+        <h3 id="dauer-der-speicherung-1">Dauer der Speicherung</h3>
+        <p>Die Daten bezüglich Ersteller und Erstellungsdatum (bzw. Modifizierer und Modifizierungsdatum) eines
+            Datensatzes
+            werden gelöscht, sobald der Datensatz gelöscht wird. Der Nutzer kann den Datensatz selbstständig löschen,
+            solange
+            ein Nutzeraccount besteht und dieser Zugriffsrechte auf den Datensatz hat. Alternativ kann ein Datensatz
+            durch den
+            Systemadministrator des Datenregisters gelöscht werden, der unter <a
+                href="mailto:opendata@berlin.de">opendata@berlin.de</a> erreichbar ist.</p>
+        <h2 id="browserdaten">Browserdaten</h2>
+        <h3 id="beschreibung-und-umfang-der-datenverarbeitung-2">Beschreibung und Umfang der Datenverarbeitung</h3>
+        <p>Informationen, die Ihr Internet-Browser an uns übermittelt, werden automatisch von uns erhoben und in sog.
+            Server-Log-Files gespeichert.</p>
+        <p>Diese Daten sind:</p>
+        <ul>
+            <li>IP-Adresse</li>
+            <li>Browser-Typ und -Version</li>
+            <li>verwendetes Betriebssystem</li>
+            <li>Webseite, von der aus Sie uns besuchen (Referrer-URL)</li>
+            <li>Webseite, die Sie besuchen</li>
+            <li>Datum und Uhrzeit Ihres Zugriffs</li>
+            <li>übertragene Datenmenge</li>
+            <li>Zugriffsstatus (Dateien übertragen, Datei nicht gefunden etc.)</li>
+        </ul>
+        <p>Diese Daten werden getrennt von Ihren evtl. angegebenen personenbezogenen Daten gespeichert und lassen so
+            keine
+            Rückschlüsse auf eine bestimmte Person zu.</p>
+        <h3 id="zweck-der-datenverarbeitung-2">Zweck der Datenverarbeitung</h3>
+        <p>Die Verarbeitung der Daten aus den Server-Log-Files dient der Nachvollziehbarkeit und Behebung von Störungen.
+            Die
+            Daten können zu statistischen Zwecken ausgewertet werden, um unseren Internetauftritt und unsere Angebote zu
+            optimieren.</p>
+        <h3 id="dauer-der-speicherung-2">Dauer der Speicherung</h3>
+        <p>Nach der Auswertung, spätestens jedoch nach 5 Tagen, werden die Daten gelöscht.</p>
+        <h2 id="kontaktdaten-für-datensätze">Kontaktdaten für Datensätze</h2>
+        <h3 id="beschreibung-und-umfang-der-datenverarbeitung-3">Beschreibung und Umfang der Datenverarbeitung</h3>
+        <p>Das Metadatenschema des Berliner Datenportals sieht die Angabe von Kontaktdaten für jeden Datensatz vor.
+            Empfohlen
+            wird die Angabe von Funktions-E-Mails, doch auch die Angabe von Name und persönlicher E-Mail-Adresse einer
+            Kontaktperson ist möglich. In diesem Fall ist die Person, die diese Angaben macht (z.B. Internetredakteur)
+            nicht
+            zwingend identisch mit der Person, deren E-Mail-Adresse als Kontakt hinterlegt wird.</p>
+        <h3 id="zweck-der-datenverarbeitung-3">Zweck der Datenverarbeitung</h3>
+        <p>Die Kontaktdaten werden hinterlegt, um eine Interaktion der Benutzer des Datenportals mit der Verwaltung zu
+            ermöglichen (z.B. Fragen zu Inhalt und Struktur der Daten).</p>
+        <h3 id="dauer-der-speicherung-3">Dauer der Speicherung</h3>
+        <p>Die Kontaktdaten können, als Teil der Datensatzbeschreibung, von allen registrierten Nutzern, die
+            Schreibrechte auf
+            dem entsprechenden Datensaz haben, gesetzt, geändert und gelöscht werden. Davon abgesehen bleiben die
+            Kontaktdaten
+            gespeichert, bis der entsprechende Datensatz selber gelöscht wird.</p>
+        <h2 id="rechtsgrundlage-für-die-datenverarbeitung">Rechtsgrundlage für die Datenverarbeitung</h2>
+        <p>Rechtsgrundlage für die Verarbeitung der Daten ist Art. 6 Abs. 1 Buchst. e DSGVO in Verbindung mit § 13 Abs.
+            1
+            E-Government-Gesetz Berlin und § 2 Abs. 1 Informationsverarbeitungsgesetz.</p>
+        <h2 id="empfänger-der-personenbezogenen-daten">Empfänger der personenbezogenen Daten</h2>
+        <p>Die verantwortliche Stelle wird beim Betrieb des Datenregisters durch die <a
+                href="https://www.berlinonline.net/">BerlinOnline Stadtportal GmbH &amp; Co. KG</a> als
+            Auftragsverarbeiterin
+            unterstützt. Diese ist als Dienstleisterin auf Grundlage einer Auftragsverarbeitungsvereinbarung nach Art.
+            28 DSGVO
+            an der Verarbeitung personenbezogener Daten beteiligt.</p>
+        <p>Eingegebene Metadaten werden auf dem Datenportal zusammen mit dem Benutzernamen und dem Zeitpunkt der Eingabe
+            veröffentlicht und sind für jedermann abrufbar.</p>
+        <p>Darüber hinaus werden Ihre Daten nicht an außenstehende Stellen weitergeben.</p>
+        <h2 id="rechte-der-betroffenen-person">Rechte der betroffenen Person</h2>
+        <p>Werden personenbezogene Daten von Ihnen verarbeitet, sind Sie Betroffener i.S.d. DSGVO und es stehen Ihnen
+            folgende
+            Rechte gegenüber der verantwortlichen Stelle zu:</p>
+        <h3 id="widerspruchsrecht">Widerspruchsrecht</h3>
+        <p>Personen, deren Daten auf Grundlage des Art. 6 Abs. 1 Satz 1 Buchst. e DSGVO verarbeitet werden, haben das
+            Recht,
+            dieser Verarbeitung jederzeit zu widersprechen (Art. 21 DSGVO). Im Falle eines Widerspruchs werden Ihre
+            personenbezogenen Daten nicht mehr verarbeitet, es sei denn, es können zwingende schutzwürdige Gründe
+            nachgewiesen
+            werden, die gegenüber Ihren Interessen überwiegen.</p>
+        <h3 id="weitere-betroffenenrechte">Weitere Betroffenenrechte</h3>
+        <p>Nach der Datenschutz-Grundverordnung stehen Ihnen folgende Rechte zu:</p>
+        <p>Werden Ihre personenbezogenen Daten verarbeitet, so haben Sie das Recht, Auskunft über die zu Ihrer Person
+            gespeicherten Daten zu erhalten (Art. 15 DSGVO).</p>
+        <p>Sollten unrichtige personenbezogene Daten verarbeitet werden, steht Ihnen ein Recht auf Berichtigung zu (Art.
+            16
+            DSGVO).</p>
+        <p>Liegen die gesetzlichen Voraussetzungen vor, so können Sie die Löschung oder Einschränkung der Verarbeitung
+            verlangen
+            (Art. 17 und 18 DSGVO).</p>
+        <p>Sollten Sie von Ihren oben genannten Rechten Gebrauch machen, prüft die verantwortliche Stelle, ob die
+            gesetzlichen
+            Voraussetzungen hierfür erfüllt sind.</p>
+        <h3 id="widerrufsrecht-bei-einwilligung">Widerrufsrecht bei Einwilligung</h3>
+        <p>Wenn Sie in die Verarbeitung durch eine entsprechende Erklärung eingewilligt haben, können Sie die
+            Einwilligung
+            jederzeit für die Zukunft widerrufen. Die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf
+            erfolgten
+            Datenverarbeitung wird durch diesen nicht berührt.</p>
+        <h3 id="beschwerderecht">Beschwerderecht</h3>
+        <p>Jede betroffene Person hat das Recht auf Beschwerde bei der Aufsichtsbehörde, insbesondere in dem
+            Mitgliedstaat ihres
+            Aufenthaltsorts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes, wenn sie der Ansicht ist,
+            dass ihre
+            personenbezogenen Daten rechtswidrig verarbeitet werden.</p>
+        <p>Wenn Sie sich an die Berliner Beauftragte für Datenschutz und Informationsfreiheit wenden möchten, können Sie
+            sie wie
+            folgt kontaktieren:</p>
+        <p><strong>Berliner Beauftragte für Datenschutz und Informationsfreiheit</strong><br /> Friedrichstr. 219<br />
+            10969
+            Berlin (Besuchereingang: Puttkamerstr. 16-18)<br /> Telefon: 030 / 13889 – 0<br /> Telefax: 030 / 215
+            5050<br />
+            E-Mail: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a></p>
+        <h2 id="verweise-auf-die-wichtigsten-gesetze">Verweise auf die wichtigsten Gesetze</h2>
+        <ul>
+            <li><a href="https://dsgvo-gesetz.de/" title="Link zur Europäischen Datenschutzgrundverordnung">DSGVO</a>
+                (europäische Datenschutz-Grundverordnung)</li>
+            <li><a href="http://gesetze.berlin.de/jportal/?quelle=jlink&amp;query=DSG+BE&amp;psml=bsbeprod.psml&amp;max=true"
+                    title="Link zum Berliner Datenschutzgesetz">BlnDSG</a> (Berliner Datenschutzgesetz)</li>
+            <li><a
+                    href="http://gesetze.berlin.de/jportal/?quelle=jlink&amp;query=EGovG+BE&amp;psml=bsbeprod.psml&amp;max=true&amp;aiz=true">EGovG
+                    Bln</a> (E-Government-Gesetz Berlin)</li>
+        </ul>
+
+    </div>
+</article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
