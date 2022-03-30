@@ -4,6 +4,8 @@
 
 ## [0.3.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.0)
 
+_(2022-03-30)_
+
 - Convert to Python 3.
 - Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
 - Switch assets from Fanstatic to Webassets.
