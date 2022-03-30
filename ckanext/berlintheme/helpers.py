@@ -13,14 +13,6 @@ get_action = logic.get_action
 def required(attribute):
     return Schema().required(attribute)
 
-def classes_for_attribute(attribute, classes=[], as_string=False):
-    _classes = [] + classes
-    if required(attribute):
-        _classes.append('datasetform-required')
-    if as_string:
-        _classes = " ".join(_classes)
-    return _classes
-
 def dataset_type_mapping():
     return {
         'datensatz': 'Datensatz',

@@ -48,7 +48,6 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_user_orgs': theme_helpers.organizations_for_user ,
             'berlin_is_sysadmin': theme_helpers.is_sysadmin ,
             'berlin_required': theme_helpers.required ,
-            'berlin_classes_for_attribute': theme_helpers.classes_for_attribute ,
             'berlin_group_select_options': theme_helpers.group_select_options ,
             'berlin_first_group_name': theme_helpers.first_group_name ,
             'berlin_show_warning': theme_helpers.show_warning ,
