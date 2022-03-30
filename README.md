@@ -25,7 +25,7 @@ If `berlintheme.show_warning` is `true`, the content of `berlintheme.warning` wi
 ![Screenshot of the Datenregister showing a warning message about upcoming maintenance work](images/screenshot_warning.png "Screenshot of the Datenregister showing a warning message about upcoming maintenance work")
 
 
-```
+```ini
 berlintheme.show_warning = false
 berlintheme.warning = Am Dienstag, 18.12.2018, ab 22 Uhr werden Wartungsarbeiten an unserer Infrastruktur vorgenommen.
 ```
