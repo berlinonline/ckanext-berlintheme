@@ -1,11 +1,18 @@
-# CKANEXT-BERLIN CHANGELOG
+# Changelog
 
 ## Development
 
+## [0.3.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.0)
+
+- Convert to Python 3.
 - Switch routing from IRoutes (Pylons) to IBlueprint (Flask).
 - Switch assets from Fanstatic to Webassets.
-- Add unit tests.
+- Rewrite templates to work with CKAN Core 2.9 templates.
+- Replace old PNG logos with inline SVG.
+- Add unit tests and github CI.
 - Reformat changelog, add dates and version links.
+- Update README.
+- This is the first version that requires Python 3 / CKAN >= 2.9.
 
 
 ## [0.2.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.2.1)
