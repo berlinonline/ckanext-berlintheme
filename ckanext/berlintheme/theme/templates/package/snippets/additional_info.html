@@ -20,7 +20,7 @@
 
         {# Dataset Source #}
         {{ read.metadata_field(
-          label=_("Quelle"),
+          label=_("Source"),
           value=pkg_dict.berlin_source
         ) }}
 
@@ -60,9 +60,9 @@
 
         {# Webadresse #}
         {{ read.metadata_field(
-          label=_("Source"),
+          label=_("Webadresse"),
           value=pkg_dict.url,
-          display_value=h.link_to(pkg_dict.url, pkg_dict.url, target='_blank')
+          display_value=h.link_to(pkg_dict.url, pkg_dict.url, target='_blank') if pkg_dict.url else _("undefiniert")
         )}}
 
         {# Lizenz #}
