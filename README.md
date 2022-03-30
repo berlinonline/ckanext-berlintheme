@@ -4,7 +4,7 @@
 [![Code Coverage](http://codecov.io/github/berlinonline/ckanext-berlintheme/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-berlintheme?branch=master)
 
 This plugin belongs to a set of plugins for the _Datenregister_ – the non-public [CKAN](https://ckan.org) instance that is part of Berlin's open data portal [daten.berlin.de](https://daten.berlin.de).
-`ckanext-berlintheme` provides custom theming and UI for the Datenregister. 
+`ckanext-berlintheme` provides custom theming and UI for the Datenregister.
 
 The plugin implements the following CKAN interfaces:
 
