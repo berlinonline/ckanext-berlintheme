@@ -72,7 +72,7 @@
     <div class="controls">
       <select id="field-temporal_granularity" name="temporal_granularity" data-module="autocomplete">
         {% for granularity in h.berlin_temporal_granularity_select_options()  %}
-          <option value="{{ granularity['id'] }}" {% if granularity['id'] in data.get('temporal_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
+          <option value="{{ granularity['id'] }}" {% if granularity['id'] == data.get('temporal_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
         {% endfor %}
       </select>
     </div>
@@ -89,7 +89,7 @@
     <div class="controls">
       <select id="field-geographical_granularity" name="geographical_granularity" data-module="autocomplete">
         {% for granularity in h.berlin_geo_granularity_select_options()  %}
-          <option value="{{ granularity['id'] }}" {% if granularity['id'] in data.get('geographical_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
+          <option value="{{ granularity['id'] }}" {% if granularity['id'] == data.get('geographical_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
         {% endfor %}
       </select>
     </div>
@@ -100,7 +100,7 @@
     <div class="controls">
       <select id="field-geographical_coverage" name="geographical_coverage" data-module="autocomplete">
         {% for feature in h.berlin_geo_coverage_select_options()  %}
-          <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('geographical_coverage', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
+          <option value="{{ feature['id'] }}" {% if feature['id'] == data.get('geographical_coverage', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
         {% endfor %}
       </select>
     </div>
