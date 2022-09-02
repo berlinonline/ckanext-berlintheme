@@ -2,6 +2,9 @@
 
 ## Development
 
+- Remove error_document_template.html, we're just using the default template from
+CKAN core for now.
+
 ## [0.3.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.1)
 
 _(2022-03-30)_
