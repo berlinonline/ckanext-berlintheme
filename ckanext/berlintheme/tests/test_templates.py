@@ -153,7 +153,7 @@ class TestPlugin(object):
 
         response = app.get(
             headers=[("Authorization", user.apikey)],
-            url=toolkit.url_for("home"),
+            url=toolkit.url_for("home.index"),
             status=200
         )
         assert warning_text in response.body

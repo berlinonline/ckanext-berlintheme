@@ -4,6 +4,7 @@
 
 - Remove error_document_template.html, we're just using the default template from
 CKAN core for now.
+- Replace deprecated `home`-route with `home.index`.
 
 ## [0.3.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.1)
 
