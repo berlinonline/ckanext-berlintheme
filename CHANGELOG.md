@@ -2,6 +2,7 @@
 
 ## Development
 
+- Add new metadata field `sample_record` (to link to the matching "Musterdatensatz", see https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verwendung-des-musterdatenkatalogs-fur-kommunen).
 - Remove error_document_template.html, we're just using the default template from
 CKAN core for now.
 - Replace deprecated `home`-route with `home.index`.

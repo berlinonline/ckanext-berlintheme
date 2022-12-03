@@ -133,6 +133,20 @@
             value=pkg_dict.geographical_granularity
         )}}
 
+        {# Musterdatensatz #}
+        {{
+          read.metadata_field(
+            label=_("Musterdatensatz"),
+            value=pkg_dict.sample_record,
+            display_value=h.berlin_render_sample_record(pkg_dict.sample_record)
+        )}}
+        {{
+          read.metadata_field(
+            label=_(""),
+            value=pkg_dict.sample_record,
+            display_value=h.literal(('<img src="/images/govdata_mini.png"/> ')) ~ h.berlin_render_govdata_example_link(pkg_dict.sample_record)
+        )}}
+
     </tbody>
   </table>
 

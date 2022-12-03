@@ -44,6 +44,12 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_geo_granularity_select_options': theme_helpers.geo_granularity_select_options ,
             'berlin_geo_coverage_select_options':
                 theme_helpers.geo_coverage_select_options ,
+            'berlin_sample_record_select_options':
+                theme_helpers.sample_record_select_options ,
+            'berlin_render_sample_record':
+                theme_helpers.render_sample_record ,
+            'berlin_render_govdata_example_link':
+                theme_helpers.render_govdata_example_link ,
             'berlin_state_mapping': theme_helpers.state_mapping ,
             'berlin_user_orgs': theme_helpers.organizations_for_user ,
             'berlin_is_sysadmin': theme_helpers.is_sysadmin ,
