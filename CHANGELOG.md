@@ -2,6 +2,11 @@
 
 ## Development
 
+## [0.3.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.3)
+
+_(2022-04-14)_
+
+- Remove reference to deprecated route in template.
 - Fix and extend tests for figuring out which instance we're running on.
 
 ## [0.3.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.2)
