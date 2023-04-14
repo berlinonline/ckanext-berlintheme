@@ -6,6 +6,8 @@
 
 _(2022-04-14)_
 
+- Remove error_document_template.html, we're just using the default template from
+CKAN core for now.
 - Remove reference to deprecated route in template.
 - Fix and extend tests for figuring out which instance we're running on.
 
