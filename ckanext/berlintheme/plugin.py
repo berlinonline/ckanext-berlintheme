@@ -31,6 +31,7 @@ class BerlinTheme(plugins.SingletonPlugin):
 
         config['ckan.site_logo'] = "/images/berlin_open_data.png"
         config['ckan.favicon'] = "/favicon.ico"
+        config['berlin.public_pages'] = 'about datenschutzerklaerung'
 
     # -------------------------------------------------------------------
     # Implementation ITemplateHelpers
