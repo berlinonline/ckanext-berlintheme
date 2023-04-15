@@ -171,3 +171,10 @@ th[scope="col"] {
     position: absolute;
     margin-left: -25px;
 }
+
+/* Other stuff */
+
+.info-page address {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
