@@ -2,6 +2,14 @@
 
 ## Development
 
+## [0.3.4](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.4)
+
+_(2022-04-16)_
+
+- Configure `/about` (Impressum) and `/datenschutzerklaerung` to be publicly available using `berlin.public_pages` setting.
+- Update `/about` and `/datenschutzerklaerung` for SenInnDS.
+- Add spacing for `address`-elements.
+
 ## [0.3.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.3)
 
 _(2022-04-14)_
