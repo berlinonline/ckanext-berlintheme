@@ -11,15 +11,31 @@ import ckan.tests.helpers as test_helpers
 
 THEME_PLUGIN = 'berlintheme'
 SCHEMA_PLUGIN = 'berlin_dataset_schema'
+AUTH_PLUGIN = 'berlinauth'
+
+REGULORG = "regular_org"
+TECHNORG = "technorg"
 
 @pytest.fixture
-def user():
+def orgs():
+    '''Fixture to create some organizations.'''
+
+    regulorg = factories.Organization(name=REGULORG)
+    technorg = factories.Organization(name=TECHNORG)
+
+    return {
+        REGULORG: regulorg ,
+        TECHNORG: technorg ,
+    }
+
+@pytest.fixture
+def user(orgs):
     '''Fixture to create a logged-in user.'''
     user = model.User(name="vera_musterer", password=u"testtest")
     model.Session.add(user)
     model.Session.commit()
 
-    org = factories.Organization()
+    org = orgs[REGULORG]
     data = {
         "id": org['id'],
         "username": user.name,
@@ -31,18 +47,26 @@ def user():
 
 
 @pytest.fixture
-def datasets():
+def datasets(orgs):
     '''Fixture to create some datasets.'''
-    sysadminuser = model.User(name="admin", password=u'test', sysadmin=True)
-    model.Session.add(sysadminuser)
-    model.Session.commit()
+
+    sysadminuser = factories.Sysadmin()
+
     group = factories.Group()
     data = {
         "id": group['id'],
-        "username": sysadminuser.name,
+        "username": sysadminuser['name'],
         "role": "editor"
     }
     result = test_helpers.call_action("group_member_create", **data)
+
+    org = orgs[REGULORG]
+    data = {
+        "id": org['id'],
+        "username": sysadminuser['name'],
+        "role": "editor"
+    }
+    result = test_helpers.call_action("organization_member_create", **data)
 
     dataset_dicts = [
         {
@@ -65,14 +89,15 @@ def datasets():
             "jeden Monat.\r\n\r\nDer Datensatz wird monatlich erneuert.",
             "groups": [
                 {"name": group['name']}
-            ]
+            ],
+            "owner_org": REGULORG
         }
     ]
 
     for dataset_dict in dataset_dicts:
         test_helpers.call_action(
             "package_create",
-            context={"user": sysadminuser.id},
+            context={"user": sysadminuser['id']},
             **dataset_dict
         )
 
@@ -80,7 +105,7 @@ def datasets():
 
 @pytest.mark.ckan_config('ckan.plugins', f"{SCHEMA_PLUGIN} {THEME_PLUGIN}")
 @pytest.mark.usefixtures('clean_db', 'clean_index', 'with_plugins')
-class TestPlugin(object):
+class TestTemplates(object):
 
     def test_dataset_view_template(self, app, user, datasets):
         '''Sanity test of the dataset view template'''
@@ -158,3 +183,28 @@ class TestPlugin(object):
         )
         assert warning_text in response.body
         assert 'global_warning.css' in response.body
+
+@pytest.mark.ckan_config('ckan.plugins', f"{SCHEMA_PLUGIN} {THEME_PLUGIN} {AUTH_PLUGIN}")
+@pytest.mark.ckan_config('berlin.technical_groups', TECHNORG)
+@pytest.mark.usefixtures('clean_db', 'clean_index', 'with_plugins')
+class TestTemplatesWithAuth(object):
+
+    def test_non_admin_can_see_technical_dataset(self, app, user, datasets, orgs):
+
+        technorg = orgs[TECHNORG]
+        sysadminuser = factories.Sysadmin()
+
+        for dataset in datasets:
+            test_helpers.call_action(
+                "package_owner_org_update",
+                context={"user": sysadminuser['id']},
+                id=dataset['name'],
+                organization_id=technorg['id']
+            )
+
+            response = app.get(
+                headers=[("Authorization", user.apikey)],
+                url=toolkit.url_for('dataset.read', id=dataset['name']),
+                status=200
+            )
+            assert technorg['name'] in response.body

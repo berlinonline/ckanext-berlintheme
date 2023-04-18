@@ -1,0 +1,22 @@
+{#
+  A placeholder to show instead of snippets/organization, if a non-admin user looks at a
+  dataset page belonging to a technical organization.
+#}
+
+  {% block info %}
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading"><i class="fa fa-building-o"></i> {{ _('Organization') }}</h2>
+    <section class="module-content">
+      {% block inner %}
+        {% block image %}
+          <div class="image">
+            <img src="{{ h.url_for_static('/base/images/placeholder-organization.png') }}" width="200" alt="Technical Organization" />
+          </div>
+        {% endblock %}
+        {% block heading %}
+        <h1 class="heading"><i>({{ _('Technical') }})</i></h1>
+        {% endblock %}
+      {% endblock %}
+    </section>
+  </div>
+  {% endblock %}
