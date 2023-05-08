@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.3.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.5)
+
+_(2022-05-08)_
+
 - Fix problem where non-admin users would get an error when looking at the page for a dataset that belongs to a 'technical' organization (`simplesearch` etc.).
 They are now shown a generic placeholder instead of the actual organization info.
 

@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
 	name='ckanext-berlintheme',
-	version='0.3.4',
+	version='0.3.5',
 	description="Theming/UI extension for the Datenregister (CKAN instance for Berlin's Open Data portal)",
 	long_description=long_description,
 
