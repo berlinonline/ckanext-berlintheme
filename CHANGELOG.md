@@ -4,14 +4,14 @@
 
 ## [0.3.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.5)
 
-_(2022-05-08)_
+_(2023-05-08)_
 
 - Fix problem where non-admin users would get an error when looking at the page for a dataset that belongs to a 'technical' organization (`simplesearch` etc.).
 They are now shown a generic placeholder instead of the actual organization info.
 
 ## [0.3.4](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.4)
 
-_(2022-04-16)_
+_(2023-04-16)_
 
 - Configure `/about` (Impressum) and `/datenschutzerklaerung` to be publicly available using `berlin.public_pages` setting.
 - Update `/about` and `/datenschutzerklaerung` for SenInnDS.
@@ -19,7 +19,7 @@ _(2022-04-16)_
 
 ## [0.3.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.3)
 
-_(2022-04-14)_
+_(2023-04-14)_
 
 - Remove error_document_template.html, we're just using the default template from
 CKAN core for now.
@@ -28,7 +28,7 @@ CKAN core for now.
 
 ## [0.3.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.2)
 
-_(2022-01-22)_
+_(2023-01-22)_
 
 - Fix `Manifest.in`.
 
