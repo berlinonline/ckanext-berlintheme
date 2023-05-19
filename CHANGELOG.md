@@ -2,7 +2,12 @@
 
 ## Development
 
+## [0.3.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.6)
+
+_(2023-05-19)_
+
 - Append to `berlin.public_pages` config, rather than replace it.
+- Define extension's version string in [VERSION](VERSION), make it available as `ckanext.dcatde_berlin.__version__` and in [setup.py](setup.py).
 
 ## [0.3.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.5)
 

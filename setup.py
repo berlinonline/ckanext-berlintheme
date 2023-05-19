@@ -7,9 +7,12 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+with open(path.join(here, 'ckanext', 'berlintheme', 'VERSION')) as version_file:
+    version = version_file.read().strip()
+
 setup(
 	name='ckanext-berlintheme',
-	version='0.3.5',
+	version=version,
 	description="Theming/UI extension for the Datenregister (CKAN instance for Berlin's Open Data portal)",
 	long_description=long_description,
 
