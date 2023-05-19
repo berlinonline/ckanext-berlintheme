@@ -2,6 +2,8 @@
 
 ## Development
 
+- Append to `berlin.public_pages` config, rather than replace it.
+
 ## [0.3.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.5)
 
 _(2023-05-08)_
