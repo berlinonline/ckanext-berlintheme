@@ -2,6 +2,8 @@
 
 ## Development
 
+- Don't truncate author ('Quelle') names in facet list so quickly (40 instead of 20 characters).
+
 ## [0.3.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.6)
 
 _(2023-05-19)_
