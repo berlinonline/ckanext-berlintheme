@@ -3,6 +3,7 @@
 ## Development
 
 - Don't truncate author ('Quelle') names in facet list so quickly (40 instead of 20 characters).
+- Add missing template (`package/base.html`).
 
 ## [0.3.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.6)
 
