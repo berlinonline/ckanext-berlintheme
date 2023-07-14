@@ -9,8 +9,10 @@
       {% set ribbon_title="STAGE" %}
     {% elif 'datenregister-dev' in request.url %}
       {% set ribbon_title="DEVEL" %}
-    {% else %}
+    {% elif request.url.split('/')[2].endswith('.test') %}
       {% set ribbon_title="LOCAL" %}
+    {% else %}
+      {% set ribbon_title="WHERE AM I?" %}
     {% endif %}
     {% snippet "snippets/corner_ribbon.html", ribbon_title=ribbon_title, color=color %}
   {% endif %}

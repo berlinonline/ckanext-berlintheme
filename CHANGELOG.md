@@ -7,7 +7,7 @@
 _(2023-07-12)_
 
 - Remove some template code that got pasted accidentally into the breadcrumb.
-
+- Adjust tld-test for instance indicator ribbon ('.test' now shows 'LOCAL').
 ## [0.3.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.7)
 
 _(2023-06-26)_
