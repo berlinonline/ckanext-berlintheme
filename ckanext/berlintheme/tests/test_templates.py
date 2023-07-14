@@ -207,4 +207,4 @@ class TestTemplatesWithAuth(object):
                 url=toolkit.url_for('dataset.read', id=dataset['name']),
                 status=200
             )
-            assert technorg['name'] in response.body
+            assert dataset['name'] in response.body

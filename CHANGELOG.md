@@ -4,10 +4,12 @@
 
 ## [0.3.8](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.8)
 
-_(2023-07-12)_
+_(2023-07-14)_
 
 - Remove some template code that got pasted accidentally into the breadcrumb.
+- Don't show and link technical org in breadcrumb for non-admin users on dataset pages.
 - Adjust tld-test for instance indicator ribbon ('.test' now shows 'LOCAL').
+
 ## [0.3.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.7)
 
 _(2023-06-26)_
