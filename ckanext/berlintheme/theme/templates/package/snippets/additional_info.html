@@ -65,6 +65,13 @@
           display_value=h.link_to(pkg_dict.url, pkg_dict.url, target='_blank') if pkg_dict.url else _("undefiniert")
         )}}
 
+        {# Webadresse #}
+        {{ read.metadata_field(
+          label=_("Vorschaubild"),
+          value=pkg_dict.preview_image,
+          display_value=h.link_to(pkg_dict.preview_image, pkg_dict.preview_image, target='_blank') if pkg_dict.preview_image else _("undefiniert")
+        )}}
+
         {# Lizenz #}
         {{
           read.metadata_field(

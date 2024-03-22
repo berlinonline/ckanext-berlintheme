@@ -124,12 +124,24 @@
     'url',
     label=_('Webadresse'),
     id='field-url',
-    placeholder=_('Die URL, unter der der Datensatz näher beschrieben wird.'),
+    placeholder=_('Die URL, unter der der Datensatz näher beschrieben wird'),
     value=data.url,
     error=errors.url,
     classes=['control-full'],
     is_required=h.berlin_required('url'),
     doc_link='webadresse'
+  ) }}
+
+  {{ form.input(
+    'preview_image',
+    label=_('Vorschaubild'),
+    id='field-preview_image',
+    placeholder=_('Die URL eines Vorschaubildes'),
+    value=data.preview_image,
+    error=errors.preview_image,
+    classes=['control-full'],
+    is_required=h.berlin_required('preview_image'),
+    doc_link='preview_image'
   ) }}
 
 {% endblock %}

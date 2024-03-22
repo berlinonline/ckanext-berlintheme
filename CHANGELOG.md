@@ -2,6 +2,8 @@
 
 ## Development
 
+- Use the new field `preview_image` (see [ckanext-berlin_dataset_schema](https://github.com/berlinonline/ckanext-berlin_dataset_schema)).
+
 ## [0.3.8](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.8)
 
 _(2023-07-14)_
