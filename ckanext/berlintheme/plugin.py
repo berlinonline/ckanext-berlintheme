@@ -57,6 +57,12 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_first_group_name': theme_helpers.first_group_name ,
             'berlin_show_warning': theme_helpers.show_warning ,
             'berlin_warning_text': theme_helpers.warning_text ,
+            'berlin_sample_record_select_options':
+                theme_helpers.sample_record_select_options ,
+            'berlin_render_sample_record':
+                theme_helpers.render_sample_record ,
+            'berlin_render_govdata_example_link':
+                theme_helpers.render_govdata_example_link ,
         }
 
     # -------------------------------------------------------------------

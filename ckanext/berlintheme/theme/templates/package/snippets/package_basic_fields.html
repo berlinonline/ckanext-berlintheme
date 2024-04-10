@@ -335,6 +335,35 @@
 
 {% endblock %}
 
+		{% block package_sample_record %}
+
+  <div class="form-group">
+    {% if h.berlin_required('sample_record') %}
+      <label class="control-label" for="field-sample_record datasetform-required" title="{{ _("This field is required") }}">{{ _("Musterdatensatz") }}</label>
+    {% else %}
+      <label class="control-label" for="field-sample_record">{{ _("Musterdatensatz") }}</label>
+    {% endif %}
+    <div class="controls">
+      <div class="row">
+        <div class="col-xs-11">
+          <select id="field-sample_record" name="sample_record" data-module="autocomplete">
+            {% for feature in h.berlin_sample_record_select_options()  %}
+              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('sample_record', []) %}selected="selected"{% endif %}>{{ feature['label'] }} ({{feature['definition']}})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-xs-1">
+          {% set link_text = "Dokumentation zum Attribut 'Musterdatensatz'" %}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#musterdatensatz" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+{% endblock %}
+
 {% block package_basic_fields_tags %}
   {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
   {{ form.input(
