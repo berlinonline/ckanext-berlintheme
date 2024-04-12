@@ -192,1357 +192,1379 @@ def geo_granularity_select_options():
 def sample_record_select_options():
     return [
       {
-        "id": "abfallentsorgung",
-        "label": "Abfallentsorgung",
-        "definition": "Beseitigung von Müll"
+        'id': '',
+        'label': 'Keine'
       },
       {
-        "id": "abfallentsorgung/abfallkalender",
-        "label": "Abfallentsorgung – Abfallkalender",
-        "definition": "Auflistung der Müllabfuhrtermine nach Abfallkategorie und Ort"
+        'id': 'abfallentsorgung',
+        'label': 'Abfallentsorgung',
+        'definition': 'Beseitigung von Müll'
       },
       {
-        "id": "abfallentsorgung/abfallmenge",
-        "label": "Abfallentsorgung – Abfallmenge",
-        "definition": "Menge des entsorgten Mülls nach unterschiedlichen Abfallarten"
+        'id': 'abfallentsorgung/abfallkalender',
+        'label': 'Abfallentsorgung – Abfallkalender',
+        'definition': 'Auflistung der Müllabfuhrtermine nach Abfallkategorie und Ort'
       },
       {
-        "id": "abfallentsorgung/abgabestelle",
-        "label": "Abfallentsorgung – Abgabestelle",
-        "definition": "Ort, an dem bestimmte Müllkategorien abgegeben werden können"
+        'id': 'abfallentsorgung/abfallmenge',
+        'label': 'Abfallentsorgung – Abfallmenge',
+        'definition': 'Menge des entsorgten Mülls nach unterschiedlichen Abfallarten'
       },
       {
-        "id": "abfallentsorgung/container",
-        "label": "Abfallentsorgung – Container",
-        "definition": "Standorte der Großraumbehälter zur Sammlung, Zwischenlagerung und zum Transport von Müll"
+        'id': 'abfallentsorgung/abgabestelle',
+        'label': 'Abfallentsorgung – Abgabestelle',
+        'definition': 'Ort, an dem bestimmte Müllkategorien abgegeben werden können'
       },
       {
-        "id": "abfallentsorgung/entwaesserung",
-        "label": "Abfallentsorgung – Entwässerung",
-        "definition": "Statistiken zum Abführen von [Ab]wasser durch künstliche und natürliche Einrichtungen"
+        'id': 'abfallentsorgung/container',
+        'label': 'Abfallentsorgung – Container',
+        'definition': 'Standorte der Großraumbehälter zur Sammlung, Zwischenlagerung und zum Transport von Müll'
       },
       {
-        "id": "abfallentsorgung/muellgebuehr",
-        "label": "Abfallentsorgung – Müllgebühr",
-        "definition": "Entgelt für die Abfallentsorgung"
+        'id': 'abfallentsorgung/entwaesserung',
+        'label': 'Abfallentsorgung – Entwässerung',
+        'definition': 'Statistiken zum Abführen von [Ab]wasser durch künstliche und natürliche Einrichtungen'
       },
       {
-        "id": "abfallentsorgung/strassenreinigung",
-        "label": "Abfallentsorgung – Straßenreinigung",
-        "definition": "Reinigung öffentlicher Straßen und Plätze"
+        'id': 'abfallentsorgung/muellgebuehr',
+        'label': 'Abfallentsorgung – Müllgebühr',
+        'definition': 'Entgelt für die Abfallentsorgung'
       },
       {
-        "id": "bau",
-        "label": "Bau",
-        "definition": "Bauen, Errichten, Herstellen"
+        'id': 'abfallentsorgung/strassenreinigung',
+        'label': 'Abfallentsorgung – Straßenreinigung',
+        'definition': 'Reinigung öffentlicher Straßen und Plätze'
       },
       {
-        "id": "bau/baufertigstellung",
-        "label": "Bau – Baufertigstellung",
-        "definition": "Bauvorhaben, deren Bauarbeiten weitgehend abgeschlossen sind"
+        'id': 'bau',
+        'label': 'Bau',
+        'definition': 'Bauen, Errichten, Herstellen'
       },
       {
-        "id": "bau/baugenehmigung",
-        "label": "Bau – Baugenehmigung",
-        "definition": "Bauaufsichtsbehördlich erteilte Genehmigung zur Errichtung, Änderung oder Beseitigung eines Baus"
+        'id': 'bau/baufertigstellung',
+        'label': 'Bau – Baufertigstellung',
+        'definition': 'Bauvorhaben, deren Bauarbeiten weitgehend abgeschlossen sind'
       },
       {
-        "id": "bau/baustelle",
-        "label": "Bau – Baustelle",
-        "definition": "Orte, an denen Bauwerke errichtet, umgebaut oder abgerissen werden"
+        'id': 'bau/baugenehmigung',
+        'label': 'Bau – Baugenehmigung',
+        'definition': 'Bauaufsichtsbehördlich erteilte Genehmigung zur Errichtung, Änderung oder Beseitigung eines Baus'
       },
       {
-        "id": "bau/bauvorhaben",
-        "label": "Bau – Bauvorhaben",
-        "definition": "Gesamter Planungs- und Arbeitsprozess zum Herstellen oder Verändern eines Bauobjekts"
+        'id': 'bau/baustelle',
+        'label': 'Bau – Baustelle',
+        'definition': 'Orte, an denen Bauwerke errichtet, umgebaut oder abgerissen werden'
       },
       {
-        "id": "bau/brunnen",
-        "label": "Bau – Brunnen",
-        "definition": "Brunnen und Teichfontänen"
+        'id': 'bau/bauvorhaben',
+        'label': 'Bau – Bauvorhaben',
+        'definition': 'Gesamter Planungs- und Arbeitsprozess zum Herstellen oder Verändern eines Bauobjekts'
       },
       {
-        "id": "bau/grundstuecksbewertung",
-        "label": "Bau – Grundstücksbewertung",
-        "definition": "Wertermittlung für bebaute und unbebaute Grundstücke und grundstücksgleiche Rechte (Immobilien)"
+        'id': 'bau/brunnen',
+        'label': 'Bau – Brunnen',
+        'definition': 'Brunnen und Teichfontänen'
       },
       {
-        "id": "bau/tiefbau",
-        "label": "Bau – Tiefbau",
-        "definition": "Angaben zum Tätigkeitsbereich der Tiefbauämter"
+        'id': 'bau/grundstuecksbewertung',
+        'label': 'Bau – Grundstücksbewertung',
+        'definition': 'Wertermittlung für bebaute und unbebaute Grundstücke und grundstücksgleiche Rechte (Immobilien)'
       },
       {
-        "id": "bau/wohnungsbestand",
-        "label": "Bau – Wohnungsbestand",
-        "definition": "Wohngebäudebestand, Gesamtzahl der in einem Gebiet an einem Stichtag vorhandenen Häuser und Wohnungen"
+        'id': 'bau/tiefbau',
+        'label': 'Bau – Tiefbau',
+        'definition': 'Angaben zum Tätigkeitsbereich der Tiefbauämter'
       },
       {
-        "id": "bevoelkerungsstruktur",
-        "label": "Bevölkerungsstruktur",
-        "definition": "Zusammensetzung einer Bevölkerung nach bestimmten Merkmalen, die deren Charakteristika beschreiben"
+        'id': 'bau/wohnungsbestand',
+        'label': 'Bau – Wohnungsbestand',
+        'definition': 'Wohngebäudebestand, Gesamtzahl der in einem Gebiet an einem Stichtag vorhandenen Häuser und Wohnungen'
       },
       {
-        "id": "bevoelkerungsstruktur/demografiebericht",
-        "label": "Bevölkerungsstruktur – Demografiebericht",
-        "definition": "Bericht, der die demografische Entwicklung für Kommunen darstellt"
+        'id': 'bevoelkerungsstruktur',
+        'label': 'Bevölkerungsstruktur',
+        'definition': 'Zusammensetzung einer Bevölkerung nach bestimmten Merkmalen, die deren Charakteristika beschreiben'
       },
       {
-        "id": "bevoelkerungsstruktur/einwohnerzahl",
-        "label": "Bevölkerungsstruktur – Einwohnerzahl",
-        "definition": "Gesamtzahl der Einwohnerinnen und Einwohner"
+        'id': 'bevoelkerungsstruktur/demografiebericht',
+        'label': 'Bevölkerungsstruktur – Demografiebericht',
+        'definition': 'Bericht, der die demografische Entwicklung für Kommunen darstellt'
       },
       {
-        "id": "bevoelkerungsstruktur/haushaltszusammensetzung",
-        "label": "Bevölkerungsstruktur – Haushaltszusammensetzung",
-        "definition": "Personen, die in einer gemeinsamen Wohnung leben"
+        'id': 'bevoelkerungsstruktur/einwohnerzahl',
+        'label': 'Bevölkerungsstruktur – Einwohnerzahl',
+        'definition': 'Gesamtzahl der Einwohnerinnen und Einwohner'
       },
       {
-        "id": "bevoelkerungsstruktur/migrationshintergrund",
-        "label": "Bevölkerungsstruktur – Migrationshintergrund",
-        "definition": "Daten zur Bevölkerungszusammensetzung im Hinblick auf den Faktor 'Migrationshintergrund'"
+        'id': 'bevoelkerungsstruktur/haushaltszusammensetzung',
+        'label': 'Bevölkerungsstruktur – Haushaltszusammensetzung',
+        'definition': 'Personen, die in einer gemeinsamen Wohnung leben'
       },
       {
-        "id": "bevoelkerungsstruktur/religionszugehoerigkeit",
-        "label": "Bevölkerungsstruktur – Religionszugehörigkeit",
-        "definition": "Zugehörigkeit einer Person zu einer bestimmten Religionsgemeinschaft"
+        'id': 'bevoelkerungsstruktur/migrationshintergrund',
+        'label': 'Bevölkerungsstruktur – Migrationshintergrund',
+        'definition': 'Daten zur Bevölkerungszusammensetzung im Hinblick auf den Faktor \'Migrationshintergrund\''
       },
       {
-        "id": "bevoelkerungsstruktur/staatsangehoerigkeit",
-        "label": "Bevölkerungsstruktur – Staatsangehörigkeit",
-        "definition": "Angaben zur Staatsangehörigkeit der Bevölkerung"
+        'id': 'bevoelkerungsstruktur/religionszugehoerigkeit',
+        'label': 'Bevölkerungsstruktur – Religionszugehörigkeit',
+        'definition': 'Zugehörigkeit einer Person zu einer bestimmten Religionsgemeinschaft'
       },
       {
-        "id": "bevoelkerungsstruktur/vorname",
-        "label": "Bevölkerungsstruktur – Vorname",
-        "definition": "Statistiken zu vergebenen Vornamen"
+        'id': 'bevoelkerungsstruktur/staatsangehoerigkeit',
+        'label': 'Bevölkerungsstruktur – Staatsangehörigkeit',
+        'definition': 'Angaben zur Staatsangehörigkeit der Bevölkerung'
       },
       {
-        "id": "bildung",
-        "label": "Bildung",
-        "definition": "Vermittlung von Fertigkeiten und Wissen durch eine dazu befugte Einrichtung, beispielsweise eine staatliche Schule, eine Hochschule oder ein privates Unternehmen"
+        'id': 'bevoelkerungsstruktur/vorname',
+        'label': 'Bevölkerungsstruktur – Vorname',
+        'definition': 'Statistiken zu vergebenen Vornamen'
       },
       {
-        "id": "bildung/ausbildung",
-        "label": "Bildung – Ausbildung",
-        "definition": "Ausbildungseinrichtungen"
+        'id': 'bildung',
+        'label': 'Bildung',
+        'definition': 'Vermittlung von Fertigkeiten und Wissen durch eine dazu befugte Einrichtung, beispielsweise eine staatliche Schule, eine Hochschule oder ein privates Unternehmen'
       },
       {
-        "id": "bildung/bibliothek/ausleihe",
-        "label": "Bildung – Bibliothek - Ausleihe",
-        "definition": "Verliehene Bibliotheksmedien"
+        'id': 'bildung/ausbildung',
+        'label': 'Bildung – Ausbildung',
+        'definition': 'Ausbildungseinrichtungen'
       },
       {
-        "id": "bildung/bibliothek/bestand",
-        "label": "Bildung – Bibliothek - Bestand",
-        "definition": "Gesamtheit der in Bibliotheken gesammelten Publikationen"
+        'id': 'bildung/bibliothek/ausleihe',
+        'label': 'Bildung – Bibliothek - Ausleihe',
+        'definition': 'Verliehene Bibliotheksmedien'
       },
       {
-        "id": "bildung/bibliothek/besucherzahl",
-        "label": "Bildung – Bibliothek - Besucherzahl",
-        "definition": "Anzahl der Besucherinnen und Besucher von Bibliotheken"
+        'id': 'bildung/bibliothek/bestand',
+        'label': 'Bildung – Bibliothek - Bestand',
+        'definition': 'Gesamtheit der in Bibliotheken gesammelten Publikationen'
       },
       {
-        "id": "bildung/bibliothek/budget",
-        "label": "Bildung – Bibliothek - Budget",
-        "definition": "Finanzpläne von Bibliotheken"
+        'id': 'bildung/bibliothek/besucherzahl',
+        'label': 'Bildung – Bibliothek - Besucherzahl',
+        'definition': 'Anzahl der Besucherinnen und Besucher von Bibliotheken'
       },
       {
-        "id": "bildung/bibliothek/standort",
-        "label": "Bildung – Bibliothek - Standort",
-        "definition": "Standorte von Bibliotheken"
+        'id': 'bildung/bibliothek/budget',
+        'label': 'Bildung – Bibliothek - Budget',
+        'definition': 'Finanzpläne von Bibliotheken'
       },
       {
-        "id": "bildung/hochschule/standort",
-        "label": "Bildung – Hochschule - Standort",
-        "definition": "Standorte von Hochschulen"
+        'id': 'bildung/bibliothek/standort',
+        'label': 'Bildung – Bibliothek - Standort',
+        'definition': 'Standorte von Bibliotheken'
       },
       {
-        "id": "bildung/hochschule/studentenwohnheim",
-        "label": "Bildung – Hochschule - Studentenwohnheim",
-        "definition": "Unterkünfte für Studierende"
+        'id': 'bildung/hochschule/standort',
+        'label': 'Bildung – Hochschule - Standort',
+        'definition': 'Standorte von Hochschulen'
       },
       {
-        "id": "bildung/hochschule/studierendenzahl",
-        "label": "Bildung – Hochschule - Studierendenzahl",
-        "definition": "Anzahl der Studierenden an einer Hochschule"
+        'id': 'bildung/hochschule/studentenwohnheim',
+        'label': 'Bildung – Hochschule - Studentenwohnheim',
+        'definition': 'Unterkünfte für Studierende'
       },
       {
-        "id": "bildung/kindertageseinrichtung/betreuungsplatz",
-        "label": "Bildung – Kindertageseinrichtung - Betreuungsplatz",
-        "definition": "Zur Verfügung stehende Betreuungsplätze in Kindertagesstätten"
+        'id': 'bildung/hochschule/studierendenzahl',
+        'label': 'Bildung – Hochschule - Studierendenzahl',
+        'definition': 'Anzahl der Studierenden an einer Hochschule'
       },
       {
-        "id": "bildung/kindertageseinrichtung/standort",
-        "label": "Bildung – Kindertageseinrichtung - Standort",
-        "definition": "Standorte von Einrichtungen, in denen Kinder ganztägig betreut werden"
+        'id': 'bildung/kindertageseinrichtung/betreuungsplatz',
+        'label': 'Bildung – Kindertageseinrichtung - Betreuungsplatz',
+        'definition': 'Zur Verfügung stehende Betreuungsplätze in Kindertagesstätten'
       },
       {
-        "id": "bildung/musikschule/teilnehmerzahl",
-        "label": "Bildung – Musikschule - Teilnehmerzahl",
-        "definition": "Zahl der Personen, die an Unterricht oder Veranstaltungen der Musikschulen teilnehmen"
+        'id': 'bildung/kindertageseinrichtung/standort',
+        'label': 'Bildung – Kindertageseinrichtung - Standort',
+        'definition': 'Standorte von Einrichtungen, in denen Kinder ganztägig betreut werden'
       },
       {
-        "id": "bildung/musikschule/unterrichtsangebot",
-        "label": "Bildung – Musikschule - Unterrichtsangebot",
-        "definition": "Fächer, die an Musikschulen unterricht werden"
+        'id': 'bildung/musikschule/teilnehmerzahl',
+        'label': 'Bildung – Musikschule - Teilnehmerzahl',
+        'definition': 'Zahl der Personen, die an Unterricht oder Veranstaltungen der Musikschulen teilnehmen'
       },
       {
-        "id": "bildung/schule/internetanbindung",
-        "label": "Bildung – Schule - Internetanbindung",
-        "definition": "Anbindung von Schulen ins Internet"
+        'id': 'bildung/musikschule/unterrichtsangebot',
+        'label': 'Bildung – Musikschule - Unterrichtsangebot',
+        'definition': 'Fächer, die an Musikschulen unterricht werden'
       },
       {
-        "id": "bildung/schule/schuelerzahl",
-        "label": "Bildung – Schule - Schülerzahl",
-        "definition": "Anzahl der Schülerinnen und Schüler"
+        'id': 'bildung/schule/internetanbindung',
+        'label': 'Bildung – Schule - Internetanbindung',
+        'definition': 'Anbindung von Schulen ins Internet'
       },
       {
-        "id": "bildung/schule/schulangebot",
-        "label": "Bildung – Schule - Schulangebot",
-        "definition": "Verzeichnisse der zur Verfügung stehenden Schulen bzw. deren Angebote"
+        'id': 'bildung/schule/schuelerzahl',
+        'label': 'Bildung – Schule - Schülerzahl',
+        'definition': 'Anzahl der Schülerinnen und Schüler'
       },
       {
-        "id": "bildung/schule/schuleingangsuntersuchung",
-        "label": "Bildung – Schule - Schuleingangsuntersuchung",
-        "definition": "Gesetzlich vorgeschriebene Schulneulingsuntersuchung auf Einladung des Gesundheitsamtes vor der Aufnahme in die erste Jahrgangsstufe der Grundschule"
+        'id': 'bildung/schule/schulangebot',
+        'label': 'Bildung – Schule - Schulangebot',
+        'definition': 'Verzeichnisse der zur Verfügung stehenden Schulen bzw. deren Angebote'
       },
       {
-        "id": "bildung/schule/schulentwicklungsplan",
-        "label": "Bildung – Schule - Schulentwicklungsplan",
-        "definition": "Planungs- und Steuerungsinstrument für die Umsetzung schulischer Entwicklungsvorhaben"
+        'id': 'bildung/schule/schuleingangsuntersuchung',
+        'label': 'Bildung – Schule - Schuleingangsuntersuchung',
+        'definition': 'Gesetzlich vorgeschriebene Schulneulingsuntersuchung auf Einladung des Gesundheitsamtes vor der Aufnahme in die erste Jahrgangsstufe der Grundschule'
       },
       {
-        "id": "bildung/schule/standort",
-        "label": "Bildung – Schule - Standort",
-        "definition": "Standorte, an denen sich Schulen befinden"
+        'id': 'bildung/schule/schulentwicklungsplan',
+        'label': 'Bildung – Schule - Schulentwicklungsplan',
+        'definition': 'Planungs- und Steuerungsinstrument für die Umsetzung schulischer Entwicklungsvorhaben'
       },
       {
-        "id": "bildung/schule/wunschschule",
-        "label": "Bildung – Schule - Wunschschule",
-        "definition": "Angaben zur Wahl der Erstwunsch-Schule"
+        'id': 'bildung/schule/standort',
+        'label': 'Bildung – Schule - Standort',
+        'definition': 'Standorte, an denen sich Schulen befinden'
       },
       {
-        "id": "bildung/volkshochschule/teilnehmerzahl",
-        "label": "Bildung – Volkshochschule - Teilnehmerzahl",
-        "definition": "Anzahl der am Angebot der Erwachsenenbildungsinstitute teilnehmenden Personen"
+        'id': 'bildung/schule/wunschschule',
+        'label': 'Bildung – Schule - Wunschschule',
+        'definition': 'Angaben zur Wahl der Erstwunsch-Schule'
       },
       {
-        "id": "bildung/volkshochschule/veranstaltung",
-        "label": "Bildung – Volkshochschule - Veranstaltung",
-        "definition": "Events, die an Erwachsenenbildungsinstituten stattfinden"
+        'id': 'bildung/volkshochschule/teilnehmerzahl',
+        'label': 'Bildung – Volkshochschule - Teilnehmerzahl',
+        'definition': 'Anzahl der am Angebot der Erwachsenenbildungsinstitute teilnehmenden Personen'
       },
       {
-        "id": "buergerservice",
-        "label": "Bürgerservice",
-        "definition": "Zentrale Anlaufstelle, die Bürgerinnen und Bürgern Informationen und die Erledigung ihrer Anliegen aus erster Hand anbietet"
+        'id': 'bildung/volkshochschule/veranstaltung',
+        'label': 'Bildung – Volkshochschule - Veranstaltung',
+        'definition': 'Events, die an Erwachsenenbildungsinstituten stattfinden'
       },
       {
-        "id": "buergerservice/anliegenmanagement",
-        "label": "Bürgerservice – Anliegenmanagement",
-        "definition": "Systeme, mit denen Anliegen, Beschwerden, Hinweise und Wünsche von Nutzerinnen und Nutzern öffentlicher Dienste eingereicht werden"
+        'id': 'buergerservice',
+        'label': 'Bürgerservice',
+        'definition': 'Zentrale Anlaufstelle, die Bürgerinnen und Bürgern Informationen und die Erledigung ihrer Anliegen aus erster Hand anbietet'
       },
       {
-        "id": "buergerservice/dienstleistung",
-        "label": "Bürgerservice – Dienstleistung",
-        "definition": "Serviceangebote der Bürgerservicestellen"
+        'id': 'buergerservice/anliegenmanagement',
+        'label': 'Bürgerservice – Anliegenmanagement',
+        'definition': 'Systeme, mit denen Anliegen, Beschwerden, Hinweise und Wünsche von Nutzerinnen und Nutzern öffentlicher Dienste eingereicht werden'
       },
       {
-        "id": "buergerservice/hundekottuete",
-        "label": "Bürgerservice – Hundekottüte",
-        "definition": "Standorte von Hundekotbeutelstationen"
+        'id': 'buergerservice/dienstleistung',
+        'label': 'Bürgerservice – Dienstleistung',
+        'definition': 'Serviceangebote der Bürgerservicestellen'
       },
       {
-        "id": "buergerservice/telefonverzeichnis",
-        "label": "Bürgerservice – Telefonverzeichnis",
-        "definition": "Telefonnummern von Mitarbeiterinnen und Mitarbeitern der Verwaltung"
+        'id': 'buergerservice/hundekottuete',
+        'label': 'Bürgerservice – Hundekottüte',
+        'definition': 'Standorte von Hundekotbeutelstationen'
       },
       {
-        "id": "buergerservice/termin",
-        "label": "Bürgerservice – Termin",
-        "definition": "Termine und Öffnungszeiten von Einrichtungen der Kommunalverwaltung"
+        'id': 'buergerservice/telefonverzeichnis',
+        'label': 'Bürgerservice – Telefonverzeichnis',
+        'definition': 'Telefonnummern von Mitarbeiterinnen und Mitarbeitern der Verwaltung'
       },
       {
-        "id": "buergerservice/wartezeit",
-        "label": "Bürgerservice – Wartezeit",
-        "definition": "Wartezeiten in Einrichtungen der Kommunalverwaltung"
+        'id': 'buergerservice/termin',
+        'label': 'Bürgerservice – Termin',
+        'definition': 'Termine und Öffnungszeiten von Einrichtungen der Kommunalverwaltung'
       },
       {
-        "id": "digitalisierung",
-        "label": "Digitalisierung",
-        "definition": "Digitale Transformation und Durchdringung aller Bereiche von Wirtschaft, Staat, Gesellschaft und Alltag"
+        'id': 'buergerservice/wartezeit',
+        'label': 'Bürgerservice – Wartezeit',
+        'definition': 'Wartezeiten in Einrichtungen der Kommunalverwaltung'
       },
       {
-        "id": "digitalisierung/openData/planung",
-        "label": "Digitalisierung – Open Data - Planung",
-        "definition": "Angaben zur Durchführung von Initiativen für offene Verwaltungsdaten"
+        'id': 'digitalisierung',
+        'label': 'Digitalisierung',
+        'definition': 'Digitale Transformation und Durchdringung aller Bereiche von Wirtschaft, Staat, Gesellschaft und Alltag'
       },
       {
-        "id": "digitalisierung/openData/zugriffszahl",
-        "label": "Digitalisierung – Open Data - Zugriffszahl",
-        "definition": "Zahl der Aufrufe von offenen Verwaltungsdaten"
+        'id': 'digitalisierung/openData/planung',
+        'label': 'Digitalisierung – Open Data - Planung',
+        'definition': 'Angaben zur Durchführung von Initiativen für offene Verwaltungsdaten'
       },
       {
-        "id": "digitalisierung/website",
-        "label": "Digitalisierung – Website",
-        "definition": "Zugriffstatistiken der kommunalen Websites"
+        'id': 'digitalisierung/openData/zugriffszahl',
+        'label': 'Digitalisierung – Open Data - Zugriffszahl',
+        'definition': 'Zahl der Aufrufe von offenen Verwaltungsdaten'
       },
       {
-        "id": "digitalisierung/wlanUndMobilfunk",
-        "label": "Digitalisierung – WLAN und Mobilfunk",
-        "definition": "Standorte von WLAN-Hotspots, Freifunkrouter und Mobilfunkstandorte"
+        'id': 'digitalisierung/website',
+        'label': 'Digitalisierung – Website',
+        'definition': 'Zugriffstatistiken der kommunalen Websites'
       },
       {
-        "id": "energie",
-        "label": "Energie",
-        "definition": "Fähigkeit, mechanische Arbeit zu verrichten, Wärme abzugeben oder Licht auszustrahlen"
+        'id': 'digitalisierung/wlanUndMobilfunk',
+        'label': 'Digitalisierung – WLAN und Mobilfunk',
+        'definition': 'Standorte von WLAN-Hotspots, Freifunkrouter und Mobilfunkstandorte'
       },
       {
-        "id": "energie/energiebericht",
-        "label": "Energie – Energiebericht",
-        "definition": "Darstellungen im Bereich Energiemanagement und der Erfolge von durchgeführten Maßnahmen"
+        'id': 'energie',
+        'label': 'Energie',
+        'definition': 'Fähigkeit, mechanische Arbeit zu verrichten, Wärme abzugeben oder Licht auszustrahlen'
       },
       {
-        "id": "energie/solar",
-        "label": "Energie – Solar",
-        "definition": "Solarenergiekataster bzw. Angaben zur erzeugten Solarenergie"
+        'id': 'energie/energiebericht',
+        'label': 'Energie – Energiebericht',
+        'definition': 'Darstellungen im Bereich Energiemanagement und der Erfolge von durchgeführten Maßnahmen'
       },
       {
-        "id": "energie/stromversorgung",
-        "label": "Energie – Stromversorgung",
-        "definition": "Kennzahlen zur Stromversorgung in einer Kommune"
+        'id': 'energie/solar',
+        'label': 'Energie – Solar',
+        'definition': 'Solarenergiekataster bzw. Angaben zur erzeugten Solarenergie'
       },
       {
-        "id": "energie/waermeversorgung",
-        "label": "Energie – Wärmeversorgung",
-        "definition": "Kennzahlen zur Wärmeversorgung in einer Kommune"
+        'id': 'energie/stromversorgung',
+        'label': 'Energie – Stromversorgung',
+        'definition': 'Kennzahlen zur Stromversorgung in einer Kommune'
       },
       {
-        "id": "energie/wasserversorgung",
-        "label": "Energie – Wasserversorgung",
-        "definition": "Kennzahlen zur Wasserversorgung in einer Kommune"
+        'id': 'energie/waermeversorgung',
+        'label': 'Energie – Wärmeversorgung',
+        'definition': 'Kennzahlen zur Wärmeversorgung in einer Kommune'
       },
       {
-        "id": "energie/windenergie",
-        "label": "Energie – Windenergie",
-        "definition": "Kennzahlen zur Versorgung mit Windenergie in einer Kommune"
+        'id': 'energie/wasserversorgung',
+        'label': 'Energie – Wasserversorgung',
+        'definition': 'Kennzahlen zur Wasserversorgung in einer Kommune'
       },
       {
-        "id": "finanzen",
-        "label": "Finanzen",
-        "definition": "Finanzielle Gebahrung einer Kommune"
+        'id': 'energie/windenergie',
+        'label': 'Energie – Windenergie',
+        'definition': 'Kennzahlen zur Versorgung mit Windenergie in einer Kommune'
       },
       {
-        "id": "finanzen/haushalt/ausserplanmaessigeAufwendungen",
-        "label": "Finanzen – Haushalt - Außerplanmäßige Aufwendung",
-        "definition": "Aufwendungen oder Auszahlungen, für die im Haushaltsplan keine Ermächtigungen veranschlagt und keine aus den Vorjahren übertragenen Ermächtigungen verfügbar sind"
+        'id': 'finanzen',
+        'label': 'Finanzen',
+        'definition': 'Finanzielle Gebahrung einer Kommune'
       },
       {
-        "id": "finanzen/haushalt/controlling",
-        "label": "Finanzen – Haushalt - Controlling",
-        "definition": "Überwachung des kommunalen Haushalts"
+        'id': 'finanzen/haushalt/ausserplanmaessigeAufwendungen',
+        'label': 'Finanzen – Haushalt - Außerplanmäßige Aufwendung',
+        'definition': 'Aufwendungen oder Auszahlungen, für die im Haushaltsplan keine Ermächtigungen veranschlagt und keine aus den Vorjahren übertragenen Ermächtigungen verfügbar sind'
       },
       {
-        "id": "finanzen/haushalt/jahresabschluss",
-        "label": "Finanzen – Haushalt - Jahresabschluss",
-        "definition": "Haushaltsrechnungen von Kommunen"
+        'id': 'finanzen/haushalt/controlling',
+        'label': 'Finanzen – Haushalt - Controlling',
+        'definition': 'Überwachung des kommunalen Haushalts'
       },
       {
-        "id": "finanzen/haushalt/plan",
-        "label": "Finanzen – Haushalt - Plan",
-        "definition": "Kommunale Haushaltspläne"
+        'id': 'finanzen/haushalt/jahresabschluss',
+        'label': 'Finanzen – Haushalt - Jahresabschluss',
+        'definition': 'Haushaltsrechnungen von Kommunen'
       },
       {
-        "id": "finanzen/haushalt/produktplan",
-        "label": "Finanzen – Haushalt - Produktplan",
-        "definition": "Von einer öffentlichen Verwaltung erstellter, verwaltungsspezifischer Gliederungsplan, der die Produktstruktur im Haushaltsplan festlegt"
+        'id': 'finanzen/haushalt/plan',
+        'label': 'Finanzen – Haushalt - Plan',
+        'definition': 'Kommunale Haushaltspläne'
       },
       {
-        "id": "finanzen/haushalt/satzung",
-        "label": "Finanzen – Haushalt - Satzung",
-        "definition": "Rechtsgrundlage für den Vollzug des Haushaltsplans in der kommunalen Verwaltung, der von der Gemeindevertretung oder dem Kreistag in öffentlicher Sitzung beschlossen wird"
+        'id': 'finanzen/haushalt/produktplan',
+        'label': 'Finanzen – Haushalt - Produktplan',
+        'definition': 'Von einer öffentlichen Verwaltung erstellter, verwaltungsspezifischer Gliederungsplan, der die Produktstruktur im Haushaltsplan festlegt'
       },
       {
-        "id": "finanzen/haushalt/sponsoring",
-        "label": "Finanzen – Haushalt - Sponsoring",
-        "definition": "Unterstützungen seitens der Kommunen durch finanzielle Mittel bzw. Sach- oder Dienstleistungen"
+        'id': 'finanzen/haushalt/satzung',
+        'label': 'Finanzen – Haushalt - Satzung',
+        'definition': 'Rechtsgrundlage für den Vollzug des Haushaltsplans in der kommunalen Verwaltung, der von der Gemeindevertretung oder dem Kreistag in öffentlicher Sitzung beschlossen wird'
       },
       {
-        "id": "finanzen/haushalt/zuwendungUndFoerderung",
-        "label": "Finanzen – Haushalt - Zuwendung und Förderung",
-        "definition": "Finanzielle Zuwendungen aus dem kommunalen Budget"
+        'id': 'finanzen/haushalt/sponsoring',
+        'label': 'Finanzen – Haushalt - Sponsoring',
+        'definition': 'Unterstützungen seitens der Kommunen durch finanzielle Mittel bzw. Sach- oder Dienstleistungen'
       },
       {
-        "id": "finanzen/steuernUndAbgaben",
-        "label": "Finanzen – Steuern und Abgaben",
-        "definition": "Aufkommen an Steuern, Beiträgen und Gebühren"
+        'id': 'finanzen/haushalt/zuwendungUndFoerderung',
+        'label': 'Finanzen – Haushalt - Zuwendung und Förderung',
+        'definition': 'Finanzielle Zuwendungen aus dem kommunalen Budget'
       },
       {
-        "id": "floraUndFauna",
-        "label": "Flora und Fauna",
-        "definition": "Pflanzen- und Tierwelt"
+        'id': 'finanzen/steuernUndAbgaben',
+        'label': 'Finanzen – Steuern und Abgaben',
+        'definition': 'Aufkommen an Steuern, Beiträgen und Gebühren'
       },
       {
-        "id": "floraUndFauna/baumbestand/baumfaellung",
-        "label": "Flora und Fauna – Baumbestand - Baumfällung",
-        "definition": "Umschneiden von Bäumen"
+        'id': 'floraUndFauna',
+        'label': 'Flora und Fauna',
+        'definition': 'Pflanzen- und Tierwelt'
       },
       {
-        "id": "floraUndFauna/baumbestand/baumkataster",
-        "label": "Flora und Fauna – Baumbestand - Baumkataster",
-        "definition": "Verzeichnis, in dem Bäume inklusive Standort und weiteren Informationen verwaltet werden"
+        'id': 'floraUndFauna/baumbestand/baumfaellung',
+        'label': 'Flora und Fauna – Baumbestand - Baumfällung',
+        'definition': 'Umschneiden von Bäumen'
       },
       {
-        "id": "floraUndFauna/flaeche/ausgleichsflaeche",
-        "label": "Flora und Fauna – Fläche - Ausgleichsfläche",
-        "definition": "Flächen für den Naturschutz, die bei Eingriffen in Natur und Landschaft, wie z. B. größere Bauprojekte, dafür sorgen, dass ein gewisser Ausgleich für negative ökologische Folgen geschaffen wird"
+        'id': 'floraUndFauna/baumbestand/baumkataster',
+        'label': 'Flora und Fauna – Baumbestand - Baumkataster',
+        'definition': 'Verzeichnis, in dem Bäume inklusive Standort und weiteren Informationen verwaltet werden'
       },
       {
-        "id": "floraUndFauna/flaeche/biotopflaeche",
-        "label": "Flora und Fauna – Fläche - Biotopfläche",
-        "definition": "Verzeichnis der Biotope in den Kommunen"
+        'id': 'floraUndFauna/flaeche/ausgleichsflaeche',
+        'label': 'Flora und Fauna – Fläche - Ausgleichsfläche',
+        'definition': 'Flächen für den Naturschutz, die bei Eingriffen in Natur und Landschaft, wie z. B. größere Bauprojekte, dafür sorgen, dass ein gewisser Ausgleich für negative ökologische Folgen geschaffen wird'
       },
       {
-        "id": "floraUndFauna/flaeche/gruenflaecheUndGruenflaechenkataster",
-        "label": "Flora und Fauna – Fläche - Grünfläche und Grünflächenkataster",
-        "definition": "Verzeichnis der kommunalen Grünflächen meist mit Koppelung an ein Geoinformationssystem mit Angaben wie Fläche, Standort, Pflanzenbestand und Pflegemaßnahmen"
+        'id': 'floraUndFauna/flaeche/biotopflaeche',
+        'label': 'Flora und Fauna – Fläche - Biotopfläche',
+        'definition': 'Verzeichnis der Biotope in den Kommunen'
       },
       {
-        "id": "floraUndFauna/flaeche/hundewiese",
-        "label": "Flora und Fauna – Fläche - Hundewiese",
-        "definition": "Standorte der kommunalen Hundeauslaufgebiete"
+        'id': 'floraUndFauna/flaeche/gruenflaecheUndGruenflaechenkataster',
+        'label': 'Flora und Fauna – Fläche - Grünfläche und Grünflächenkataster',
+        'definition': 'Verzeichnis der kommunalen Grünflächen meist mit Koppelung an ein Geoinformationssystem mit Angaben wie Fläche, Standort, Pflanzenbestand und Pflegemaßnahmen'
       },
       {
-        "id": "floraUndFauna/flaeche/jagdbezirk",
-        "label": "Flora und Fauna – Fläche - Jagdbezirk",
-        "definition": "Kommunale Gebiete, in denen die Jagd ausgeübt wird"
+        'id': 'floraUndFauna/flaeche/hundewiese',
+        'label': 'Flora und Fauna – Fläche - Hundewiese',
+        'definition': 'Standorte der kommunalen Hundeauslaufgebiete'
       },
       {
-        "id": "floraUndFauna/flaeche/naturschutzgebiet",
-        "label": "Flora und Fauna – Fläche - Naturschutzgebiet",
-        "definition": "Kommunale Gebiete, die unter Naturschutz stehen"
+        'id': 'floraUndFauna/flaeche/jagdbezirk',
+        'label': 'Flora und Fauna – Fläche - Jagdbezirk',
+        'definition': 'Kommunale Gebiete, in denen die Jagd ausgeübt wird'
       },
       {
-        "id": "floraUndFauna/flaeche/waldflaeche",
-        "label": "Flora und Fauna – Fläche - Waldfläche",
-        "definition": "Bewaldete kommunale Gebiete"
+        'id': 'floraUndFauna/flaeche/naturschutzgebiet',
+        'label': 'Flora und Fauna – Fläche - Naturschutzgebiet',
+        'definition': 'Kommunale Gebiete, die unter Naturschutz stehen'
       },
       {
-        "id": "floraUndFauna/gewaesser/pegelstand",
-        "label": "Flora und Fauna – Gewässer - Pegelstand",
-        "definition": "Wasserstände kommunaler Gewässer"
+        'id': 'floraUndFauna/flaeche/waldflaeche',
+        'label': 'Flora und Fauna – Fläche - Waldfläche',
+        'definition': 'Bewaldete kommunale Gebiete'
       },
       {
-        "id": "floraUndFauna/gewaesser/wasserflaeche",
-        "label": "Flora und Fauna – Gewässer - Wasserfläche",
-        "definition": "Kommunale Gewässer"
+        'id': 'floraUndFauna/gewaesser/pegelstand',
+        'label': 'Flora und Fauna – Gewässer - Pegelstand',
+        'definition': 'Wasserstände kommunaler Gewässer'
       },
       {
-        "id": "floraUndFauna/urbanGardening",
-        "label": "Flora und Fauna – Urban Gardening",
-        "definition": "Kleinräumige, gärtnerisch genutzte städtische Flächen"
+        'id': 'floraUndFauna/gewaesser/wasserflaeche',
+        'label': 'Flora und Fauna – Gewässer - Wasserfläche',
+        'definition': 'Kommunale Gewässer'
       },
       {
-        "id": "freizeit",
-        "label": "Freizeit",
-        "definition": "kommunale Freizeitangebote"
+        'id': 'floraUndFauna/urbanGardening',
+        'label': 'Flora und Fauna – Urban Gardening',
+        'definition': 'Kleinräumige, gärtnerisch genutzte städtische Flächen'
       },
       {
-        "id": "freizeit/badUndFreibad",
-        "label": "Freizeit – Bad und Freibad",
-        "definition": "Standorte und Kennzahlen der kommunalen Schwimmbäder"
+        'id': 'freizeit',
+        'label': 'Freizeit',
+        'definition': 'kommunale Freizeitangebote'
       },
       {
-        "id": "freizeit/ferienangebot",
-        "label": "Freizeit – Ferienangebot",
-        "definition": "Während der Schulferien angebotene Freizeitaktivitäten für Kinder und Jugendliche "
+        'id': 'freizeit/badUndFreibad',
+        'label': 'Freizeit – Bad und Freibad',
+        'definition': 'Standorte und Kennzahlen der kommunalen Schwimmbäder'
       },
       {
-        "id": "freizeit/grillplatz",
-        "label": "Freizeit – Grillplatz",
-        "definition": "Standorte öffentlicher Grillstellen"
+        'id': 'freizeit/ferienangebot',
+        'label': 'Freizeit – Ferienangebot',
+        'definition': 'Während der Schulferien angebotene Freizeitaktivitäten für Kinder und Jugendliche '
       },
       {
-        "id": "freizeit/jugendeinrichtung",
-        "label": "Freizeit – Jugendeinrichtung",
-        "definition": "Standorte bzw. Angebote der Einrichtungen der kommunalen Jugendhilfe"
+        'id': 'freizeit/grillplatz',
+        'label': 'Freizeit – Grillplatz',
+        'definition': 'Standorte öffentlicher Grillstellen'
       },
       {
-        "id": "freizeit/sitzgelegenheit",
-        "label": "Freizeit – Sitzgelegenheit",
-        "definition": "Sitzplätze im öffentlichen Raum"
+        'id': 'freizeit/jugendeinrichtung',
+        'label': 'Freizeit – Jugendeinrichtung',
+        'definition': 'Standorte bzw. Angebote der Einrichtungen der kommunalen Jugendhilfe'
       },
       {
-        "id": "freizeit/spielplatzUndSpielstaette",
-        "label": "Freizeit – Spielplatz und Spielstätte",
-        "definition": "Standorte bzw. Kennzahlen der kommunalen Spielanlagen"
+        'id': 'freizeit/sitzgelegenheit',
+        'label': 'Freizeit – Sitzgelegenheit',
+        'definition': 'Sitzplätze im öffentlichen Raum'
       },
       {
-        "id": "freizeit/verein",
-        "label": "Freizeit – Verein",
-        "definition": "Informationen zu Vereinen in Kommunen"
+        'id': 'freizeit/spielplatzUndSpielstaette',
+        'label': 'Freizeit – Spielplatz und Spielstätte',
+        'definition': 'Standorte bzw. Kennzahlen der kommunalen Spielanlagen'
       },
       {
-        "id": "geschichte",
-        "label": "Geschichte",
-        "definition": "Daten zum politischen, kulturellen und gesellschaftlichen Werdegang, Entwicklungsprozess einer Kommune"
+        'id': 'freizeit/verein',
+        'label': 'Freizeit – Verein',
+        'definition': 'Informationen zu Vereinen in Kommunen'
       },
       {
-        "id": "geschichte/quelle/archivbestand",
-        "label": "Geschichte – Quelle - Archivbestand",
-        "definition": "Bestände kommunaler Archive"
+        'id': 'geschichte',
+        'label': 'Geschichte',
+        'definition': 'Daten zum politischen, kulturellen und gesellschaftlichen Werdegang, Entwicklungsprozess einer Kommune'
       },
       {
-        "id": "geschichte/quelle/entschaedigung",
-        "label": "Geschichte – Quelle - Entschädigung",
-        "definition": "Kommunale Entschädigungsakten"
+        'id': 'geschichte/quelle/archivbestand',
+        'label': 'Geschichte – Quelle - Archivbestand',
+        'definition': 'Bestände kommunaler Archive'
       },
       {
-        "id": "geschichte/quelle/historischeKarte",
-        "label": "Geschichte – Quelle - Historische Karte",
-        "definition": "Daten zu historischen Landkarten"
+        'id': 'geschichte/quelle/entschaedigung',
+        'label': 'Geschichte – Quelle - Entschädigung',
+        'definition': 'Kommunale Entschädigungsakten'
       },
       {
-        "id": "geschichte/quelle/historischeLuftaufnahme",
-        "label": "Geschichte – Quelle - Historische Luftaufnahme",
-        "definition": "Daten zu historischen Fotoaufnahmen der Kommunen aus der Luft"
+        'id': 'geschichte/quelle/historischeKarte',
+        'label': 'Geschichte – Quelle - Historische Karte',
+        'definition': 'Daten zu historischen Landkarten'
       },
       {
-        "id": "geschichte/quelle/personalverzeichnis",
-        "label": "Geschichte – Quelle - Personalverzeichnis",
-        "definition": "Kontaktliste kommunaler Mitarbeiterinnen und Mitarbeiter"
+        'id': 'geschichte/quelle/historischeLuftaufnahme',
+        'label': 'Geschichte – Quelle - Historische Luftaufnahme',
+        'definition': 'Daten zu historischen Fotoaufnahmen der Kommunen aus der Luft'
       },
       {
-        "id": "geschichte/standortMitGeschichte",
-        "label": "Geschichte – Standort mit Geschichte",
-        "definition": "Orte mit geschichtlicher Relevanz"
+        'id': 'geschichte/quelle/personalverzeichnis',
+        'label': 'Geschichte – Quelle - Personalverzeichnis',
+        'definition': 'Kontaktliste kommunaler Mitarbeiterinnen und Mitarbeiter'
       },
       {
-        "id": "gesundheit",
-        "label": "Gesundheit",
-        "definition": "Daten zu kommunalen Gesundheitsdienstleistungen und -einrichtungen"
+        'id': 'geschichte/standortMitGeschichte',
+        'label': 'Geschichte – Standort mit Geschichte',
+        'definition': 'Orte mit geschichtlicher Relevanz'
       },
       {
-        "id": "gesundheit/apotheke",
-        "label": "Gesundheit – Apotheke",
-        "definition": "Standorte und weitere Angaben zu Apotheken"
+        'id': 'gesundheit',
+        'label': 'Gesundheit',
+        'definition': 'Daten zu kommunalen Gesundheitsdienstleistungen und -einrichtungen'
       },
       {
-        "id": "gesundheit/arzt",
-        "label": "Gesundheit – Arzt",
-        "definition": "Daten zu den Ärztinnen und Ärzten"
+        'id': 'gesundheit/apotheke',
+        'label': 'Gesundheit – Apotheke',
+        'definition': 'Standorte und weitere Angaben zu Apotheken'
       },
       {
-        "id": "gesundheit/gesundheitsberichterstattung",
-        "label": "Gesundheit – Gesundheitsberichterstattung",
-        "definition": "Kommunale Gesundheitsberichte"
+        'id': 'gesundheit/arzt',
+        'label': 'Gesundheit – Arzt',
+        'definition': 'Daten zu den Ärztinnen und Ärzten'
       },
       {
-        "id": "gesundheit/hebamme",
-        "label": "Gesundheit – Hebamme",
-        "definition": "Listen aller im Kommunalgebiet tätigen Hebammen"
+        'id': 'gesundheit/gesundheitsberichterstattung',
+        'label': 'Gesundheit – Gesundheitsberichterstattung',
+        'definition': 'Kommunale Gesundheitsberichte'
       },
       {
-        "id": "gesundheit/infektion",
-        "label": "Gesundheit – Infektion",
-        "definition": "Infektionsgeschehen in den Kommunen"
+        'id': 'gesundheit/hebamme',
+        'label': 'Gesundheit – Hebamme',
+        'definition': 'Listen aller im Kommunalgebiet tätigen Hebammen'
       },
       {
-        "id": "gesundheit/krankenhaus",
-        "label": "Gesundheit – Krankenhaus",
-        "definition": "Standorte und Kennzahlen zu Krankenhäusern in einer Kommune"
+        'id': 'gesundheit/infektion',
+        'label': 'Gesundheit – Infektion',
+        'definition': 'Infektionsgeschehen in den Kommunen'
       },
       {
-        "id": "gesundheit/oeffentlicheToilette",
-        "label": "Gesundheit – Öffentliche Toilette",
-        "definition": "Informationen zu Standort und Austattung der öffentlichen Bedürfnisanstalten in einer Kommune"
+        'id': 'gesundheit/krankenhaus',
+        'label': 'Gesundheit – Krankenhaus',
+        'definition': 'Standorte und Kennzahlen zu Krankenhäusern in einer Kommune'
       },
       {
-        "id": "gesundheit/rettungsdienst/defibrillator",
-        "label": "Gesundheit – Rettungsdienst - Defibrillator",
-        "definition": "Standorte kommunaler Defibrillatoren"
+        'id': 'gesundheit/oeffentlicheToilette',
+        'label': 'Gesundheit – Öffentliche Toilette',
+        'definition': 'Informationen zu Standort und Austattung der öffentlichen Bedürfnisanstalten in einer Kommune'
       },
       {
-        "id": "gesundheit/rettungsdienst/rettungsdiensteinsatz",
-        "label": "Gesundheit – Rettungsdienst - Rettungsdiensteinsatz",
-        "definition": "Kennzahlen zu Einsätzen durch die kommunalen Rettungsdienste"
+        'id': 'gesundheit/rettungsdienst/defibrillator',
+        'label': 'Gesundheit – Rettungsdienst - Defibrillator',
+        'definition': 'Standorte kommunaler Defibrillatoren'
       },
       {
-        "id": "justiz",
-        "label": "Justiz",
-        "definition": "Für die Ausübung der Justiz verantwortliche Behörden und Einrichtungen"
+        'id': 'gesundheit/rettungsdienst/rettungsdiensteinsatz',
+        'label': 'Gesundheit – Rettungsdienst - Rettungsdiensteinsatz',
+        'definition': 'Kennzahlen zu Einsätzen durch die kommunalen Rettungsdienste'
       },
       {
-        "id": "justiz/gesetzestext",
-        "label": "Justiz – Gesetzestext",
-        "definition": "Wortlaut eines Gesetzes"
+        'id': 'justiz',
+        'label': 'Justiz',
+        'definition': 'Für die Ausübung der Justiz verantwortliche Behörden und Einrichtungen'
       },
       {
-        "id": "justiz/justizeinrichtung",
-        "label": "Justiz – Justizeinrichtung",
-        "definition": "Angaben über kommunale Justizstandorte"
+        'id': 'justiz/gesetzestext',
+        'label': 'Justiz – Gesetzestext',
+        'definition': 'Wortlaut eines Gesetzes'
       },
       {
-        "id": "klimaschutzUndUmweltschutz",
-        "label": "Klimaschutz und Umweltschutz",
-        "definition": "Daten zu Witterung und Wettererscheinungen bzw.  zum Schutz der natürlichen Umwelt"
+        'id': 'justiz/justizeinrichtung',
+        'label': 'Justiz – Justizeinrichtung',
+        'definition': 'Angaben über kommunale Justizstandorte'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/berichtUndAnalyse/klimabilanz",
-        "label": "Klimaschutz und Umweltschutz – Bericht und Analyse - Klimabilanz",
-        "definition": "Kennzahlen zur Klimabilanz der Kommunen"
+        'id': 'klimaschutzUndUmweltschutz',
+        'label': 'Klimaschutz und Umweltschutz',
+        'definition': 'Daten zu Witterung und Wettererscheinungen bzw.  zum Schutz der natürlichen Umwelt'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/berichtUndAnalyse/luftUndEmission",
-        "label": "Klimaschutz und Umweltschutz – Bericht und Analyse - Luft und Emission",
-        "definition": "Kennzahlen zu Luft- und Emissionswerten"
+        'id': 'klimaschutzUndUmweltschutz/berichtUndAnalyse/klimabilanz',
+        'label': 'Klimaschutz und Umweltschutz – Bericht und Analyse - Klimabilanz',
+        'definition': 'Kennzahlen zur Klimabilanz der Kommunen'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/berichtUndAnalyse/verkehrsmessung",
-        "label": "Klimaschutz und Umweltschutz – Bericht und Analyse - Verkehrsmessung",
-        "definition": "Kennzahlen zum Verkehrsaufkommen in einer Kommune"
+        'id': 'klimaschutzUndUmweltschutz/berichtUndAnalyse/luftUndEmission',
+        'label': 'Klimaschutz und Umweltschutz – Bericht und Analyse - Luft und Emission',
+        'definition': 'Kennzahlen zu Luft- und Emissionswerten'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/berichtUndAnalyse/wasser",
-        "label": "Klimaschutz und Umweltschutz – Bericht und Analyse - Wasser",
-        "definition": "Kennzahlen zu Wasser in einer Kommune"
+        'id': 'klimaschutzUndUmweltschutz/berichtUndAnalyse/verkehrsmessung',
+        'label': 'Klimaschutz und Umweltschutz – Bericht und Analyse - Verkehrsmessung',
+        'definition': 'Kennzahlen zum Verkehrsaufkommen in einer Kommune'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/radioaktivitaetsmessung",
-        "label": "Klimaschutz und Umweltschutz – Radioaktivitätsmessung",
-        "definition": "Kennzahlen zu Radioaktivität in einer Kommune"
+        'id': 'klimaschutzUndUmweltschutz/berichtUndAnalyse/wasser',
+        'label': 'Klimaschutz und Umweltschutz – Bericht und Analyse - Wasser',
+        'definition': 'Kennzahlen zu Wasser in einer Kommune'
       },
       {
-        "id": "klimaschutzUndUmweltschutz/umweltzone",
-        "label": "Klimaschutz und Umweltschutz – Umweltzone",
-        "definition": "Daten zu den in einer Kommune eingerichteten Gebieten, in denen nur Kfz mit Feinstaubplakette fahren dürfen"
+        'id': 'klimaschutzUndUmweltschutz/radioaktivitaetsmessung',
+        'label': 'Klimaschutz und Umweltschutz – Radioaktivitätsmessung',
+        'definition': 'Kennzahlen zu Radioaktivität in einer Kommune'
       },
       {
-        "id": "kultur",
-        "label": "Kultur",
-        "definition": "Daten zu Standort bzw. Angebot an geistigen, künstlerischen, gestaltenden Leistungen einer Kommune wie etwa Kunstwerke, Bauwerke (Museen, Theater, Denkmäler, Kirchen, Friedhöfe) usw."
+        'id': 'klimaschutzUndUmweltschutz/umweltzone',
+        'label': 'Klimaschutz und Umweltschutz – Umweltzone',
+        'definition': 'Daten zu den in einer Kommune eingerichteten Gebieten, in denen nur Kfz mit Feinstaubplakette fahren dürfen'
       },
       {
-        "id": "kultur/denkmal",
-        "label": "Kultur – Denkmal",
-        "definition": "Standorte und weitere Angaben zu Denkmälerm bzw. Erinnerungsorten in Kommunen"
+        'id': 'kultur',
+        'label': 'Kultur',
+        'definition': 'Daten zu Standort bzw. Angebot an geistigen, künstlerischen, gestaltenden Leistungen einer Kommune wie etwa Kunstwerke, Bauwerke (Museen, Theater, Denkmäler, Kirchen, Friedhöfe) usw.'
       },
       {
-        "id": "kultur/friedhof/grabstaette",
-        "label": "Kultur – Friedhof - Grabstätte",
-        "definition": "Standorte und Eigenschaften von Stellen, an denen Tote beerdigt sind"
+        'id': 'kultur/denkmal',
+        'label': 'Kultur – Denkmal',
+        'definition': 'Standorte und weitere Angaben zu Denkmälerm bzw. Erinnerungsorten in Kommunen'
       },
       {
-        "id": "kultur/friedhof/standort",
-        "label": "Kultur – Friedhof - Standort",
-        "definition": "Standorte der Friedhöfe"
+        'id': 'kultur/friedhof/grabstaette',
+        'label': 'Kultur – Friedhof - Grabstätte',
+        'definition': 'Standorte und Eigenschaften von Stellen, an denen Tote beerdigt sind'
       },
       {
-        "id": "kultur/kunstwerk",
-        "label": "Kultur – Kunstwerk",
-        "definition": "Daten zu Erzeugnissen künstlerischen Schaffens im öffentlichen Raum der Kommunen"
+        'id': 'kultur/friedhof/standort',
+        'label': 'Kultur – Friedhof - Standort',
+        'definition': 'Standorte der Friedhöfe'
       },
       {
-        "id": "kultur/lehrpfadUndWanderpfad",
-        "label": "Kultur – Lehrpfad und Wanderpfad",
-        "definition": "Daten zu Freizeitwegen inkl. gestalteten [Themen]wegen mit dem Ziel der Wissensvermittlung"
+        'id': 'kultur/kunstwerk',
+        'label': 'Kultur – Kunstwerk',
+        'definition': 'Daten zu Erzeugnissen künstlerischen Schaffens im öffentlichen Raum der Kommunen'
       },
       {
-        "id": "kultur/museum/besucherzahl",
-        "label": "Kultur – Museum - Besucherzahl",
-        "definition": "Frequentierungszahlen in Museen"
+        'id': 'kultur/lehrpfadUndWanderpfad',
+        'label': 'Kultur – Lehrpfad und Wanderpfad',
+        'definition': 'Daten zu Freizeitwegen inkl. gestalteten [Themen]wegen mit dem Ziel der Wissensvermittlung'
       },
       {
-        "id": "kultur/museum/standort",
-        "label": "Kultur – Museum - Standort",
-        "definition": "Standorte der Museen in Kommunen"
+        'id': 'kultur/museum/besucherzahl',
+        'label': 'Kultur – Museum - Besucherzahl',
+        'definition': 'Frequentierungszahlen in Museen'
       },
       {
-        "id": "kultur/religioeseEinrichtung",
-        "label": "Kultur – religiöse Einrichtung",
-        "definition": "Standorte bzw. Kennzahlen zu Sakralbauten, Gotteshäusern, Glaubenseinrichtungen"
+        'id': 'kultur/museum/standort',
+        'label': 'Kultur – Museum - Standort',
+        'definition': 'Standorte der Museen in Kommunen'
       },
       {
-        "id": "kultur/theater/besucherzahl",
-        "label": "Kultur – Theater - Besucherzahl",
-        "definition": "Anzahl der Besucherinnen und Besucher von Theatern"
+        'id': 'kultur/religioeseEinrichtung',
+        'label': 'Kultur – religiöse Einrichtung',
+        'definition': 'Standorte bzw. Kennzahlen zu Sakralbauten, Gotteshäusern, Glaubenseinrichtungen'
       },
       {
-        "id": "kultur/theater/programm",
-        "label": "Kultur – Theater - Programm",
-        "definition": "Informationen zu Theatervorstellungen"
+        'id': 'kultur/theater/besucherzahl',
+        'label': 'Kultur – Theater - Besucherzahl',
+        'definition': 'Anzahl der Besucherinnen und Besucher von Theatern'
       },
       {
-        "id": "kultur/veranstaltung/angebot",
-        "label": "Kultur – Veranstaltung - Angebot",
-        "definition": "Informationen zu angebotenen Veranstaltungen"
+        'id': 'kultur/theater/programm',
+        'label': 'Kultur – Theater - Programm',
+        'definition': 'Informationen zu Theatervorstellungen'
       },
       {
-        "id": "kultur/veranstaltung/besucherzahl",
-        "label": "Kultur – Veranstaltung - Besucherzahl",
-        "definition": "Anzahl der Besucherinnen und Besucher einer Veranstaltung"
+        'id': 'kultur/veranstaltung/angebot',
+        'label': 'Kultur – Veranstaltung - Angebot',
+        'definition': 'Informationen zu angebotenen Veranstaltungen'
       },
       {
-        "id": "oeffentlichkeitsarbeit",
-        "label": "Öffentlichkeitsarbeit",
-        "definition": "öffentliche Kommunikation"
+        'id': 'kultur/veranstaltung/besucherzahl',
+        'label': 'Kultur – Veranstaltung - Besucherzahl',
+        'definition': 'Anzahl der Besucherinnen und Besucher einer Veranstaltung'
       },
       {
-        "id": "oeffentlichkeitsarbeit/pressemitteilungUndVeroeffentlichung",
-        "label": "Öffentlichkeitsarbeit – Pressemitteilung und Veröffentlichung",
-        "definition": "Medienaussendungen und Pressemeldungen"
+        'id': 'oeffentlichkeitsarbeit',
+        'label': 'Öffentlichkeitsarbeit',
+        'definition': 'öffentliche Kommunikation'
       },
       {
-        "id": "oeffentlichkeitsarbeit/stadtmarketing",
-        "label": "Öffentlichkeitsarbeit – Stadtmarketing",
-        "definition": "Gesamtheit der Maßnahmen zur Imageförderung einer Stadt"
+        'id': 'oeffentlichkeitsarbeit/pressemitteilungUndVeroeffentlichung',
+        'label': 'Öffentlichkeitsarbeit – Pressemitteilung und Veröffentlichung',
+        'definition': 'Medienaussendungen und Pressemeldungen'
       },
       {
-        "id": "politischePartizipation",
-        "label": "Politische Partizipation",
-        "definition": "Teilhabe und Beteiligung von Bürgerinnen und Bürgern an politischen Willensbildungs- und Entscheidungsprozessen"
+        'id': 'oeffentlichkeitsarbeit/stadtmarketing',
+        'label': 'Öffentlichkeitsarbeit – Stadtmarketing',
+        'definition': 'Gesamtheit der Maßnahmen zur Imageförderung einer Stadt'
       },
       {
-        "id": "politischePartizipation/buergerbeteiligung/buergerentscheid",
-        "label": "Politische Partizipation – Bürgerbeteiligung - Bürgerentscheid",
-        "definition": "Entscheidung einer wichtigen Angelegenheit der Kommune durch die Bürgerinnen und Bürger"
+        'id': 'politischePartizipation',
+        'label': 'Politische Partizipation',
+        'definition': 'Teilhabe und Beteiligung von Bürgerinnen und Bürgern an politischen Willensbildungs- und Entscheidungsprozessen'
       },
       {
-        "id": "politischePartizipation/buergerbeteiligung/buergerhaushalt",
-        "label": "Politische Partizipation – Bürgerbeteiligung - Bürgerhaushalt",
-        "definition": "Direkte kommunale Bürgerbeteiligung, bei der die Bürgerinnen und Bürger über Teile der Haushaltsmittel mitbestimmen"
+        'id': 'politischePartizipation/buergerbeteiligung/buergerentscheid',
+        'label': 'Politische Partizipation – Bürgerbeteiligung - Bürgerentscheid',
+        'definition': 'Entscheidung einer wichtigen Angelegenheit der Kommune durch die Bürgerinnen und Bürger'
       },
       {
-        "id": "politischePartizipation/buergerbeteiligung/entwicklungUndInformation",
-        "label": "Politische Partizipation – Bürgerbeteiligung - Entwicklung und Information",
-        "definition": "Information über und Weiterentwicklung der Bürgerbeteiligung"
+        'id': 'politischePartizipation/buergerbeteiligung/buergerhaushalt',
+        'label': 'Politische Partizipation – Bürgerbeteiligung - Bürgerhaushalt',
+        'definition': 'Direkte kommunale Bürgerbeteiligung, bei der die Bürgerinnen und Bürger über Teile der Haushaltsmittel mitbestimmen'
       },
       {
-        "id": "politischePartizipation/buergerbeteiligung/umfrage",
-        "label": "Politische Partizipation – Bürgerbeteiligung - Umfrage",
-        "definition": "Daten zu Befragungen von Bürgerinnen und Bürgern zu bestimmten Themen der Verwaltung"
+        'id': 'politischePartizipation/buergerbeteiligung/entwicklungUndInformation',
+        'label': 'Politische Partizipation – Bürgerbeteiligung - Entwicklung und Information',
+        'definition': 'Information über und Weiterentwicklung der Bürgerbeteiligung'
       },
       {
-        "id": "politischePartizipation/politischeVertretung/buergermeister",
-        "label": "Politische Partizipation – Politische Vertretung - Bürgermeister",
-        "definition": "Angaben zu den Bürgermeisterinnen und Bürgermeistern der Kommunen"
+        'id': 'politischePartizipation/buergerbeteiligung/umfrage',
+        'label': 'Politische Partizipation – Bürgerbeteiligung - Umfrage',
+        'definition': 'Daten zu Befragungen von Bürgerinnen und Bürgern zu bestimmten Themen der Verwaltung'
       },
       {
-        "id": "politischePartizipation/politischeVertretung/gremium",
-        "label": "Politische Partizipation – Politische Vertretung - Gremium",
-        "definition": "Informationen zu den beschlussfassenden Ausschüssen der Kommunen"
+        'id': 'politischePartizipation/politischeVertretung/buergermeister',
+        'label': 'Politische Partizipation – Politische Vertretung - Bürgermeister',
+        'definition': 'Angaben zu den Bürgermeisterinnen und Bürgermeistern der Kommunen'
       },
       {
-        "id": "politischePartizipation/politischeVertretung/mandatstraeger",
-        "label": "Politische Partizipation – Politische Vertretung - Mandatsträger",
-        "definition": "Informationen zu Mandatsträgerinnen und Mandatsträgern der Kommunen"
+        'id': 'politischePartizipation/politischeVertretung/gremium',
+        'label': 'Politische Partizipation – Politische Vertretung - Gremium',
+        'definition': 'Informationen zu den beschlussfassenden Ausschüssen der Kommunen'
       },
       {
-        "id": "politischePartizipation/verband",
-        "label": "Politische Partizipation – Verband",
-        "definition": "Zusammenschluss mehrerer kleinerer Vereinigungen oder Einzelpersonen zur Durchsetzung gemeinsamer Interessen"
+        'id': 'politischePartizipation/politischeVertretung/mandatstraeger',
+        'label': 'Politische Partizipation – Politische Vertretung - Mandatsträger',
+        'definition': 'Informationen zu Mandatsträgerinnen und Mandatsträgern der Kommunen'
       },
       {
-        "id": "politischePartizipation/wahl/beiratswahl",
-        "label": "Politische Partizipation – Wahl - Beiratswahl",
-        "definition": "Informationen über die Wahlen kommunaler Beiräte"
+        'id': 'politischePartizipation/verband',
+        'label': 'Politische Partizipation – Verband',
+        'definition': 'Zusammenschluss mehrerer kleinerer Vereinigungen oder Einzelpersonen zur Durchsetzung gemeinsamer Interessen'
       },
       {
-        "id": "politischePartizipation/wahl/bundestagswahl",
-        "label": "Politische Partizipation – Wahl - Bundestagswahl",
-        "definition": "Wahleinrichtungen bzw. Wahlergebnisse der Bundestagswahl"
+        'id': 'politischePartizipation/wahl/beiratswahl',
+        'label': 'Politische Partizipation – Wahl - Beiratswahl',
+        'definition': 'Informationen über die Wahlen kommunaler Beiräte'
       },
       {
-        "id": "politischePartizipation/wahl/europawahl",
-        "label": "Politische Partizipation – Wahl - Europawahl",
-        "definition": "Wahleinrichtungen bzw. Wahlergebnisse der Europawahl"
+        'id': 'politischePartizipation/wahl/bundestagswahl',
+        'label': 'Politische Partizipation – Wahl - Bundestagswahl',
+        'definition': 'Wahleinrichtungen bzw. Wahlergebnisse der Bundestagswahl'
       },
       {
-        "id": "politischePartizipation/wahl/kandidatenliste",
-        "label": "Politische Partizipation – Wahl - Kandidatenliste",
-        "definition": "Wahlvorschläge der Kommunen"
+        'id': 'politischePartizipation/wahl/europawahl',
+        'label': 'Politische Partizipation – Wahl - Europawahl',
+        'definition': 'Wahleinrichtungen bzw. Wahlergebnisse der Europawahl'
       },
       {
-        "id": "politischePartizipation/wahl/kommunalwahl",
-        "label": "Politische Partizipation – Wahl - Kommunalwahl",
-        "definition": "Wahleinrichtungen bzw. Wahlergebnisse von Kommunalwahlen"
+        'id': 'politischePartizipation/wahl/kandidatenliste',
+        'label': 'Politische Partizipation – Wahl - Kandidatenliste',
+        'definition': 'Wahlvorschläge der Kommunen'
       },
       {
-        "id": "politischePartizipation/wahl/landtagswahl",
-        "label": "Politische Partizipation – Wahl - Landtagswahl",
-        "definition": "Wahleinrichtungen bzw. Wahlergebnisse der Landtagswahl"
+        'id': 'politischePartizipation/wahl/kommunalwahl',
+        'label': 'Politische Partizipation – Wahl - Kommunalwahl',
+        'definition': 'Wahleinrichtungen bzw. Wahlergebnisse von Kommunalwahlen'
       },
       {
-        "id": "politischePartizipation/wahl/strassenverzeichnis",
-        "label": "Politische Partizipation – Wahl - Straßenverzeichnis",
-        "definition": "Für Wahlen erstelltes Verzeichnis der Straßen und Plätze einer Kommune nach Stimmbezirk, Wahlbezirk, Wahlkreis"
+        'id': 'politischePartizipation/wahl/landtagswahl',
+        'label': 'Politische Partizipation – Wahl - Landtagswahl',
+        'definition': 'Wahleinrichtungen bzw. Wahlergebnisse der Landtagswahl'
       },
       {
-        "id": "politischePartizipation/wahl/verbundwahl",
-        "label": "Politische Partizipation – Wahl - Verbundwahl",
-        "definition": "Durch Zusammenlegung gleichzeitig stattfindende Wahlen"
+        'id': 'politischePartizipation/wahl/strassenverzeichnis',
+        'label': 'Politische Partizipation – Wahl - Straßenverzeichnis',
+        'definition': 'Für Wahlen erstelltes Verzeichnis der Straßen und Plätze einer Kommune nach Stimmbezirk, Wahlbezirk, Wahlkreis'
       },
       {
-        "id": "politischePartizipation/wahl/wahlkreisUndWahlbezirk",
-        "label": "Politische Partizipation – Wahl - Wahlkreis und Wahlbezirk",
-        "definition": "Daten zu Wahlkreisen und Wahlbezirken"
+        'id': 'politischePartizipation/wahl/verbundwahl',
+        'label': 'Politische Partizipation – Wahl - Verbundwahl',
+        'definition': 'Durch Zusammenlegung gleichzeitig stattfindende Wahlen'
       },
       {
-        "id": "politischePartizipation/wahl/wahllokal",
-        "label": "Politische Partizipation – Wahl - Wahllokal",
-        "definition": "Daten zu Orten der Wahlaustragung"
+        'id': 'politischePartizipation/wahl/wahlkreisUndWahlbezirk',
+        'label': 'Politische Partizipation – Wahl - Wahlkreis und Wahlbezirk',
+        'definition': 'Daten zu Wahlkreisen und Wahlbezirken'
       },
       {
-        "id": "raumplanung",
-        "label": "Raumplanung",
-        "definition": "Daten zu Raumordnung, Raumplanung und Raumentwicklung"
+        'id': 'politischePartizipation/wahl/wahllokal',
+        'label': 'Politische Partizipation – Wahl - Wahllokal',
+        'definition': 'Daten zu Orten der Wahlaustragung'
       },
       {
-        "id": "raumplanung/bauleitplan",
-        "label": "Raumplanung – Bauleitplan",
-        "definition": "Daten zu städtebaulichen Entwicklungsplänen"
+        'id': 'raumplanung',
+        'label': 'Raumplanung',
+        'definition': 'Daten zu Raumordnung, Raumplanung und Raumentwicklung'
       },
       {
-        "id": "raumplanung/bebauungsplan",
-        "label": "Raumplanung – Bebauungsplan",
-        "definition": "Kommunale Plänen, nach denen Flächen bebaut werden sollen"
+        'id': 'raumplanung/bauleitplan',
+        'label': 'Raumplanung – Bauleitplan',
+        'definition': 'Daten zu städtebaulichen Entwicklungsplänen'
       },
       {
-        "id": "raumplanung/flaechennutzung",
-        "label": "Raumplanung – Flächennutzung",
-        "definition": "Nutzung größerer Flächen einer Kommune für bestimmte Zwecke"
+        'id': 'raumplanung/bebauungsplan',
+        'label': 'Raumplanung – Bebauungsplan',
+        'definition': 'Kommunale Plänen, nach denen Flächen bebaut werden sollen'
       },
       {
-        "id": "raumplanung/liegenschaft/grundstueckUndGebaeude",
-        "label": "Raumplanung – Liegenschaft - Grundstück und Gebäude",
-        "definition": "Daten zu kommunalen Liegenschaften"
+        'id': 'raumplanung/flaechennutzung',
+        'label': 'Raumplanung – Flächennutzung',
+        'definition': 'Nutzung größerer Flächen einer Kommune für bestimmte Zwecke'
       },
       {
-        "id": "raumplanung/liegenschaft/liegenschaftskataster",
-        "label": "Raumplanung – Liegenschaft - Liegenschaftskataster",
-        "definition": "Daten zum Grundstücksverzeichnis"
+        'id': 'raumplanung/liegenschaft/grundstueckUndGebaeude',
+        'label': 'Raumplanung – Liegenschaft - Grundstück und Gebäude',
+        'definition': 'Daten zu kommunalen Liegenschaften'
       },
       {
-        "id": "raumplanung/liegenschaft/satzung",
-        "label": "Raumplanung – Liegenschaft - Satzung",
-        "definition": "Satzungen im Bereich Liegenschaften"
+        'id': 'raumplanung/liegenschaft/liegenschaftskataster',
+        'label': 'Raumplanung – Liegenschaft - Liegenschaftskataster',
+        'definition': 'Daten zum Grundstücksverzeichnis'
       },
       {
-        "id": "raumplanung/orthofoto",
-        "label": "Raumplanung – Orthofoto",
-        "definition": "Verzerrungsfreie, maßstabsgetreue aus Luft- oder Satellitenbildern abgeleitete Abbildungen der Erdoberfläche"
+        'id': 'raumplanung/liegenschaft/satzung',
+        'label': 'Raumplanung – Liegenschaft - Satzung',
+        'definition': 'Satzungen im Bereich Liegenschaften'
       },
       {
-        "id": "raumplanung/raumgliederung/adresse",
-        "label": "Raumplanung – Raumgliederung - Adresse",
-        "definition": "Daten zu Anschriften"
+        'id': 'raumplanung/orthofoto',
+        'label': 'Raumplanung – Orthofoto',
+        'definition': 'Verzerrungsfreie, maßstabsgetreue aus Luft- oder Satellitenbildern abgeleitete Abbildungen der Erdoberfläche'
       },
       {
-        "id": "raumplanung/raumgliederung/block",
-        "label": "Raumplanung – Raumgliederung - Block",
-        "definition": "Beschreibung von Gebieten innerhalb eines Stadtteils, die als Blöcke bezeichnet werden"
+        'id': 'raumplanung/raumgliederung/adresse',
+        'label': 'Raumplanung – Raumgliederung - Adresse',
+        'definition': 'Daten zu Anschriften'
       },
       {
-        "id": "raumplanung/raumgliederung/hausnummer",
-        "label": "Raumplanung – Raumgliederung - Hausnummer",
-        "definition": "Daten zu den Nummern der einzelnen Häuser"
+        'id': 'raumplanung/raumgliederung/block',
+        'label': 'Raumplanung – Raumgliederung - Block',
+        'definition': 'Beschreibung von Gebieten innerhalb eines Stadtteils, die als Blöcke bezeichnet werden'
       },
       {
-        "id": "raumplanung/raumgliederung/ortsteil",
-        "label": "Raumplanung – Raumgliederung - Ortsteil",
-        "definition": "Daten zur kommunalen Gliederung in Stadtteile"
+        'id': 'raumplanung/raumgliederung/hausnummer',
+        'label': 'Raumplanung – Raumgliederung - Hausnummer',
+        'definition': 'Daten zu den Nummern der einzelnen Häuser'
       },
       {
-        "id": "raumplanung/raumgliederung/postleitzahlengebiet",
-        "label": "Raumplanung – Raumgliederung - Postleitzahlengebiet",
-        "definition": "Postleitzahlen von Städten und Gemeinden"
+        'id': 'raumplanung/raumgliederung/ortsteil',
+        'label': 'Raumplanung – Raumgliederung - Ortsteil',
+        'definition': 'Daten zur kommunalen Gliederung in Stadtteile'
       },
       {
-        "id": "raumplanung/raumgliederung/stadtgebiet",
-        "label": "Raumplanung – Raumgliederung - Stadtgebiet",
-        "definition": "Informationen zu Stadtgebieten"
+        'id': 'raumplanung/raumgliederung/postleitzahlengebiet',
+        'label': 'Raumplanung – Raumgliederung - Postleitzahlengebiet',
+        'definition': 'Postleitzahlen von Städten und Gemeinden'
       },
       {
-        "id": "raumplanung/raumgliederung/strasse",
-        "label": "Raumplanung – Raumgliederung - Straße",
-        "definition": "Informationen zu Straßen"
+        'id': 'raumplanung/raumgliederung/stadtgebiet',
+        'label': 'Raumplanung – Raumgliederung - Stadtgebiet',
+        'definition': 'Informationen zu Stadtgebieten'
       },
       {
-        "id": "raumplanung/sozialraum",
-        "label": "Raumplanung – Sozialraum",
-        "definition": "Daten zu Sozialraum als Stadtplanungs- und Verwaltungskategorie"
+        'id': 'raumplanung/raumgliederung/strasse',
+        'label': 'Raumplanung – Raumgliederung - Straße',
+        'definition': 'Informationen zu Straßen'
       },
       {
-        "id": "raumplanung/stadtplan",
-        "label": "Raumplanung – Stadtplan",
-        "definition": "Kartographische Daten einer Stadt"
+        'id': 'raumplanung/sozialraum',
+        'label': 'Raumplanung – Sozialraum',
+        'definition': 'Daten zu Sozialraum als Stadtplanungs- und Verwaltungskategorie'
       },
       {
-        "id": "sicherheit",
-        "label": "Sicherheit",
-        "definition": "Daten zu kommunalen Sicherheitsthemen"
+        'id': 'raumplanung/stadtplan',
+        'label': 'Raumplanung – Stadtplan',
+        'definition': 'Kartographische Daten einer Stadt'
       },
       {
-        "id": "sicherheit/beleuchtung",
-        "label": "Sicherheit – Beleuchtung",
-        "definition": "Daten zur öffentlichen Beleuchtung"
+        'id': 'sicherheit',
+        'label': 'Sicherheit',
+        'definition': 'Daten zu kommunalen Sicherheitsthemen'
       },
       {
-        "id": "sicherheit/feuerwehr/feuerwehreinsatz",
-        "label": "Sicherheit – Feuerwehr - Feuerwehreinsatz",
-        "definition": "Daten zu Einsätzen der Feuerwehr in den Kommunen"
+        'id': 'sicherheit/beleuchtung',
+        'label': 'Sicherheit – Beleuchtung',
+        'definition': 'Daten zur öffentlichen Beleuchtung'
       },
       {
-        "id": "sicherheit/feuerwehr/personal",
-        "label": "Sicherheit – Feuerwehr - Personal",
-        "definition": "Daten zu den im Feuerwehrdienst tätigen Einsatzkräften"
+        'id': 'sicherheit/feuerwehr/feuerwehreinsatz',
+        'label': 'Sicherheit – Feuerwehr - Feuerwehreinsatz',
+        'definition': 'Daten zu Einsätzen der Feuerwehr in den Kommunen'
       },
       {
-        "id": "sicherheit/feuerwehr/standort",
-        "label": "Sicherheit – Feuerwehr - Standort",
-        "definition": "Verzeichnis der Feuerwehrstandorte"
+        'id': 'sicherheit/feuerwehr/personal',
+        'label': 'Sicherheit – Feuerwehr - Personal',
+        'definition': 'Daten zu den im Feuerwehrdienst tätigen Einsatzkräften'
       },
       {
-        "id": "sicherheit/kriminalitaetsstatistik",
-        "label": "Sicherheit – Kriminalitätsstatistik",
-        "definition": "Daten zur Kriminalität"
+        'id': 'sicherheit/feuerwehr/standort',
+        'label': 'Sicherheit – Feuerwehr - Standort',
+        'definition': 'Verzeichnis der Feuerwehrstandorte'
       },
       {
-        "id": "sicherheit/ordnungsamt",
-        "label": "Sicherheit – Ordnungsamt",
-        "definition": "Informationen über die Tätigkeit der für die Abwehr von Gefahren für die öffentliche Sicherheit oder Ordnung verantwortliche Organisationseinheit der Kommunalverwaltung"
+        'id': 'sicherheit/kriminalitaetsstatistik',
+        'label': 'Sicherheit – Kriminalitätsstatistik',
+        'definition': 'Daten zur Kriminalität'
       },
       {
-        "id": "sicherheit/polizei",
-        "label": "Sicherheit – Polizei",
-        "definition": "Standorte der Polizei"
+        'id': 'sicherheit/ordnungsamt',
+        'label': 'Sicherheit – Ordnungsamt',
+        'definition': 'Informationen über die Tätigkeit der für die Abwehr von Gefahren für die öffentliche Sicherheit oder Ordnung verantwortliche Organisationseinheit der Kommunalverwaltung'
       },
       {
-        "id": "sicherheit/rettungshilfe/anlaufstelle",
-        "label": "Sicherheit – Rettungshilfe - Anlaufstelle",
-        "definition": "Kontaktstellen der Institutionen, Organisationen oder Personen, an die man sich im Notfall wenden kann, um Hilfe oder Unterstützung zu bekommen (z. B. bei Feuer, Lebensgefahr, medizinischer Notlage)"
+        'id': 'sicherheit/polizei',
+        'label': 'Sicherheit – Polizei',
+        'definition': 'Standorte der Polizei'
       },
       {
-        "id": "sicherheit/rettungshilfe/notfallnummer",
-        "label": "Sicherheit – Rettungshilfe - Notfallnummer",
-        "definition": "Öffentliche Orte, die mit Informationen zu Notfallnummern ausgestattet sind"
+        'id': 'sicherheit/rettungshilfe/anlaufstelle',
+        'label': 'Sicherheit – Rettungshilfe - Anlaufstelle',
+        'definition': 'Kontaktstellen der Institutionen, Organisationen oder Personen, an die man sich im Notfall wenden kann, um Hilfe oder Unterstützung zu bekommen (z. B. bei Feuer, Lebensgefahr, medizinischer Notlage)'
       },
       {
-        "id": "sicherheit/rettungshilfe/notinsel",
-        "label": "Sicherheit – Rettungshilfe - Notinsel",
-        "definition": "Standorte von Anlaufpunkten, die Kindern in Not im Rahmen des Projekts 'Notinsel' als Zuflucht dienen"
+        'id': 'sicherheit/rettungshilfe/notfallnummer',
+        'label': 'Sicherheit – Rettungshilfe - Notfallnummer',
+        'definition': 'Öffentliche Orte, die mit Informationen zu Notfallnummern ausgestattet sind'
       },
       {
-        "id": "sicherheit/rettungshilfe/waldrettungspunkt",
-        "label": "Sicherheit – Rettungshilfe - Waldrettungspunkt",
-        "definition": "Waldstandorte für die Notfallalarmierung"
+        'id': 'sicherheit/rettungshilfe/notinsel',
+        'label': 'Sicherheit – Rettungshilfe - Notinsel',
+        'definition': 'Standorte von Anlaufpunkten, die Kindern in Not im Rahmen des Projekts \'Notinsel\' als Zuflucht dienen'
       },
       {
-        "id": "sicherheit/zivilschutzUndKatastrophenschutz/kampfmittelfund",
-        "label": "Sicherheit – Zivilschutz und Katastrophenschutz - Kampfmittelfund",
-        "definition": "Daten zu Kampfmittelfunden und deren Beseitigung"
+        'id': 'sicherheit/rettungshilfe/waldrettungspunkt',
+        'label': 'Sicherheit – Rettungshilfe - Waldrettungspunkt',
+        'definition': 'Waldstandorte für die Notfallalarmierung'
       },
       {
-        "id": "sicherheit/zivilschutzUndKatastrophenschutz/sirene",
-        "label": "Sicherheit – Zivilschutz und Katastrophenschutz - Sirene",
-        "definition": "Standorte der und Informationen zu Zivilschutzsirenen"
+        'id': 'sicherheit/zivilschutzUndKatastrophenschutz/kampfmittelfund',
+        'label': 'Sicherheit – Zivilschutz und Katastrophenschutz - Kampfmittelfund',
+        'definition': 'Daten zu Kampfmittelfunden und deren Beseitigung'
       },
       {
-        "id": "sonstiges",
-        "label": "Sonstiges",
-        "definition": "Unter Sonstiges werden Daten eingeordnet, die nicht in die übrigen Kategorien passen. Im Zuge von Weiterentwicklungen könnten aus diesen Datensätzen neue Kategorien gebildet werden."
+        'id': 'sicherheit/zivilschutzUndKatastrophenschutz/sirene',
+        'label': 'Sicherheit – Zivilschutz und Katastrophenschutz - Sirene',
+        'definition': 'Standorte der und Informationen zu Zivilschutzsirenen'
       },
       {
-        "id": "sonstiges/sonstiges",
-        "label": "Sonstiges",
-        "definition": "Unter Sonstiges werden Daten eingeordnet, die nicht in die übrigen Kategorien passen. Im Zuge von Weiterentwicklungen könnten aus diesen Datensätzen neue Kategorien gebildet werden."
+        'id': 'sonstiges',
+        'label': 'Sonstiges',
+        'definition': 'Unter Sonstiges werden Daten eingeordnet, die nicht in die übrigen Kategorien passen. Im Zuge von Weiterentwicklungen könnten aus diesen Datensätzen neue Kategorien gebildet werden.'
       },
       {
-        "id": "sozialeHilfe",
-        "label": "Soziale Hilfe",
-        "definition": "Daten zu Hilfen von öffentlichen Stellen in sozialen Notlagen"
+        'id': 'sonstiges/sonstiges',
+        'label': 'Sonstiges',
+        'definition': 'Unter Sonstiges werden Daten eingeordnet, die nicht in die übrigen Kategorien passen. Im Zuge von Weiterentwicklungen könnten aus diesen Datensätzen neue Kategorien gebildet werden.'
       },
       {
-        "id": "sozialeHilfe/angebotUndBeratungsstelle",
-        "label": "Soziale Hilfe – Angebot und Beratungsstelle",
-        "definition": "Verzeichnis des öffentlichen Angebotes sozialer Hilfen bzw. der Beratungsstellen"
+        'id': 'sozialeHilfe',
+        'label': 'Soziale Hilfe',
+        'definition': 'Daten zu Hilfen von öffentlichen Stellen in sozialen Notlagen'
       },
       {
-        "id": "sozialeHilfe/behinderung/behindertenwohnheim",
-        "label": "Soziale Hilfe – Behinderung - Behindertenwohnheim",
-        "definition": "Einrichtungen für Menschen mit Behinderung"
+        'id': 'sozialeHilfe/angebotUndBeratungsstelle',
+        'label': 'Soziale Hilfe – Angebot und Beratungsstelle',
+        'definition': 'Verzeichnis des öffentlichen Angebotes sozialer Hilfen bzw. der Beratungsstellen'
       },
       {
-        "id": "sozialeHilfe/behinderung/menschenMitBehinderung",
-        "label": "Soziale Hilfe – Behinderung - Menschen mit Behinderung",
-        "definition": "Informationen zu Menschen mit Behinderung"
+        'id': 'sozialeHilfe/behinderung/behindertenwohnheim',
+        'label': 'Soziale Hilfe – Behinderung - Behindertenwohnheim',
+        'definition': 'Einrichtungen für Menschen mit Behinderung'
       },
       {
-        "id": "sozialeHilfe/bericht",
-        "label": "Soziale Hilfe – Bericht",
-        "definition": "Berichte über soziale Hilfestellungen"
+        'id': 'sozialeHilfe/behinderung/menschenMitBehinderung',
+        'label': 'Soziale Hilfe – Behinderung - Menschen mit Behinderung',
+        'definition': 'Informationen zu Menschen mit Behinderung'
       },
       {
-        "id": "sozialeHilfe/finanzielleUnterstuetzung/foerderung",
-        "label": "Soziale Hilfe – Finanzielle Unterstützung - Förderung",
-        "definition": "Finanzielle Unterstützungen im Rahmen der sozialen Hilfe"
+        'id': 'sozialeHilfe/bericht',
+        'label': 'Soziale Hilfe – Bericht',
+        'definition': 'Berichte über soziale Hilfestellungen'
       },
       {
-        "id": "sozialeHilfe/finanzielleUnterstuetzung/grundsicherung",
-        "label": "Soziale Hilfe – Finanzielle Unterstützung - Grundsicherung",
-        "definition": "Informationen zum Leistungsbezug der Grundsicherung"
+        'id': 'sozialeHilfe/finanzielleUnterstuetzung/foerderung',
+        'label': 'Soziale Hilfe – Finanzielle Unterstützung - Förderung',
+        'definition': 'Finanzielle Unterstützungen im Rahmen der sozialen Hilfe'
       },
       {
-        "id": "sozialeHilfe/finanzielleUnterstuetzung/wohngeld",
-        "label": "Soziale Hilfe – Finanzielle Unterstützung - Wohngeld",
-        "definition": "Statistische Informationen zu Empfängerinnen und Empfängern von Wohngeld"
+        'id': 'sozialeHilfe/finanzielleUnterstuetzung/grundsicherung',
+        'label': 'Soziale Hilfe – Finanzielle Unterstützung - Grundsicherung',
+        'definition': 'Informationen zum Leistungsbezug der Grundsicherung'
       },
       {
-        "id": "sozialeHilfe/flucht/asylbewerber",
-        "label": "Soziale Hilfe – Flucht - Asylbewerber",
-        "definition": "Statistische Informationen zu Leistungsbeziehenden nach dem Asylbewerberleistungsgesetz"
+        'id': 'sozialeHilfe/finanzielleUnterstuetzung/wohngeld',
+        'label': 'Soziale Hilfe – Finanzielle Unterstützung - Wohngeld',
+        'definition': 'Statistische Informationen zu Empfängerinnen und Empfängern von Wohngeld'
       },
       {
-        "id": "sozialeHilfe/flucht/fluechtlingsunterbringung",
-        "label": "Soziale Hilfe – Flucht - Flüchtlingsunterbringung",
-        "definition": "Entwicklung der Unterbringung von Flüchtlingen"
+        'id': 'sozialeHilfe/flucht/asylbewerber',
+        'label': 'Soziale Hilfe – Flucht - Asylbewerber',
+        'definition': 'Statistische Informationen zu Leistungsbeziehenden nach dem Asylbewerberleistungsgesetz'
       },
       {
-        "id": "sozialeHilfe/flucht/fluechtlingszahl",
-        "label": "Soziale Hilfe – Flucht - Flüchtlingszahl",
-        "definition": "Zahl der Flüchtlinge"
+        'id': 'sozialeHilfe/flucht/fluechtlingsunterbringung',
+        'label': 'Soziale Hilfe – Flucht - Flüchtlingsunterbringung',
+        'definition': 'Entwicklung der Unterbringung von Flüchtlingen'
       },
       {
-        "id": "sozialeHilfe/flucht/integration",
-        "label": "Soziale Hilfe – Flucht - Integration",
-        "definition": "Informationen zu den Angeboten der Flüchtlingshilfe"
+        'id': 'sozialeHilfe/flucht/fluechtlingszahl',
+        'label': 'Soziale Hilfe – Flucht - Flüchtlingszahl',
+        'definition': 'Zahl der Flüchtlinge'
       },
       {
-        "id": "sozialeHilfe/gefoerderterWohnungsbau",
-        "label": "Soziale Hilfe – Geförderter Wohnungsbau",
-        "definition": "Kennzahlen zu öffentlich geförderten Wohnungen"
+        'id': 'sozialeHilfe/flucht/integration',
+        'label': 'Soziale Hilfe – Flucht - Integration',
+        'definition': 'Informationen zu den Angeboten der Flüchtlingshilfe'
       },
       {
-        "id": "sozialeHilfe/pflege",
-        "label": "Soziale Hilfe – Pflege",
-        "definition": "Informationen zu Pflegepersonal und Pflegeeinrichtungen"
+        'id': 'sozialeHilfe/gefoerderterWohnungsbau',
+        'label': 'Soziale Hilfe – Geförderter Wohnungsbau',
+        'definition': 'Kennzahlen zu öffentlich geförderten Wohnungen'
       },
       {
-        "id": "staedtischesPersonal",
-        "label": "Städtisches Personal",
-        "definition": "Informationen zu städtischem Personal, wie etwa zu Stellenangeboten und -plänen sowie Bewerber- und Besoldungsstatistiken"
+        'id': 'sozialeHilfe/pflege',
+        'label': 'Soziale Hilfe – Pflege',
+        'definition': 'Informationen zu Pflegepersonal und Pflegeeinrichtungen'
       },
       {
-        "id": "staedtischesPersonal/stellenausschreibung",
-        "label": "Städtisches Personal – Stellenausschreibung",
-        "definition": "Städtische Stellenangebote"
+        'id': 'staedtischesPersonal',
+        'label': 'Städtisches Personal',
+        'definition': 'Informationen zu städtischem Personal, wie etwa zu Stellenangeboten und -plänen sowie Bewerber- und Besoldungsstatistiken'
       },
       {
-        "id": "staedtischesPersonal/stellenplan",
-        "label": "Städtisches Personal – Stellenplan",
-        "definition": "Plan der Stellen im städtischen Dienst"
+        'id': 'staedtischesPersonal/stellenausschreibung',
+        'label': 'Städtisches Personal – Stellenausschreibung',
+        'definition': 'Städtische Stellenangebote'
       },
       {
-        "id": "tourismus",
-        "label": "Tourismus",
-        "definition": "Informationen zum Städtetourismus"
+        'id': 'staedtischesPersonal/stellenplan',
+        'label': 'Städtisches Personal – Stellenplan',
+        'definition': 'Plan der Stellen im städtischen Dienst'
       },
       {
-        "id": "tourismus/gaestezahl",
-        "label": "Tourismus – Gästezahl",
-        "definition": "Zahl der Gäste und Übernachtungen"
+        'id': 'tourismus',
+        'label': 'Tourismus',
+        'definition': 'Informationen zum Städtetourismus'
       },
       {
-        "id": "tourismus/sehenswuerdigkeit",
-        "label": "Tourismus – Sehenswürdigkeit",
-        "definition": "Touristenattraktionen"
+        'id': 'tourismus/gaestezahl',
+        'label': 'Tourismus – Gästezahl',
+        'definition': 'Zahl der Gäste und Übernachtungen'
       },
       {
-        "id": "tourismus/stadtfuehrung",
-        "label": "Tourismus – Stadtführung",
-        "definition": "Informationen zu Stadtrundgängen und touristischen Führungen"
+        'id': 'tourismus/sehenswuerdigkeit',
+        'label': 'Tourismus – Sehenswürdigkeit',
+        'definition': 'Touristenattraktionen'
       },
       {
-        "id": "tourismus/unterkunft/campingplatz",
-        "label": "Tourismus – Unterkunft - Campingplatz",
-        "definition": "Verzeichnis der Campingplätze"
+        'id': 'tourismus/stadtfuehrung',
+        'label': 'Tourismus – Stadtführung',
+        'definition': 'Informationen zu Stadtrundgängen und touristischen Führungen'
       },
       {
-        "id": "tourismus/unterkunft/herberge",
-        "label": "Tourismus – Unterkunft - Herberge",
-        "definition": "Informationen zu Beherbergungen"
+        'id': 'tourismus/unterkunft/campingplatz',
+        'label': 'Tourismus – Unterkunft - Campingplatz',
+        'definition': 'Verzeichnis der Campingplätze'
       },
       {
-        "id": "tourismus/unterkunft/hotel",
-        "label": "Tourismus – Unterkunft - Hotel",
-        "definition": "Standorte und Kontaktdetails der Hotelbetriebe"
+        'id': 'tourismus/unterkunft/herberge',
+        'label': 'Tourismus – Unterkunft - Herberge',
+        'definition': 'Informationen zu Beherbergungen'
       },
       {
-        "id": "tourismus/unterkunft/privatunterkunft",
-        "label": "Tourismus – Unterkunft - Privatunterkunft",
-        "definition": "Privatunterkünfte und Übernachtungsmöglichkeiten"
+        'id': 'tourismus/unterkunft/hotel',
+        'label': 'Tourismus – Unterkunft - Hotel',
+        'definition': 'Standorte und Kontaktdetails der Hotelbetriebe'
       },
       {
-        "id": "verkehr",
-        "label": "Verkehr",
-        "definition": "Angaben zu Fortbewegungsarten und Verkehrsinfrastruktur"
+        'id': 'tourismus/unterkunft/privatunterkunft',
+        'label': 'Tourismus – Unterkunft - Privatunterkunft',
+        'definition': 'Privatunterkünfte und Übernachtungsmöglichkeiten'
       },
       {
-        "id": "verkehr/ampelanlage",
-        "label": "Verkehr – Ampelanlage",
-        "definition": "Standorte der Ampelanlagen"
+        'id': 'verkehr',
+        'label': 'Verkehr',
+        'definition': 'Angaben zu Fortbewegungsarten und Verkehrsinfrastruktur'
       },
       {
-        "id": "verkehr/flugverkehr/flugbewegung",
-        "label": "Verkehr – Flugverkehr - Flugbewegung",
-        "definition": "Flugbewegungen und Fluggastaufkommen"
+        'id': 'verkehr/ampelanlage',
+        'label': 'Verkehr – Ampelanlage',
+        'definition': 'Standorte der Ampelanlagen'
       },
       {
-        "id": "verkehr/flugverkehr/flughafen",
-        "label": "Verkehr – Flugverkehr - Flughafen",
-        "definition": "Standorte und weitere Informationen zu Flughäfen"
+        'id': 'verkehr/flugverkehr/flugbewegung',
+        'label': 'Verkehr – Flugverkehr - Flugbewegung',
+        'definition': 'Flugbewegungen und Fluggastaufkommen'
       },
       {
-        "id": "verkehr/fussverkehr/fussgaengerzone",
-        "label": "Verkehr – Fußverkehr - Fußgängerzone",
-        "definition": "Verkehrsflächen, auf denen Fußgängerinnen und Fußgänger Vorrang oder ausschließliches Nutzungsrecht gegenüber anderen Verkehrsteilnehmerinnen und Verkehrsteilnehmern haben"
+        'id': 'verkehr/flugverkehr/flughafen',
+        'label': 'Verkehr – Flugverkehr - Flughafen',
+        'definition': 'Standorte und weitere Informationen zu Flughäfen'
       },
       {
-        "id": "verkehr/fussverkehr/gehweg",
-        "label": "Verkehr – Fußverkehr - Gehweg",
-        "definition": "Bürgersteige"
+        'id': 'verkehr/fussverkehr/fussgaengerzone',
+        'label': 'Verkehr – Fußverkehr - Fußgängerzone',
+        'definition': 'Verkehrsflächen, auf denen Fußgängerinnen und Fußgänger Vorrang oder ausschließliches Nutzungsrecht gegenüber anderen Verkehrsteilnehmerinnen und Verkehrsteilnehmern haben'
       },
       {
-        "id": "verkehr/fussverkehr/laufstreckeUndWanderstrecke",
-        "label": "Verkehr – Fußverkehr - Laufstrecke und Wanderstrecke",
-        "definition": "Strecken zum Laufen und Wandern in Kommunen"
+        'id': 'verkehr/fussverkehr/gehweg',
+        'label': 'Verkehr – Fußverkehr - Gehweg',
+        'definition': 'Bürgersteige'
       },
       {
-        "id": "verkehr/kfz/Taxistand",
-        "label": "Verkehr – KFZ - Taxistand",
-        "definition": "Standorte der Taxihalteplätze"
+        'id': 'verkehr/fussverkehr/laufstreckeUndWanderstrecke',
+        'label': 'Verkehr – Fußverkehr - Laufstrecke und Wanderstrecke',
+        'definition': 'Strecken zum Laufen und Wandern in Kommunen'
       },
       {
-        "id": "verkehr/kfz/autobahn",
-        "label": "Verkehr – KFZ - Autobahn",
-        "definition": "Informationen zum Autobahn-Straßennetz"
+        'id': 'verkehr/kfz/Taxistand',
+        'label': 'Verkehr – KFZ - Taxistand',
+        'definition': 'Standorte der Taxihalteplätze'
       },
       {
-        "id": "verkehr/kfz/bussgeld",
-        "label": "Verkehr – KFZ - Bußgeld",
-        "definition": "Bußgelddaten"
+        'id': 'verkehr/kfz/autobahn',
+        'label': 'Verkehr – KFZ - Autobahn',
+        'definition': 'Informationen zum Autobahn-Straßennetz'
       },
       {
-        "id": "verkehr/kfz/carsharing",
-        "label": "Verkehr – KFZ - Carsharing",
-        "definition": "Standorte und Fahrzeuge des Carsharing-Angebots"
+        'id': 'verkehr/kfz/bussgeld',
+        'label': 'Verkehr – KFZ - Bußgeld',
+        'definition': 'Bußgelddaten'
       },
       {
-        "id": "verkehr/kfz/elektrotankstelle",
-        "label": "Verkehr – KFZ - Elektrotankstelle",
-        "definition": "E-Tankstellen zur Aufladung von Elektrofahrzeugen"
+        'id': 'verkehr/kfz/carsharing',
+        'label': 'Verkehr – KFZ - Carsharing',
+        'definition': 'Standorte und Fahrzeuge des Carsharing-Angebots'
       },
       {
-        "id": "verkehr/kfz/fahrzeugzulassung",
-        "label": "Verkehr – KFZ - Fahrzeugzulassung",
-        "definition": "Statistiken zur Straßenverkehrszulassung von Fahrzeugen"
+        'id': 'verkehr/kfz/elektrotankstelle',
+        'label': 'Verkehr – KFZ - Elektrotankstelle',
+        'definition': 'E-Tankstellen zur Aufladung von Elektrofahrzeugen'
       },
       {
-        "id": "verkehr/kfz/messung",
-        "label": "Verkehr – KFZ - Messung",
-        "definition": "KFZ-Zählung und Geschwindigkeitsüberwachung"
+        'id': 'verkehr/kfz/fahrzeugzulassung',
+        'label': 'Verkehr – KFZ - Fahrzeugzulassung',
+        'definition': 'Statistiken zur Straßenverkehrszulassung von Fahrzeugen'
       },
       {
-        "id": "verkehr/kfz/parkplatz",
-        "label": "Verkehr – KFZ - Parkplatz",
-        "definition": "Parkberechtigungen, Parkhäuser, Parkflächen"
+        'id': 'verkehr/kfz/messung',
+        'label': 'Verkehr – KFZ - Messung',
+        'definition': 'KFZ-Zählung und Geschwindigkeitsüberwachung'
       },
       {
-        "id": "verkehr/kfz/tankstelle",
-        "label": "Verkehr – KFZ - Tankstelle",
-        "definition": "Daten zu Tankstellen"
+        'id': 'verkehr/kfz/parkplatz',
+        'label': 'Verkehr – KFZ - Parkplatz',
+        'definition': 'Parkberechtigungen, Parkhäuser, Parkflächen'
       },
       {
-        "id": "verkehr/oepnv/aufzugUndRolltreppe",
-        "label": "Verkehr – ÖPNV - Aufzug und Rolltreppe",
-        "definition": "Rolltreppen und Aufzüge im öffentlichen Personennahverkehr"
+        'id': 'verkehr/kfz/tankstelle',
+        'label': 'Verkehr – KFZ - Tankstelle',
+        'definition': 'Daten zu Tankstellen'
       },
       {
-        "id": "verkehr/oepnv/fahrgastzahl",
-        "label": "Verkehr – ÖPNV - Fahrgastzahl",
-        "definition": "Passagieraufkommen im kommunalen öffentlichen Personennahverkehr"
+        'id': 'verkehr/oepnv/aufzugUndRolltreppe',
+        'label': 'Verkehr – ÖPNV - Aufzug und Rolltreppe',
+        'definition': 'Rolltreppen und Aufzüge im öffentlichen Personennahverkehr'
       },
       {
-        "id": "verkehr/oepnv/liniennetzSollfahrdatenEchtzeitdaten",
-        "label": "Verkehr – ÖPNV - Liniennetz Sollfahrdaten Echtzeitdaten",
-        "definition": "Netz der kommunalen Verkehrslinien bzw. Ist- und Sollfahrdaten"
+        'id': 'verkehr/oepnv/fahrgastzahl',
+        'label': 'Verkehr – ÖPNV - Fahrgastzahl',
+        'definition': 'Passagieraufkommen im kommunalen öffentlichen Personennahverkehr'
       },
       {
-        "id": "verkehr/oepnv/vertriebsstelle",
-        "label": "Verkehr – ÖPNV - Vertriebsstelle",
-        "definition": "Standorte der Verkaufsstellen, Servicestellen und Fahrkartenautomaten im ÖPNV"
+        'id': 'verkehr/oepnv/liniennetzSollfahrdatenEchtzeitdaten',
+        'label': 'Verkehr – ÖPNV - Liniennetz Sollfahrdaten Echtzeitdaten',
+        'definition': 'Netz der kommunalen Verkehrslinien bzw. Ist- und Sollfahrdaten'
       },
       {
-        "id": "verkehr/radverkehr/abstellplatz",
-        "label": "Verkehr – Radverkehr - Abstellplatz",
-        "definition": "Standorte der Fahrradstellplätze"
+        'id': 'verkehr/oepnv/vertriebsstelle',
+        'label': 'Verkehr – ÖPNV - Vertriebsstelle',
+        'definition': 'Standorte der Verkaufsstellen, Servicestellen und Fahrkartenautomaten im ÖPNV'
       },
       {
-        "id": "verkehr/radverkehr/ladestation",
-        "label": "Verkehr – Radverkehr - Ladestation",
-        "definition": "E-Tankstellen zur Aufladung von Elektrofahrrädern"
+        'id': 'verkehr/radverkehr/abstellplatz',
+        'label': 'Verkehr – Radverkehr - Abstellplatz',
+        'definition': 'Standorte der Fahrradstellplätze'
       },
       {
-        "id": "verkehr/radverkehr/messung",
-        "label": "Verkehr – Radverkehr - Messung",
-        "definition": "Standorte und Messergebnisse der Radzählstellen"
+        'id': 'verkehr/radverkehr/ladestation',
+        'label': 'Verkehr – Radverkehr - Ladestation',
+        'definition': 'E-Tankstellen zur Aufladung von Elektrofahrrädern'
       },
       {
-        "id": "verkehr/radverkehr/radwegUndRadroute",
-        "label": "Verkehr – Radverkehr - Radweg und Radroute",
-        "definition": "Informationen zu Radwegen und Radrouten"
+        'id': 'verkehr/radverkehr/messung',
+        'label': 'Verkehr – Radverkehr - Messung',
+        'definition': 'Standorte und Messergebnisse der Radzählstellen'
       },
       {
-        "id": "verkehr/radverkehr/verleih",
-        "label": "Verkehr – Radverkehr - Verleih",
-        "definition": "Standorte der Fahrradmietsysteme"
+        'id': 'verkehr/radverkehr/radwegUndRadroute',
+        'label': 'Verkehr – Radverkehr - Radweg und Radroute',
+        'definition': 'Informationen zu Radwegen und Radrouten'
       },
       {
-        "id": "verkehr/schiffsverkehrUndFaehrverkehr/anlegestelle",
-        "label": "Verkehr – Schiffsverkehr und Fährverkehr - Anlegestelle",
-        "definition": "Standorte der Schiffsanlegestellen und deren Belegung"
+        'id': 'verkehr/radverkehr/verleih',
+        'label': 'Verkehr – Radverkehr - Verleih',
+        'definition': 'Standorte der Fahrradmietsysteme'
       },
       {
-        "id": "verkehr/schiffsverkehrUndFaehrverkehr/fracht",
-        "label": "Verkehr – Schiffsverkehr und Fährverkehr - Fracht",
-        "definition": "Güterumschlag"
+        'id': 'verkehr/schiffsverkehrUndFaehrverkehr/anlegestelle',
+        'label': 'Verkehr – Schiffsverkehr und Fährverkehr - Anlegestelle',
+        'definition': 'Standorte der Schiffsanlegestellen und deren Belegung'
       },
       {
-        "id": "verkehr/schiffsverkehrUndFaehrverkehr/passagier",
-        "label": "Verkehr – Schiffsverkehr und Fährverkehr - Passagier",
-        "definition": "Fahrgäste"
+        'id': 'verkehr/schiffsverkehrUndFaehrverkehr/fracht',
+        'label': 'Verkehr – Schiffsverkehr und Fährverkehr - Fracht',
+        'definition': 'Güterumschlag'
       },
       {
-        "id": "verkehr/sondernutzung",
-        "label": "Verkehr – Sondernutzung",
-        "definition": "Anträge auf Ausnahmegenehmigungen und Erlaubnisse im Straßenverkehr"
+        'id': 'verkehr/schiffsverkehrUndFaehrverkehr/passagier',
+        'label': 'Verkehr – Schiffsverkehr und Fährverkehr - Passagier',
+        'definition': 'Fahrgäste'
       },
       {
-        "id": "verkehr/unfall",
-        "label": "Verkehr – Unfall",
-        "definition": "Verkehrsunfälle, Verkehrsunfallentwicklung"
+        'id': 'verkehr/sondernutzung',
+        'label': 'Verkehr – Sondernutzung',
+        'definition': 'Anträge auf Ausnahmegenehmigungen und Erlaubnisse im Straßenverkehr'
       },
       {
-        "id": "wetter",
-        "label": "Wetter",
-        "definition": "Wetterdaten"
+        'id': 'verkehr/unfall',
+        'label': 'Verkehr – Unfall',
+        'definition': 'Verkehrsunfälle, Verkehrsunfallentwicklung'
       },
       {
-        "id": "wetter/hitze",
-        "label": "Wetter – Hitze",
-        "definition": "Hitzebelastung und Hitzeinseln im Stadtgebiet"
+        'id': 'wetter',
+        'label': 'Wetter',
+        'definition': 'Wetterdaten'
       },
       {
-        "id": "wetter/messung",
-        "label": "Wetter – Messung",
-        "definition": "Wettermessdaten"
+        'id': 'wetter/hitze',
+        'label': 'Wetter – Hitze',
+        'definition': 'Hitzebelastung und Hitzeinseln im Stadtgebiet'
       },
       {
-        "id": "wirtschaft",
-        "label": "Wirtschaft",
-        "definition": "Wirtschaftsdaten"
+        'id': 'wetter/messung',
+        'label': 'Wetter – Messung',
+        'definition': 'Wettermessdaten'
       },
       {
-        "id": "wirtschaft/arbeitslosigkeit",
-        "label": "Wirtschaft – Arbeitslosigkeit",
-        "definition": "Statistische Daten zu Arbeitslosigkeit"
+        'id': 'wirtschaft',
+        'label': 'Wirtschaft',
+        'definition': 'Wirtschaftsdaten'
       },
       {
-        "id": "wirtschaft/berufspendler",
-        "label": "Wirtschaft – Berufspendler",
-        "definition": "Infomationen zu Pendlerinnen und Pendlern, die regelmäßig zwischen Wohnort und Arbeitsplatz pendeln"
+        'id': 'wirtschaft/arbeitslosigkeit',
+        'label': 'Wirtschaft – Arbeitslosigkeit',
+        'definition': 'Statistische Daten zu Arbeitslosigkeit'
       },
       {
-        "id": "wirtschaft/beschaeftigung",
-        "label": "Wirtschaft – Beschäftigung",
-        "definition": "Statistische Daten zu Beschäftigung"
+        'id': 'wirtschaft/berufspendler',
+        'label': 'Wirtschaft – Berufspendler',
+        'definition': 'Infomationen zu Pendlerinnen und Pendlern, die regelmäßig zwischen Wohnort und Arbeitsplatz pendeln'
       },
       {
-        "id": "wirtschaft/beteiligungAnOeffentlicherWirtschaft/ausschreibungUndVergabe",
-        "label": "Wirtschaft – Beteiligung an Öffentlicher Wirtschaft - Ausschreibung und Vergabe",
-        "definition": "Vergaben und Ausschreibungen"
+        'id': 'wirtschaft/beschaeftigung',
+        'label': 'Wirtschaft – Beschäftigung',
+        'definition': 'Statistische Daten zu Beschäftigung'
       },
       {
-        "id": "wirtschaft/beteiligungAnOeffentlicherWirtschaft/beteiligung",
-        "label": "Wirtschaft – Beteiligung an Öffentlicher Wirtschaft - Beteiligung",
-        "definition": "Anteile der Kommunen an Unternehmen der Daseinsvorsorge"
+        'id': 'wirtschaft/beteiligungAnOeffentlicherWirtschaft/ausschreibungUndVergabe',
+        'label': 'Wirtschaft – Beteiligung an Öffentlicher Wirtschaft - Ausschreibung und Vergabe',
+        'definition': 'Vergaben und Ausschreibungen'
       },
       {
-        "id": "wirtschaft/bueroflaecheIndustrieflaecheGewerbeflaeche",
-        "label": "Wirtschaft – Bürofläche Industriefläche Gewerbefläche",
-        "definition": "Gewerblich genutzte Flächen"
+        'id': 'wirtschaft/beteiligungAnOeffentlicherWirtschaft/beteiligung',
+        'label': 'Wirtschaft – Beteiligung an Öffentlicher Wirtschaft - Beteiligung',
+        'definition': 'Anteile der Kommunen an Unternehmen der Daseinsvorsorge'
       },
       {
-        "id": "wirtschaft/coworking",
-        "label": "Wirtschaft – Coworking",
-        "definition": "Gemeinsam genutzte bzw. geteilte Büroräumlichkeiten"
+        'id': 'wirtschaft/bueroflaecheIndustrieflaecheGewerbeflaeche',
+        'label': 'Wirtschaft – Bürofläche Industriefläche Gewerbefläche',
+        'definition': 'Gewerblich genutzte Flächen'
       },
       {
-        "id": "wirtschaft/dienstleistung/einzelhandel",
-        "label": "Wirtschaft – Dienstleistung - Einzelhandel",
-        "definition": "Einzelhandelsgeschäft"
+        'id': 'wirtschaft/coworking',
+        'label': 'Wirtschaft – Coworking',
+        'definition': 'Gemeinsam genutzte bzw. geteilte Büroräumlichkeiten'
       },
       {
-        "id": "wirtschaft/dienstleistung/handwerk",
-        "label": "Wirtschaft – Dienstleistung - Handwerk",
-        "definition": "Gewerbliche Tätigkeiten, die dem Handwerk zugeordnet werden (nicht industriell)"
+        'id': 'wirtschaft/dienstleistung/einzelhandel',
+        'label': 'Wirtschaft – Dienstleistung - Einzelhandel',
+        'definition': 'Einzelhandelsgeschäft'
       },
       {
-        "id": "wirtschaft/dienstleistung/postfiliale",
-        "label": "Wirtschaft – Dienstleistung - Postfiliale",
-        "definition": "Filialen der Postdienste"
+        'id': 'wirtschaft/dienstleistung/handwerk',
+        'label': 'Wirtschaft – Dienstleistung - Handwerk',
+        'definition': 'Gewerbliche Tätigkeiten, die dem Handwerk zugeordnet werden (nicht industriell)'
       },
       {
-        "id": "wirtschaft/dienstleistung/weihnachtsmarkt",
-        "label": "Wirtschaft – Dienstleistung - Weihnachtsmarkt",
-        "definition": "Weihnachtsmärkte"
+        'id': 'wirtschaft/dienstleistung/postfiliale',
+        'label': 'Wirtschaft – Dienstleistung - Postfiliale',
+        'definition': 'Filialen der Postdienste'
       },
       {
-        "id": "wirtschaft/dienstleistung/wochenmarkt",
-        "label": "Wirtschaft – Dienstleistung - Wochenmarkt",
-        "definition": "Regelmäßig stattfindende Märkte, besonders für Gemüse, Obst, Fleisch, Blumen"
+        'id': 'wirtschaft/dienstleistung/weihnachtsmarkt',
+        'label': 'Wirtschaft – Dienstleistung - Weihnachtsmarkt',
+        'definition': 'Weihnachtsmärkte'
       },
       {
-        "id": "wirtschaft/gewerbeanmeldung",
-        "label": "Wirtschaft – Gewerbeanmeldung",
-        "definition": "Anmeldung der Ausübung eines Gewerbes bei der Behörde"
+        'id': 'wirtschaft/dienstleistung/wochenmarkt',
+        'label': 'Wirtschaft – Dienstleistung - Wochenmarkt',
+        'definition': 'Regelmäßig stattfindende Märkte, besonders für Gemüse, Obst, Fleisch, Blumen'
       },
       {
-        "id": "wirtschaft/insolvenz",
-        "label": "Wirtschaft – Insolvenz",
-        "definition": "Unternehmensinsolvenzen"
+        'id': 'wirtschaft/gewerbeanmeldung',
+        'label': 'Wirtschaft – Gewerbeanmeldung',
+        'definition': 'Anmeldung der Ausübung eines Gewerbes bei der Behörde'
       },
       {
-        "id": "wirtschaft/wirtschaftsfoerderung",
-        "label": "Wirtschaft – Wirtschaftsförderung",
-        "definition": "Förderung der Wirtschaft durch Kommunen durch finanzielle oder andere Zuwendungen"
+        'id': 'wirtschaft/insolvenz',
+        'label': 'Wirtschaft – Insolvenz',
+        'definition': 'Unternehmensinsolvenzen'
       },
       {
-        "id": "wirtschaft/wirtschaftsstandort",
-        "label": "Wirtschaft – Wirtschaftsstandort",
-        "definition": "Wirtschaftsrahmenbedingungen in einem bestimmten Gebiet"
+        'id': 'wirtschaft/wirtschaftsfoerderung',
+        'label': 'Wirtschaft – Wirtschaftsförderung',
+        'definition': 'Förderung der Wirtschaft durch Kommunen durch finanzielle oder andere Zuwendungen'
+      },
+      {
+        'id': 'wirtschaft/wirtschaftsstandort',
+        'label': 'Wirtschaft – Wirtschaftsstandort',
+        'definition': 'Wirtschaftsrahmenbedingungen in einem bestimmten Gebiet'
       }
     ]
 
-def render_sample_record(value):
+def render_sample_record(value, **attrs):
     # TODO: that's obviously super inefficient to compute this every time...
     record_dict = {sample_record['id']: sample_record['label'] for sample_record in sample_record_select_options()}
     if value in record_dict:
-      return link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}')
+      return link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
     return ""
 
 def render_govdata_example_link(value):
     govdata_sparql_link = f"https://www.govdata.de/web/guest/sparql-assistent#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0ASELECT%20*%20WHERE%20%7B%0A%20%20%3Fdatensatz%0A%20%20%20%20dct%3Areferences%20%3Chttps%3A%2F%2Fmusterdatenkatalog.de%2Fdef%2Fmusterdatensatz%2F{value}%3E%20%3B%0A%20%20%20%20dct%3Atitle%20%3Ftitle%20%3B%0A%20%20.%0A%7D%20&endpoint=https%3A%2F%2Fwww.govdata.de%2Fsparql&requestMethod=GET&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bxml%2C*%2F*%3Bq%3D0.9&outputFormat=table"
     return link_to("Beispiele bei GovData.de", govdata_sparql_link)
+
+def hvd_category_select_options() -> list:
+    return [
+      { 'id': '', 'label': 'Keine' },
+      { 'id': 'c_a9135398', 'label': 'Unternehmen und Eigentümerschaft von Unternehmen' },
+      { 'id': 'c_e1da4e07', 'label': 'Statistik' },
+      { 'id': 'c_164e0bf5', 'label': 'Meteorologie' },
+      { 'id': 'c_ac64a52d', 'label': 'Georaum' },
+      { 'id': 'c_b79e35eb', 'label': 'Mobilität' },
+      { 'id': 'c_dd313021', 'label': 'Erdbeobachtung und Umwelt' },
+    ]
+
+def render_hvd_category(value: str, **attrs) -> str:
+    # TODO: that's obviously super inefficient to compute this every time...
+    hvd_dict = {hvd_category['id']: hvd_category['label'] for hvd_category in hvd_category_select_options()}
+    if value in hvd_dict:
+      return link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
+    return ""
 
 def state_mapping():
     return {

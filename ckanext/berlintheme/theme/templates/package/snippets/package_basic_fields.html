@@ -335,7 +335,7 @@
 
 {% endblock %}
 
-		{% block package_sample_record %}
+{% block package_sample_record %}
 
   <div class="form-group">
     {% if h.berlin_required('sample_record') %}
@@ -348,13 +348,42 @@
         <div class="col-xs-11">
           <select id="field-sample_record" name="sample_record" data-module="autocomplete">
             {% for feature in h.berlin_sample_record_select_options()  %}
-              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('sample_record', []) %}selected="selected"{% endif %}>{{ feature['label'] }} ({{feature['definition']}})</option>
+              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('sample_record', []) %}selected="selected"{% endif %}>{{ feature['label'] }}{% if feature['definition'] is defined %} ({{feature['definition']}}){% endif %}</option>
             {% endfor %}
           </select>
         </div>
         <div class="col-xs-1">
           {% set link_text = "Dokumentation zum Attribut 'Musterdatensatz'" %}
           <a href="https://berlinonline.github.io/open-data-handbuch/#musterdatensatz" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+{% endblock %}
+
+{% block package_hvd_category %}
+
+  <div class="form-group">
+    {% if h.berlin_required('hvd_category') %}
+      <label class="control-label" for="field-hvd_category datasetform-required" title="{{ _("This field is required") }}">{{ _("HVD-Kategorie") }}</label>
+    {% else %}
+      <label class="control-label" for="field-hvd_category">{{ _("HVD-Kategorie") }}</label>
+    {% endif %}
+    <div class="controls">
+      <div class="row">
+        <div class="col-xs-11">
+          <select id="field-hvd_category" name="hvd_category" data-module="autocomplete">
+            {% for feature in h.berlin_hvd_category_select_options()  %}
+              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('hvd_category', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-xs-1">
+          {% set link_text = "Dokumentation zum Attribut 'HVD-Kategorie'" %}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#high-value-datasets" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
         </div>
       </div>
     </div>

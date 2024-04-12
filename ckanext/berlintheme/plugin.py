@@ -63,6 +63,10 @@ class BerlinTheme(plugins.SingletonPlugin):
                 theme_helpers.render_sample_record ,
             'berlin_render_govdata_example_link':
                 theme_helpers.render_govdata_example_link ,
+            'berlin_hvd_category_select_options':
+                theme_helpers.hvd_category_select_options ,
+            'berlin_render_hvd_category':
+                theme_helpers.render_hvd_category ,
         }
 
     # -------------------------------------------------------------------

@@ -149,10 +149,19 @@
         )}}
         {{
           read.metadata_field(
-            label=_(""),
+            label="",
             value=pkg_dict.sample_record,
             display_value=h.literal(('<img src="/images/govdata_mini.png"/> ')) ~ h.berlin_render_govdata_example_link(pkg_dict.sample_record)
         )}}
+
+        {# High-value Dataset #}
+        {{
+          read.metadata_field(
+            label=_("HVD-Kategorie"),
+            value=pkg_dict.hvd_category,
+            display_value=h.berlin_render_hvd_category(pkg_dict.hvd_category)
+        )}}
+
     </tbody>
   </table>
 
