@@ -1,0 +1,24 @@
+{#
+Embeds a organization within the sidebar of a page.
+
+organization    - The organization dict.
+truncate - A max length for the organization description. If not provided the description
+           will be full length.
+has_context_title - Boolean for whether to display a module-heading for when
+                    this snippet appears within a non-organization template
+                    (e.g. dataset page sidebar)
+
+Example:
+
+    {% snippet 'snippets/organization, organization=c.group_dict %}
+
+#}
+
+{% ckan_extends %}
+
+{% block heading %}
+  {{ super() }}
+  {% if h.berlin_org_is_external(organization.id) %}
+    <h2>({{ _("extern") }})</h2>
+  {% endif %}
+{% endblock %}

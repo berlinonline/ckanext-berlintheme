@@ -6,9 +6,10 @@ import ckan.logic as logic
 import ckan.model as model
 from ckan.common import c, config
 from ckanext.berlin_dataset_schema.schema import Schema
+import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
 
-log = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 get_action = logic.get_action
 
 def required(attribute):
@@ -1601,3 +1602,12 @@ def warning_text():
     '''Return the warning text as set in the berlintheme.warning config setting,
     or the default 'Warning'.'''
     return config.get('berlintheme.warning', 'Warning')
+
+def org_is_external(org: str) -> bool:
+    org = helpers.get_organization(org)
+    extras = org.get('extras', [])
+    LOG.info(f"extras: {extras}")
+    for extra in extras:
+        if extra['key'] == 'external' and extra['value'] == 'true':
+          return True
+    return False

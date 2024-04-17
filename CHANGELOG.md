@@ -2,6 +2,7 @@
 
 ## Development
 
+- Add functionality to mark organizations as external. This currently works with just an extra field `external` set to `true` on the organization. There is a helper function `org_is_external` (`berlin_org_is_external` in the template) to determine if an org is external, based on the extra.
 - Add new metadata field `hvd_category` (to link to the category of high-value datasets as defined by the [EU commission implementing regulation 2023/138](https://eur-lex.europa.eu/eli/reg_impl/2023/138/oj?uri=CELEX:32023R0138)).
 - Add new metadata field `sample_record` (to link to the matching "Musterdatensatz", see https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verwendung-des-musterdatenkatalogs-fur-kommunen).
 
