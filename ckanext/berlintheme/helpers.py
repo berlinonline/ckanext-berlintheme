@@ -1606,7 +1606,6 @@ def warning_text():
 def org_is_external(org: str) -> bool:
     org = helpers.get_organization(org)
     extras = org.get('extras', [])
-    LOG.info(f"extras: {extras}")
     for extra in extras:
         if extra['key'] == 'external' and extra['value'] == 'true':
           return True
