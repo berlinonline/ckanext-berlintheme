@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.11](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.11)
+
+_(2024-08-05)_
+
+- Update About/Privacy Policy (Update responsible persion & Update contact email address)
+
 ## [0.3.10](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.10)
 
 _(2024-04-25)_
