@@ -2,11 +2,17 @@
 
 ## Development
 
+## [0.3.12](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.12)
+
+_(2024-08-28)_
+
+- Change BerlinOnline company name (drop the "& Co. KG") everywhere.
+
 ## [0.3.11](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.11)
 
 _(2024-08-05)_
 
-- Update About/Privacy Policy (Update responsible persion & Update contact email address)
+- Update /about and /datenschutzerklaerung pages (responsible person & contact email address).
 
 ## [0.3.10](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.10)
 
