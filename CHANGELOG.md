@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.13](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.13)
+
+_(2024-12-17)_
+
+- Add publiccode.yml for OpenCode.
+
 ## [0.3.12](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.12)
 
 _(2024-08-28)_
