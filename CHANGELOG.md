@@ -2,13 +2,14 @@
 
 ## Development
 
-- Change BerlinOnline company name more (drop the "Stadtportal"),
 
 ## [0.3.13](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.13)
 
 _(2024-12-17)_
 
-- Add publiccode.yml for OpenCode.
+- Add [publiccode.yml](publiccode.yml) for OpenCode.
+- Change BerlinOnline company name more (drop the "Stadtportal").
+- Adjust README.
 
 ## [0.3.12](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.12)
 
