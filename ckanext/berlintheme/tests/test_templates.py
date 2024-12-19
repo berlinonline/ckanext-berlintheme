@@ -79,7 +79,7 @@ def datasets(orgs):
             "temporal_coverage_from": "2011-09-01",
             "temporal_coverage_to": "2018-12-31",
             "maintainer_email": "opendata@berlin.de",
-            "author": "BerlinOnline Stadtportal GmbH & Co. KG",
+            "author": "BerlinOnline GmbH",
             "license_id": "cc-by",
             "notes": "Zugriffsstatistik des Berliner Datenportals"
             "(daten.berlin.de). Enthalten sind die Gesamtzugriffe"
@@ -104,7 +104,7 @@ def datasets(orgs):
             "temporal_coverage_from": "2011-09-01",
             "temporal_coverage_to": "2018-12-31",
             "maintainer_email": "opendata@berlin.de",
-            "author": "BerlinOnline Stadtportal GmbH & Co. KG",
+            "author": "BerlinOnline GmbH",
             "license_id": "cc-by",
             "notes": "Zugriffsstatistik des Berliner Datenportals"
             "(daten.berlin.de). Enthalten sind die Gesamtzugriffe"

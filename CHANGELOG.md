@@ -2,6 +2,8 @@
 
 ## Development
 
+- Change BerlinOnline company name more (drop the "Stadtportal"),
+
 ## [0.3.13](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.13)
 
 _(2024-12-17)_
