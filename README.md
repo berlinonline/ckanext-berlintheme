@@ -1,7 +1,7 @@
 # ckanext-berlintheme
 
-[![Tests](https://github.com/berlinonline/ckanext-berlintheme/workflows/Tests/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-berlintheme/actions)
-[![Code Coverage](http://codecov.io/github/berlinonline/ckanext-berlintheme/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-berlintheme?branch=master)
+[![Tests](https://github.com/berlinonline/ckanext-berlintheme/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-berlintheme/actions)
+[![Code Coverage](https://codecov.io/github/berlinonline/ckanext-berlintheme/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-berlintheme?branch=master)
 
 This plugin belongs to a set of plugins for the _Datenregister_ – the non-public [CKAN](https://ckan.org) instance that is part of Berlin's open data portal [daten.berlin.de](https://daten.berlin.de).
 `ckanext-berlintheme` provides custom theming and UI for the Datenregister.
@@ -14,7 +14,7 @@ The plugin implements the following CKAN interfaces:
 
 ## Requirements
 
-This plugin has been tested with CKAN 2.9.8 (which requires Python 3).
+This plugin has been tested with CKAN 2.9.10 (which requires Python 3).
 
 ## Custom Settings
 
@@ -32,7 +32,7 @@ berlintheme.warning = Am Dienstag, 18.12.2018, ab 22 Uhr werden Wartungsarbeiten
 
 ## License
 
-This material is copyright © [BerlinOnline Stadtportal GmbH](https://www.berlinonline.net/).
+This material is copyright © [BerlinOnline GmbH](https://www.berlinonline.net/).
 
 This extension is open and licensed under the GNU Affero General Public License (AGPL) v3.0.
 Its full text may be found at:
