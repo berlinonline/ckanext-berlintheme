@@ -7,7 +7,7 @@ name: ckanext-berlintheme
 applicationSuite: CKAN
 url: 'https://github.com/berlinonline/ckanext-berlintheme'
 releaseDate: '2018-05-19'
-softwareVersion: 0.3.13
+softwareVersion: 0.3.14
 developmentStatus: stable
 softwareType: addon
 categories:
