@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
+
+_(2025-03-31)_
+
+- Extend the list of HVDs beyond top-concepts.
+
 ## [0.3.13](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.13)
 
 _(2024-12-17)_
