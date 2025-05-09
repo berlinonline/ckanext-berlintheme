@@ -13,17 +13,7 @@ global_warning_css:
     - css/global_warning.css
   output: berlintheme/%(version)s_global_warning.css
 
-bde_assetservice_css:
+ckan_extra_css:
   contents:
-    - css/berlin_assetservice.css
-  output: berlintheme/%(version)s_bde_assetservice.css
-
-bde_fontawesome:
-  contents:
-    - css/fontawesome.all.min.css
-  output: berlintheme/%(version)s_bde_fontawesome.css
-
-bde_assetservice_js:
-  contents:
-    - css/berlin_assetservice.css
-  output: berlintheme/%(version)s_bde_assetservice.js
+    - css/ckan_extra.css
+  output: berlintheme/%(version)s_ckan_extra.css

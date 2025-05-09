@@ -1,18 +1,17 @@
 {% extends "page.html" %}
-{% set homepage_style = ( g.homepage_style or '1' ) %}
 
-{% block subtitle %}{{ _("Welcome") }}{% endblock %}
-
-{% block maintag %}{% endblock %}
-{% block toolbar %}{% endblock %}
-
-{% block content %}
-  <div class="homepage layout-{{ homepage_style }}">
-    <div class="container">
-      {{ self.flash() }}
-    </div>
-    {% block primary_content %}
-      {% snippet "home/layout{0}.html".format(homepage_style) %}
-    {% endblock %}
+{% block hero_content %}
+  <div class="textbox">
+    <h1 class="title add-text-background">Willkommen bei datenregister.berlin.de</h1>
   </div>
-{% endblock %}
+  <p>
+    Das <strong>Datenregister</strong> ist die nicht-öffentliche Datenbank hinter dem öffentlichen <a href="https://daten.berlin.de" title="Offene Daten Berlin">Open-Data-Portal des Landes Berlin</a>. Hier werden Metadaten zu neuen Datensätzen zum Datenportal hinzugefügt und gewartet.
+  </p>
+{% endblock hero_content%}
+
+
+{% block primary_content %}
+  {% block search %}
+    {% snippet 'home/snippets/search.html' %}
+  {% endblock %}
+{% endblock primary_content%}

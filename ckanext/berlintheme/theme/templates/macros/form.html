@@ -19,12 +19,23 @@ Examples:
 
 #}
 {% macro input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
-{%- set extra_html = caller() if caller -%}
+  {%- set extra_html = caller() if caller -%}
 
-{% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
-<input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
-{% endcall %}
+  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
+    <input id="{{ id or name }}" {{ 'class=" is-invalid"' if error }} type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
+  {% endcall %}
 {% endmacro %}
+
+{% macro wrapped_input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
+  {%- set extra_html = caller() if caller -%}
+
+  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
+    <div class="dr-input-wrapper">
+      <input id="{{ id or name }}" {{ 'class=" is-invalid"' if error }} type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
+    </div>
+  {% endcall %}
+{% endmacro %}
+
 
 {#
 Builds a single checkbox input.
@@ -45,18 +56,18 @@ Example:
 
 #}
 {% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false) %}
-{%- set extra_html = caller() if caller -%}
-<div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
-<div class="controls">
-  <label class="checkbox" for="{{ id or name }}">
-    <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
-    {{ label or name }}
-    {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-    {% if error and error is iterable %}<strong class="error-inline">{{ error|join(', ') }}</strong>{% endif %}
-  </label>
-  {{ extra_html }}
-</div>
-</div>
+  {%- set extra_html = caller() if caller -%}
+  <div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
+    <div class="controls">
+      <label class="checkbox" for="{{ id or name }}">
+        <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
+        {{ label or name }}
+        {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
+        {% if error and error is iterable %}<strong class="error-inline">{{ error|join(', ') }}</strong>{% endif %}
+      </label>
+      {{ extra_html }}
+    </div>
+  </div>
 {% endmacro %}
 
 {#
@@ -71,40 +82,40 @@ name        - The name of the form parameter.
 id          - The id to use on the input and label. Convention is to prefix with 'field-'.
 label       - The human readable label.
 options     - A list/tuple of fields to be used as <options>.
-  selected    - The value of the selected <option>.
-    error       - A list of error strings for the field or just true to highlight the field.
-    classes     - An array of classes to apply to the form-group.
-    is_required - Boolean of whether this input is requred for the form to validate
+selected    - The value of the selected <option>.
+error       - A list of error strings for the field or just true to highlight the field.
+classes     - An array of classes to apply to the form-group.
+is_required - Boolean of whether this input is requred for the form to validate
 
-    Examples:
+Examples:
 
-    {% import 'macros/form.html' as form %}
-    {{ form.select('year', label=_('Year'), options=[{'value':2010, 'text': 2010},{'value': 2011, 'text': 2011}], selected=2011, error=errors.year) }}
+{% import 'macros/form.html' as form %}
+{{ form.select('year', label=_('Year'), options=[{'value':2010, 'text': 2010},{'value': 2011, 'text': 2011}], selected=2011, error=errors.year) }}
 
-    Or only with values if they are the same as text:
-    {{ form.select('year', label=_('Year'), options=[{'value':2010},{'value': 2011}], selected=2011, error=errors.year) }}
+Or only with values if they are the same as text:
+{{ form.select('year', label=_('Year'), options=[{'value':2010},{'value': 2011}], selected=2011, error=errors.year) }}
 
-    Complete example:
-    {{ form.select('the_data_type', id='the_data_type', label=_('Data Type'), options=[
-        {'value': '0', 'text': _('[Choose Data Type]')}
-        , {'value': '1', 'text': _('Private data')}
-        , {'value': '2', 'text': _('Not private data')}
-    ], selected=data.the_data_type if data.the_data_type else '0', is_required=true) }}
+Complete example:
+{{ form.select('the_data_type', id='the_data_type', label=_('Data Type'), options=[
+    {'value': '0', 'text': _('[Choose Data Type]')}
+    , {'value': '1', 'text': _('Private data')}
+    , {'value': '2', 'text': _('Not private data')}
+], selected=data.the_data_type if data.the_data_type else '0', is_required=true) }}
 
-    #}
-    {% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
-    {% set classes = (classes|list) %}
-    {% do classes.append('control-select') %}
+#}
+{% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
+  {% set classes = (classes|list) %}
+  {% do classes.append('control-select') %}
 
-    {%- set extra_html = caller() if caller -%}
-    {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
+  {%- set extra_html = caller() if caller -%}
+  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
     <select id="{{ id or name }}" name="{{ name }}" {{ attributes(attrs) }}>
       {% for option in options %}
-  <option value="{{ option.value }}"{% if option.value == selected %} selected{% endif %}>{{ option.text or option.value }}</option>
-  {% endfor %}
-  </select>
+        <option value="{{ option.value }}"{% if option.value == selected %} selected{% endif %}>{{ option.text or option.value }}</option>
+      {% endfor %}
+    </select>
   {% endcall %}
-  {% endmacro %}
+{% endmacro %}
 
   {#
   Creates all the markup required for a Markdown textarea element. Handles
@@ -131,9 +142,11 @@ options     - A list/tuple of fields to be used as <options>.
   {% set markdown_tooltip = "<pre><p>__Bold text__ or _italic text_</p><p># title<br>## secondary title<br>### etc</p><p>* list<br>* of<br>* items</p><p>http://auto.link.ed/</p></pre><p><b><a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'>Full markdown syntax</a></b></p><p class='text-muted'><b>Please note:</b> HTML tags are stripped out for security reasons</p>" %}
 
   {%- set extra_html = caller() if caller -%}
-  {% call input_block(id or name, label or name, error, classes, control_classes=["editor"], extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
+  {%- set help -%}
+    <small id="{{ id or name }}Help" class="formgroup__help">Sie können hier Markdown-Formatierung verwenden.</small>
+  {%- endset -%}
+  {% call input_block(id or name, label or name, error, classes, control_classes=["editor"], extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=help) %}
   <textarea id="{{ id or name }}" name="{{ name }}" cols="20" rows="5" placeholder="{{ placeholder }}" {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
-  <span class="editor-info-block">{% trans %}You can use <a href="#markdown" title="Markdown quick reference" data-target="popover" data-content="{{ markdown_tooltip }}" data-html="true">Markdown formatting</a> here{% endtrans %}</span>
   {% endcall %}
   {% endmacro %}
 
@@ -197,7 +210,7 @@ options     - A list/tuple of fields to be used as <options>.
   <div class="input-group">
     {% if prepend %}<span class="input-group-addon">{{ prepend }}</span>{%- endif -%}
     <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
-    {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+    {% if error and error is iterable %}<div class="message message--error">{{ error|join(', ') }}</div>{% endif %}
   </div>
   {% endcall %}
   {% endmacro %}
@@ -281,61 +294,94 @@ options     - A list/tuple of fields to be used as <options>.
   <input id="field" type="text" name="{{ name }}" value="{{ value | empty_and_escape }}" />
   {% endcall %}
 
-  #}
   {% macro input_block(for, label="", error="", classes=[], control_classes=[], extra_html="", is_required=false, doc_link="") %}
-  {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
-  <div class="form-group{{ " error" if error }}{{ " " ~ classes | join(' ') }}">
-  {% if is_required %}
-    <label class="control-label datasetform-required" for="{{ for }}" title="{{ _("This field is required") }}">{{ label or _('Custom') }}</label>
-  {% else %}
-    <label class="control-label" for="{{ for }}">{{ label or _('Custom') }}</label>
-  {% endif %}
-  <div class="controls{{ " " ~ control_classes | join(' ') }}">
-  {% if doc_link is not none and doc_link|length %}
-    <div class="row">
-      <div class="col-xs-11">
+    {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
+    <div class="form-group{{ " error" if error }}{{ " " ~ classes | join(' ') }}">
+      {% if is_required %}
+        <label class="control-label datasetform-required" for="{{ for }}" title="{{ _("This field is required") }}">{{ label or _('Custom') }}</label>
+      {% else %}
+        <label class="control-label" for="{{ for }}">{{ label or _('Custom') }}</label>
+      {% endif %}
+      <div class="controls{{ " " ~ control_classes | join(' ') }}">
+      {% if doc_link is not none and doc_link|length %}
+        <div class="row">
+          <div class="col-xs-11">
+            {{ caller() }}
+            {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+            {{ extra_html }}
+          </div>
+          <div class="col-xs-1">
+            <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+          </div>
+        </div>
+      {% else %}
         {{ caller() }}
         {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
         {{ extra_html }}
-      </div>
-      <div class="col-xs-1">
-        <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+      {% endif %}
       </div>
     </div>
-  {% else %}
-    {{ caller() }}
-    {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
-    {{ extra_html }}
-  {% endif %}
-  </div>
-  </div>
   {% endmacro %}
-
-  {#
-  Builds a list of errors for the current form.
-
-  errors  - A dict of field/message pairs.
-  type    - The alert-* class that should be applied (default: "error")
-  classes - A list of classes to apply to the wrapper (default: [])
-
-  Example:
-
-  {% import 'macros/form.html' as form %}
-  {{ form.errors(error_summary, type="warning") }}
-
   #}
-  {% macro errors(errors={}, type="error", classes=[]) %}
-  {% if errors %}
-  <div class="error-explanation alert alert-{{ type }}{{ " " ~ classes | join(' ') }}">
-  <p>{{ _('The form contains invalid entries:') }}</p>
-  <ul>
-    {% for key, error in errors.items() %}
-    <li data-field-label="{{ key }}">{% if key %}{{ key }}: {% endif %}{{ error }}</li>
-    {% endfor %}
-  </ul>
-  </div>
-  {% endif %}
+  {% macro input_block(for, label="", error="", classes=[], control_classes=[], extra_html="", is_required=false, doc_link="", help="") %}
+    {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
+    <div class="form-group{{ " " ~ classes | join(' ') }}">
+      {% if is_required %}
+        <label class="form-label" for="{{ for }}" title="{{ _("This field is required") }}">{{ label or _('Custom') }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span></label>
+      {% else %}
+        <label class="form-label" for="{{ for }}">{{ label or _('Custom') }}</label>
+      {% endif %}
+      {% if doc_link is not none and doc_link|length %}
+        <div class="dr-form-element">
+          {{ caller() }}
+          {{ extra_html }}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+        </div>
+      {% else %}
+        {{ caller() }}
+        {{ extra_html }}
+      {% endif %}
+      {% if error and error is iterable %}
+        <div class="message message--error" id="{{ for }}Invalid">
+          {{ error|join(', ') }}    
+        </div>
+      {% endif %}
+      {% if help %}
+        {{ help | safe }}
+      {% endif %}
+    </div>
   {% endmacro %}
+
+{#
+Builds a list of errors for the current form.
+
+errors  - A dict of field/message pairs.
+type    - The alert-* class that should be applied (default: "error")
+classes - A list of classes to apply to the wrapper (default: [])
+
+Example:
+
+{% import 'macros/form.html' as form %}
+{{ form.errors(error_summary, type="warning") }}
+
+#}
+{% macro errors(errors={}, type="error", classes=[]) %}
+  {% if errors %}
+    <div class="message--error">
+      <h3 class="title">{{ _('The form contains invalid entries:') }}</h3>
+      <ul>
+        {% for key, error in errors.items() %}
+          <li data-field-label="{{ key }}">{% if key %}{{ key }}: {% endif %}{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+<div class="message--error">
+        <h3 class="title">Headline</h3>
+        <p>Text lorem ipsum dolor sit amet, consectetuer elit. Aenean commodo ligula eget dolor.</p>    
+</div>
 
   {#
   Renders an info box with a description. This will usually be used with in a

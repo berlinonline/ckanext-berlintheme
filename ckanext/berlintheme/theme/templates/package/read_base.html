@@ -6,6 +6,26 @@
   {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
 {% endblock %}
 
+
+{% block page_heading %}
+  {{ h.dataset_display_name(pkg) }}
+  {% if pkg.state.startswith('draft') %}
+    [{{ _('Draft') }}]
+  {% endif %}
+  {% if pkg.state == 'deleted' %}
+    [{{ _('Deleted') }}]
+  {% endif %}
+{% endblock %}
+
+{% block content_action %}
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <a class="button dp-button-pen" href="{{ h.url_for('dataset.edit', id=pkg.name, _external=True) }}">{{ _('Edit') }}</a>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+
 {% block secondary_content %}
 
   {% block secondary_help_content %}{% endblock %}
@@ -25,8 +45,5 @@
     {% endif %}
   {% endblock %}
 
-  {% block package_license %}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
-  {% endblock %}
 
 {% endblock %}

@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
+{% block styles %}
+  <link rel="stylesheet" href="https://www.berlin.de/i9f/r1/bundle/berlin_assetservice.css" />
+  <link rel="stylesheet" href="https://www.berlin.de/i9f/r1/bundle/fontawesome.all.min.css" />
+  {% asset 'berlintheme/ckan_extra_css' %}
+{% endblock %}
+
 {%- block page -%}
 
-  {% if not request.url.startswith('https://datenregister.berlin.de') %}
+  {# {% if not request.url.startswith('https://datenregister.berlin.de') %}
     {% set ribbon_title=none %}
     {% set color=none %}
     {% if 'datenregister-stage' in request.url %}
@@ -14,138 +20,91 @@
     {% else %}
       {% set ribbon_title="WHERE AM I?" %}
     {% endif %}
-    {% snippet "snippets/corner_ribbon.html", ribbon_title=ribbon_title, color=color %}
+    {% sni‘ppet "snippets/corner_ribbon.html", ribbon_title=ribbon_title, color=color %}
   {% endif %}
 
   {% block skip %}
     <div class="sr-only sr-only-focusable"><a href="#content">{{ _('Skip to content') }}</a></div>
-  {% endblock %}
+  {% endblock %} #}
 
-  {#
-  Override the header on a page by page basis by extending this block. If
-  making sitewide header changes it is preferable to override the header.html
-  file.
-  #}
-  {%- block header %}
-    {% include "header.html" %}
-  {% endblock -%}
 
   {# The content block allows you to replace the content of the page if needed #}
   {%- block content %}
-    {% block maintag %}<div class="main">{% endblock %}
-      <div id="content" class="container">
-        {% block main_content %}
-          {% block flash %}
-            <div class="flash-messages">
-              {% block flash_inner %}
-                {% for message in h.flash.pop_messages() | list %}
-                  <div class="alert fade in {{ message.category }}">
-                    {{ h.literal(message) }}
-                  </div>
-                {% endfor %}
-              {% endblock %}
-            </div>
-          {% endblock %}
-
-          {% if h.berlin_show_warning() %}
-            {% snippet "snippets/global_warning.html" %}
-          {% endif %}
-
-          {% block toolbar %}
-            <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
-              {% block breadcrumb %}
-                {% if self.breadcrumb_content() | trim %}
+    <div id="page-wrapper">
+      {%- block header %}
+        {% include "header.html" %}
+      {% endblock -%}
+      <div id="layout-grid" role="main">
+        <div id="layout-grid__area--contentheader">
+          {% if self.breadcrumb_content() | trim %}
+            <div id="content-header">
+              <nav class="breadcrumb" aria-label="Sie befinden sich hier">
                   <ol class="breadcrumb">
-                    {% snippet 'snippets/home_breadcrumb_item.html' %}
+                    <li>
+                      <a href="{{ h.url_for('home.index') }}">Datenregister</a>
+                    </li>
                     {% block breadcrumb_content %}{% endblock %}
                   </ol>
-                {% endif %}
-              {% endblock %}
+              </nav>
             </div>
-          {% endblock %}
+          {% endif %}
+        </div>
 
-          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' or c.action=='resource_read' %} no-nav{% endif %}">
-            {#
-            The pre_primary block can be used to add content to before the
-            rendering of the main content columns of the page.
-            #}
-            {% block pre_primary %}
-            {% endblock %}
+        {% block grid_pre_herounit %}{% endblock grid_pre_herounit %}
+        <div id="layout-grid__area--herounit">
+          {% block grid_herounit %}
+          {% endblock grid_herounit %}
+        </div>
 
-            {% block secondary %}
-              <aside class="secondary col-sm-3">
-                {#
-                The secondary_content block can be used to add content to the
-                sidebar of the page. This is the main block that is likely to be
-                used within a template.
-
-                Example:
-
-                  {% block secondary_content %}
-                    <h2>A sidebar item</h2>
-                    <p>Some content for the item</p>
-                  {% endblock %}
-                #}
-                {% block secondary_content %}{% endblock %}
-              </aside>
-            {% endblock %}
-
-            {% block primary %}
-              <div class="primary col-sm-9 col-xs-12" role="main">
-                {#
-                The primary_content block can be used to add content to the page.
-                This is the main block that is likely to be used within a template.
-
-                Example:
-
-                  {% block primary_content %}
-                    <h1>My page content</h1>
-                    <p>Some content for the page</p>
-                  {% endblock %}
-                #}
-                {% block primary_content %}
-                  <article class="module">
-                    {% block page_header %}
-                      <header class="module-content page-header">
-                        {% if self.content_action() | trim %}
-                          <div class="content_action">
-                            {% block content_action %}{% endblock %}
-                          </div>
-                        {% endif %}
-                        <ul class="nav nav-tabs">
-                          {% block content_primary_nav %}{% endblock %}
-                        </ul>
-                      </header>
-                    {% endblock %}
-                    <div class="module-content">
-                      {% if self.page_primary_action() | trim %}
-                        <div class="page_primary_action">
-                          {% block page_primary_action %}{% endblock %}
-                        </div>
-                      {% endif %}
-                      {% block primary_content_inner %}
-                      {% endblock %}
+        <div id="layout-grid__area--maincontent" style="min-height: 0px;">
+          {% block grid_maincontent %}
+            {% block main_content %}
+              <h1>
+                {% block page_heading %}{{ _('Title') }}{% endblock page_heading %}
+              </h1>
+              {% if self.content_action() | trim %}
+                {% block page_header %}
+                  <div class="modul-servicepanel panel--colored dr-page-actions">
+                    {% block service_panel_left %}
+                      {# <div class="servicepanel__left">
+                      </div> #}
+                    {% endblock service_panel_left %}
+                    {% block service_panel_main %}
+                      {# <div class="servicepanel__main">
+                      </div> #}
+                    {% endblock service_panel_main %}  
+                    <div class="servicepanel__right">
+                      {% block content_action %}{% endblock content_action %}
                     </div>
-                  </article>
-                {% endblock %}
-              </div>
-            {% endblock %}
-          </div>
-        {% endblock %}
+                  </div>
+                {% endblock page_header %}
+              {% endif %}
+              {% block primary_content %}
+                {% block primary_content_inner %}                
+                {% endblock primary_content_inner %}
+              {% endblock primary_content %}
+            {% endblock main_content %}
+            {% block secondary_content %}{% endblock secondary_content %}
+          {% endblock grid_maincontent %}
+        </div>
+        {% block grid_post_maincontent %}{% endblock grid_post_maincontent %}
+
+        <div id="layout-grid__area--contentfooter">
+          {%- block footer %}
+            {% include "footer.html" %}
+          {% endblock -%}
+        </div>
       </div>
+      {%- block portal_footer %}
+        {% include "portal_footer.html" %}
+      {% endblock -%}
     </div>
   {% endblock -%}
 
-  {#
-  Override the footer on a page by page basis by extending this block. If
-  making sitewide header changes it is preferable to override the footer.html-u
-  file.
-  #}
-  {%- block footer %}
-    {% include "footer.html" %}
-  {% endblock -%}
 {%- endblock -%}
 
 {%- block scripts %}
-  {% asset 'berlintheme/bde_assetservice_js' %}
+  {% asset 'base/main' %}
+  {% asset 'base/ckan' %}
+  <script src="https://www.berlin.de/i9f/r1/bundle/berlin_assetservice.js"></script>
 {% endblock -%}

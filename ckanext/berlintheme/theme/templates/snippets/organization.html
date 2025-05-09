@@ -14,11 +14,84 @@ Example:
 
 #}
 
-{% ckan_extends %}
+{#
+  Embeds a organization within the sidebar of a page.
+  
+  organization    - The organization dict.
+  truncate - A max length for the organization description. If not provided the description
+             will be full length.
+  has_context_title - Boolean for whether to display a module-heading for when
+                      this snippet appears within a non-organization template
+                      (e.g. dataset page sidebar)
+  
+  Example:
+  
+      {% snippet 'snippets/organization, organization=c.group_dict %}
+  
+#}
+  
+{% set truncate = truncate or 0 %}
+{% set url = h.url_for(organization.type + '.read', id=organization.name, ) %}
 
-{% block heading %}
-  {{ super() }}
-  {% if h.berlin_org_is_external(organization.id) %}
-    <h2>({{ _("extern") }})</h2>
-  {% endif %}
-{% endblock %}
+{% block info %}
+  <div class="fullwidth panel--heavy block">
+    <div class="fullwidth__inner block">
+      {% if has_context_title %}
+        <h2 class="title">{{ _('Organization') }}</h2>
+      {% endif %}
+      <section class="modul-text_bild imagealignleft">
+        {% block image %}
+          <div class="image">
+            <a href="{{ url }}" aria-label="Mehr zu {{organization.title}}">
+              <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" width="200" alt="Logo von {{ organization.title }}" />
+            </a>
+          </div>
+        {% endblock image %}
+        {% block heading %}
+          <h1 class="heading">{{ organization.title or organization.name }}
+            {% if organization.state == 'deleted' %}
+              [{{ _('Deleted') }}]
+            {% endif %}
+          </h1>
+          {% if h.berlin_org_is_external(organization.id) %}
+            <h2>({{ _("extern") }})</h2>
+          {% endif %}
+        {% endblock heading %}
+        {% block description %}
+          <div class="text">
+            {% if organization.description %}
+              <p class="description">
+                {{ h.markdown_extract(organization.description, 180) }}
+              </p>
+            {% else %}
+              <p class="empty">{{ _('There is no description for this organization') }}</p>
+            {% endif %}
+            {# <a href="/datensaetze/simple_search_wwwberlindesenarbeitweiterbildungbildungszeitsuche" class="more" data-mainlink="true">Details<span class="aural">zu:
+            Suche nach anerkannten Veranstaltungen</span></a> #}
+            <a href="{{ url }}" class="more" style="">Details<span class="aural">zu: {{ organization.title }}</span></a>
+          </div>
+        {% endblock description %}
+      </section>
+      {% if show_nums %}
+        {% block nums %}
+          <div class="nums">
+            <dl>
+              <dt>{{ _('Followers') }}</dt>
+              <dd data-module="followers-counter" data-module-id="{{ organization.id }}" data-module-num_followers="{{ organization.num_followers }}">{{ h.SI_number_span(organization.num_followers) }}</dd>
+            </dl>
+            <dl>
+              <dt>{{ _('Datasets') }}</dt>
+              <dd>{{ h.SI_number_span(organization.package_count) }}</dd>
+            </dl>
+          </div>
+        {% endblock nums %}
+        {% block follow %}
+          <div class="follow_button">
+            {{ h.follow_button('group', organization.id) }}
+          </div>
+        {% endblock follow %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock info %}
+  

@@ -1,0 +1,55 @@
+{% extends 'package/base.html' %}
+
+{% block breadcrumb_content_selected %}{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    {% if pkg %}
+	<li class="active">{% link_for _('Edit'), named_route=pkg.type ~ '.edit', id=pkg.name %}</li>
+    {% endif %}
+{% endblock %}
+
+{% block page_heading %}
+  {% if pkg %}
+    {{ h.dataset_display_name(pkg) }}
+    {% if pkg.state.startswith('draft') %}
+      [{{ _('Draft') }}]
+    {% endif %}
+    {% if pkg.state == 'deleted' %}
+      [{{ _('Deleted') }}]
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+
+{% block service_panel_left %}
+  <div class="servicepanel__left">
+    <button type="button" class="button button--light disabled">{{ _('Edit metadata') }}</button>
+    <a type="button" class="button button--light" href="{{ h.url_for('dataset.resources', id=pkg.name, _external=True) }}">{{ _('Resources') }}</a>
+  </div>
+{% endblock service_panel_left %}
+
+{% block service_panel_main %}
+  <div class="servicepanel__main">
+  </div>
+{% endblock service_panel_main %}
+
+
+{% block content_action %}
+    {% if pkg %}
+        <a class="button" href="{{ h.url_for('dataset.read', id=pkg.name, _external=True) }}">{{ _('View dataset') }}</a>
+    {% endif %}
+{% endblock %}
+
+{% block content_primary_nav %}
+    {{ h.build_nav_icon(pkg.type ~ '.edit', _('Edit metadata'), id=pkg.name, icon='pencil-square-o') }}
+    {{ h.build_nav_icon(pkg.type ~ '.resources', _('Resources'), id=pkg.name, icon='bars') }}
+    {# {% if h.check_config_permission('allow_dataset_collaborators') and h.check_access('package_collaborator_create', {'id': pkg_dict.id}) %}
+        {{ h.build_nav_icon(pkg.type ~ '.collaborators_read', _('Collaborators'), id=pkg.name, icon='users')}}
+    {% endif %} #}
+{% endblock %}
+
+
+{% block secondary_content %}
+<!-- this is block secondary_content package/edit_base -->
+{% endblock secondary_content %}

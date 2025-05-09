@@ -1,211 +1,173 @@
+{#
+Markup for most of a dataset's metadata fields.
+
+pkg
+  the package dict
+
+dataset_path
+  the base path for dataset search and detail pages (usually 'dataset' in CKAN)
+
+context
+  one of 'register' or 'portal'. 'register' indicates the template is being called in the 
+  Datenregister context (for dataset authors), while 'portal' indicates it is being called in the
+  Datenportal context (for the public).
+
+#}
+
 {% import 'macros/read.html' as read %}
 
-<section class="additional-info">
-  <h3>{{ _("Metadatenschema Berlin") }}</h3>
-  <table class="table table-striped table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th scope="col">{{ _("Field") }}</th>
-        <th scope="col">{{ _("Value") }}</th>
-      </tr>
-    </thead>
-    <tbody>
-
-        {# Dataset Type #}
-        {{ read.metadata_field(
-          label=_("Art"),
-          value=pkg_dict.berlin_type,
-          display_value=h.berlin_dataset_type_mapping()[pkg_dict.berlin_type]
-        )}}
-
-        {# Dataset Source #}
-        {{ read.metadata_field(
-          label=_("Source"),
-          value=pkg_dict.berlin_source
-        ) }}
-
-        {# Status #}
-        {% if h.check_access('package_update', {'id':pkg_dict.id}) %}
-          {{ read.metadata_field(
-            label=_("State"),
-            value=pkg_dict.state,
-            display_value=h.berlin_state_mapping()[_(pkg_dict.state)]
-          )}}
+<h2>{{ _('Informationen zum Datensatz') }}</h2>
+<ul class="list--tablelist block">
+  {% if pkg.license_id %}
+  <li>
+    <div class="cell">
+      <div class="text--strong">{{ _('License') }}:</div>
+    </div>
+    <div class="cell">
+      <a href='/{{ h.berlin_url_with_params(dataset_path, {"license_id": pkg.license_id})}}'
+      alt="{{ _('Andere Datensätze mit der Lizenz ') + pkg.license_id }}">{{
+      pkg.license_title }} ({{ pkg.license_id}})</a> |
+      <a href="{{ pkg.license_url}}" class="extern">{{ _('zum Lizenztext') }}</a>
+    </div>
+  </li>
+  {% endif %}
+  {{ h.snippet('package/snippets/metadata_item.html', title='Text für Namensnennung', value=pkg.attribution_text, create_link=False, context=context) }}
+  {% if pkg.groups %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('Kategorie') }}:</div>
+      </div>
+      <div class="cell">
+        <ul class="list--horizontal bordered">
+          {% for group in pkg.groups %}
+            <li>
+              <a href='/{{ h.berlin_url_with_params(dataset_path, {"groups": group.name})}}' alt="{{ _('Andere Datensätze der Kategorie ') + group.display_name }}">{{ group.display_name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+  {%  endif %}
+  {{ h.snippet('package/snippets/metadata_item.html', name='geographical_coverage', title='Geographischer Bezug', value=pkg.geographical_coverage, create_link=True, dataset_path=dataset_path, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='geographical_granularity', title='Geographische Granularität', value=pkg.geographical_granularity, create_link=True, dataset_path=dataset_path, context=context) }}
+  {# Musterdatensatz #}
+  {% if pkg.sample_record or context == 'register' %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('Musterdatensatz') }}:</div>
+      </div>
+      <div class="cell">
+        {% if pkg.sample_record %}
+          {{ h.berlin_render_sample_record(pkg.sample_record, class='extern') }}
+        {% else %}
+          <span class="dp-undefined">undefiniert</span>
         {% endif %}
+      </div>
+    </li>
+  {% endif %}
 
-        {# Veröffentlichende Stelle #}
-        {{ read.metadata_field(
-          label=_("Veröffentlichende Stelle"),
-          value=pkg_dict.author
-        ) }}
+  {# High-value datasets #}
+  {% if pkg.hvd_category or context == 'register' %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('High-Value-Dataset-Kategorie') }}:</div>
+      </div>
+      <div class="cell">
+        {% if pkg.hvd_category %}
+          {{ h.berlin_render_hvd_category(pkg.hvd_category, class='extern') }}
+        {% else %}
+          <span class="dp-undefined">undefiniert</span>
+        {% endif %}
+      </div>
+    </li>
+  {% endif %}
 
-        {# Kontaktperson #}
-        {{ read.metadata_field(
-          label=_("Kontaktperson"),
-          value=pkg_dict.maintainer
-        ) }}
+  {% if pkg.temporal_coverage_from or context == 'register' %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('Zeitlicher Bezug') }}:</div>
+      </div>
+      <div class="cell">
+        {% if pkg.temporal_coverage_to %}
+          vom
+        {% endif %}
+        {% if pkg.temporal_coverage_from %}
+          {{ h.render_datetime(pkg.temporal_coverage_from) }}
+        {% else %}
+          <span class="dp-undefined">undefiniert</span>
+        {% endif %}
+        {% if pkg.temporal_coverage_to %}
+          bis zum {{ h.render_datetime(pkg.temporal_coverage_to) }}
+        {% endif %}
+      </div>
+    </li>
+  {% endif %}
+  {{ h.snippet('package/snippets/metadata_item.html', name='temporal_granularity', title='Zeitliche Granularität', value=pkg.temporal_granularity, create_link=True, dataset_path=dataset_path, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='date_released', title='Veröffentlicht', value=pkg.date_released, render_function=h.render_datetime, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='date_updated', title='Aktualisiert', value=pkg.date_updated, render_function=h.render_datetime, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='author_string', title='Veröffentlichende Stelle', value=pkg.author, create_link=True, dataset_path=dataset_path, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='maintainer', title='Kontaktperson', value=pkg.maintainer, context=context) }}
+  {{ h.snippet('package/snippets/metadata_item.html', name='maintainer_email', title='E-Mail Kontakt', value=pkg.maintainer_email, context=context) }}
+  {% if pkg.url or context == 'register' %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('Webseite') }}:</div>
+      </div>
+      <div class="cell">
+        {% if pkg.url %}
+          <a href="{{ pkg.url }}" class="extern">{{ pkg.url }}</a>
+        {% else %}
+          <span class="dp-undefined">undefiniert</span>
+        {% endif %}
+      </div>
+    </li>
+  {% endif %}
+  {%  if pkg.tags %}
+    <li>
+      <div class="cell">
+        <div class="text--strong">{{ _('Schlagworte') }}:</div>
+      </div>
+      <div class="cell">
+        <ul class="list--horizontal bordered">
+          {% for tag in pkg.tags %}
+            <li><a href='/{{ h.berlin_url_with_params(dataset_path, {"tags": tag.name})}}' alt="{{ _('Andere Datensätze mit dem Schlagwort ') + tag.display_name }}">{{ tag.display_name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+  {% endif %}
+  {{ h.snippet('package/snippets/metadata_item.html',
+    name='metadata_modified',
+    title='Metadaten erstellt',
+    value=pkg.metadata_created,
+    create_link=False,
+    dataset_path=dataset_path,
+    context=context)
+  }}
+  {{ h.snippet('package/snippets/metadata_item.html',
+    name='metadata_modified',
+    title='Metadaten letzte Änderung',
+    value=pkg.metadata_modified,
+    create_link=False,
+    dataset_path=dataset_path,
+    context=context)
+  }}
+</ul>
 
-        {# Kontakt-Email #}
-        {{ read.metadata_field(
-          label=_("Kontakt-Email"),
-          value=pkg_dict.maintainer_email,
-          display_value=h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer_email)
-        )}}
-
-        {# Veröffentlichende Person #}
-        {{ read.metadata_field(
-          label=_("Veröffentlichende Person"),
-          value=pkg_dict.username
-        )}}
-
-        {# Webadresse #}
-        {{ read.metadata_field(
-          label=_("Webadresse"),
-          value=pkg_dict.url,
-          display_value=h.link_to(pkg_dict.url, pkg_dict.url, target='_blank') if pkg_dict.url else _("undefiniert")
-        )}}
-
-        {# Webadresse #}
-        {{ read.metadata_field(
-          label=_("Vorschaubild"),
-          value=pkg_dict.preview_image,
-          display_value=h.link_to(pkg_dict.preview_image, pkg_dict.preview_image, target='_blank') if pkg_dict.preview_image else _("undefiniert")
-        )}}
-
-        {# Lizenz #}
-        {{
-          read.metadata_field(
-            label=_("Lizenz"),
-            value=pkg_dict.license_id,
-            display_value=pkg_dict.license_title ~ " (" ~ pkg_dict.license_id ~ ")"
-        )}}
-
-        {# Attribution #}
-        {{
-          read.metadata_field(
-            label=_("Text für Namensnennung"),
-            value=pkg_dict.attribution_text
-        )}}
-
-        {# Veröffentlichungsdatum #}
-        {{
-          read.metadata_field(
-            label=_("Veröffentlichungsdatum"),
-            value=pkg_dict.date_released,
-            display_value=h.render_datetime(pkg_dict.date_released)
-        )}}
-
-        {# Aktualisierungsdatum #}
-        {{
-          read.metadata_field(
-            label=_("Aktualisierungsdatum"),
-            value=pkg_dict.date_updated,
-            display_value=h.render_datetime(pkg_dict.date_updated)
-        )}}
-
-        {# Zeitliche Abdeckung von ... #}
-        {{
-          read.metadata_field(
-            label=_("Zeitliche Abdeckung von") ~ " …",
-            value=pkg_dict.temporal_coverage_from,
-            display_value=h.render_datetime(pkg_dict.temporal_coverage_from)
-        )}}
-
-        {# Zeitliche Abdeckung ... bis #}
-        {{
-          read.metadata_field(
-            label="… " ~ _("bis"),
-            value=pkg_dict.temporal_coverage_to,
-            display_value=h.render_datetime(pkg_dict.temporal_coverage_to)
-        )}}
-
-        {# Zeitliche Auflösung #}
-        {{
-          read.metadata_field(
-            label=_("Zeitliche Auflösung"),
-            value=pkg_dict.temporal_granularity
-        )}}
-        
-        {# Geografische Abdeckung #}
-        {{
-          read.metadata_field(
-            label=_("Geografische Abdeckung"),
-            value=pkg_dict.geographical_coverage
-        )}}
-        
-        {# Geografische Auflösung #}
-        {{
-          read.metadata_field(
-            label=_("Geografische Auflösung"),
-            value=pkg_dict.geographical_granularity
-        )}}
-
-        {# Musterdatensatz #}
-        {{
-          read.metadata_field(
-            label=_("Musterdatensatz"),
-            value=pkg_dict.sample_record,
-            display_value=h.berlin_render_sample_record(pkg_dict.sample_record)
-        )}}
-        {{
-          read.metadata_field(
-            label="",
-            value=pkg_dict.sample_record,
-            display_value=h.literal(('<img src="/images/govdata_mini.png"/> ')) ~ h.berlin_render_govdata_example_link(pkg_dict.sample_record)
-        )}}
-
-        {# High-value Dataset #}
-        {{
-          read.metadata_field(
-            label=_("HVD-Kategorie"),
-            value=pkg_dict.hvd_category,
-            display_value=h.berlin_render_hvd_category(pkg_dict.hvd_category)
-        )}}
-
-    </tbody>
-  </table>
-
-  <h3>{{ _('Timestamps') }}</h3>
-  <table class="table table-striped table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th scope="col">{{ _('Field') }}</th>
-        <th scope="col">{{ _('Value') }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{
-        read.metadata_field(
-          label=_("Metadaten letzte Änderung"),
-          value=pkg_dict.metadata_modified
-      )}}
-      {{
-        read.metadata_field(
-          label=_("Metadaten erstellt"),
-          value=pkg_dict.metadata_created
-      )}}
-    </tbody>
-  </table>
-
-  <h3>{{ _('Weitere Metadaten') }}</h3>
-  <table class="table table-striped table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th scope="col">{{ _('Field') }}</th>
-        <th scope="col">{{ _('Value') }}</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% block extras scoped %}
-      {% for extra in h.sorted_extras(pkg_dict.extras) %}
-        {% set key, value = extra %}
-        <tr>
-          <th scope="row" class="dataset-label">{{ _(key) }}</th>
-          <td class="dataset-details">{{ value }}</td>
-        </tr>
-      {% endfor %}
-    {% endblock %}
-    </tbody>
-  </table>
-
-</section>
+{% if h.check_access('package_update', {'id':pkg.id}) %}
+  {% if context == 'register' %}
+    <h2>{{ _('Weitere Informationen zum Datensatz') }}</h2>
+    <ul class="list--tablelist block">
+      {{ h.snippet('package/snippets/metadata_item.html', title=_("Source"), value=pkg.berlin_source, create_link=False, context=context) }}
+        {{ h.snippet('package/snippets/metadata_item.html', title=_("State"), value=h.berlin_state_mapping()[_(pkg.state)], create_link=False, context=context) }}
+      {{ h.snippet('package/snippets/metadata_item.html', title=_("Veröffentlichende Person"), value=pkg.username, create_link=False, context=context) }}
+      {{ h.snippet('package/snippets/metadata_item.html', title=_("Vorschaubild"), value=pkg.preview_image, create_link=True, dataset_path=dataset_path, context=context) }}
+      {% block extras scoped %}
+        {% for extra in h.sorted_extras(pkg.extras, exclude=['berlin.type', 'username', 'attribution_text', 'date_released', 'date_updated', 'temporal_coverage_from', 'temporal_coverage_to', 'temporal_granularity', 'geographical_coverage']) %}
+          {% set key, value = extra %}
+          {{ h.snippet('package/snippets/metadata_item.html', title=_(key), value=value, create_link=False, context=context) }}
+        {% endfor %}
+      {% endblock %}
+    </ul>
+  {% endif %}
+{% endif %}

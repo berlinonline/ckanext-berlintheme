@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import logging
-from ckan.lib.helpers import link_to
+import ckan.lib.helpers as h
 import ckan.logic as logic
 import ckan.model as model
 from ckan.common import c, config
@@ -153,16 +153,16 @@ def group_select_options():
 # ids should be URIs, not just the label string
 def temporal_granularity_select_options():
     return [
-        {u'id': u'Keine', u'label': u'Keine'},
-        {u'id': u'5 Jahre', u'label': u'5 Jahre'},
-        {u'id': u'Jahr', u'label': u'Jahr'},
-        {u'id': u'Quartal', u'label': u'Quartal'},
-        {u'id': u'Monat', u'label': u'Monat'},
-        {u'id': u'Woche', u'label': u'Woche'},
-        {u'id': u'Tag', u'label': u'Tag'},
-        {u'id': u'Stunde', u'label': u'Stunde'},
-        {u'id': u'Minute', u'label': u'Minute'},
-        {u'id': u'Sekunde', u'label': u'Sekunde'},
+        {u'value': u'Keine', u'text': u'Keine'},
+        {u'value': u'5 Jahre', u'text': u'5 Jahre'},
+        {u'value': u'Jahr', u'text': u'Jahr'},
+        {u'value': u'Quartal', u'text': u'Quartal'},
+        {u'value': u'Monat', u'text': u'Monat'},
+        {u'value': u'Woche', u'text': u'Woche'},
+        {u'value': u'Tag', u'text': u'Tag'},
+        {u'value': u'Stunde', u'text': u'Stunde'},
+        {u'value': u'Minute', u'text': u'Minute'},
+        {u'value': u'Sekunde', u'text': u'Sekunde'},
     ]
 
 
@@ -170,24 +170,24 @@ def temporal_granularity_select_options():
 # ids should be URIs, not just the label string
 def geo_granularity_select_options():
     return [
-        {u'id': u'Keine', u'label': u'Keine'},
-        {u'id': u'Deutschland', u'label': u'Deutschland'},
-        {u'id': u'Berlin', u'label': u'Berlin'},
-        {u'id': u'Bezirk', u'label': u'Bezirk'},
-        {u'id': u'Ortsteil', u'label': u'Ortsteil'},
-        {u'id': u'Prognoseraum', u'label': u'Prognoseraum'},
-        {u'id': u'Bezirksregion', u'label': u'Bezirksregion'},
-        {u'id': u'Planungsraum', u'label': u'Planungsraum'},
-        {u'id': u'Block', u'label': u'Block'},
-        {u'id': u'Einschulbereich', u'label': u'Einschulbereich'},
-        {u'id': u'Kontaktbereich', u'label': u'Kontaktbereich'},
-        {u'id': u'PLZ', u'label': u'PLZ'},
-        {u'id': u'Stimmbezirk', u'label': u'Stimmbezirk'},
-        {u'id': u'Quartiersmanagement', u'label': u'Quartiersmanagement'},
-        {u'id': u'Wohnanlage', u'label': u'Wohnanlage'},
-        {u'id': u'Wahlkreis', u'label': u'Wahlkreis'},
-        {u'id': u'Hausnummer', u'label': u'Hausnummer'},
-        {u'id': u'GPS-Koordinaten', u'label': u'GPS-Koordinaten'},
+        {u'value': u'Keine', u'text': u'Keine'},
+        {u'value': u'Deutschland', u'text': u'Deutschland'},
+        {u'value': u'Berlin', u'text': u'Berlin'},
+        {u'value': u'Bezirk', u'text': u'Bezirk'},
+        {u'value': u'Ortsteil', u'text': u'Ortsteil'},
+        {u'value': u'Prognoseraum', u'text': u'Prognoseraum'},
+        {u'value': u'Bezirksregion', u'text': u'Bezirksregion'},
+        {u'value': u'Planungsraum', u'text': u'Planungsraum'},
+        {u'value': u'Block', u'text': u'Block'},
+        {u'value': u'Einschulbereich', u'text': u'Einschulbereich'},
+        {u'value': u'Kontaktbereich', u'text': u'Kontaktbereich'},
+        {u'value': u'PLZ', u'text': u'PLZ'},
+        {u'value': u'Stimmbezirk', u'text': u'Stimmbezirk'},
+        {u'value': u'Quartiersmanagement', u'text': u'Quartiersmanagement'},
+        {u'value': u'Wohnanlage', u'text': u'Wohnanlage'},
+        {u'value': u'Wahlkreis', u'text': u'Wahlkreis'},
+        {u'value': u'Hausnummer', u'text': u'Hausnummer'},
+        {u'value': u'GPS-Koordinaten', 'label': u'GPS-Koordinaten'},
     ]
 
 def sample_record_select_options():
@@ -1542,12 +1542,12 @@ def render_sample_record(value, **attrs):
     # TODO: that's obviously super inefficient to compute this every time...
     record_dict = {sample_record['id']: sample_record['label'] for sample_record in sample_record_select_options()}
     if value in record_dict:
-      return link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
+      return h.link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
     return ""
 
 def render_govdata_example_link(value):
     govdata_sparql_link = f"https://www.govdata.de/web/guest/sparql-assistent#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0ASELECT%20*%20WHERE%20%7B%0A%20%20%3Fdatensatz%0A%20%20%20%20dct%3Areferences%20%3Chttps%3A%2F%2Fmusterdatenkatalog.de%2Fdef%2Fmusterdatensatz%2F{value}%3E%20%3B%0A%20%20%20%20dct%3Atitle%20%3Ftitle%20%3B%0A%20%20.%0A%7D%20&endpoint=https%3A%2F%2Fwww.govdata.de%2Fsparql&requestMethod=GET&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bxml%2C*%2F*%3Bq%3D0.9&outputFormat=table"
-    return link_to("Beispiele bei GovData.de", govdata_sparql_link)
+    return h.link_to("Beispiele bei GovData.de", govdata_sparql_link)
 
 def hvd_category_select_options() -> list:
     return [
@@ -1654,7 +1654,7 @@ def render_hvd_category(value: str, **attrs) -> str:
     # TODO: that's obviously super inefficient to compute this every time...
     hvd_dict = {hvd_category['id']: hvd_category['label'] for hvd_category in hvd_category_select_options()}
     if value in hvd_dict:
-      return link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
+      return h.link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
     return ""
 
 def state_mapping():
@@ -1700,3 +1700,26 @@ def org_is_external(org: str) -> bool:
         if extra['key'] == 'external' and extra['value'] == 'true':
           return True
     return False
+
+def license_options(existing_license_id=None) -> list:
+    options = []
+    for license_id, license_desc in h.license_options(existing_license_id=existing_license_id):
+      options.append({'value': license_id, 'text': license_desc})
+    return options
+
+# functions that were previously in ckanext-datasetsnippets
+
+def resource_label(resource):
+  label = "Unbekannt"
+
+  if resource['name']:
+    name = resource['name']
+  else:
+    url = resource['url']
+    name = url[url.rfind("/") + 1:].split('?')[0]
+
+  if len(name) > 0:
+    label = name
+
+  return label
+

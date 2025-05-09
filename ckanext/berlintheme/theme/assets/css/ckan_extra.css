@@ -1,0 +1,218 @@
+/* Some CSS from CKAN core that we still need */
+
+/* additional bicons */
+
+:root {
+  --dpicon-arrow-left: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M257.5%20445.1l-22.2%2022.2c-9.4%209.4-24.6%209.4-33.9%200L7%20273c-9.4-9.4-9.4-24.6%200-33.9L201.4%2044.7c9.4-9.4%2024.6-9.4%2033.9%200l22.2%2022.2c9.5%209.5%209.3%2025-.4%2034.3L136.6%20216H424c13.3%200%2024%2010.7%2024%2024v32c0%2013.3-10.7%2024-24%2024H136.6l120.5%20114.8c9.8%209.3%2010%2024.8%20.4%2034.3z%22/%3E%3C/svg%3E");
+  --dpicon-pen: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M290.7%2093.2l128%20128-278%20278-114.1%2012.6C11.4%20513.5-1.6%20500.6%20.1%20485.3l12.7-114.2%20277.9-277.9zm207.2-19.1l-60.1-60.1c-18.8-18.8-49.2-18.8-67.9%200l-56.6%2056.6%20128%20128%2056.6-56.6c18.8-18.8%2018.8-49.2%200-67.9z%22/%3E%3C/svg%3E");
+  --dpicon-plus: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M416%20208H272V64c0-17.7-14.3-32-32-32h-32c-17.7%200-32%2014.3-32%2032v144H32c-17.7%200-32%2014.3-32%2032v32c0%2017.7%2014.3%2032%2032%2032h144v144c0%2017.7%2014.3%2032%2032%2032h32c17.7%200%2032-14.3%2032-32V304h144c17.7%200%2032-14.3%2032-32v-32c0-17.7-14.3-32-32-32z%22/%3E%3C/svg%3E");
+  --dpicon-trash: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M268%20416h24a12%2012%200%200%200%2012-12V188a12%2012%200%200%200%20-12-12h-24a12%2012%200%200%200%20-12%2012v216a12%2012%200%200%200%2012%2012zM432%2080h-82.4l-34-56.7A48%2048%200%200%200%20274.4%200H173.6a48%2048%200%200%200%20-41.2%2023.3L98.4%2080H16A16%2016%200%200%200%200%2096v16a16%2016%200%200%200%2016%2016h16v336a48%2048%200%200%200%2048%2048h288a48%2048%200%200%200%2048-48V128h16a16%2016%200%200%200%2016-16V96a16%2016%200%200%200%20-16-16zM171.8%2050.9A6%206%200%200%201%20177%2048h94a6%206%200%200%201%205.2%202.9L293.6%2080H154.4zM368%20464H80V128h288zm-212-48h24a12%2012%200%200%200%2012-12V188a12%2012%200%200%200%20-12-12h-24a12%2012%200%200%200%20-12%2012v216a12%2012%200%200%200%2012%2012z%22/%3E%3C/svg%3E");
+}
+
+.dp-button-arrow-left:after {
+  -webkit-mask-image: var(--dpicon-arrow-left);
+  mask-image: var(--dpicon-arrow-left);
+}
+
+.dp-button-pen:after {
+  -webkit-mask-image: var(--dpicon-pen);
+  mask-image: var(--dpicon-pen);
+}
+
+.dp-button-plus:after {
+  -webkit-mask-image: var(--dpicon-plus);
+  mask-image: var(--dpicon-plus);
+}  
+
+.dp-button-trash:after {
+  -webkit-mask-image: var(--dpicon-trash);
+  mask-image: var(--dpicon-trash);
+}
+
+/* Content Actions */
+
+.modul-servicepanel.dr-page-actions {
+  justify-content: flex-end;
+}
+
+@media print,(max-width: 73.8135rem ) {
+  .modul-servicepanel .servicepanel__left {
+    margin-bottom: 10px;
+  }
+}
+
+/* Forms */
+
+.dr-form-element {
+  display: flex;
+}
+
+.dr-form-element a {
+  padding-left: 15px;
+}
+
+.dr-form-element .select2-container {
+  width: 100% !important;
+}
+
+.dr-input-wrapper {
+  width: 100%;
+}
+
+.dr-input-wrapper .slug-preview {
+  margin-top: 5px;
+}
+
+/* New dataset */
+
+.dr-stages-wrapper {
+  margin-bottom: 20px;
+}
+
+.stages li.active {
+  font-weight: bold;
+}  
+
+/* Dataset search page */
+
+#dataset-search-form .page_primary_action {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.js .js-hide {
+    display: none;
+}
+
+.show-filters.btn, .hide-filters {
+    display: none;
+}
+
+div#layout-grid__area--herounit .searchterm {
+    margin-bottom: 50px;
+}
+
+.dp-search-result-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dp-search-result-summary {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+/* Dataset Page */
+
+.textbildbreit .dataset img {
+  max-height: 450px;
+}
+
+.dp-undefined {
+  font-style: italic;
+}
+
+.follow_button i {
+  display: none;
+}
+
+.imagealignleft .image__image img {
+  max-height: 250px;
+  width: auto;
+}
+
+/* Dataset cards */
+
+.dp-dataset-metadatum {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
+  
+  .dp-dataset-metadatum__row {
+    display: flex;
+    column-gap: 10px;
+  }
+  
+  .dp-dataset-metadatum__header {
+    font-size: 11px;
+    color: #454545;
+    margin-bottom: 6px;
+  }
+  
+  .dp-dataset-metadatum__body {
+    font-size: 14px;
+  }
+  
+  .dp-resource-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .dp-resource-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 10px;
+  }
+  
+  .dp-resource-icon-mini {
+    height: 23px;
+    background-color: #DDDDDD;
+    border-top: solid 4px;
+    height: 19px;
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dp-resource-icon-label {
+    color: #454545;
+    font-family: "Courier New";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+  }
+  
+  .dp-resource-icon-mini.dp-resource-tabular {
+    border-top-color: #96B223; /* lime 500 */
+  }
+  .dp-resource-icon-mini.dp-resource-gis {
+    border-top-color: #0396B7; /* cyan 600 */
+  }
+  .dp-resource-icon-mini.dp-resource-textual {
+    border-top-color: #F61C35; /* red 500 */
+  }
+  .dp-resource-icon-mini.dp-resource-website {
+    border-top-color: #FCC832; /* amber 400 */
+  }
+  .dp-resource-icon-mini.dp-resource-feed {
+    border-top-color: #EC7AA0; /* fuchsia 400 */
+  }
+  .dp-resource-icon-mini.dp-resource-tree {
+    border-top-color: #F5A00C; /* amber 500 */
+  }
+  .dp-resource-icon-mini.dp-resource-3d {
+    border-top-color: aqua;
+  }
+  .dp-resource-icon-mini.dp-resource-transport {
+    border-top-color: darkslategray;
+  }
+  .dp-resource-icon-mini.dp-resource-api {
+    border-top-color: #9380CC; /* violet 500 */
+  }
+  .dp-resource-icon-mini.dp-resource-archive {
+    border-top-color: fuchsia;
+  }
+  .dp-resource-icon-mini.dp-resource-bitmap {
+    border-top-color: dodgerblue;
+  }
+  .dp-resource-icon-mini.dp-resource-generic {
+    border-top-color: wheat;
+  }
+  

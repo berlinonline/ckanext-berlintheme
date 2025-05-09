@@ -1,11 +1,87 @@
 {% ckan_extends %}
 
 
+{% block page_heading %}{{ res.name }}{% endblock page_heading %}
+
+{% block content_action %}
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <a class="button dp-button-pen" href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id, package_type=pkg.type, _external=True) }}">{{ _('Edit') }}</a>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content %}
+  {% block primary_content_inner %}
+  {{ super() }}
+    <p>{{ h.render_markdown(res.description) }}</p>
+    <ul class="list--tablelist block">
+
+      <li>
+        <div class="cell">
+          <div class="text--strong">{{ _('URL') }}:</div>
+        </div>
+        <div class="cell">
+          {% if res.url %}
+            <a href="{{ res.url }}" class="extern">{{ res.url }}</a>
+          {% else %}
+            <span class="dp-undefined">undefiniert</span>
+          {% endif %}
+        </div>
+      </li>
+
+      {{ h.snippet('package/snippets/metadata_item.html',
+        name='format',
+        title='Format',
+        value=res.format,
+        create_link=False,
+        dataset_path=dataset_path,
+        context='register')
+      }}
+
+      {{ h.snippet('package/snippets/metadata_item.html',
+        name='created',
+        title='Metadaten erstellt',
+        value=res.created,
+        create_link=False,
+        dataset_path=dataset_path,
+        context='register')
+      }}
+
+      {{ h.snippet('package/snippets/metadata_item.html',
+        name='metadata_modified',
+        title='Metadaten Letzte Änderung',
+        value=res.metadata_modified,
+        create_link=False,
+        dataset_path=dataset_path,
+        context='register')
+      }}
+
+    </ul>
+
+    <h2>{{ _('Weitere Informationen zur Ressource') }}</h2>
+
+    <ul class="list--tablelist block">
+
+      {% for key, value in res.items() %}
+        {% if key not in ('created', 'metadata_modified', 'format', 'url', 'description', 'name', 'id', 'package_id' ) %}
+          {{ h.snippet('package/snippets/metadata_item.html',
+            name=key,
+            title=key,
+            value=value,
+            create_link=False,
+            dataset_path=dataset_path,
+            context='register')
+          }}
+        {% endif %}
+      {% endfor %}
+
+    </ul>
+
+  {% endblock primary_content_inner %}
+{% endblock primary_content %}
+
+
 {% block secondary_content %}
-
-  {% block resources_list %}
-    {% snippet "package/snippets/resources.html", pkg=pkg, active=res.id, action='read', is_activity_archive=is_activity_archive %}
-  {% endblock %}
-
 {% endblock %}
 

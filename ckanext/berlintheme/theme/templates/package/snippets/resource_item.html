@@ -1,0 +1,108 @@
+{#
+Renders an individual resource.
+
+resource - The resource to render
+package - A package object that the resources belong to.
+
+context
+  one of 'register' or 'portal'. 'register' indicates the template is being called in the 
+  Datenregister context (for dataset authors), while 'portal' indicates it is being called in the
+  Datenportal context (for the public).
+
+Example:
+
+  {% snippet "datasetsnippets/snippets/resource_item.html", package=package, resources=package.resources %}
+
+#}
+
+<div class="modul-download panel--white block--halfgap">
+  <div class="left">
+    <div class="dp-resource-header">
+      <h3 class="title">{{ h.berlintheme_resource_label(resource) }}</h3>
+      <div class="dp-resource-icon-mini {{ h.berlin_css_class_for_format_string(resource.format) }}">
+        <div class="dp-resource-icon-label">
+          {{ resource.format | default('(' + _('unknown') + ')', true) }}
+        </div>
+      </div>
+    </div>
+    {% if resource.description %}
+      <p class="text">
+        {{ h.markdown_extract(h.get_translated(resource, 'description'), extract_length=1000) }}
+      </p>
+    {% endif %}
+    <ul class="caption list--clean">
+      <li class="doc-type">Format: {{ h.get_translated(resource, 'format') }}</li>
+    </ul>
+  </div>
+  <div class="right">
+    {% if context == 'register' %}
+      <a class="link button" href="{{ h.url_for('resource.read', id=package.id, package_type=package.type, resource_id=resource.id) }}">{{ _('Ressource ansehen') }}</a>
+    {% else %}
+      <a class="link button button--extern" href="{{ resource.url }}" target="_blank">{{ _('Zur Ressource') }}</a>
+    {% endif %}
+  </div>
+</div>
+
+
+{# <li class="resource-item" data-id="{{ res.id }}">
+  {% block resource_item_title %}
+  <a class="heading" href="{{ url }}" title="{{ res.name or res.description }}">
+    {{ h.resource_display_name(res) | truncate(50) }}<span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ h.get_translated(res, 'format') }}</span>
+    {{ h.popular('views', res.tracking_summary.total, min=10) if res.tracking_summary }}
+  </a>
+  {% endblock %}
+  {% block resource_item_description %}
+    <p class="description">
+      {% if res.description %}
+        {{ h.markdown_extract(h.get_translated(res, 'description'), extract_length=80) }}
+      {% endif %}
+    </p>
+  {% endblock %}
+  {% block resource_item_explore %}
+  {% if not url_is_edit %}
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-share"></i>
+      {{ _('Explore') }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      {% block resource_item_explore_links %}
+      <li>
+        <a href="{{ url }}">
+          {% if not is_activity_archive and res.has_views %}
+            <i class="fa fa-bar-chart-o"></i>
+            {{ _('Preview') }}
+          {% else %}
+            <i class="fa fa-info-circle"></i>
+            {{ _('More information') }}
+          {% endif %}
+        </a>
+      </li>
+      {% if res.url and h.is_url(res.url) %}
+      <li>
+        <a href="{{ res.url }}" class="resource-url-analytics" target="_blank">
+          {% if res.has_views or res.url_type == 'upload' %}
+            <i class="fa fa-arrow-circle-o-down"></i>
+            {{ _('Download') }}
+          {% else %}
+            <i class="fa fa-external-link"></i>
+            {{ _('Go to resource') }}
+          {% endif %}
+        </a>
+      </li>
+      {% endif %}
+      {% if can_edit %}
+      <li>
+        <a href="{{ h.url_for(pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id) }}">
+          <i class="fa fa-pencil-square-o"></i>
+          {{ _('Edit') }}
+        </a>
+      </li>
+      {% endif %}
+      {% endblock %}
+    </ul>
+  </div>
+  {% endif %}
+  {% endblock %}
+</li> #}

@@ -1,0 +1,36 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
+
+{% block maintag %}<div class="row" role="main">{% endblock %}
+
+{% block breadcrumb_content %}
+  {% set dataset = h.dataset_display_name(pkg_dict) %}
+  {% if pkg_dict.organization %}
+    {% set organization = h.get_translated(pkg_dict.organization, 'title') or pkg_dict.organization.name %}
+    {% set group_type = pkg_dict.organization.type %}
+    <li>{% link_for _('Organizations'), named_route=pkg_dict.organization.type ~ '.index' %}</li>
+    {% if h.get_organization(pkg_dict.organization.name) %}
+      <li>{% link_for organization|truncate(30), named_route=pkg_dict.organization.type ~ '.read', id=pkg_dict.organization.name %}</li>
+    {% else %}
+      <li><i>(Technical)</i></li>
+    {% endif %}
+  {% else %}
+    <li>{% link_for _(dataset_type.title()), named_route=dataset_type ~ '.search' %}</li>
+  {% endif %}
+  <li>{% link_for dataset|truncate(30), named_route=pkg_dict.type ~ '.read', id=pkg_dict.id if is_activity_archive else pkg_dict.name %}</li>
+  <li>{{ _('Delete') }}</li>
+{% endblock %}
+
+{% block main_content %}
+  {% block form %}
+    {% set dataset = h.dataset_display_name(pkg_dict) %}
+    <p>{{ _('Are you sure you want to delete dataset - {name}?').format(name=dataset) }}</p>
+    <p class="form-actions">
+      <form id='confirm-dataset-delete-form' action="{% url_for pkg_dict.type ~ '.delete', id=pkg_dict.name %}" method="post">
+        <button class="button button--light" type="submit" name="cancel" >{{ _('Cancel') }}</button>
+        <button class="button button--light" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
+      </form>
+    </p>
+  {% endblock %}
+{% endblock %}
