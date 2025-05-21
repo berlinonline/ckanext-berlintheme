@@ -1,0 +1,53 @@
+{#
+Renders a media item for a organization. This should be used in a list.
+
+organization - A organization dict.
+
+Example:
+
+    <ul class="media-grid">
+      {% for organization in organizations %}
+        {% snippet "organization/snippets/organization_item.html", organization=organization %}
+      {% endfor %}
+    </ul>
+#}
+{% set url = h.url_for(organization.type ~ '.read', id=organization.name) %}
+{% set link_title = _('View {organization_name}').format(organization_name=organization.display_name) %}
+{% block item %}
+<li>
+  {% block item_inner %}
+    <div class="teasertile" data-add-clickable-area="full">
+      <div class="inner">
+        <div>
+          {% block image %}
+            <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" class="img-responsive media-image">
+          {% endblock image %}
+          {% block title %}
+            <h3 class="title">{{ organization.display_name }}</h2>
+          {% endblock title %}
+          {# {% block description %}
+            {% if organization.description %}
+              <p class="text">{{ h.markdown_extract(organization.description, extract_length=80) }}</p>
+            {% endif %}
+          {% endblock description %} #}
+        </div>
+        {% block datasets %}
+          {% if organization.package_count %}
+            <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
+          {% else %}
+            <span class="count">{{ _('0 Datasets') }}</span>
+          {% endif %}
+        {% endblock datasets %}
+      </div>
+      <div class="action">
+        {% block link %}
+          <a class="more" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
+        {% endblock link %}
+      </div>
+    </div>
+  {% endblock item_inner %}
+</li>
+{% endblock item %}
+{% if position is divisibleby 3 %}
+  <li class="clearfix js-hide"></li>
+{% endif %}

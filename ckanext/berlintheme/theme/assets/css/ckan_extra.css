@@ -73,13 +73,21 @@
   font-weight: bold;
 }  
 
-/* Dataset search page */
+/* Hero search */
 
-#dataset-search-form .page_primary_action {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.dr-hero-search {
+  margin-top: 20px;
 }
 
+.dr-hero-search .page_primary_action {
+  margin-bottom: 20px;
+}
+
+.dp-search-result-sort {
+  min-width: 250px;
+}
+
+/* Dataset search page */
 
 .js .js-hide {
     display: none;
@@ -215,4 +223,16 @@ div#layout-grid__area--herounit .searchterm {
   .dp-resource-icon-mini.dp-resource-generic {
     border-top-color: wheat;
   }
-  
+
+/* Organizations */
+
+.panel--heavy .teasertile, .panel--heavy .modul-teasertile {
+  background-color: #fff;
+}
+
+.teasertile .inner, .modul-teasertile .inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

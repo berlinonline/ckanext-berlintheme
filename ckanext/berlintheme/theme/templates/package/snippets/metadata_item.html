@@ -40,7 +40,7 @@ context
     </div>
     <div class="cell{{ value_class }}">
       {% if value and create_link %}
-        <a href='/{{ h.berlin_url_with_params(dataset_path, {name: value})}}'
+        <a href='/{{ h.berlintheme_url_with_params(dataset_path, {name: value})}}'
            alt="{{ _('Andere Datensätze mit: ') + _(title) + ': ' + rendered_value }}">{{ rendered_value }}</a>
       {% else %}
         {{ rendered_value }}

@@ -24,7 +24,7 @@ context
       <div class="text--strong">{{ _('License') }}:</div>
     </div>
     <div class="cell">
-      <a href='/{{ h.berlin_url_with_params(dataset_path, {"license_id": pkg.license_id})}}'
+      <a href='/{{ h.berlintheme_url_with_params(dataset_path, {"license_id": pkg.license_id})}}'
       alt="{{ _('Andere Datensätze mit der Lizenz ') + pkg.license_id }}">{{
       pkg.license_title }} ({{ pkg.license_id}})</a> |
       <a href="{{ pkg.license_url}}" class="extern">{{ _('zum Lizenztext') }}</a>
@@ -41,7 +41,7 @@ context
         <ul class="list--horizontal bordered">
           {% for group in pkg.groups %}
             <li>
-              <a href='/{{ h.berlin_url_with_params(dataset_path, {"groups": group.name})}}' alt="{{ _('Andere Datensätze der Kategorie ') + group.display_name }}">{{ group.display_name }}</a>
+              <a href='/{{ h.berlintheme_url_with_params(dataset_path, {"groups": group.name})}}' alt="{{ _('Andere Datensätze der Kategorie ') + group.display_name }}">{{ group.display_name }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -130,7 +130,7 @@ context
       <div class="cell">
         <ul class="list--horizontal bordered">
           {% for tag in pkg.tags %}
-            <li><a href='/{{ h.berlin_url_with_params(dataset_path, {"tags": tag.name})}}' alt="{{ _('Andere Datensätze mit dem Schlagwort ') + tag.display_name }}">{{ tag.display_name }}</a></li>
+            <li><a href='/{{ h.berlintheme_url_with_params(dataset_path, {"tags": tag.name})}}' alt="{{ _('Andere Datensätze mit dem Schlagwort ') + tag.display_name }}">{{ tag.display_name }}</a></li>
           {% endfor %}
         </ul>
       </div>

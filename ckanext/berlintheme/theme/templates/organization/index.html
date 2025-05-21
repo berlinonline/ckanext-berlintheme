@@ -1,0 +1,117 @@
+{% extends "page.html" %}
+
+{% set sorting_selected = sort_by_selected %}
+{% set sorting = [
+  (_('Name Ascending'), 'title asc'), 
+  (_('Name Descending'), 'title desc')
+] %}
+
+{% block subtitle %}{{ _('Organizations') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Organizations'), named_route=group_type+'.index' %}</li>
+{% endblock %}
+
+{% block grid_pre_herounit %}
+  <form id="organization-search-form" class="dr-hero-search" method="get" data-module="select-switch">
+{% endblock grid_pre_herounit %}
+
+{% block grid_herounit %}
+  {% block page_primary_action %}
+    {% if h.check_access('organization_create') %}
+      <div class="page_primary_action">
+        {% link_for _('Add Organization'), named_route=group_type+'.new', class_='button dp-button-plus' %}
+      </div>
+    {% endif %}
+  {% endblock %}
+  <div class="searchform-slot ">
+    <div class="form-group">
+      <label class="aural" for="organization_search">{{ _('Search organizations...') }}</label>
+      <div class="searchterm">
+        <div class="input-wrapper">
+          <i class="fas fa-search lens" aria-hidden="true"></i>
+          <input id="organization_search" class="form-control search" type="text" name="q" value="{{ q }}" autocomplete="off" placeholder="{{ _('Search organizations...') }}">
+        </div>
+        <button class="button button--clean submit " type="submit" title="{{ _('Search') }}">
+          <span class="aural">{{ _('Search') }}</span><i class="fas fa-arrow-right icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  {# {% block organizations_search_form %}
+    {% snippet 'snippets/search_form.html', form_id='organization-search-form', type='organization', query=q, sorting_selected=sort_by_selected, count=page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if page.items, sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+  {% endblock %} #}
+{% endblock grid_herounit %}
+
+{% block page_header %}{% endblock %}
+
+{% block grid_maincontent %}
+  <div class="fullwidth panel--heavy">
+    <div class="fullwidth__inner">
+        <div class="dp-search-result-top">
+          <div class="dp-search-result-summary">
+            {% block search_title %}
+              {% if not error %}
+                {% snippet 'snippets/search_result_text.html', query=q, count=page.item_count, type='organization' %}
+              {% else %}
+                {{ _('Error') }}
+              {% endif %}
+            {% endblock search_title %}
+          </div>
+          <div class="dp-search-result-sort">
+            {% block search_sortby %}
+              {% if sorting %}
+                <div class="form-select form-group control-order-by">
+                  <label for="field-order-by">{{ _('Order by') }}</label>
+                  <select id="field-order-by" name="sort" class="form-control">
+                    {% for label, value in sorting %}
+                      {% if label and value %}
+                        <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                  {% block search_sortby_button %}
+                  <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
+                  {% endblock search_sortby_button %}
+                </div>
+              {% endif %}
+            {% endblock search_sortby%}
+          </div>
+        </div>
+      {{ super() }}
+    </div>
+  </div>
+{% endblock grid_maincontent %}
+
+{% block primary_content_inner %}
+  {% block page_heading %}{% endblock %}
+  {% block organizations_list %}
+    {% if page.items or request.params %}
+      {% if page.items %}
+        {% snippet "organization/snippets/organization_list.html", organizations=page.items %}
+      {% endif %}
+    {% else %}
+      <p class="empty">
+        {{ _('There are currently no organizations for this site') }}.
+        {% if h.check_access('organization_create') %}
+          {% link_for _('How about creating one?'), named_route=group_type+'.new' %}</a>.
+        {% endif %}
+      </p>
+    {% endif %}
+  {% endblock %}
+  {% block page_pagination %}
+    {% if c.page.page_count > 1 %}
+      {{ h.snippet('snippets/pagination.html',
+        page=c.page.page,
+        page_count=c.page.page_count,
+        cells=h.berlintheme_pagination_cells(c.page.page, c.page.page_count),
+        base_path='organization'
+        )
+      }}
+    {% endif %}
+  {% endblock %}
+{% endblock %}
+
+{% block grid_post_maincontent %}</form>{% endblock grid_post_maincontent %}
+
+{% block secondary_content %}{% endblock %}

@@ -71,6 +71,9 @@ class BerlinTheme(plugins.SingletonPlugin):
                 theme_helpers.org_is_external ,
             'berlin_license_options': theme_helpers.license_options ,
             'berlintheme_resource_label': theme_helpers.resource_label ,
+            'berlintheme_pagination_url_for_page': theme_helpers.pagination_url_for_page ,
+            'berlintheme_pagination_cells': theme_helpers.pagination_cells ,
+            'berlintheme_url_with_params': theme_helpers.url_with_params ,
         }
 
     # -------------------------------------------------------------------

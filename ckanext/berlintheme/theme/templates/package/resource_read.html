@@ -1,7 +1,9 @@
 {% ckan_extends %}
 
 
-{% block page_heading %}{{ res.name }}{% endblock page_heading %}
+{% block page_heading %}
+  <h1>{{ res.name }}</h1>
+{% endblock page_heading %}
 
 {% block content_action %}
   {% if not is_activity_archive %}

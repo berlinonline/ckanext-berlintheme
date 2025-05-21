@@ -10,15 +10,17 @@
 {% endblock %}
 
 {% block page_heading %}
-  {% if pkg %}
-    {{ h.dataset_display_name(pkg) }}
-    {% if pkg.state.startswith('draft') %}
-      [{{ _('Draft') }}]
+  <h1>
+    {% if pkg %}
+      {{ h.dataset_display_name(pkg) }}
+      {% if pkg.state.startswith('draft') %}
+        [{{ _('Draft') }}]
+      {% endif %}
+      {% if pkg.state == 'deleted' %}
+        [{{ _('Deleted') }}]
+      {% endif %}
     {% endif %}
-    {% if pkg.state == 'deleted' %}
-      [{{ _('Deleted') }}]
-    {% endif %}
-  {% endif %}
+  </h1>
 {% endblock %}
 
 

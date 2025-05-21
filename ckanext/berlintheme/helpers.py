@@ -1,13 +1,17 @@
 # coding: utf-8
 
 import logging
+from urllib.parse import urlencode
+
 import ckan.lib.helpers as h
+import ckan.lib.helpers as helpers
 import ckan.logic as logic
 import ckan.model as model
-from ckan.common import c, config
-from ckanext.berlin_dataset_schema.schema import Schema
-import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
+from ckan.common import c, config, request
+from werkzeug.datastructures import MultiDict
+
+from ckanext.berlin_dataset_schema.schema import Schema
 
 LOG = logging.getLogger(__name__)
 get_action = logic.get_action
@@ -1723,3 +1727,71 @@ def resource_label(resource):
 
   return label
 
+def url_with_params(url: str, params: MultiDict) -> str:
+    '''Helper function to convert a base-URL (or path) and a dictionary with 
+       parameters to an URL string. Takes care of encoding issues in the 
+       parameter values, such that e.g. "köln" is encoded as "k%C3%B6ln".
+    '''
+    if not params:
+        return url
+    return url + u'?' + encode_params(params)
+
+def encode_params(params):
+    params = [(k, v.encode('utf-8') if isinstance(v, str) else str(v))
+              for k, v in params.items()]
+    return urlencode(params)
+   
+
+def get_middle_cells(current_page: int) -> list:
+    '''Helper function to get the middle part of the cells in the pagination
+      counter.'''
+    cells = []
+    cells.append({
+        "page_number": current_page - 3,
+        "label": "…",
+        "link": False,
+        "current": False
+    })
+    for index in range(current_page -2, current_page +3):
+        cells.append({
+            "page_number": index,
+            "label": str(index),
+            "link": True,
+            "current": True if (index == current_page) else False
+        })
+    cells.append({
+        "page_number": current_page + 3,
+        "label": "…",
+        "link": False,
+        "current": False
+    })
+    return cells
+
+def pagination_cells(current_page: int, page_count: int) -> list:
+    '''Helper function to return a list of cells for the pagination counter,
+      base on the max page count and the current page.'''
+    cells = []
+    cells.append({
+        "page_number": 1,
+        "label": "1",
+        "link": True,
+        "current": True if (1 == current_page) else False
+    })
+    # middle part
+    middle_cells = get_middle_cells(current_page)
+    for cell in middle_cells:
+        if cell['page_number'] > 1 and cell['page_number'] < page_count:
+            cells.append(cell)
+    cells.append({
+        "page_number": page_count ,
+        "label": str(page_count),
+        "link": True,
+        "current": True if (page_count == current_page) else False
+    })
+    return cells
+
+def pagination_url_for_page(page: int, base_path: str='dataset') -> str:
+    params_nopage = [(k, v) for k, v in request.params.items()
+                        if k != 'page']
+    params_nopage.append(('page', page))
+    return url_with_params(url=base_path, params=MultiDict(params_nopage))
