@@ -9,6 +9,9 @@
 
 
 {% block primary_content %}
+  {% if h.berlin_show_warning() %}
+    {% snippet "snippets/global_warning.html" %}
+  {% endif %}
   <div class="panel--heavy">
     <div class="text textile">
       <p>
