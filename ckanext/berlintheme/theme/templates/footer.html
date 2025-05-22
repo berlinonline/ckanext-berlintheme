@@ -12,9 +12,9 @@
       <li class="initial-open">
         <h3 class="heading js-trigger" aria-expanded="true">Datenregister Berlin</h3>
         <ul>
-          <li><a href="{{ h.url_for('home.about') }}">{{ _('Über {0} / Impressum').format(g.site_title) }}</a></li>
-          <li><a
-            href="{{ h.url_for('page_blueprint.privacy_policy') }}">{{ _('Datenschutzerklärung') }}</a>
+          <li><a href="{{ h.url_for('home.about') }}" title="Impressum des Datenregisters">{{ _('About') + ' / Impressum' }}</a></li>
+          <li><a href="{{ h.url_for('page_blueprint.privacy_policy') }}" title="Datenschutzerklärung des Datenregisters">{{ _('Datenschutz') }}</a>
+          <li><a href="{{ h.url_for('page_blueprint.accessibility_statement') }}" title="Barrierefreiheitserklärung des Datenregisters">{{ _('Digitale Barrierefreiheit') }}</a>
         </li>
         </ul>
       </li>
@@ -22,8 +22,8 @@
         <h3 class="heading js-trigger">Hilfe</h3>
         <ul>
           {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
-          <li><a href="{{ api_url }}">{{ _('CKAN API') }}</a></li>
-          <li><a href="http://www.ckan.org/">{{ _('CKAN Association') }}</a></li>
+          <li><a href="{{ api_url }}" class="extern" title="Dokumentation der CKAN API">{{ _('CKAN API') }}</a></li>
+          <li><a href="https://www.ckan.org/" class="extern" title="Homepage der CKAN Association">{{ _('CKAN Association') }}</a></li>
         </ul>
       </li>
     </ul>

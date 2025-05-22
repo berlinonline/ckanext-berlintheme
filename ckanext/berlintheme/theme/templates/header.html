@@ -55,6 +55,30 @@
 
       <div class="pageheader__services">
 
+        <div id="servicebuttonSearch" class="service-button-overlay js-service-button-overlay search fullwidth">
+          <div class="service-button-overlay__button">
+            <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true">
+              <i class="icon fa fa-search" aria-hidden="true"></i>
+              <span class="aural">{{ _('Öffnen') }}: {{ _('Search') }}</span>
+              <span class="text">{{ _('Search') }}</span>
+            </button>
+          </div>
+          <div class="service-button-overlay__overlay overlay js-overlay-container" aria-modal="true" hidden="hidden">
+            <div class="overlay__header">
+              <h2 class="heading"><span class="aural">{{ _('Search') }}</span></h2>
+              <button type="button" class="close-button js-button-overlay-close">
+                <i class="fas fa-times" aria-hidden="true"></i>
+                <span class="aural">{{ _('Schließen') }}: {{ _('Search') }}</span>
+              </button>
+            </div>
+            <div class="overlay__body">
+              <div class="search-container">
+                {% snippet 'home/snippets/search.html' %}
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div id="servicebuttonMenu" class="service-button-overlay js-service-button-overlay menu">
           <div class="service-button-overlay__button">
             <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true">

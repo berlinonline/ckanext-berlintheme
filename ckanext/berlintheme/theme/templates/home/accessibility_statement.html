@@ -1,0 +1,57 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Barrierefreiheitserklärung') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Barrierefreiheitserklärung'), named_route='page_blueprint.accessibility_statement' %}</li>
+{% endblock %}
+
+{% block page_heading %}
+  <h1>{{ _('Barrierefreiheitserklärung für das Datenregister') }}</h1>
+{% endblock page_heading %}
+
+{% block primary_content %}
+  <h2>I. Öffentliche Stelle / Geltungsbereich</h2>
+
+  <p>Senatskanzlei Berlin</p>
+  <p>Wir bemühen uns, unseren Webauftritt Open Data Portal datenregister.berlin.de barrierefrei zu gestalten.
+  Die Erklärung zur digitalen Barrierefreiheit wird im Gesetz über die barrierefreie Informations- und Kommunikationstechnik Berlin (BIKTG Bln) verlangt.
+  Die technischen Anforderungen zur Barrierefreiheit ergeben sich aus der aktuellen Verordnung zur Schaffung barrierefreier Informationstechnik nach dem Behindertengleichstellungsgesetz (Barrierefreie-Informationstechnik-Verordnung - BITV 2.0).</p>
+  <p>Diese Erklärung zur digitalen Barrierefreiheit gilt für den Webauftritt datenregister.berlin.de.</p>
+
+  <h2>II. Wann wurde die Erklärung zur Barrierefreiheit erstellt bzw. aktualisiert?</h2>
+
+  <p>Diese Erklärung wurde am 22.05.2025 erstellt bzw. überarbeitet.</p>
+  <p>Die Überprüfung der digitalen Barrierefreiheit wurde durchgeführt von der oben aufgeführten öffentlichen Stelle.<p>
+
+  <h2>III. Wie barrierefrei ist das Angebot?</h2>
+
+  <p>Dieser Webauftritt ist größtenteils barrierefrei.
+  Es werden größtenteils die Anforderungen der aktuellen BITV erfüllt.
+  Es ist zu unterstreichen, dass viele verlinkte Inhalte wie Tabellen oder interaktive Karten externe Inhalte sind.
+  Die o.g. Stelle besitzt dafür keine Verantwortung.
+  Für diese Dokumente kann keine Barrierefreiheit gewährleistet werden.</p>
+
+  <h2>IV. Welche Bereiche sind nicht barrierefrei?</h2>
+
+  <p>Die nachstehend aufgeführten Bereiche der Webseite sind aus folgenden Gründen nicht barrierefrei:</p>
+
+  <div class="modul-text_wichtig">
+    <p>Noch nicht angelegt!</p>
+  </div>
+
+  <h2>V. Wen können Sie bei Anmerkungen oder Fragen zur digitalen Barrierefreiheit (Feedbackoption) kontaktieren?</h2>
+
+  <p>Kontakt zur Ansprechperson der öffentlichen Stelle:</p>
+  <p>Name: Stephan Neumann<br>
+  E-Mail: barrierefreiheit@senatskanzlei.berlin.de<br>
+  Telefon: (030) 9026 2365</p>
+
+  <h2>VI. Kontakt zur Landesbeauftragten für digitale Barrierefreiheit</h2>
+
+  <p>Wenn Ihre Kontaktaufnahme mit der öffentlichen Stelle nicht erfolgreich war, können Sie sich an die Landesbeauftragte für digitale Barrierefreiheit wenden.</p>
+  <p><a href="https://www.berlin.de/lb/digitale-barrierefreiheit/includes/formular.1321774.php" class="extern" title="Link zum Kontaktformular der Landesbeauftragten für digitale Barrierefreiheit">Link zum Kontaktformular</a><br>
+  <a href="https://www.berlin.de/lb/digitale-barrierefreiheit/" class="extern" title="Link zur Landesbeauftragten für digitale Barrierefreiheit">Weitere Informationen zur Landesbeauftragten für digitale Barrierefreiheit</a></p>
+{% endblock primary_content %}
+
+{% block secondary %}{% endblock %}
