@@ -1,0 +1,47 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li>{% link_for _('Organizations'), named_route=group_type+'.index' %}</li>
+  <li class="active">{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name %}</li>
+{% endblock %}
+
+{% block page_heading %}
+  <h1>
+  {{ group_dict.display_name }}
+  {% if h.berlin_org_is_external(group_dict.id) %}
+    ({{ _("extern") }})
+  {% endif %}
+  {% if group_dict.state == 'deleted' %}
+    [{{ _('Deleted') }}]
+  {% endif %}
+  </h1>
+{% endblock page_heading %}
+
+{% block service_panel_main %}
+  <div class="servicepanel__main">
+  </div>
+{% endblock service_panel_main %}
+
+{% block content_action %}
+  {% if h.check_access('organization_update', {'id': group_dict.id}) %}
+    <a class="button dp-button-pen" href="{{ h.url_for(group_type+'.edit', id=group_dict.name, _external=True) }}">{{ _('Manage') }}</a>
+  {% endif %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon(group_type + '.read', _('Datasets'), id=group_dict.name, icon='sitemap') }}
+  {{ h.build_nav_icon(group_type + '.activity', _('Activity Stream'), id=group_dict.name, offset=0, icon='clock-o') }}
+  {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }}
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'snippets/organization.html', organization=group_dict, show_nums=true, group_type=group_type %}
+  {% block organization_facets %}{% endblock %}
+{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {% include "organization/snippets/feeds.html" %}
+{% endblock %}
