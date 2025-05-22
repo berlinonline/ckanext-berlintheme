@@ -5,14 +5,16 @@
 
         {% set id_prefix = h.berlin_facet_prefix(name) %}
         {% set title = title or h.get_facet_title(name) %}
-        <legend class="facet__head">
-          <button data-collapsible-trigger="opened" class="facet-title opened" type="button" aria-controls="facet_{{id_prefix}}"
-            aria-expanded="true">
-            <span class="text">{{title}}</span>
-            <a href="#" role="button" class="js-formhelp-flyin-overlay qmark-icon" title="Hilfe"
-              data-original-title="{{ h.berlin_description_for_facet(name) }}" data-title="Hilfe: {{title}}" aria-expanded="false">?</a>
-          </button>
-        </legend>
+        <div class="dr-facet-head-container">
+          <legend class="facet__head">
+            <button data-collapsible-trigger="opened" class="facet-title opened" type="button" aria-controls="facet_{{id_prefix}}"
+              aria-expanded="true">
+              <span class="text">{{title}}</span>
+            </button>
+          </legend>
+          <a href="#" role="button" class="js-formhelp-flyin-overlay qmark-icon" title="Hilfe"
+            data-original-title="{{ h.berlin_description_for_facet(name) }}" data-title="Hilfe: {{title}}" aria-expanded="false">?</a>
+        </div>
 
         <div class="facet__body opened" id="facet_{{id_prefix}}">
           <ul class="list--clean">

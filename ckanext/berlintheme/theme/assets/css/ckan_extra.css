@@ -116,6 +116,15 @@ div#layout-grid__area--herounit .searchterm {
     flex-grow: 1;
 }
 
+.dr-facet-head-container {
+  display: flex;
+  align-items: center;
+}
+
+.facet a.qmark-icon {
+  margin-left: 10px;
+}
+
 /* Dataset Page */
 
 .textbildbreit .dataset img {
