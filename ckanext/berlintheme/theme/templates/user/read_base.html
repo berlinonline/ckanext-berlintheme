@@ -11,107 +11,114 @@
 
 {% block content_action %}
   {% if h.check_access('user_update', user) %}
-    {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='btn btn-default', icon='wrench' %}
+    {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='button dp-button-pen' %}
   {% endif %}
 {% endblock %}
 
-{% block content_primary_nav %}
-  {{ h.build_nav_icon('user.read', _('Datasets'), id=user.name, icon='sitemap') }}
-  {{ h.build_nav_icon('user.activity', _('Activity Stream'), id=user.name, icon='clock-o') }}
-  {% if h.check_access('api_token_list', {'user': user['name']}) %}
-    {{ h.build_nav_icon('user.api_tokens', _('API Tokens'), id=user.name, icon='key') }}
-  {% endif %}
-{% endblock %}
-
-{% block secondary_content %}
-<div class="module context-info">
-  <section class="module-content">
-    {% block secondary_content_inner %}
-      {% block user_image %}
-      <div class="image">{{ h.user_image(user.id, size=270) }}</div>
-      {% endblock %}
-      {% block user_heading %}
-      <h1 class="heading">{{ user.display_name }}</h1>
-      {% endblock %}
+{% block primary_content %}
+  <section class="dr-user-info">
+    {% block user_image %}
+      <div class="image">
+        {{ h.user_image(user.id, size=270) }}
+      </div>
+    {% endblock user_image %}
+    <div class="text">
       {% block user_about %}
-      {% if about_formatted %}
-        {{ about_formatted }}
-      {% else %}
-        <p class="empty">
-          {% if is_myself %}
-            {% trans %}You have not provided a biography.{% endtrans %}
+        <div class="block">
+          {% if about_formatted %}
+            {{ about_formatted }}
           {% else %}
-            {% trans %}This user has no biography.{% endtrans %}
+            <p class="empty">
+              {% if is_myself %}
+                {% trans %}You have not provided a biography.{% endtrans %}
+              {% else %}
+                {% trans %}This user has no biography.{% endtrans %}
+              {% endif %}
+            </p>
           {% endif %}
-        </p>
-      {% endif %}
-      {% endblock %}
-      {% if h.berlin_user_orgs(user.name) %}
-        <div class="nums org-list">
-          <ul>
+        </div>
+      {% endblock user_about %}
+    </div>
+  </section>
+  <ul class="list--tablelist block">
+    {% block user_organization %}
+      <li>
+        <div class="cell">
+          <div class="text--strong">{{ _('Organization') }}:</div>
+        </div>
+        <div class="cell">
+        {% if h.berlin_user_orgs(user.name) %}
+          <ul class="list--horizontal bordered">
             {% if h.berlin_is_sysadmin(user.name) %}
               <li>Sysadmin</li>
             {% else %}
-            {% for organization in h.berlin_user_orgs(user.name) %}
-              <li><a href="{{ h.url_for('organization.read', id=organization['name']) }}">{{ organization['display_name'] }}</a></li>
-            {% endfor %}
+              {% for organization in h.berlin_user_orgs(user.name) %}
+                <li><a href="{{ h.url_for('organization.read', id=organization['name']) }}">{{ organization['display_name'] }}</a></li>
+              {% endfor %}
             {% endif %}
           </ul>
-        </div>
-      {% endif %}
-      {% block user_nums %}
-      <div class="nums">
-        <dl>
-          <dt>{{ _('Followers') }}</dt>
-          <dd data-module="followers-counter" data-module-id="{{ user.id }}" data-module-num_followers="{{ user.num_followers }}">{{ h.SI_number_span(user.num_followers) }}</dd>
-        </dl>
-        <dl>
-          <dt>{{ _('Datasets') }}</dt>
-          <dd>{{ h.SI_number_span(user.number_created_packages) }}</dd>
-        </dl>
-      </div>
-      {% endblock %}
-      {% if is_myself == false %}
-        {% block user_follow %}
-        <div class="follow_button">
-          {{ h.follow_button('user', user.id) }}</li>
-        </div>
-        {% endblock %}
-      {% endif %}
-      {% block user_info %}
-      <div class="info">
-        <dl>
-          {% if user.name.startswith('http://') or user.name.startswith('https://') %}
-            <dt>{{ _('Open ID') }}</dt>
-            <dd>{{ user.name|urlize(25) }}{# Be great if this just showed the domain #}</dd>
-          {% else %}
-            <dt>{{ _('Username') }}</dt>
-            <dd>{{ user.name }}</dd>
-          {% endif %}
-        </dl>
-        {% if is_myself %}
-          <dl>
-            <dt>{{ _('Email') }} <span class="label label-default" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
-            <dd>{{ user.email }}</dd>
-          </dl>
         {% endif %}
-        <dl>
-          <dt>{{ _('Member Since') }}</dt>
-          <dd>{{ h.render_datetime(user.created) }}</dd>
-        </dl>
-        <dl>
-          <dt>{{ _('State') }}</dt>
-          <dd>{{ _(user.state) }}</dd>
-        </dl>
-        {% if is_myself %}
-          <dl>
-            <dt class="key">{{ _('API Key') }} <span class="label label-default" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
-            <dd class="value"><code>{{ user.apikey }}</code></dd>
-          </dl>
-        {% endif %}
-      </div>
-      {% endblock %}
-    {% endblock %}
-  </section>
-</div>
-{% endblock %}
+        </div>
+      </li>
+    {% endblock user_organization %}
+    {% block user_name %}
+      <li>
+        <div class="cell">
+          <div class="text--strong">{{ _('Username') }}:</div>
+        </div>
+        <div class="cell">
+          {{ user.name }}
+        </div>
+      </li>
+    {% endblock user_name %}
+    {% if is_myself %}
+      {% block user_email %}
+        <li>
+          <div class="cell">
+            <div class="text--strong">{{ _('Email') }}:</div>
+          </div>
+          <div class="cell">
+            {{ user.email }}
+          </div>
+        </li>
+      {% endblock user_email %}
+    {% endif %}
+    {% block user_member_since %}
+      <li>
+        <div class="cell">
+          <div class="text--strong">{{ _('Member Since') }}:</div>
+        </div>
+        <div class="cell">
+          {{ h.render_datetime(user.created) }}
+        </div>
+      </li>
+    {% endblock user_member_since %}
+    {% block user_state %}
+      <li>
+        <div class="cell">
+          <div class="text--strong">{{ _('State') }}:</div>
+        </div>
+        <div class="cell">
+          {{ _(user.state) }}
+        </div>
+      </li>
+    {% endblock user_state %}
+    {% if is_myself %}
+      {% block user_api_key %}
+        <li>
+          <div class="cell">
+            <div class="text--strong">{{ _('API Key') }}:</div>
+          </div>
+          <div class="cell">
+            {{ user.apikey }}
+          </div>
+        </li>
+      {% endblock user_api_key %}
+    {% endif %}
+  </ul>
+
+  {% block primary_content_inner %}
+  {% endblock primary_content_inner%}
+{% endblock primary_content %}
+
+{% block secondary_content %}{% endblock secondary_content %}

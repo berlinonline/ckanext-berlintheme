@@ -1,0 +1,22 @@
+{% extends "user/read.html" %}
+
+{% block subtitle %}{{ _('Activity Stream') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block page_heading %}
+  <h1>{{ user.display_name }}</h1>
+{% endblock page_heading %}
+
+{% block primary_content_inner %}
+  <div class="modul-tabs" id="user_tabs">
+    <ul class="tablist" role="tablist">
+        <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.read', id=user.name) }}#user_tabs">{{ _('Datasets') }}</a></li>
+        <li class="tab" role="tab" tabindex="0" aria-controls="panel1" id="tab-panel1" aria-selected="true">{{ _('Activity Stream') }}</li>
+        {% if h.check_access('api_token_list', {'user': user['name']}) %}
+          <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.api_tokens', id=user.name) }}#user_tabs">{{ _('API Tokens') }}</a></li>
+        {% endif %}
+    </ul>
+    <div id="panel1" class="tabpanel">
+      {% snippet 'snippets/activity_stream.html', activity_stream=user_activity_stream, id=id, object_type='user' %}
+    </div>
+  </div>
+{% endblock %}

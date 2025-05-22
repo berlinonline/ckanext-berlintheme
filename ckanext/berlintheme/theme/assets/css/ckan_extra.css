@@ -245,3 +245,26 @@ div#layout-grid__area--herounit .searchterm {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* Users */
+
+.dr-user-info {
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (max-width: 37.5rem) {
+  .dr-user-info {
+    flex-direction: column;
+  }
+}
+
+/* Tabs, where the content is not on the same page but on other pages.
+
+The `js-tabs` class needs to be to be removed and all aria-attributes and roles need to be
+added manually. */
+
+a.dr-tab-link {
+  color: inherit;
+  text-decoration: inherit;
+}
