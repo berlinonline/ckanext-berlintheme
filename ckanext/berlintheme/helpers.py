@@ -1,9 +1,9 @@
 # coding: utf-8
 
 import logging
+import copy
 from urllib.parse import urlencode
 
-import ckan.lib.helpers as h
 import ckan.lib.helpers as helpers
 import ckan.logic as logic
 import ckan.model as model
@@ -1546,12 +1546,12 @@ def render_sample_record(value, **attrs):
     # TODO: that's obviously super inefficient to compute this every time...
     record_dict = {sample_record['id']: sample_record['label'] for sample_record in sample_record_select_options()}
     if value in record_dict:
-      return h.link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
+      return helpers.link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
     return ""
 
 def render_govdata_example_link(value):
     govdata_sparql_link = f"https://www.govdata.de/web/guest/sparql-assistent#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0ASELECT%20*%20WHERE%20%7B%0A%20%20%3Fdatensatz%0A%20%20%20%20dct%3Areferences%20%3Chttps%3A%2F%2Fmusterdatenkatalog.de%2Fdef%2Fmusterdatensatz%2F{value}%3E%20%3B%0A%20%20%20%20dct%3Atitle%20%3Ftitle%20%3B%0A%20%20.%0A%7D%20&endpoint=https%3A%2F%2Fwww.govdata.de%2Fsparql&requestMethod=GET&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bxml%2C*%2F*%3Bq%3D0.9&outputFormat=table"
-    return h.link_to("Beispiele bei GovData.de", govdata_sparql_link)
+    return helpers.link_to("Beispiele bei GovData.de", govdata_sparql_link)
 
 def hvd_category_select_options() -> list:
     return [
@@ -1658,7 +1658,7 @@ def render_hvd_category(value: str, **attrs) -> str:
     # TODO: that's obviously super inefficient to compute this every time...
     hvd_dict = {hvd_category['id']: hvd_category['label'] for hvd_category in hvd_category_select_options()}
     if value in hvd_dict:
-      return h.link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
+      return helpers.link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
     return ""
 
 def state_mapping():
@@ -1707,7 +1707,7 @@ def org_is_external(org: str) -> bool:
 
 def license_options(existing_license_id=None) -> list:
     options = []
-    for license_id, license_desc in h.license_options(existing_license_id=existing_license_id):
+    for license_id, license_desc in helpers.license_options(existing_license_id=existing_license_id):
       options.append({'value': license_id, 'text': license_desc})
     return options
 
@@ -1795,3 +1795,33 @@ def pagination_url_for_page(page: int, base_path: str='dataset') -> str:
                         if k != 'page']
     params_nopage.append(('page', page))
     return url_with_params(url=base_path, params=MultiDict(params_nopage))
+
+# def build_tab_dict(menu_item: str, title: str, icon: str, link: str, **kwargs) -> dict:
+#     menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
+#     _menu_items = config['routes.named_routes']
+#     if menu_item not in _menu_items:
+#         raise Exception('menu item `%s` cannot be found' % menu_item)
+#     item = copy.copy(_menu_items[menu_item])
+#     item.update(kwargs)
+#     active = helpers._link_active(item)
+#     needed = item.pop('needed')
+#     for need in needed:
+#         if need not in kwargs:
+#             raise Exception('menu item `%s` need parameter `%s`'
+#                             % (menu_item, need))
+#     tab = {
+#         "active": active,
+#         "label": title,
+#         "icon": icon,
+#         "link": link,
+#     }
+#     return tab
+
+def link_active(menu_item) -> bool:
+    menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
+    _menu_items = config['routes.named_routes']
+    if menu_item not in _menu_items:
+        raise Exception('menu item `%s` cannot be found' % menu_item)
+    menu_item = _menu_items[menu_item]
+    active = helpers._link_active(menu_item)
+    return active

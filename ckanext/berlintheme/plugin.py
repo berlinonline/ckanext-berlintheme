@@ -74,6 +74,8 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlintheme_pagination_url_for_page': theme_helpers.pagination_url_for_page ,
             'berlintheme_pagination_cells': theme_helpers.pagination_cells ,
             'berlintheme_url_with_params': theme_helpers.url_with_params ,
+            # 'berlintheme_build_tab_dict': theme_helpers.build_tab_dict ,
+            'berlintheme_link_active': theme_helpers.link_active ,
         }
 
     # -------------------------------------------------------------------

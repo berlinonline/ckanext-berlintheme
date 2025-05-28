@@ -11,36 +11,39 @@
 {% endblock page_heading %}
 
 
+{#
 {% block primary_content_inner %}
-  <div class="modul-tabs" id="user_tabs">
-    <ul class="tablist" role="tablist">
-        <li class="tab" role="tab" tabindex="0" aria-controls="panel1" id="tab-panel1" aria-selected="true">{{ _('Datasets') }}</li>
-        <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.activity', id=user.name) }}#user_tabs">{{ _('Activity Stream') }}</a></li>
-        {% if h.check_access('api_token_list', {'user': user['name']}) %}
-          <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.api_tokens', id=user.name) }}#user_tabs">{{ _('API Tokens') }}</a></li>
-        {% endif %}
-    </ul>
-    <div id="panel1" class="tabpanel">
-      {% block package_list %}
-        {% if user.datasets %}
-          {% snippet 'snippets/package_list.html', packages=user.datasets %}
-        {% else %}
+  {% snippet 'snippets/tabs.html', tabs=tabs, user=user %}
+{% endblock primary_content_inner %}
+#}
 
-          {% if is_myself %}
-            <p class="empty">
-              {{ _('You haven\'t created any datasets.') }}
-              {% if h.check_access('package_create') %}
-                {% link_for _('Create one now?'), named_route='dataset.new' %}
-              {% endif %}
-            </p>
-          {% else %}
-            <p class="empty">
-              {{ _('User hasn\'t created any datasets.') }}
-            </p>
-          {% endif %}
+{% block primary_content_inner %}
+  {% set tabs = [ 
+    { "active": true, "label": _('Datasets'), "icon": "sitemap" },
+    { "active": false, "label": _('Activity Stream'), "link": url_for('user.activity', id=user.name) + "#user_tabs", "icon": "clock" }
+  ] %}
+  {% if h.check_access('api_token_list', {'user': user['name']}) %}
+    {% do tabs.append({ "active": false, "label": _('API Tokens'), "link": url_for('user.api_tokens', id=user.name) + "#user_tabs", "icon": "key" })%}
+  {% endif %}
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+  {% if user.datasets %}
+    {% snippet 'snippets/package_list.html', packages=user.datasets, list_class='list--clean' %}
+  {% else %}
+
+    {% if is_myself %}
+      <p class="empty">
+        {{ _('You haven\'t created any datasets.') }}
+        {% if h.check_access('package_create') %}
+          {% link_for _('Create one now?'), named_route='dataset.new' %}
         {% endif %}
-      {% endblock package_list %}
-    </div>
-  </div>
+      </p>
+    {% else %}
+      <p class="empty">
+        {{ _('User hasn\'t created any datasets.') }}
+      </p>
+    {% endif %}
+  {% endif %}
+
 {% endblock primary_content_inner %}
 

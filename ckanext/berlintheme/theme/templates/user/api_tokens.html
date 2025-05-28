@@ -30,22 +30,21 @@
 
 
 {% block primary_content_inner %}
-  <div class="modul-tabs" id="user_tabs">
-    <ul class="tablist" role="tablist">
-        <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.read', id=user.name) }}#user_tabs">{{ _('Datasets') }}</a></li>
-        <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ url_for('user.activity', id=user.name) }}#user_tabs">{{ _('Activity Stream') }}</a></li>
-        <li class="tab" role="tab" tabindex="0" aria-controls="panel1" id="tab-panel1" aria-selected="true">{{ _('API Tokens') }}</li>
-    </ul>
-    <div id="panel1" class="tabpanel">
-      {% block token_list %}
-        {% if tokens %}
-          {% snippet 'user/snippets/api_token_list.html', tokens=tokens, user=user %}
-        {% else %}
-          <p class="empty">
-            {{ _('You haven\'t created any API Tokens.') }}
-          </p>
-        {% endif %}
-      {% endblock token_list %}
-    </div>
-  </div>
+  {% set tabs = [ 
+    { "active": false, "label": _('Datasets'), "link": url_for('user.read', id=user.name) + "#user_tabs", "icon": "sitemap" },
+    { "active": false, "label": _('Activity Stream'), "link": url_for('user.activity', id=user.name) + "#user_tabs", "icon": "clock" }
+  ] %}
+  {% if h.check_access('api_token_list', {'user': user['name']}) %}
+    {% do tabs.append({ "active": true, "label": _('API Tokens'), "icon": "key" })%}
+  {% endif %}
+  {% snippet 'snippets/tabs.html', tabs=tabs, user=user %}
+  {% block token_list %}
+    {% if tokens %}
+      {% snippet 'user/snippets/api_token_list.html', tokens=tokens, user=user %}
+    {% else %}
+      <p class="empty">
+        {{ _('You haven\'t created any API Tokens.') }}
+      </p>
+    {% endif %}
+  {% endblock token_list %}
 {% endblock primary_content_inner %}

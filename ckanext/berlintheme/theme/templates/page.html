@@ -66,19 +66,11 @@
               {% endblock page_heading %}
               {% if self.content_action() | trim %}
                 {% block page_header %}
-                  <div class="modul-servicepanel panel--colored dr-page-actions">
-                    {% block service_panel_left %}
-                      {# <div class="servicepanel__left">
-                      </div> #}
-                    {% endblock service_panel_left %}
-                    {% block service_panel_main %}
-                      {# <div class="servicepanel__main">
-                      </div> #}
-                    {% endblock service_panel_main %}  
-                    <div class="servicepanel__right">
-                      {% block content_action %}{% endblock content_action %}
-                    </div>
+                  <div class="dr-content-action-wrapper">
+                    {% block content_action %}{% endblock content_action %}
                   </div>
+                  {% block content_primary_nav %}{% endblock %}
+
                 {% endblock page_header %}
               {% endif %}
               {% block primary_content %}

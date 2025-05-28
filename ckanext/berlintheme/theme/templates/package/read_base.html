@@ -1,9 +1,17 @@
 {% ckan_extends %}
 
 {% block content_primary_nav %}
-  {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
+  {# {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
   {{ h.build_nav_icon(dataset_type ~ '.groups', _('Kategorien'), id=pkg.id if is_activity_archive else pkg.name, icon='tags') }}
-  {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
+  {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }} #}
+  {% set tabs = [ 
+    { "active": h.berlintheme_link_active(dataset_type ~ '.read'), "label": _('Dataset'), "link": url_for(dataset_type ~ '.read', id=pkg.id if is_activity_archive else pkg.name), "icon": "sitemap" },
+    { "active": h.berlintheme_link_active(dataset_type ~ '.groups'), "label": _('Kategorien'), "link": url_for(dataset_type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name), "icon": "tags" },
+    { "active": h.berlintheme_link_active(dataset_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(dataset_type ~ '.activity', id=pkg.id if is_activity_archive else pkg.name), "icon": "clock" }
+  ] %}
+
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+
 {% endblock %}
 
 

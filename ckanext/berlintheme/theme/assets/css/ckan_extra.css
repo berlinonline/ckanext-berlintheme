@@ -7,6 +7,10 @@
   --dpicon-pen: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M290.7%2093.2l128%20128-278%20278-114.1%2012.6C11.4%20513.5-1.6%20500.6%20.1%20485.3l12.7-114.2%20277.9-277.9zm207.2-19.1l-60.1-60.1c-18.8-18.8-49.2-18.8-67.9%200l-56.6%2056.6%20128%20128%2056.6-56.6c18.8-18.8%2018.8-49.2%200-67.9z%22/%3E%3C/svg%3E");
   --dpicon-plus: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M416%20208H272V64c0-17.7-14.3-32-32-32h-32c-17.7%200-32%2014.3-32%2032v144H32c-17.7%200-32%2014.3-32%2032v32c0%2017.7%2014.3%2032%2032%2032h144v144c0%2017.7%2014.3%2032%2032%2032h32c17.7%200%2032-14.3%2032-32V304h144c17.7%200%2032-14.3%2032-32v-32c0-17.7-14.3-32-32-32z%22/%3E%3C/svg%3E");
   --dpicon-trash: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M268%20416h24a12%2012%200%200%200%2012-12V188a12%2012%200%200%200%20-12-12h-24a12%2012%200%200%200%20-12%2012v216a12%2012%200%200%200%2012%2012zM432%2080h-82.4l-34-56.7A48%2048%200%200%200%20274.4%200H173.6a48%2048%200%200%200%20-41.2%2023.3L98.4%2080H16A16%2016%200%200%200%200%2096v16a16%2016%200%200%200%2016%2016h16v336a48%2048%200%200%200%2048%2048h288a48%2048%200%200%200%2048-48V128h16a16%2016%200%200%200%2016-16V96a16%2016%200%200%200%20-16-16zM171.8%2050.9A6%206%200%200%201%20177%2048h94a6%206%200%200%201%205.2%202.9L293.6%2080H154.4zM368%20464H80V128h288zm-212-48h24a12%2012%200%200%200%2012-12V188a12%2012%200%200%200%20-12-12h-24a12%2012%200%200%200%20-12%2012v216a12%2012%200%200%200%2012%2012z%22/%3E%3C/svg%3E");
+  --dpicon-sitemap: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20640%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M128%20352H32c-17.7%200-32%2014.3-32%2032v96c0%2017.7%2014.3%2032%2032%2032h96c17.7%200%2032-14.3%2032-32v-96c0-17.7-14.3-32-32-32zm-24-80h192v48h48v-48h192v48h48v-57.6c0-21.2-17.2-38.4-38.4-38.4H344v-64h40c17.7%200%2032-14.3%2032-32V32c0-17.7-14.3-32-32-32H256c-17.7%200-32%2014.3-32%2032v96c0%2017.7%2014.3%2032%2032%2032h40v64H94.4C73.2%20224%2056%20241.2%2056%20262.4V320h48v-48zm264%2080h-96c-17.7%200-32%2014.3-32%2032v96c0%2017.7%2014.3%2032%2032%2032h96c17.7%200%2032-14.3%2032-32v-96c0-17.7-14.3-32-32-32zm240%200h-96c-17.7%200-32%2014.3-32%2032v96c0%2017.7%2014.3%2032%2032%2032h96c17.7%200%2032-14.3%2032-32v-96c0-17.7-14.3-32-32-32z%22/%3E%3C/svg%3E");
+  --dpicon-key: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M512%20176C512%20273.2%20433.2%20352%20336%20352c-11.2%200-22.2-1.1-32.8-3.1l-24%2027A24%2024%200%200%201%20261.2%20384H224v40c0%2013.3-10.7%2024-24%2024h-40v40c0%2013.3-10.7%2024-24%2024H24c-13.3%200-24-10.7-24-24v-78.1c0-6.4%202.5-12.5%207-17l161.8-161.8C163.1%20213.8%20160%20195.3%20160%20176%20160%2078.8%20238.8%200%20336%200%20433.5%200%20512%2078.5%20512%20176zM336%20128c0%2026.5%2021.5%2048%2048%2048s48-21.5%2048-48-21.5-48-48-48-48%2021.5-48%2048z%22/%3E%3C/svg%3E");
+  --dpicon-tags: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20640%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M497.9%20225.9L286.1%2014.1A48%2048%200%200%200%20252.1%200H48C21.5%200%200%2021.5%200%2048v204.1a48%2048%200%200%200%2014.1%2033.9l211.9%20211.9c18.7%2018.7%2049.1%2018.7%2067.9%200l204.1-204.1c18.7-18.7%2018.7-49.1%200-67.9zM112%20160c-26.5%200-48-21.5-48-48s21.5-48%2048-48%2048%2021.5%2048%2048-21.5%2048-48%2048zm513.9%20133.8L421.8%20497.9c-18.7%2018.7-49.1%2018.7-67.9%200l-.4-.4L527.6%20323.5c17-17%2026.4-39.6%2026.4-63.6s-9.4-46.6-26.4-63.6L331.4%200h48.7a48%2048%200%200%201%2033.9%2014.1l211.9%20211.9c18.7%2018.7%2018.7%2049.1%200%2067.9z%22/%3E%3C/svg%3E");
+  --dpicon-clock: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256%208C119%208%208%20119%208%20256s111%20248%20248%20248%20248-111%20248-248S393%208%20256%208zm0%20448c-110.5%200-200-89.5-200-200S145.5%2056%20256%2056s200%2089.5%20200%20200-89.5%20200-200%20200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6%205.4-12%2012-12h32c6.6%200%2012%205.4%2012%2012v141.7l66.8%2048.6c5.4%203.9%206.5%2011.4%202.6%2016.8L334.6%20349c-3.9%205.3-11.4%206.5-16.8%202.6z%22/%3E%3C/svg%3E");
 }
 
 .dp-button-arrow-left:after {
@@ -29,16 +33,51 @@
   mask-image: var(--dpicon-trash);
 }
 
-/* Content Actions */
-
-.modul-servicepanel.dr-page-actions {
-  justify-content: flex-end;
+.bicon-sitemap:before {
+    -webkit-mask-image: var(--dpicon-sitemap);
+    mask-image: var(--dpicon-sitemap);
 }
 
+.bicon-tags:before {
+    -webkit-mask-image: var(--dpicon-tags);
+    mask-image: var(--dpicon-tags);
+}
+
+.bicon-clock:before {
+    -webkit-mask-image: var(--dpicon-clock);
+    mask-image: var(--dpicon-clock);
+}
+
+.dr-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Content Actions */
+
 @media print,(max-width: 73.8135rem ) {
-  .modul-servicepanel .servicepanel__left {
-    margin-bottom: 10px;
+  .dr-content-action-wrapper {
+    justify-content: flex-start;
+    margin-bottom: 20px;
   }
+}
+
+@media print,(min-width: 73.8135rem ) {
+  .dr-content-action-wrapper {
+    justify-content: flex-end;
+    margin-bottom: -20px;
+  }
+}
+
+.dr-content-action-wrapper {
+  display: flex;
 }
 
 /* Forms */
@@ -267,4 +306,8 @@ added manually. */
 a.dr-tab-link {
   color: inherit;
   text-decoration: inherit;
+}
+
+.modul-tabs.dr-fake-tabs {
+  margin-bottom: 0px;
 }
