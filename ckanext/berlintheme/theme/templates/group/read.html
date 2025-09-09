@@ -1,6 +1,7 @@
-{% extends "organization/read_base.html" %}
+{% extends "group/read_base.html" %}
 
 {% set sorting_selected = sort_by_selected %}
+
 {% set sorting = [
   (_('Relevance'), 'score desc, metadata_modified desc'),
   (_('Name Ascending'), 'title_string asc'),
@@ -11,14 +12,6 @@
 
 {% block primary_content_inner %}
   <form id="dataset-search-form" class="dr-hero-search" method="get" data-module="select-switch">
-    {% block page_primary_action %}
-      {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-        <div class="page_primary_action">
-          {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
-        </div>
-      {% endif %}
-    {% endblock %}
-
     {% block groups_search_form %}
       {% set facets = {
         'fields': fields_grouped,
@@ -28,7 +21,8 @@
         'remove_field': remove_field }
       %}
       {{ h.snippet('snippets/search_form_slot.html', query=q, placeholder=_('Search datasets...')) }}
-    {% endblock groups_search_form %}
+
+  {% endblock groups_search_form %}
     <div class="fullwidth panel--heavy">
       <div class="fullwidth__inner">
         <div class="row">
@@ -58,7 +52,7 @@
               {% if page.items %}
                 {{ h.snippet('snippets/package_list.html', packages=page.items, list_class='list--clean') }}
               {% endif %}
-            {% endblock %}
+            {% endblock packages_list %}
             {% block page_pagination %}
               {% if c.page.page_count > 1 %}
                 {{ h.snippet('snippets/pagination.html',
@@ -77,13 +71,3 @@
   </form>
 {% endblock primary_content_inner %}
 
-{% block organization_facets %}
-  <div class="filters">
-    <div>
-      {% for facet in facet_titles %}
-        {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
-      {% endfor %}
-    </div>
-    <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a>
-  </div>
-{% endblock %}

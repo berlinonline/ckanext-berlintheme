@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+
+{% set group = group_dict %}
+
+{% block subtitle %}{{ _('Manage') }} {{ g.template_title_delimiter }} {{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Groups') }}{% endblock %}
+
+{% block page_heading %}
+  <h1>
+    {{ group_dict.display_name }}
+    {% if group_dict.state == 'deleted' %}
+      [{{ _('Deleted') }}]
+    {% endif %}
+  </h1>
+{% endblock page_heading %}
+
+{% block breadcrumb_content %}
+  <li>{% link_for _('Kategorien'), named_route=group_type + '.index' %}</li>
+  {% if group_dict %}
+    <li>{% link_for group.display_name|truncate(35), named_route=group_type+'.read', id=group.name %}</li>
+  {% endif %}
+{% endblock %}
+
+{% block content_action %}
+  {% if group  and h.check_access('group_update', {'id': group.id}) %}
+    {% link_for _('View'), named_route=group_type+'.read', id=group_dict.name, class_='button' %}
+  {% endif %}
+{% endblock content_action %}
+
+{% block content_primary_nav %}
+  {% set tabs = [ 
+    { "active": h.berlintheme_link_active(group_type + '.edit'), "label": _('Edit'), "link": url_for(group_type + '.edit', id=group_dict.name), "icon": "edit" },
+    { "active": h.berlintheme_link_active(group_type + '.members'), "label": _('Members'), "link": url_for(group_type + '.members', id=group_dict.name), "icon": "users" },
+  ] %}
+
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

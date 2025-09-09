@@ -1,0 +1,85 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Harvester") }}{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Harvester'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
+{% endblock %}
+
+{% block page_heading %}
+  <h1>
+    {{ _('Harvester') }}
+  </h1>
+{% endblock page_heading %}
+
+{% block grid_herounit %}
+  {% block page_primary_action %}
+    {% if h.check_access('harvest_source_create') %}
+      <div class="page_primary_action">
+        {% link_for _('Add Harvest Source'), named_route='{0}_new'.format(dataset_type), class_='button dp-button-plus' %}
+      </div>
+    {% endif %}
+  {% endblock %}
+  {# <div class="searchform-slot ">
+    <div class="form-group">
+      <label class="aural" for="organization_search">{{ _('Search organizations...') }}</label>
+      <div class="searchterm">
+        <div class="input-wrapper">
+          <i class="fas fa-search lens" aria-hidden="true"></i>
+          <input id="organization_search" class="form-control search" type="text" name="q" value="{{ q }}" autocomplete="off" placeholder="{{ _('Search organizations...') }}">
+        </div>
+        <button class="button button--clean submit " type="submit" title="{{ _('Search') }}">
+          <span class="aural">{{ _('Search') }}</span><i class="fas fa-arrow-right icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div> #}
+{% endblock grid_herounit %}
+
+{# {% set authorized_user = h.check_access('harvest_source_create') %}
+
+{% if authorized_user %}
+  <a href="{{ h.url_for('{0}_new'.format(dataset_type)) }}" class="btn btn-primary">
+    <i class="fa fa-plus-square icon-plus-sign-alt"></i>
+      {{ _('Add Harvest Source') }}
+  </a>
+{% endif %} #}
+
+
+{% block primary_content %}
+    <section class="module">
+      <div class="module-content">
+
+        {% set facets = {
+          'fields': c.fields_grouped,
+          'search': c.search_facets,
+          'titles': c.facet_titles,
+          'translated_fields': c.translated_fields,
+          'remove_field': c.remove_field }
+        %}
+        {% set sorting = [
+          (_('Relevance'), 'score desc, metadata_modified desc'),
+          (_('Name Ascending'), 'title_string asc'),
+          (_('Name Descending'), 'title_string desc'),
+          (_('Last Modified'), 'metadata_modified desc'),
+          (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+        %}
+        {% snippet 'snippets/search_form.html', type='harvest', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, placeholder=_("Search harvest sources...") %}
+
+        {{ h.snippet('snippets/source_list.html', sources=c.page.items, show_organization=true) }}
+
+      </div>
+
+      {{ c.page.pager(q=c.q) }}
+    </section>
+
+{% endblock %}
+
+
+
+{% block secondary_content %}
+  {% for facet in c.facet_titles %}
+      {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, alternative_url=h.url_for('{0}_search'.format(c.dataset_type))) }}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{#
+Renders a media item for a group. This should be used in a list.
+
+group - A group dict.
+
+Example:
+
+    <ul class="media-grid">
+      {% for group in groups %}
+        {% snippet "group/snippets/group_item.html", group=group %}
+      {% endfor %}
+    </ul>
+#}
+{% set type = group.type or 'group' %}
+{% set url = h.url_for(type ~ '.read', id=group.name) %}
+{% set link_title = _('View {group_name}').format(group_name=group.display_name) %}
+{% block item %}
+  <li>
+    {% block item_inner %}
+      <div class="teasertile" data-add-clickable-area="full">
+        <div class="inner">
+          <div>
+            {% block image %}
+              <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}">
+            {% endblock image %}
+            {% block title %}
+              <h3 class="title">{{ group.display_name }}</h3>
+            {% endblock title %}
+          </div>
+          {% block datasets %}
+            {% if group.package_count %}
+              <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', group.package_count).format(num=group.package_count) }}</strong>
+            {% elif group.package_count == 0 %}
+              <span class="count">{{ _('0 Datasets') }}</span>
+            {% endif %}
+          {% endblock datasets %}
+        </div>
+        <div class="action">
+          {% block link %}
+            <a class="more" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
+          {% endblock link %}
+        </div>
+      </div>
+      {% if group.user_member %}
+        <input name="group_remove.{{ group.id }}" value="{{ _('Remove') }}" type="submit" class="btn btn-danger btn-sm media-edit" title="{{ _('Remove dataset from this group') }}"/>
+      {% endif %}
+    {% endblock item_inner %}
+  </li>
+{% endblock item %}
+{% if position is divisibleby 3 %}
+  <li class="clearfix js-hide"></li>
+{% endif %}

@@ -2,24 +2,21 @@
 
 {% block subtitle %}{{ _('About') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
 
-{% block service_panel_left %}
-  <div class="servicepanel__left">
-    <a type="button" class="button button--light" href="{{  h.url_for(group_dict.type + '.read', id=group_dict.name, ) }}">{{ _('Datasets') }}</a>
-    <button type="button" class="button button--light disabled">{{ _('Activity Stream') }}</button>
-    <button type="button" class="button button--light disabled">{{ _('About') }}</button>
-  </div>
-  {# {{ h.build_nav_icon(group_type + '.read', _('Datasets'), id=group_dict.name, icon='sitemap') }}
-  {{ h.build_nav_icon(group_type + '.activity', _('Activity Stream'), id=group_dict.name, offset=0, icon='clock-o') }}
-  {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }} #}
-{% endblock service_panel_left %}
-
 {% block primary_content_inner %}
-  {# <h1>{% block page_heading %}{{ group_dict.display_name }}{% endblock %}</h1> #}
-  {% block organization_description %}
-    {% if group_dict.description %}
-      {{ h.render_markdown(group_dict.description) }}
-    {% endif %}
-  {% endblock %}
+  <section class="modul-text_bild imagealignleft">
+    {% block image %}
+      <div class="image">
+        <img src="{{ group_dict.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="Logo von {{ group_dict.title }}" />
+      </div>
+    {% endblock image %}
+    <div class="text">
+      {% block organization_description %}
+        {% if group_dict.description %}
+          {{ h.render_markdown(group_dict.description) }}
+        {% endif %}
+      {% endblock %}
+    </div>
+  </section>
   {% block organization_extras %}
     {% snippet 'snippets/additional_info.html', extras = h.sorted_extras(group_dict.extras) %}
   {% endblock %}

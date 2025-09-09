@@ -1,0 +1,24 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
+
+{% block maintag %}<div class="row" role="main">{% endblock %}
+
+{% block page_heading %}
+  <h1>
+    {{ _("Confirm Delete") }}
+  </h1>
+{% endblock page_heading %}
+
+{% block primary_content %}
+  <div class="block message">
+    <p>{{ _('Sind Sie sicher, dass Sie die Kategorie „{name}“ löschen wollen?').format(name=group_dict.title) }}</p>
+    <p>{{ _('Alle Verknüpfungen zu Datensätzen und Nutzern werden gelöscht. Dies kann nicht rückgängig gemacht werden!') }}
+  </div>
+  {% block form %}
+    <form id="group-confirm-delete-form" action="{% url_for group_type+'.delete', id=group_dict.id %}" method="post">
+      <a class="button button--light" href="{{ url_for(group_type+'.read', id=group_dict.name)}}" >{{ _('Cancel') }}</a>
+      <button class="button button--light" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
+    </form>
+  {% endblock form %}
+{% endblock primary_content %}

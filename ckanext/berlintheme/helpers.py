@@ -1794,6 +1794,7 @@ def pagination_url_for_page(page: int, base_path: str='dataset') -> str:
     params_nopage = [(k, v) for k, v in request.params.items()
                         if k != 'page']
     params_nopage.append(('page', page))
+    base_path = base_path.strip('/')
     return url_with_params(url=base_path, params=MultiDict(params_nopage))
 
 # def build_tab_dict(menu_item: str, title: str, icon: str, link: str, **kwargs) -> dict:

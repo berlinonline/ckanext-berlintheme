@@ -1,0 +1,45 @@
+{% extends "page.html" %}
+
+{% set organization = group_dict %}
+
+{% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
+
+{% block page_heading %}
+  <h1>
+  {{ group_dict.display_name }}
+  {% if h.berlin_org_is_external(group_dict.id) %}
+    ({{ _('extern') }})
+  {% endif %}
+  {% if group_dict.state == 'deleted' %}
+    [{{ _('Deleted') }}]
+  {% endif %}
+  </h1>
+{% endblock page_heading %}
+
+
+{% block breadcrumb_content %}
+  <li>{% link_for _('Organizations'), named_route=group_type+'.index' %}</li>
+  {% if group_dict %}
+    <li>{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name %}</li>
+  {% endif %}
+{% endblock breadcrumb_content %}
+
+{% block content_action %}
+  {% if organization and h.check_access('organization_update', {'id': organization.id}) %}
+    {% link_for _('View'), named_route=group_type+'.read', id=organization.name, class_='button' %}
+  {% endif %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {% set tabs = [ 
+    { "active": h.berlintheme_link_active(group_type + '.edit'), "label": _('Edit'), "link": url_for(group_type + '.edit', id=group_dict.name), "icon": "edit" },
+    { "active": h.berlintheme_link_active(group_type + '.bulk_process'), "label": _('Datasets'), "link": url_for(group_type + '.bulk_process', id=group_dict.name), "icon": "sitemap" },
+    { "active": h.berlintheme_link_active(group_type + '.members'), "label": _('Members'), "link": url_for(group_type + '.members', id=group_dict.name), "icon": "users" },
+  ] %}
+
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

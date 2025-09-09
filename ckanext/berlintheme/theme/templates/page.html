@@ -52,8 +52,18 @@
 
         {% block grid_pre_herounit %}{% endblock grid_pre_herounit %}
         <div id="layout-grid__area--herounit">
-          {% block grid_herounit %}
-          {% endblock grid_herounit %}
+          {% block flash %}
+            <div class="flash-messages">
+              {% block flash_inner %}
+                {% for message in h.flash.pop_messages() | list %}
+                  <div class="message alert fade in {{ message.category }}">
+                    {{ h.literal(message) }}
+                  </div>
+                {% endfor %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+          {% block grid_herounit %}{% endblock grid_herounit %}
         </div>
 
         <div id="layout-grid__area--maincontent" style="min-height: 0px;">
@@ -64,15 +74,16 @@
                   {{ _('Title') }}
                 </h1>
               {% endblock page_heading %}
-              {% if self.content_action() | trim %}
-                {% block page_header %}
-                  <div class="dr-content-action-wrapper">
-                    {% block content_action %}{% endblock content_action %}
-                  </div>
+              {% block page_header %}
+                <div class="dr-content-header">
+                  {% if self.content_action() | trim %}
+                    <div class="dr-content-action-wrapper">
+                      {% block content_action %}{% endblock content_action %}
+                    </div>
+                  {% endif %}
                   {% block content_primary_nav %}{% endblock %}
-
-                {% endblock page_header %}
-              {% endif %}
+                </div>
+              {% endblock page_header %}
               {% block primary_content %}
                 {% block primary_content_inner %}                
                 {% endblock primary_content_inner %}

@@ -1,0 +1,71 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('All Users') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Users'), named_route='user.index') }}</li>
+{% endblock %}
+
+{% block page_heading %}
+  <h1 class="dr-visually-hidden">{{ _('Users') }}</h1>
+{% endblock page_heading%}
+
+{% block grid_herounit %}
+  {% snippet 'user/snippets/user_search.html', q=q %}
+{% endblock grid_herounit %}
+
+{% block grid_maincontent %}
+  <div class="fullwidth panel--heavy">
+    <div class="fullwidth__inner">
+        <div class="dp-search-result-top">
+          <div class="dp-search-result-summary">
+            <p>
+              {% block search_title %}
+                {% if not error %}
+                  {% if q %}
+                    {{ page.item_count }} Nutzer:innen gefunden für den Suchbegriff „{{ q }}“.
+                  {% else %}
+                    {{ page.item_count }} Nutzer:innen gefunden.
+                  {% endif %}
+                {% else %}
+                  {{ _('Error') }}
+                {% endif %}
+              {% endblock search_title %}
+            </p>
+          </div>
+        </div>
+      {{ super() }}
+    </div>
+  </div>
+{% endblock grid_maincontent %}
+
+{% block primary_content %}
+  {% block users_list %}
+    <div class="modul-teasertiles">
+      <div class="teasertiles__inner">
+        <ul>
+          {% block users_list_inner %}
+            {% for user in page.items %}
+              <li>
+                {% snippet 'user/snippets/user_item.html', user=user %}
+              </li>
+            {% endfor %}
+          {% endblock %}
+        </ul>
+      </div>
+    </div>
+  {% endblock %}
+  {% block page_pagination %}
+    {% if page.page_count > 1 %}
+      {{ h.snippet('snippets/pagination.html',
+        page=page.page,
+        page_count=page.page_count,
+        cells=h.berlintheme_pagination_cells(page.page, page.page_count),
+        base_path='user'
+        )
+      }}
+    {% endif %}
+  {% endblock page_pagination %}
+{% endblock %}
+
+{% block secondary_content %}{% endblock %}

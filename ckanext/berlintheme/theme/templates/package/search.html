@@ -37,7 +37,7 @@
     {% if fields -%}
       <span>{{ form.hidden_from_list(fields=fields) }}</span>
     {%- endif %}
-{% endblock search_search_fields %}
+  {% endblock search_search_fields %}
 
 {% endblock grid_pre_herounit %}
 
@@ -49,20 +49,7 @@
       </div>
     {% endif %}
   {% endblock page_primary_action %}
-  <div class="searchform-slot ">
-    <div class="form-group">
-      <label class="aural" for="dataset_fulltext_search">Suchbegriff</label>
-      <div class="searchterm">
-        <div class="input-wrapper">
-          <i class="fas fa-search lens" aria-hidden="true"></i>
-          <input id="dataset_fulltext_search" class="form-control search" type="text" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
-        </div>
-        <button class="button button--clean submit " type="submit" title="{{ _('Search') }}">
-          <span class="aural">{{ _('Search') }}</span><i class="fas fa-arrow-right icon" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+  {{ h.snippet('snippets/search_form_slot.html', query=query, placeholder=placeholder) }}
 {% endblock grid_herounit %}
 
 
@@ -90,36 +77,7 @@
           </div>
         </div>
         <div class="span8">
-          <div class="dp-search-result-top">
-            <div class="dp-search-result-summary">
-              {% block search_title %}
-                {% if not error %}
-                  {% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}
-                {% else %}
-                  {{ _('Error') }}
-                {% endif %}
-              {% endblock search_title %}
-            </div>
-            <div class="dp-search-result-sort">
-              {% block search_sortby %}
-                {% if sorting %}
-                  <div class="form-select form-group control-order-by">
-                    <label for="field-order-by">{{ _('Order by') }}</label>
-                    <select id="field-order-by" name="sort" class="form-control">
-                      {% for label, value in sorting %}
-                        {% if label and value %}
-                          <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
-                        {% endif %}
-                      {% endfor %}
-                    </select>
-                    {% block search_sortby_button %}
-                    <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
-                    {% endblock search_sortby_button %}
-                  </div>
-                {% endif %}
-              {% endblock search_sortby%}
-            </div>
-          </div>
+          {{ h.snippet('snippets/search_results_header.html', query=query, count=count, type=type, sorting=sorting, sorting_selected=sorting_selected )}}
           {% block search_facets %}
             {% if facets %}
               <p class="filter-list">
@@ -154,7 +112,7 @@
                 )
               }}
             {% endif %}
-          {% endblock %}
+          {% endblock page_pagination %}
         </div>
       </div>
     </div>

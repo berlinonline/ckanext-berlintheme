@@ -33,14 +33,14 @@
           </div>
         {% endblock image %}
         {% block heading %}
-          <h1 class="heading">{{ organization.title or organization.name }}
+          <h2 class="heading">{{ organization.title or organization.name }}
             {% if organization.state == 'deleted' %}
               [{{ _('Deleted') }}]
             {% endif %}
-          </h1>
-          {% if h.berlin_org_is_external(organization.id) %}
-            <h2>({{ _("extern") }})</h2>
-          {% endif %}
+            {% if h.berlin_org_is_external(organization.id) %}
+              ({{ _("extern") }})
+            {% endif %}
+          </h2>
         {% endblock heading %}
         {% block description %}
           <div class="text">
@@ -51,8 +51,6 @@
             {% else %}
               <p class="empty">{{ _('There is no description for this organization') }}</p>
             {% endif %}
-            {# <a href="/datensaetze/simple_search_wwwberlindesenarbeitweiterbildungbildungszeitsuche" class="more" data-mainlink="true">Details<span class="aural">zu:
-            Suche nach anerkannten Veranstaltungen</span></a> #}
             <a href="{{ url }}" class="more" style="">Details<span class="aural">zu: {{ organization.title }}</span></a>
           </div>
         {% endblock description %}

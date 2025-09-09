@@ -8,16 +8,14 @@ Example:
     {% snippet "organization/snippets/organization_list.html" %}
 
 #}
-{% block organization_list %}
 <div class="modul-teasertiles">
   <div class="teasertiles__inner">
     <ul>
       {% block organization_list_inner %}
-      {% for organization in organizations %}
-        {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index, show_capacity=show_capacity %}
-      {% endfor %}
+        {% for organization in organizations %}
+          {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index, show_capacity=show_capacity %}
+        {% endfor %}
       {% endblock %}
     </ul>
   </div>
 </div>
-{% endblock %}

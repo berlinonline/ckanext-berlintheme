@@ -194,6 +194,7 @@
     value=data.date_released,
     error=errors.date_released,
     is_required=h.berlin_required('date_released'),
+    type='date',
     doc_link='veröffentlichungsdatum'
   ) }}
 {% endblock %}
@@ -207,6 +208,7 @@
     value=data.date_updated,
     error=errors.date_updated,
     is_required=h.berlin_required('date_updated'),
+    type='date',
     doc_link='aktualisierungsdatum'
   ) }}
 {% endblock %}
@@ -235,6 +237,7 @@
     value=data.temporal_coverage_from,
     error=errors.temporal_coverage_from,
     is_required=h.berlin_required('temporal_coverage_from'),
+    type='date',
     doc_link='zeitliche-abdeckung'
   ) }}
 
@@ -246,6 +249,7 @@
     value=data.temporal_coverage_to,
     error=errors.temporal_coverage_to,
     is_required=h.berlin_required('temporal_coverage_to'),
+    type='date',
     doc_link='zeitliche-abdeckung'
   ) }}
 

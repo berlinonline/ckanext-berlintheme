@@ -20,10 +20,10 @@ Example:
       <div class="inner">
         <div>
           {% block image %}
-            <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" class="img-responsive media-image">
+            <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}">
           {% endblock image %}
           {% block title %}
-            <h3 class="title">{{ organization.display_name }}</h2>
+            <h3 class="title">{{ organization.display_name }}</h3>
           {% endblock title %}
           {# {% block description %}
             {% if organization.description %}
@@ -48,6 +48,3 @@ Example:
   {% endblock item_inner %}
 </li>
 {% endblock item %}
-{% if position is divisibleby 3 %}
-  <li class="clearfix js-hide"></li>
-{% endif %}

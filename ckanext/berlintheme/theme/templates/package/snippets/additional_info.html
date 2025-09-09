@@ -168,6 +168,23 @@ context
           {{ h.snippet('package/snippets/metadata_item.html', title=_(key), value=value, create_link=False, context=context) }}
         {% endfor %}
       {% endblock %}
+      {% if pkg.organization %}
+        <li>
+          <div class="cell">
+            <div class="text--strong">Datenregister-{{ _('Organization') }}:</div>
+          </div>
+          <div class="cell">
+            {% set org = h.get_organization(pkg.organization.name) %}
+            {% if org %}
+              {% set url = h.url_for(org.type + '.about', id=org.name, ) %}
+              <a href="{{ url }}">{{ org.title }}</a>
+            {% else %}
+              ({{ _('Technical') }})
+            {% endif %}
+          </div>
+        </li>
+      {% endif %}
+          
     </ul>
   {% endif %}
 {% endif %}

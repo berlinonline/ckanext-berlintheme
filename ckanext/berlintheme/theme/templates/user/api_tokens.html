@@ -43,7 +43,11 @@
       {% snippet 'user/snippets/api_token_list.html', tokens=tokens, user=user %}
     {% else %}
       <p class="empty">
-        {{ _('You haven\'t created any API Tokens.') }}
+        {% if is_myself %}
+          {{ _('You haven\'t created any API Tokens.') }}
+        {% else %}
+          {{ user.display_name + _(' hat keine API Tokens erzeugt.') }}
+        {% endif %}
       </p>
     {% endif %}
   {% endblock token_list %}
