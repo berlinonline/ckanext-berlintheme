@@ -4,9 +4,10 @@
 
 ## [1.0.0-dev](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/1.0.0-dev)
 
-_(2025-05-20)_
+_(2025-09-09)_
 
 - Implement [berlin.de styleguide](https://styleguide.berlin.de/).
+- Set env variables for database and Solr index in scripts for running unit tests locally.
 
 ## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
 
