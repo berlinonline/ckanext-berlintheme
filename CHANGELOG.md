@@ -2,6 +2,8 @@
 
 ## Development
 
+- Add new field `author_uri`.
+
 ## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
 
 _(2025-03-31)_

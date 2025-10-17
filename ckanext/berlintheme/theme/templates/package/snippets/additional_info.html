@@ -39,6 +39,14 @@
           value=pkg_dict.author
         ) }}
 
+        {# Veröffentlichende Stelle (URI) #}
+        {{
+          read.metadata_field(
+            label=_("Veröffentlichende Stelle (URI)"),
+            value=pkg_dict.author_uri,
+            display_value=h.berlin_render_author_uri(pkg_dict.author_uri)
+        )}}
+
         {# Kontaktperson #}
         {{ read.metadata_field(
           label=_("Kontaktperson"),
@@ -65,7 +73,7 @@
           display_value=h.link_to(pkg_dict.url, pkg_dict.url, target='_blank') if pkg_dict.url else _("undefiniert")
         )}}
 
-        {# Webadresse #}
+        {# Vorschaubild #}
         {{ read.metadata_field(
           label=_("Vorschaubild"),
           value=pkg_dict.preview_image,

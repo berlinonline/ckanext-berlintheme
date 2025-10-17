@@ -82,6 +82,34 @@
     is_required=h.berlin_required('author'), doc_link="veröffentlichende-stelle"
   ) }}
 
+{% block package_author_uri %}
+
+  <div class="form-group">
+    {% if h.berlin_required('author_uri') %}
+      <label class="control-label" for="field-author_uri datasetform-required" title="{{ _("This field is required") }}">{{ _("Veröffentlich\u00ADende Stelle (URI)") }}</label>
+    {% else %}
+      <label class="control-label" for="field-author_uri">{{ _("Veröffentlich\u00ADende Stelle (URI)") }}</label>
+    {% endif %}
+    <div class="controls">
+      <div class="row">
+        <div class="col-xs-11">
+          <select id="field-author_uri" name="author_uri" data-module="autocomplete">
+            {% for feature in h.berlin_author_uri_select_options()  %}
+              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('author_uri', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-xs-1">
+          {% set link_text = "Dokumentation zum Attribut 'Veröffentlichende Stelle'" %}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#veröffentlichende-stelle" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock package_author_uri %}
+
+
   {{ form.input(
     'maintainer',
     id='field-maintainer',
