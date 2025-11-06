@@ -393,6 +393,18 @@
 
 {% endblock %}
 
+{% block package_data_anonymized %}
+  {{ form.checkbox(
+      'data_anonymized',
+      id='field-data_anonymized',
+      label=_("Daten anonymisiert?"),
+      error=errors.data_anonymized,
+      checked=data.data_anonymized,
+      value='true',
+      is_required=h.berlin_required('data_anonymized'),
+  ) }}
+{% endblock package_data_anonymized %}
+
 {% block package_basic_fields_tags %}
   {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
   {{ form.input(

@@ -2,6 +2,8 @@
 
 ## Development
 
+- Add new `data_anonymized` field to indicate if datasets that contain personal data have been anonymized prior to publication.
+
 ## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
 
 _(2025-03-31)_
