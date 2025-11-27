@@ -4,7 +4,7 @@ import logging
 from ckan.lib.helpers import link_to
 import ckan.logic as logic
 import ckan.model as model
-from ckan.common import c, config
+from ckan.common import c, config, _
 from ckanext.berlin_dataset_schema.schema import Schema
 import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
@@ -1700,3 +1700,10 @@ def org_is_external(org: str) -> bool:
         if extra['key'] == 'external' and extra['value'] == 'true':
           return True
     return False
+
+def bool_to_string(value: bool) -> str:
+    '''Convert a boolean to a translated string _("Ja") or _("Nein").'''
+    if value:
+        return _("Ja")
+    else:
+        return _("Nein")

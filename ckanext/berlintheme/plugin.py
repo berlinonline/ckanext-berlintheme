@@ -5,6 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 
+
 from ckanext.berlintheme import page_blueprint
 
 class BerlinTheme(plugins.SingletonPlugin):
@@ -69,6 +70,8 @@ class BerlinTheme(plugins.SingletonPlugin):
                 theme_helpers.render_hvd_category ,
             'berlin_org_is_external':
                 theme_helpers.org_is_external ,
+            'berlin_convert_bool_to_string':
+                theme_helpers.bool_to_string ,
         }
 
     # -------------------------------------------------------------------

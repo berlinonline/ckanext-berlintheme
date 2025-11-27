@@ -1,6 +1,13 @@
 # Changelog
 
 ## Development
+## [0.3.15](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.15)
+
+_(2025-11-27)_
+
+- Add new `personal_data`, `personal_data_exemption` and `data_anonymized` fields to indicate if datasets contain contain personal data, are exempt from the requirement to anonymize the data or have been anonymized prior to publication. Input is implemented as interconnected checkboxes (via JS).
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
 
 ## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
 

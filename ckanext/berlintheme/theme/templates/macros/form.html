@@ -44,17 +44,25 @@ Example:
 {{ form.checkbox('remember', checked=true) }}
 
 #}
-{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false) %}
+{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false, doc_link="") %}
+{% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
 {%- set extra_html = caller() if caller -%}
 <div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
 <div class="controls">
-  <label class="checkbox" for="{{ id or name }}">
-    <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
-    {{ label or name }}
-    {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-    {% if error and error is iterable %}<strong class="error-inline">{{ error|join(', ') }}</strong>{% endif %}
-  </label>
-  {{ extra_html }}
+  <div class="row">
+    <div class="col-xs-11">
+      <label class="checkbox" for="{{ id or name }}">
+        <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
+        {{ label or name }}
+        {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
+        {% if error and error is iterable %}<strong class="error-inline">{{ error | unique | join(', ') }}</strong>{% endif %}
+      </label>
+      {{ extra_html }}
+    </div>
+    <div class="col-xs-1">
+      <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+    </div>
+  </div>
 </div>
 </div>
 {% endmacro %}
@@ -92,7 +100,7 @@ options     - A list/tuple of fields to be used as <options>.
     ], selected=data.the_data_type if data.the_data_type else '0', is_required=true) }}
 
     #}
-    {% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
+  {% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
     {% set classes = (classes|list) %}
     {% do classes.append('control-select') %}
 

@@ -1,5 +1,8 @@
 {% import 'macros/form.html' as form %}
 
+{% asset 'berlintheme/toggle_personal_data_js' %}
+
+
 {% block package_basic_fields_title %}
   {{ form.input(
     'title',
@@ -392,6 +395,47 @@
   <hr/>
 
 {% endblock %}
+
+{% block package_personal_data %}
+  {{ form.checkbox(
+      'personal_data',
+      id='field-personal_data',
+      label=_("Enthalten die ursprünglichen Daten (Rohdaten) personenbezogene Daten?"),
+      error=errors.personal_data,
+      checked=data.personal_data,
+      value='true',
+      is_required=h.berlin_required('personal_data'),
+      doc_link='anonymisierung',
+  ) }}
+{% endblock package_personal_data %}
+
+{% block package_personal_data_exemption %}
+  {{ form.checkbox(
+      'personal_data_exemption',
+      id='field-personal_data_exemption',
+      label=_("Werden die personenbezogenen Daten auf Grund eines Gesetzes oder einer Sonderregelung veröffentlicht?"),
+      error=errors.personal_data_exemption,
+      checked=data.personal_data_exemption,
+      value='true',
+      is_required=h.berlin_required('personal_data_exemption'),
+      doc_link='anonymisierung',
+  ) }}
+{% endblock package_personal_data_exemption %}
+
+{% block package_data_anonymized %}
+  {{ form.checkbox(
+      'data_anonymized',
+      id='field-data_anonymized',
+      label=_("Sind die Daten anonymisiert worden?"),
+      error=errors.data_anonymized,
+      checked=data.data_anonymized,
+      value='true',
+      is_required=h.berlin_required('data_anonymized'),
+      doc_link='anonymisierung',
+  ) }}
+{% endblock package_data_anonymized %}
+
+<hr/>
 
 {% block package_basic_fields_tags %}
   {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
