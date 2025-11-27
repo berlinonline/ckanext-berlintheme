@@ -12,3 +12,8 @@ global_warning_css:
   contents:
     - css/global_warning.css
   output: berlintheme/%(version)s_global_warning.css
+
+toggle_personal_data_js:
+  contents:
+    - js/toggle_personal_data.js
+  output: berlintheme/%(version)s_toggle_personal_data.js
