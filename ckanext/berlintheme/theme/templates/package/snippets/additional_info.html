@@ -162,10 +162,28 @@
             display_value=h.berlin_render_hvd_category(pkg_dict.hvd_category)
         )}}
 
+        {# Personenbezug #}
+        {{
+          read.metadata_field(
+            label=_("Haben die Rohdaten einen Personenbezug?"),
+            value=h.berlin_convert_bool_to_string(pkg_dict.personal_data),
+            display_value=h.berlin_convert_bool_to_string(pkg_dict.personal_data)
+          )
+        }}
+
+        {# Sonderregelung Personenbezug #}
+        {{
+          read.metadata_field(
+            label=_("Gibt es eine Sonderregelung für die Veröffentlichug personenbezogener Daten?"),
+            value=h.berlin_convert_bool_to_string(pkg_dict.personal_data_exemption),
+            display_value=h.berlin_convert_bool_to_string(pkg_dict.personal_data_exemption)
+          )
+        }}
+
         {# Daten anonymisiert #}
         {{
           read.metadata_field(
-            label=_("Daten anonymisiert?"),
+            label=_("Sind die Daten anonymisiert?"),
             value=h.berlin_convert_bool_to_string(pkg_dict.data_anonymized),
             display_value=h.berlin_convert_bool_to_string(pkg_dict.data_anonymized)
           )
