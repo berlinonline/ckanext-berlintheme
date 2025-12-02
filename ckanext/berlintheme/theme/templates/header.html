@@ -23,38 +23,54 @@
         </div>
       </div>
 
-      <nav class="pageheader__quicklinks" aria-label="Hauptnavigation">
-        <ul>
-          {% if c.userobj.sysadmin %}
-            {{ h.build_nav_main(
-              ('home.index', _('Startseite')),
-              ('dataset.search', _('Datasets')),
-              ('organization.index', _('Organizations')),
-              ('group.index', _('Kategorien')),
-              ('user.index', _('User')),
-            ) }}
-            <li><a href="/harvest">Harvest</a></li>
-            {{ h.build_nav_main(
-              ('home.about', _('About'))
-            ) }}
-          {% elif c.userobj %}
-            {{ h.build_nav_main(
-              ('home.index', _('Startseite')),
-              ('dataset.search', _('Datasets')),
-              ('organization.index', _('Organizations')),
-              ('group.index', _('Kategorien')),
-              ('home.about', _('About'))
-            ) }}
-          {% else %}
-            {{ h.build_nav_main(
-              ('home.about', _('About'))
-            ) }}
-          {% endif %}
-        </ul>
-      </nav>
-
       <div class="pageheader__services">
-
+        <div id="servicebuttonAccessibility" class="service-button-overlay js-service-button-overlay accessibility">
+          <div class="service-button-overlay__button">
+            <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true"
+              aria-label="Overlay Öffnen: Barrierefreiheit">
+              <i class="icon bicon bicon-universal-access" aria-hidden="true"></i>
+              <span class="text">Barrierefrei</span>
+            </button>
+          </div>
+          <!--noindex--><!--googleoff: index-->
+          <div role="dialog" aria-labelledby="dialogtitle_accessibility"
+            class="service-button-overlay__overlay overlay js-overlay-container robots-nocontent" aria-modal="true"
+            hidden="hidden">
+            <div class="overlay__header">
+              <p id="dialogtitle_accessibility" class="heading">Barrierefreiheit</p>
+              <button type="button" class="close-button js-button-overlay-close"
+                aria-label="Overlay Schließen: Barrierefreiheit">
+                <i class="bicon bicon-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="overlay__body">
+              <dl>
+                <dt>Wie barrierefrei ist diese Webseite?</dt>
+                <dd>
+                  <p><a href="{{ h.url_for('page_blueprint.accessibility_statement') }}">Erklärung zur digitalen Barrierefreiheit</a></p>
+                </dd>
+                <dt>Wen können Sie bei Anmerkungen oder Fragen zur digitalen Barrierefreiheit (Feedbackoption) kontaktieren?
+                </dt>
+                <dd>
+                  <p>
+                    <a href="{{ h.url_for('page_blueprint.accessibility_statement') + '#contactbfe' }}">
+                      Kontakt zur Ansprechperson
+                    </a>
+                  </p>
+                </dd>
+                <dt>Wo gibt es zusätzliche Informationen zur Barrierefreiheit im Land Berlin?</dt>
+                <dd>
+                  <p>
+                    <a href="{{ h.url_for('page_blueprint.accessibility_statement') + '#contactbfelb' }}">
+                     Landesbeauftragte für digitale Barrierefreiheit
+                    </a>
+                </p>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <!--googleon: index--><!--/noindex-->
+        </div>
         <div id="servicebuttonSearch" class="service-button-overlay js-service-button-overlay search fullwidth">
           <div class="service-button-overlay__button">
             <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true">
