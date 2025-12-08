@@ -3,21 +3,16 @@
 {% block subtitle %}{{ _('About') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
 
 {% block primary_content_inner %}
-  <section class="modul-text_bild imagealignleft">
-    {% block image %}
-      <div class="image">
-        <img src="{{ group_dict.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="Logo von {{ group_dict.title }}" />
-      </div>
-    {% endblock image %}
-    <div class="text">
+<div class="block">
+      <div class="text">
       {% block organization_description %}
         {% if group_dict.description %}
           {{ h.render_markdown(group_dict.description) }}
         {% endif %}
       {% endblock %}
     </div>
-  </section>
   {% block organization_extras %}
     {% snippet 'snippets/additional_info.html', extras = h.sorted_extras(group_dict.extras) %}
-  {% endblock %}
+  {% endblock %}    
+</div>
 {% endblock %}

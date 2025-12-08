@@ -8,9 +8,8 @@ Example:
     {% snippet "organization/snippets/organization_list.html" %}
 
 #}
-<div class="modul-teasertiles">
-  <div class="teasertiles__inner">
-    <ul>
+<div class="modul-multiteaser">
+    <ul class="flexgrid grid--4">
       {% block organization_list_inner %}
         {% for organization in organizations %}
           {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index, show_capacity=show_capacity %}

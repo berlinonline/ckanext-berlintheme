@@ -7,14 +7,12 @@
   <li class="active">{% link_for _('Members'), named_route=group_type+'.members', id=group_dict.name %}</li>
 {% endblock breadcrumb_content %}
 
-{% block page_primary_action %}
-  {% if h.check_access('organization_update', {'id': organization.id}) %}
-
-    {% link_for _('Add Member'), named_route=group_type+'.member_new', id=group_dict.id, class_='btn btn-primary', icon='plus-square' %}
-  {% endif %}
-{% endblock %}
-
 {% block primary_content_inner %}
+  {% block page_primary_action %}
+    {% if h.check_access('organization_update', {'id': organization.id}) %}
+      {% link_for _('Add Member'), named_route=group_type+'.member_new', id=group_dict.id, class_='button dp-button-plus' %}
+    {% endif %}
+  {% endblock %}
   {% set count = members|length %}
   {% set members_count = ungettext('{count} member', '{count} members', count).format(count=count) %}
   <h3 class="page-heading">{{ members_count }}</h3>

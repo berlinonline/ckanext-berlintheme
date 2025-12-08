@@ -5,15 +5,20 @@
 {% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
 
 {% block page_heading %}
-  <h1>
-  {{ group_dict.display_name }}
-  {% if h.berlin_org_is_external(group_dict.id) %}
-    ({{ _('extern') }})
-  {% endif %}
-  {% if group_dict.state == 'deleted' %}
-    [{{ _('Deleted') }}]
-  {% endif %}
-  </h1>
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+        {{ group_dict.display_name }}
+        {% if h.berlin_org_is_external(group_dict.id) %}
+          ({{ _('extern') }})
+        {% endif %}
+        {% if group_dict.state == 'deleted' %}
+          [{{ _('Deleted') }}]
+        {% endif %}
+    </h1>
+    {% if organization and h.check_access('organization_update', {'id': organization.id}) %}
+      {% link_for _('View'), named_route=group_type+'.read', id=organization.name, class_='link' %}
+    {% endif %} 
+  </div>  
 {% endblock page_heading %}
 
 
@@ -25,9 +30,6 @@
 {% endblock breadcrumb_content %}
 
 {% block content_action %}
-  {% if organization and h.check_access('organization_update', {'id': organization.id}) %}
-    {% link_for _('View'), named_route=group_type+'.read', id=organization.name, class_='button' %}
-  {% endif %}
 {% endblock %}
 
 {% block content_primary_nav %}

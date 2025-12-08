@@ -1,4 +1,4 @@
-{% extends "organization/read_base.html" %}
+{% ckan_extends %}
 
 {% set sorting_selected = sort_by_selected %}
 {% set sorting = [
@@ -13,7 +13,7 @@
   <form id="dataset-search-form" class="dr-hero-search" method="get" data-module="select-switch">
     {% block page_primary_action %}
       {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-        <div class="page_primary_action">
+        <div class="page_primary_action float--right">
           {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
         </div>
       {% endif %}
@@ -29,7 +29,7 @@
       %}
       {{ h.snippet('snippets/search_form_slot.html', query=q, placeholder=_('Search datasets...')) }}
     {% endblock groups_search_form %}
-    <div class="fullwidth panel--heavy">
+    <div class="panel--heavy">
       <div class="fullwidth__inner">
         <div class="row">
           <div class="span4">
