@@ -33,12 +33,6 @@
           )}}
         {% endif %}
 
-        {# Veröffentlichende Stelle #}
-        {{ read.metadata_field(
-          label=_("Veröffentlichende Stelle"),
-          value=pkg_dict.author
-        ) }}
-
         {# Veröffentlichende Stelle (URI) #}
         {{
           read.metadata_field(
