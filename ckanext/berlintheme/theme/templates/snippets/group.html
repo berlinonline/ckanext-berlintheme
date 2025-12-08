@@ -1,28 +1,23 @@
-
 {#
-  Embeds a organization within the sidebar of a page.
-  
-  organization    - The organization dict.
-  truncate - A max length for the organization description. If not provided the description
-             will be full length.
-  has_context_title - Boolean for whether to display a module-heading for when
-                      this snippet appears within a non-organization template
-                      (e.g. dataset page sidebar)
-  
-  Example:
-  
-      {% snippet 'snippets/organization, organization=c.group_dict %}
-  
+Embeds a group within the sidebar of a page.
+
+group    - The group dict.
+truncate - A max length for the group description. If not provided the description
+           will be full length.
+
+Example:
+
+    {% snippet 'snippets/group, group=c.group_dict %}
+
 #}
-  
 {% set truncate = truncate or 0 %}
-{% set url = h.url_for(organization.type + '.read', id=organization.name, ) %}
+{% set url = h.url_for(controller='group', action='read', id=group.name) %}
 
 {% block info %}
 <div class="modul-text_bild imagealignleft">
     <div class="image">
         <div class="image__image">
-            <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" width="200" alt="Logo von {{ organization.title }}" alt="Alternative Bildbeschreibung" >
+            <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" width="200" alt="Logo von {{ group.title }}" alt="Alternative Bildbeschreibung" >
         </div>
         <!-- <p class="image__copyright">
             @copyright
@@ -30,14 +25,14 @@
     </div>
     <!-- <h2 class="title">Image left</h2> -->
     <div class="text textile">
-      {% if organization.description %}
+      {% if group.description %}
         <p class="description">
-          {{ h.markdown_extract(organization.description, 180) }}
+          {{ h.markdown_extract(group.description, 180) }}
         </p>
       {% else %}
-        <p class="empty">{{ _('There is no description for this organization') }}</p>
+        <p class="empty">{{ _('There is no description for this group') }}</p>
       {% endif %}
-    {% link_for _('read more'), controller='organization', action='about', id=organization.name %}
+    {% link_for _('read more'), controller='group', action='about', id=group.name %}
 
 <div class="modul-infofigures">
     <div class="infofigures__inner">
@@ -45,7 +40,7 @@
             <li>
                 <div class="infofigure">
                     <h3 class="title">
-                        <span class="textfigure">{{ organization.num_followers }}</span>
+                        <span class="textfigure">{{ group.num_followers }}</span>
                     </h3>
                     <div class="text">
                         <p>
@@ -57,7 +52,7 @@
             <li>
                 <div class="infofigure">
                     <h3 class="title">
-                        <span class="textfigure">{{ organization.package_count }}</span>
+                        <span class="textfigure">{{ group.package_count }}</span>
                     </h3>
                     <div class="text">
                         <p>
