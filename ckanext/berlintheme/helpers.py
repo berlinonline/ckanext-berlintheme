@@ -1657,93 +1657,14 @@ def render_hvd_category(value: str, **attrs) -> str:
       return link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
     return ""
 
-def author_uri_select_options() -> list:
-    return [
-      {'id': 'org_e8a44cc6-5562-554d-b1cc-498499725fc0', 'label': 'Amt für Statistik Berlin-Brandenburg'},
-      {'id': 'org_a02b149b-d470-5b32-a51e-58cde32a902e', 'label': 'BerlinOnline GmbH'},
-      {'id': 'org_d3653f97-876d-5a01-a789-7056db7b5402', 'label': 'Berliner Feuerwehr'},
-      {'id': 'org_86a7ec73-0509-5892-b4c5-08e2849c9f86', 'label': 'Berliner Forsten'},
-      {'id': 'org_6d24ed7d-82ef-557e-b353-c62f3619ebda', 'label': 'Berliner Stadtreinigung (BSR)'},
-      {'id': 'org_9871655c-38c3-5e72-a454-6dc660cf92e8', 'label': 'Berliner Wasserbetriebe'},
-      {'id': 'org_5a62e5a6-027c-591b-9478-64f21a985d1f', 'label': 'Bezirksamt Charlottenburg-Wilmersdorf'},
-      {'id': 'org_1d65d3ff-4ec0-5c38-a78b-9c19ed5cd4a1', 'label': 'Bezirksamt Friedrichshain-Kreuzberg'},
-      {'id': 'org_311697a3-e8e7-5cee-be46-4e967bb6d000', 'label': 'Bezirksamt Lichtenberg'},
-      {'id': 'org_0f98664c-7984-5e3a-b69c-6d00d2ffc7d8', 'label': 'Bezirksamt Marzahn-Hellersdorf'},
-      {'id': 'org_7ab3a225-dfe2-5ebf-8fb9-7013d3c8e7a2', 'label': 'Bezirksamt Mitte'},
-      {'id': 'org_ba6882fd-d241-56ba-be3d-32954693277f', 'label': 'Bezirksamt Neukölln'},
-      {'id': 'org_b8fc6e76-216e-53da-afe9-82df40eaef16', 'label': 'Bezirksamt Pankow'},
-      {'id': 'org_2d6abcbf-92af-5307-b643-8d828da74713', 'label': 'Bezirksamt Reinickendorf'},
-      {'id': 'org_2145c6c3-c54e-535f-bff9-afa331d5a393', 'label': 'Bezirksamt Spandau'},
-      {'id': 'org_aad33c44-2637-53c4-a579-bc730515c3dc', 'label': 'Bezirksamt Steglitz-Zehlendorf'},
-      {'id': 'org_4e981fee-ab6a-5806-9822-2387e45322e7', 'label': 'Bezirksamt Tempelhof-Schöneberg'},
-      {'id': 'org_e140c773-20ee-5372-8e5d-1fdc9031a9ec', 'label': 'Bezirksamt Treptow-Köpenick'},
-      {'id': 'org_d1ee1260-8cf0-560f-a495-6941438f45da', 'label': 'Industrie- und Handelskammer zu Berlin'},
-      {'id': 'org_f49062d8-5c1f-5ac9-b932-a9e2efd62170', 'label': 'Landesamt für Bürger- und Ordnungsangelegenheiten'},
-      {'id': 'org_012340ce-1c0e-508d-99be-bb27c9a8c095', 'label': 'Landesamt für Gesundheit und Soziales'},
-      {'id': 'org_4ec63f8b-7b9b-5aec-84f4-81924235342d', 'label': 'Polizei Berlin'},
-      {'id': 'org_53dfb317-5e72-5dc6-942c-fd29972e909a', 'label': 'Senatsverwaltung für Arbeit, Soziales, Gleichstellung, Integration, Vielfalt und Antidiskriminierung'},
-      {'id': 'org_f190754b-cdc9-5483-9ab0-18512e393e53', 'label': 'SenASGIVA – Abteilung I – Integration und Migration'},
-      {'id': 'org_f995b52f-54a7-5c0c-9956-a364ee4bcdcf', 'label': 'SenASGIVA – Abteilung II – Arbeit und Berufliche Bildung'},
-      {'id': 'org_45f3e63b-c5bd-5b1f-9c13-3a68ff9a3600', 'label': 'SenASGIVA – Abteilung III – Soziales'},
-      {'id': 'org_ebceecbd-8da7-5141-8c87-57eb596caab4', 'label': 'SenASGIVA – Abteilung IV – Antidiskriminierung und Vielfalt'},
-      {'id': 'org_bb0fc996-ad62-5048-a64d-fb54b48b79a4', 'label': 'SenASGIVA – Abteilung V – Frauen und Gleichstellung'},
-      {'id': 'org_57a6dd31-b1d3-5fc2-b73a-0cc8a638d9ce', 'label': 'Senatsverwaltung für Bildung, Jugend und Familie'},
-      {'id': 'org_6222a6ad-a641-53d3-89a2-b235e2cbc42f', 'label': 'SenBFJ – Abteilung I – Unterstützung und Beratung der Schulen, operative Schulaufsicht, Schulpsychologie, Personalmanage- ment, Bildungsstatistik und Prognose'},
-      {'id': 'org_b7ec616e-b5a7-57f0-8bda-fe3463c86411', 'label': 'SenBFJ – Abteilung II – Grundsatzangelegenheiten und Recht des Bildungswesens; allgemein bildende Schulen; Lehrkräftebildung'},
-      {'id': 'org_d138a877-1f5e-561d-98b5-3608d0a62761', 'label': 'SenBFJ – Abteilung III – Jugend und Kinderschutz'},
-      {'id': 'org_e63e6f20-60e0-527e-97e8-06939cb5f8df', 'label': 'SenBFJ – Abteilung IV – Schulische Berufliche Bildung; Zentralverwaltete Schulen, Europäische und Internationale Angelegenheiten'},
-      {'id': 'org_39caa39a-6cc6-5688-a2c6-a01535bb68ef', 'label': 'SenBFJ – Abteilung V – Familie und frühkindliche Bildung'},
-      {'id': 'org_cc609d28-8df8-5860-b08f-712749621968', 'label': 'SenBFJ – Abteilung VI – Schulentwicklungsplanung und Schulinfrastruktur im Land Berlin'},
-      {'id': 'org_387580ee-5ee1-5071-88f7-c6e22e3bb2e9', 'label': 'SenBFJ – Abteilung VII – Schule in der digitalen Welt'},
-      {'id': 'org_5ae6cac5-817e-57a3-9b46-c697dfbba6cd', 'label': 'Senatsverwaltung für Finanzen'},
-      {'id': 'org_5fc5695e-d720-59e5-8c4b-6a5651d0c332', 'label': 'SenFin – Abteilung I – Vermögen und Beteiligungen'},
-      {'id': 'org_3794220b-52b3-5735-8eb3-b636d8ecebb9', 'label': 'SenFin – Abteilung II – Finanzpolitik und Haushalt'},
-      {'id': 'org_34392488-463d-54c4-891d-5928b2f88e7e', 'label': 'SenFin – Abteilung III – Angelegenheiten der Steuerverwaltung'},
-      {'id': 'org_77fecfe8-14e5-5702-a380-79115515df11', 'label': 'SenFin – Abteilung IV – Landespersonal'},
-      {'id': 'org_26ab9744-b1f8-5766-b4db-0de2e39c5921', 'label': 'Senatsverwaltung für Inneres und Sport'},
-      {'id': 'org_05a92a03-d5e1-5aef-a21b-253ba4c12d81', 'label': 'SenInn – Abteilung I – Staats-und Verwaltungsrecht'},
-      {'id': 'org_8e2f66f8-b4d5-51ac-9f5b-3904e14b0696', 'label': 'SenInn – Abteilung II – Verfassungsschutz'},
-      {'id': 'org_3b7d8f6f-c25f-545a-b2cf-4c95ef15f29c', 'label': 'SenInn – Abteilung III – Öffentliche Sicherheit und Ordnung'},
-      {'id': 'org_53708410-faf3-5fb9-85a4-b0b9ba50e9bc', 'label': 'SenInn – Abteilung IV – Sport'},
-      {'id': 'org_e2987a2c-731e-5f43-91e4-639c646ea480', 'label': 'Senatsverwaltung für Justiz und Verbraucherschutz'},
-      {'id': 'org_048463ab-b58c-5723-b531-ae1863d68a0b', 'label': 'SenJustV – Abteilung I – Innere Dienste, Sozialberatung der Berliner Justiz (organisatorisch), Justiz und Gesellschaft - Justiz in der vielfältigen Gesellschaft, Justizielle Opferhilfe und Zentrale Anlaufstelle für Betroffene von Terroranschlägen und deren Angehörigen, Baureferat'},
-      {'id': 'org_8672d1a6-ab17-5988-8dd9-a29192f1dbc2', 'label': 'SenJustV – Abteilung II – Zivilrecht, öffentliches Recht, Angelegenheiten der Informations- und Kommunikationstechnik der Gerichte und Strafverfolgungsbehörden, Stiftungsaufsicht'},
-      {'id': 'org_5d2358c4-275a-5332-a5a3-fd805884a6a8', 'label': 'SenJustV – Abteilung III – Justizvollzug, Gnadenwesen, Soziale Dienste der Justiz - Gerichts- und Bewährungshilfe, Strafrecht, Strafverfahrensrecht, Strafvollstreckung'},
-      {'id': 'org_f34efc6b-bb66-5917-bc34-9a090cadb709', 'label': 'SenJustV – Abteilung IV – Gemeinsames Juristisches Prüfungsamt der Länder Berlin und Brandenburg, Juristische Prüfungen, Aus- und. Fortbildung in der Rechtspflege'},
-      {'id': 'org_cb7623d8-3c74-565d-b92d-39fbda9bfa07', 'label': 'SenJustV – Abteilung V – Verbraucherschutz'},
-      {'id': 'org_4eff6ca7-69b6-5616-a112-16937f5bbcb8', 'label': 'Senatsverwaltung für Kultur und Gesellschaftlichen Zusammenhalt'},
-      {'id': 'org_f9262704-7bba-5da4-a36b-1bdf30acec7d', 'label': 'SenKultGZ – Abteilung I – Kultur'},
-      {'id': 'org_97219240-ec15-5973-bb68-3e366dd2f4be', 'label': 'SenKultGZ – Abteilung II – Engagement- und Demokratieförderung, Beauftragter für Kirchen, Religions- und Weltanschauungsgemeinschaften'},
-      {'id': 'org_ed497d1d-bc70-5e4a-944d-abbe7d253b63', 'label': 'Senatsverwaltung für Mobilität, Verkehr, Klimaschutz und Umwelt'},
-      {'id': 'org_68794a8e-7bc4-59d5-89c4-fa8b953467e7', 'label': 'SenMVKU – Abteilung I – Umwelt- und Klimaschutzpolitik, Kreislaufwirtschaft und Immissionsschutz'},
-      {'id': 'org_8f366820-b8a5-57b6-8335-76dfc141cc78', 'label': 'SenMVKU – Abteilung II – Integrativer Umweltschutz'},
-      {'id': 'org_80390e27-c7d5-592b-82be-d3eb7574580c', 'label': 'SenMVKU – Abteilung III – Naturschutz und Stadtgrün'},
-      {'id': 'org_8e49bdaa-7b27-5d06-9579-ef9e829f3c29', 'label': 'SenMVKU – Abteilung IV – Mobilität'},
-      {'id': 'org_6ed022a3-88ce-5249-82c5-4747589fd9f2', 'label': 'SenMVKU – Abteilung V – Tiefbau'},
-      {'id': 'org_2bb6adf9-674f-5af4-a642-11e277e0d795', 'label': 'SenMVKU – Abteilung VI – Verkehrsmanagement'},
-      {'id': 'org_4af7b849-8767-5dc1-b244-4de42772cfe8', 'label': 'Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen'},
-      {'id': 'org_39a71ccf-6b45-5e66-9cd1-e6f4a342db12', 'label': 'SenSBW – Abteilung I – Stadtplanung'},
-      {'id': 'org_94db7d7c-3911-566f-9ce0-094fede59651', 'label': 'SenSBW – Abteilung II – Städtebau und Projekte'},
-      {'id': 'org_f9249be0-fa88-5b4b-b6d4-b72be17ff64e', 'label': 'SenSBW – Abteilung III – Geoinformation'},
-      {'id': 'org_9420ce0e-0c0d-567e-8160-d5d3957a4923', 'label': 'SenSBW – Abteilung IV – Wohnen und Stadterneuerung'},
-      {'id': 'org_8c343579-25ee-5a7d-ab90-a8410a6953ab', 'label': 'SenSBW – Abteilung V – Hochbau'},
-      {'id': 'org_ca09e19e-dcb6-5e9f-b789-ed1df60e41eb', 'label': 'SenSBW – Abteilung VI – Ministerielle Angelegenheiten des Bauens, Grundsatz und Recht'},
-      {'id': 'org_f05f949d-c390-53fa-bc4f-5ab67da59d89', 'label': 'Senatsverwaltung für Wirtschaft, Energie und Betriebe'},
-      {'id': 'org_8d7e907b-8a07-5443-b7ec-f46dd9300d07', 'label': 'SenSBW – Abteilung II – Wirtschaftspolitik und Wirtschaftsordnung'},
-      {'id': 'org_1f6e40be-5c12-56f7-8fcb-787df0079dfe', 'label': 'SenSBW – Abteilung III – Energie, Digitalisierung, Innovation'},
-      {'id': 'org_86fe495f-9cf1-5e53-a33e-e461a154924a', 'label': 'SenSBW – Abteilung IV – Betriebe und Strukturpolitik'},
-      {'id': 'org_b9716bdb-0680-5807-b7be-b5fc45a0b89b', 'label': 'Senatsverwaltung für Wissenschaft, Gesundheit und Pflege'},
-      {'id': 'org_0e1b0ac2-407f-520f-b59b-9c2fa67271c2', 'label': 'SenWGP – Abteilung I – Gesundheit'},
-      {'id': 'org_062b66ef-35b8-5be0-bee0-090a345d821a', 'label': 'SenWGP – Abteilung II – Pflege'},
-      {'id': 'org_5995cccc-4e1c-5323-abbe-0ea5e4e03c55', 'label': 'VBB - Verkehrsverbund Berlin-Brandenburg GmbH'}
-    ]
-
-
 def render_author_uri(value: str, **attrs) -> str:
-    # TODO: that's obviously super inefficient to compute this every time...
-    author_uri_dict = {author_uri['id']: author_uri['label'] for author_uri in author_uri_select_options()}
-    if value in author_uri_dict:
-      return link_to(author_uri_dict[value], f'https://berlin.github.io/lod-core-organigram/{value}', **attrs)
+    author_orgs_by_id = Schema().author_orgs_by_id()
+    if value in author_orgs_by_id:
+      org = author_orgs_by_id[value]
+      label = org['label']
+      if 'parent_label' in org:
+          label = f"{org['parent_label']}, {org['label']}"
+      return link_to(label, f'https://berlin.github.io/lod-core-organigram/{value}', **attrs)
     return ""
 
 def state_mapping():

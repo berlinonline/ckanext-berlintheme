@@ -65,8 +65,6 @@ class BerlinTheme(plugins.SingletonPlugin):
                 theme_helpers.render_govdata_example_link ,
             'berlin_hvd_category_select_options':
                 theme_helpers.hvd_category_select_options ,
-            'berlin_author_uri_select_options':
-                theme_helpers.author_uri_select_options ,
             'berlin_render_hvd_category':
                 theme_helpers.render_hvd_category ,
             'berlin_render_author_uri':
