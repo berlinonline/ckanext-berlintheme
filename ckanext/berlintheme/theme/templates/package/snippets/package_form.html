@@ -27,9 +27,9 @@ then itself be extended to add/remove blocks of functionality. #}
     <div class="form-actions">
       {% block delete_button %}
         {% if h.check_access('package_delete', {'id': data.id}) and not data.state == 'deleted' %}
-          <a type="button" class="button dp-button-trash" title="{{ _('Delete') }}" href="{% url_for dataset_type ~ '.delete', id=data.id %}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+          <a type="button" class="button button--light" title="{{ _('Delete') }}" href="{% url_for dataset_type ~ '.delete', id=data.id %}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
           {#           
-          <a type="button" class="js-flyin-overlay-toggler button dp-button-trash" data-layout="modal" data-containerid="#delete_modal" data-auralopentext="Öffnet einen Dialog zum Löschen des Datensatzes" data-auralclosetext="Schließt den Dialog" data-opentext="Dialog zum Löschen des Datensatzes öffnen" data-closetext="Dialog schließen" data-title="{{ _('Bestätigen Sie bitte die Aktion') }}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+          <a type="button" class="js-flyin-overlay-toggler button" data-layout="modal" data-containerid="#delete_modal" data-auralopentext="Öffnet einen Dialog zum Löschen des Datensatzes" data-auralclosetext="Schließt den Dialog" data-opentext="Dialog zum Löschen des Datensatzes öffnen" data-closetext="Dialog schließen" data-title="{{ _('Bestätigen Sie bitte die Aktion') }}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
           <div id="delete_modal" style="display: none;" >
             <p>{{ _('Are you sure you want to delete this dataset?') }}</p>
             <form id='confirm-dataset-delete-form' action="{% url_for pkg_dict.type ~ '.delete', id=pkg_dict.name %}" method="post">

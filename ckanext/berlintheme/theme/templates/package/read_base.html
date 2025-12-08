@@ -6,14 +6,12 @@
     { "active": h.berlintheme_link_active(dataset_type ~ '.groups'), "label": _('Kategorien'), "link": url_for(dataset_type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name), "icon": "tags" },
     { "active": h.berlintheme_link_active(dataset_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(dataset_type ~ '.activity', id=pkg.id if is_activity_archive else pkg.name), "icon": "clock" }
   ] %}
-
   {% snippet 'snippets/tabs.html', tabs=tabs %}
-
 {% endblock %}
 
-
 {% block page_heading %}
-  <h1>
+<div class="berlin-org-header">
+  <h1 class="berlin-h1-flex">
     {{ h.dataset_display_name(pkg) }}
     {% if pkg.state.startswith('draft') %}
       [{{ _('Draft') }}]
@@ -22,16 +20,19 @@
       [{{ _('Deleted') }}]
     {% endif %}
   </h1>
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <a class="button dp-button-pen" href="{{ h.url_for('dataset.edit', id=pkg.name, _external=True) }}">{{ _('Manage') }}</a>
+    {% endif %}
+  {% endif %}
+</div>  
 {% endblock %}
 
 {% block content_action %}
-  {% if not is_activity_archive %}
-    {% if h.check_access('package_update', {'id':pkg.id }) %}
-      <a class="button dp-button-pen" href="{{ h.url_for('dataset.edit', id=pkg.name, _external=True) }}">{{ _('Edit') }}</a>
-    {% endif %}
-  {% endif %}
 {% endblock %}
 
+{% block berlinde_content_action %}
+{% endblock %}
 
 {% block secondary_content %}
 

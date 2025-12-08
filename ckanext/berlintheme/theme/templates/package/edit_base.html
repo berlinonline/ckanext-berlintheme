@@ -10,7 +10,8 @@
 {% endblock %}
 
 {% block page_heading %}
-  <h1>
+  <div class="berlin-org-header">
+  <h1 class="berlin-h1-flex">
     {% if pkg %}
       {{ h.dataset_display_name(pkg) }}
       {% if pkg.state.startswith('draft') %}
@@ -19,15 +20,12 @@
       {% if pkg.state == 'deleted' %}
         [{{ _('Deleted') }}]
       {% endif %}
-    {% endif %}
+    {% endif %}    
   </h1>
-{% endblock %}
-
-
-{% block content_action %}
     {% if pkg %}
-        <a class="button" href="{{ h.url_for('dataset.read', id=pkg.name, _external=True) }}">{{ _('View dataset') }}</a>
+      <a class="link" href="{{ h.url_for('dataset.read', id=pkg.name, _external=True) }}">{{ _('View dataset') }}</a>
     {% endif %}
+  </div>
 {% endblock %}
 
 {% block content_primary_nav %}

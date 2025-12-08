@@ -1,21 +1,21 @@
 {% ckan_extends %}
 
-
 {% block page_heading %}
-  <h1>{{ res.name }}</h1>
+<div class="berlin-org-header">
+  <h1 class="berlin-h1-flex">{{ h.resource_display_name(res) | truncate(50) }}</h1>
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <a class="button dp-button-pen float--right" href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id, package_type=pkg.type, _external=True) }}">{{ _('Edit') }}</a>
+    {% endif %}
+  {% endif %}  
+  </div>
 {% endblock page_heading %}
 
 {% block content_action %}
-  {% if not is_activity_archive %}
-    {% if h.check_access('package_update', {'id':pkg.id }) %}
-      <a class="button dp-button-pen" href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id, package_type=pkg.type, _external=True) }}">{{ _('Edit') }}</a>
-    {% endif %}
-  {% endif %}
 {% endblock %}
 
 {% block primary_content %}
   {% block primary_content_inner %}
-  {{ super() }}
     <p>{{ h.render_markdown(res.description) }}</p>
     <ul class="list--tablelist block">
 
