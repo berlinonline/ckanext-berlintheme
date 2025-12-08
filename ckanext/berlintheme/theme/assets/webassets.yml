@@ -17,3 +17,8 @@ ckan_extra_css:
   contents:
     - css/ckan_extra.css
   output: berlintheme/%(version)s_ckan_extra.css
+
+toggle_personal_data_js:
+  contents:
+    - js/toggle_personal_data.js
+  output: berlintheme/%(version)s_toggle_personal_data.js

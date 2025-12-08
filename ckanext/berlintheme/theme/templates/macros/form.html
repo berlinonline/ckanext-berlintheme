@@ -55,19 +55,27 @@ Example:
 {{ form.checkbox('remember', checked=true) }}
 
 #}
-{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false) %}
-  {%- set extra_html = caller() if caller -%}
-  <div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
-    <div class="controls">
+{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false, doc_link="") %}
+{% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
+{%- set extra_html = caller() if caller -%}
+<div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
+<div class="controls">
+  <div class="row">
+    <div class="col-xs-11">
       <label class="checkbox" for="{{ id or name }}">
         <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
         {{ label or name }}
         {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-        {% if error and error is iterable %}<strong class="error-inline">{{ error|join(', ') }}</strong>{% endif %}
+        {% if error and error is iterable %}<strong class="error-inline">{{ error | unique | join(', ') }}</strong>{% endif %}
       </label>
       {{ extra_html }}
     </div>
+    <div class="col-xs-1">
+      <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+    </div>
   </div>
+</div>
+</div>
 {% endmacro %}
 
 {#
@@ -102,10 +110,10 @@ Complete example:
     , {'value': '2', 'text': _('Not private data')}
 ], selected=data.the_data_type if data.the_data_type else '0', is_required=true) }}
 
-#}
-{% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
-  {% set classes = (classes|list) %}
-  {% do classes.append('control-select') %}
+    #}
+  {% macro select(name, id='', label='', options='', selected='', error='', classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
+    {% set classes = (classes|list) %}
+    {% do classes.append('control-select') %}
 
   {%- set extra_html = caller() if caller -%}
   {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}

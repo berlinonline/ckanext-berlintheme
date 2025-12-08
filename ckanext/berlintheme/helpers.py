@@ -7,6 +7,9 @@ from urllib.parse import urlencode
 import ckan.lib.helpers as helpers
 import ckan.logic as logic
 import ckan.model as model
+from ckan.common import c, config, _
+from ckanext.berlin_dataset_schema.schema import Schema
+import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
 from ckan.common import c, config, request
 from werkzeug.datastructures import MultiDict
@@ -1826,3 +1829,10 @@ def link_active(menu_item) -> bool:
     menu_item = _menu_items[menu_item]
     active = helpers._link_active(menu_item)
     return active
+
+def bool_to_string(value: bool) -> str:
+    '''Convert a boolean to a translated string _("Ja") or _("Nein").'''
+    if value:
+        return _("Ja")
+    else:
+        return _("Nein")

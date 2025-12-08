@@ -5,6 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 
+
 from ckanext.berlintheme import page_blueprint
 
 class BerlinTheme(plugins.SingletonPlugin):
@@ -76,6 +77,8 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlintheme_url_with_params': theme_helpers.url_with_params ,
             # 'berlintheme_build_tab_dict': theme_helpers.build_tab_dict ,
             'berlintheme_link_active': theme_helpers.link_active ,
+            'berlin_convert_bool_to_string':
+                theme_helpers.bool_to_string ,
         }
 
     # -------------------------------------------------------------------
