@@ -1,5 +1,7 @@
 {% import 'macros/form.html' as form %}
 
+{% asset 'berlintheme/author_org_select_js' %}
+
 {% block package_basic_fields_title %}
   {{ form.input(
     'title',
@@ -71,17 +73,6 @@
     </div>
   </div>
   
-  {{ form.input(
-    'author',
-    id='field-author',
-    label=_('Veröffentlich\u00ADende Stelle'),
-    placeholder=_('Möglichst genau die verantwortliche Organisationseinheit'),
-    value=data.author,
-    error=errors.author,
-    classes=['control-full'],
-    is_required=h.berlin_required('author'), doc_link="veröffentlichende-stelle"
-  ) }}
-
 {% block package_author_uri %}
 
   <div class="form-group">
@@ -93,11 +84,7 @@
     <div class="controls">
       <div class="row">
         <div class="col-xs-11">
-          <select id="field-author_uri" name="author_uri" data-module="autocomplete">
-            {% for feature in h.berlin_author_uri_select_options()  %}
-              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('author_uri', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
-            {% endfor %}
-          </select>
+          <input id="field-author_uri" type="hidden" name="author_uri" style="width:746px" value="{{ data.author_uri }}" />
         </div>
         <div class="col-xs-1">
           {% set link_text = "Dokumentation zum Attribut 'Veröffentlichende Stelle'" %}
