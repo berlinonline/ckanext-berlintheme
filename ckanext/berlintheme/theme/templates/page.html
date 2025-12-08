@@ -70,22 +70,16 @@
           {% block grid_maincontent %}
             {% block main_content %}
               {% block page_heading %}
-                <h1>
-                  {{ _('Title') }}
-                </h1>
               {% endblock page_heading %}
               {% block page_header %}
+                {% block content_action %}{% endblock content_action %}
                 <div class="dr-content-header">
-                  {% if self.content_action() | trim %}
-                    <div class="dr-content-action-wrapper">
-                      {% block content_action %}{% endblock content_action %}
-                    </div>
-                  {% endif %}
                   {% block content_primary_nav %}{% endblock %}
                 </div>
               {% endblock page_header %}
               {% block primary_content %}
-                {% block primary_content_inner %}                
+                {% block primary_content_inner %}
+                {% block berlinde_content_action_inner %} {%endblock%}
                 {% endblock primary_content_inner %}
               {% endblock primary_content %}
             {% endblock main_content %}
