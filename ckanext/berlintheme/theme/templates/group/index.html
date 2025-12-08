@@ -43,7 +43,7 @@
 {% block page_header %}{% endblock %}
 
 {% block grid_maincontent %}
-  <div class="fullwidth panel--heavy">
+  <div class="pannel">
     <div class="fullwidth__inner">
         <div class="dp-search-result-top">
           <div class="dp-search-result-summary">
@@ -116,4 +116,6 @@
 {% block grid_post_maincontent %}</form>{% endblock grid_post_maincontent %}
 
 
-{% block secondary_content %}{% endblock %}
+{% block secondary_content %}
+  {% snippet "group/snippets/helper.html" %}
+{% endblock %}

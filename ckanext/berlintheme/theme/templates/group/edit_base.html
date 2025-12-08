@@ -5,12 +5,17 @@
 {% block subtitle %}{{ _('Manage') }} {{ g.template_title_delimiter }} {{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Groups') }}{% endblock %}
 
 {% block page_heading %}
-  <h1>
-    {{ group_dict.display_name }}
-    {% if group_dict.state == 'deleted' %}
-      [{{ _('Deleted') }}]
-    {% endif %}
-  </h1>
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ group_dict.display_name }}
+      {% if group_dict.state == 'deleted' %}
+        [{{ _('Deleted') }}]
+      {% endif %}
+    </h1>
+  {% if group  and h.check_access('group_update', {'id': group.id}) %}
+    {% link_for _('View'), named_route=group_type+'.read', id=group_dict.name, class_='link float-right' %}
+  {% endif %}   
+  </div>
 {% endblock page_heading %}
 
 {% block breadcrumb_content %}
@@ -21,9 +26,6 @@
 {% endblock %}
 
 {% block content_action %}
-  {% if group  and h.check_access('group_update', {'id': group.id}) %}
-    {% link_for _('View'), named_route=group_type+'.read', id=group_dict.name, class_='button' %}
-  {% endif %}
 {% endblock content_action %}
 
 {% block content_primary_nav %}

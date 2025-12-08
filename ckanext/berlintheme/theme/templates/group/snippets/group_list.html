@@ -10,14 +10,12 @@ Example:
 #}
 {% block group_list %}
 <div class="modul-teasertiles">
-  <div class="teasertiles__inner">
-    <ul>
+    <ul class="flexgrid grid--4">
       {% block group_list_inner %}
         {% for group in groups %}
           {% snippet "group/snippets/group_item.html", group=group, position=loop.index %}
         {% endfor %}
       {% endblock %}
     </ul>
-  </div>
 </div>
 {% endblock %}

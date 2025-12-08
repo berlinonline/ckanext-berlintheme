@@ -8,18 +8,23 @@
 {% endblock %}
 
 {% block page_heading %}
-  <h1>
-  {{ group_dict.display_name }}
-  {% if group_dict.state == 'deleted' %}
-    [{{ _('Deleted') }}]
-  {% endif %}
-  </h1>
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ group_dict.display_name }}
+      {% if group_dict.state == 'deleted' %}
+        [{{ _('Deleted') }}]
+      {% endif %}
+    </h1>
+    {% if h.check_access('group_update', {'id': group_dict.id}) %}
+      <a class="button dp-button-pen" href="{{ h.url_for(group_type+'.edit', id=group_dict.name, _external=True) }}">{{ _('Manage') }}</a>
+    {% endif %}    
+  </div>
+
+  {% snippet 'snippets/group.html', group=group_dict, show_nums=true, group_type=group_type %}
+
 {% endblock page_heading %}
 
 {% block content_action %}
-  {% if h.check_access('group_update', {'id': group_dict.id}) %}
-    <a class="button dp-button-pen" href="{{ h.url_for(group_type+'.edit', id=group_dict.name, _external=True) }}">{{ _('Manage') }}</a>
-  {% endif %}
 {% endblock %}
 
 {% block content_primary_nav %}
@@ -28,36 +33,13 @@
     { "active": h.berlintheme_link_active(group_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(group_type ~ '.activity', id=group_dict.name), "icon": "clock" },
   ] %}
 
+  {% do tabs.append({ "active": h.berlintheme_link_active(group_type ~ '.about'), "label": _('About'), "link": url_for(group_type ~ '.about', id=group_dict.name), "icon": "info-circle" }) %}
+
   {% snippet 'snippets/tabs.html', tabs=tabs %}
 
 {% endblock %}
 
 {% block secondary_content %}
-  <div class="fullwidth panel--heavy block">
-    <div class="fullwidth__inner block">
-      <div class="modul-servicepanel">         
-        <div class="servicepanel__main">
-          {% block nums %}
-            <div class="nums">
-              <dl class="list--horizontal">
-                <dt>{{ _('Followers') }}</dt>
-                <dd data-module="followers-counter" data-module-id="{{ group_dict.id }}" data-module-num_followers="{{ group_dict.num_followers }}">{{ h.SI_number_span(group_dict.num_followers) }}</dd>
-                <dt>{{ _('Datasets') }}</dt>
-                <dd>{{ h.SI_number_span(group_dict.package_count) }}</dd>
-              </dl>
-            </div>
-          {% endblock nums %}
-        </div>
-        <div class="servicepanel__right">
-          {% block follow %}
-            <div class="follow_button">
-              {{ h.follow_button('group', group_dict.id) }}
-            </div>
-          {% endblock follow %}
-        </div>
-      </div>      
-    </div>
-  </div>
 {% endblock %}
 
 {% block links %}

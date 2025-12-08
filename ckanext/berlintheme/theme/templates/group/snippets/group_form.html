@@ -47,7 +47,7 @@
   <div class="form-actions">
     {% block delete_button %}
       {% if h.check_access('group_delete', {'id': data.id})  %}
-        <a type="button" class="button dp-button-trash" href="{% url_for group_type+'.delete', id=data.id %}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+        <a type="button" class="button button--light" href="{% url_for group_type+'.delete', id=data.id %}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
       {% endif %}
     {% endblock %}
     <button class="button" name="save" type="submit">{% block save_text %}{{ _('Save Group') }}{% endblock %}</button>
