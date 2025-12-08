@@ -15,7 +15,7 @@
 {% endblock grid_herounit %}
 
 {% block grid_maincontent %}
-  <div class="fullwidth panel--heavy">
+  <div class="fullwidth panel">
     <div class="fullwidth__inner">
         <div class="dp-search-result-top">
           <div class="dp-search-result-summary">
@@ -41,18 +41,14 @@
 
 {% block primary_content %}
   {% block users_list %}
-    <div class="modul-teasertiles">
-      <div class="teasertiles__inner">
-        <ul>
+    <div class="modul-multiteaser">
+        <ul class="flexgrid grid--4">
           {% block users_list_inner %}
             {% for user in page.items %}
-              <li>
-                {% snippet 'user/snippets/user_item.html', user=user %}
-              </li>
+              {% snippet 'user/snippets/user_item.html', user=user %}
             {% endfor %}
           {% endblock %}
         </ul>
-      </div>
     </div>
   {% endblock %}
   {% block page_pagination %}

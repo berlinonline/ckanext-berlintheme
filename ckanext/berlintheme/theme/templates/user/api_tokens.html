@@ -3,7 +3,14 @@
 {% import 'macros/form.html' as form %}
 
 {% block page_heading %}
-  <h1>{{ user.display_name }}</h1>
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ user.display_name }}
+    </h1>
+    {% if h.check_access('user_update', user) %}
+      {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='button dp-button-pen' %}
+    {% endif %}
+  </div>
 {% endblock page_heading %}
 
 

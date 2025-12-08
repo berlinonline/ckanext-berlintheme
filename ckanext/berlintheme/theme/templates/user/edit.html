@@ -9,7 +9,12 @@
 {% endblock %}
 
 {% block page_heading %}
-  <h1>{{ user_dict.display_name }}</h1>
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ user_dict.display_name }}
+    </h1>
+    {% link_for _('View'), named_route='user.read', id=user_dict.name, class_='link' %}
+  </div>
 {% endblock page_heading %}
 
 {% block primary_content_inner %}

@@ -6,31 +6,29 @@
   - user
  #}
 
-{% block item_inner %}
-  <div class="teasertile" data-add-clickable-area="full">
-    <div class="inner">
-      <div>
-        {% block image %}
-          {{ h.user_image(user.name) }}
-        {% endblock image %}
-        {% block title %}
-          <h3 class="title">{{ user.fullname }}</h3>
-        {% endblock title %}
-      {% if h.berlin_user_orgs(user.name) %}
-          {% if h.berlin_is_sysadmin(user.name) %}
-            <p class="text--meta">Sysadmin</p>
-          {% else %}
-            {% for organization in h.berlin_user_orgs(user.name) %}
-              <p class="text--meta">{{ organization['display_name'] }}</p>
-            {% endfor %}
-          {% endif %}
-      {% endif %}
+<li>
+    <article class="modul-teaser" data-add-clickable-area="smart">
+        <div>
+              <div class="image">
+                <div class="image__image">
+                  {{ h.user_image(user.name) }}
+                </div>
+              </div>
+            <h3 class="title">{{ user.name }}</h3>
+          <div class="teaser__meta">
+            {% if h.berlin_user_orgs(user.name) %}
+                {% if h.berlin_is_sysadmin(user.name) %}
+                  <p class="text--meta">Sysadmin</p>
+                {% else %}
+                  {% for organization in h.berlin_user_orgs(user.name) %}
+                    <p class="text--meta">{{ organization['display_name'] }}</p>
+                  {% endfor %}
+                {% endif %}
+            {% endif %}
+          </div>
+          <div class="inner">
+          <a class="more float--right" data-mainlink="true" href="{{ h.url_for('user.read', id=user.name) }}" aria-label="{{ user.fullname }}" title="{{ user.fullname }}">Ansehen</a>
+        </div>
       </div>
-    </div>
-    <div class="action">
-      {% block link %}
-        <a class="more" data-mainlink="true" href="{{ h.url_for('user.read', id=user.name) }}" aria-label="{{ user.fullname }}" title="{{ user.fullname }}">Ansehen</a>
-      {% endblock link %}
-    </div>
-  </div>
-{% endblock item_inner %}
+    </article>
+</li>
