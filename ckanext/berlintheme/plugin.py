@@ -5,18 +5,14 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 
-
 from ckanext.berlintheme import page_blueprint
+
 
 class BerlinTheme(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IBlueprint)
-
-    # -------------------------------------------------------------------
-    # Implementation IConfigurer
-    # -------------------------------------------------------------------
 
     def update_config(self, config):  
         our_public_dir = os.path.join('theme', 'public')
@@ -37,6 +33,16 @@ class BerlinTheme(plugins.SingletonPlugin):
         page_list.append('about')
         page_list.append('datenschutzerklaerung')
         config['berlin.public_pages'] = ' '.join(page_list)
+
+        # try loading the new Page changes for pagination style
+        try:
+            import ckan.lib.helpers as core_helpers
+            from ckanext.berlintheme.helpers import BerlinPage
+            core_helpers.Page = BerlinPage
+        except Exception:
+            # check if change was successful
+            import logging
+            logging.exception('Failed to change ckan.lib.helpers.Page')
 
     # -------------------------------------------------------------------
     # Implementation ITemplateHelpers
@@ -79,6 +85,8 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlintheme_link_active': theme_helpers.link_active ,
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
+            'berlin_package_list_for_source': theme_helpers.bo_package_list_for_source,
+            'Page': theme_helpers.BerlinPage
         }
 
     # -------------------------------------------------------------------

@@ -2,6 +2,7 @@
 
 import logging
 import copy
+import requests
 from urllib.parse import urlencode
 
 import ckan.lib.helpers as helpers
@@ -15,6 +16,12 @@ from ckan.common import c, config, request
 from werkzeug.datastructures import MultiDict
 
 from ckanext.berlin_dataset_schema.schema import Schema
+
+from ckanext.harvest.model import HarvestJob
+from ckanext.harvest.helpers import get_harvest_source
+from ckanext.harvest.utils import (
+    DATASET_TYPE_NAME
+)
 
 LOG = logging.getLogger(__name__)
 get_action = logic.get_action
@@ -1836,3 +1843,86 @@ def bool_to_string(value: bool) -> str:
         return _("Ja")
     else:
         return _("Nein")
+
+def bo_package_list_for_source(source_id):
+    '''
+    Override the package_list_for_source harvester helper, so that we can set
+    the needed css classes for the package items.
+
+    Creates a dataset list with the ones belonging to a particular harvest
+    source.
+
+    It calls the package_list snippet and the pager.
+    '''
+    limit = 20
+    page = int(request.args.get('page', 1))
+    fq = '+harvest_source_id:"{0}"'.format(source_id)
+    search_dict = {
+        'fq': fq,
+        'rows': limit,
+        'sort': 'metadata_modified desc',
+        'start': (page - 1) * limit,
+    }
+
+    context = {'model': model, 'session': model.Session}
+    harvest_source = get_harvest_source(source_id)
+    owner_org = harvest_source.get('owner_org', '')
+    if owner_org:
+        user_member_of_orgs = [org['id'] for org
+                               in helpers.organizations_available('read')]
+        if (harvest_source and owner_org in user_member_of_orgs):
+            context['ignore_capacity_check'] = True
+
+    query = logic.get_action('package_search')(context, search_dict)
+
+    base_url = helpers.url_for(
+        '{0}.read'.format(DATASET_TYPE_NAME),
+        id=harvest_source['name']
+    )
+
+    def pager_url(q=None, page=None):
+        url = base_url
+        if page:
+            url += '?page={0}'.format(page)
+        return url
+
+    pager = helpers.Page(
+        collection=query['results'],
+        page=page,
+        url=pager_url,
+        item_count=query['count'],
+        items_per_page=limit
+    )
+    pager.items = query['results']
+
+    if query['results']:
+        list_class = "list--clean"
+        item_class = "dataset-item module-content"
+        out = helpers.snippet('snippets/package_list.html', packages=query['results'], list_class=list_class, item_class=item_class, truncate=120)
+        out += pager.pager()
+    else:
+        out = helpers.snippet('snippets/package_list_empty.html')
+
+    return out
+
+from ckan.lib.pagination import Page as BasePage
+import dominate.tags as tags
+from six import text_type
+
+class BerlinPage(BasePage):
+    """
+    Customize CKANs Page class and use different class for Pagination
+    """
+
+    def pager(self, *args, **kwargs):
+        with tags.div(cls=u"pagination") as wrapper:
+            tags.ul(u"$link_previous ~2~ $link_next", cls=u"pagination")
+        params = dict(
+            format=text_type(wrapper),
+            symbol_previous=u"«",
+            symbol_next=u"»",
+            curpage_attr={u"class": u"active"},
+            link_attr={},
+        )
+        params.update(kwargs)
+        return super(BasePage, self).pager(*args, **params)
