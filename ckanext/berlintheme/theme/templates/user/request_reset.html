@@ -28,7 +28,7 @@
 
 {% block secondary_content %}
   {% block help %}
-  <section class="module module-narrow module-shallow">
+  <div class="panel--heavy">
     {% block help_inner %}
     <h2 class="module-heading">{{ _('How does this work?') }}</h2>
     <div class="module-content">
@@ -37,6 +37,6 @@
         {% endtrans %}</p>
     </div>
     {% endblock %}
-  </section>
+  </div>
   {% endblock %}
 {% endblock %}

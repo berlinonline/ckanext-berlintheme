@@ -71,7 +71,9 @@ Example:
       {{ extra_html }}
     </div>
     <div class="col-xs-1">
-      <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+      {% if name != 'remember' %}
+        <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+      {% endif %}
     </div>
   </div>
 </div>

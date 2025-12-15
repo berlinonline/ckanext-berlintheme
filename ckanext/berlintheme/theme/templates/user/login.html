@@ -34,7 +34,7 @@
   {% endif %}
 
   {% block help_forgotten %}
-  <section class="module module-narrow module-shallow">
+  <div class="panel--heavy">
     {% block help_forgotten_inner %}
     <h2 class="module-heading">{{ _('Forgotten your password?') }}</h2>
     <div class="module-content">
@@ -46,6 +46,6 @@
       </p>
     </div>
     {% endblock %}
-  </section>
+  </div>
   {% endblock %}
 {% endblock %}
