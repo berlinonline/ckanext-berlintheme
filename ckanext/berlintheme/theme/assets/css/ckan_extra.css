@@ -797,3 +797,26 @@ a.dr-tab-link {
 .berlin_no_background {
   background: none;
 }
+
+.btn-margin {
+  margin-bottom: 20px;
+}
+
+.harvest_ul {
+  display: ruby;
+  list-style: none;
+}
+
+.berlin_no_margin_bottom {
+    margin-bottom: 0 !important;
+}
+
+.list-unstyled {
+  margin: 0;
+  list-style: none;
+}
+
+.content_action {
+  float: right;
+  margin-top: 10px;
+}

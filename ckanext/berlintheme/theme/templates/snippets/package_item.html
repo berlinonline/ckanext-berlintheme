@@ -34,7 +34,7 @@ Example:
                 {% endif %}
               {% endblock %}
               {% block heading_title %}
-      {{ h.link_to(h.truncate(title, truncate_title), h.url_for('%s.read' % package.type, id=package.name)) }}
+                  {{ h.link_to(h.truncate(title, truncate_title), h.url_for('%s.read' % package.type, id=package.name)) }}
               {% endblock %}
               {% block heading_meta %}
                 {% if package.get('state', '').startswith('draft') %}
@@ -83,6 +83,15 @@ Example:
             {% endif %}
           {% endblock resources %}
         </div>
+
+        {% if package.type == 'harvest' %}
+          <div class="card__footer">
+              <div class="row leftandright center">
+                  {% set org = package.organization %}
+                  <div class="left">Organization: {{ h.nav_link(org.title or org.name|truncate(10), named_route='organization_read', id=org.name) }}</div>
+              </div>
+          </div>        
+        {% endif %}
       {% endblock content%}
     </article>
   </li>

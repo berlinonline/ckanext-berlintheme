@@ -30,9 +30,12 @@
 {% block content_primary_nav %}
   {% set tabs = [ 
     { "active": h.berlintheme_link_active(group_type ~ '.read'), "label": _('Datasets'), "link": url_for(group_type ~ '.read', id=group_dict.name), "icon": "sitemap" },
-    { "active": h.berlintheme_link_active(group_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(group_type ~ '.activity', id=group_dict.name), "icon": "clock" },
   ] %}
 
+  {% if h.check_access('group_update', {'id': group_dict.id}) %}
+    {% do tabs.append({ "active": h.berlintheme_link_active(group_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(group_type ~ '.activity', id=group_dict.name), "icon": "clock" }) %}
+  {% endif %}
+  
   {% do tabs.append({ "active": h.berlintheme_link_active(group_type ~ '.about'), "label": _('About'), "link": url_for(group_type ~ '.about', id=group_dict.name), "icon": "info-circle" }) %}
 
   {% snippet 'snippets/tabs.html', tabs=tabs %}
