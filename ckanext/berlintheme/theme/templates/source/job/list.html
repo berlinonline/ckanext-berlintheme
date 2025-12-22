@@ -1,0 +1,104 @@
+{% extends "source/admin_base.html" %}
+
+
+
+
+{% block subtitle %}{{ _('Harvest Jobs')}} - {{ super() }}{% endblock %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ harvest_source.title }}
+    </h1>
+    {% if h.check_access('harvest_source_update', {'id':harvest_source.id }) %}
+      {{ h.nav_link(_('Admin'), named_route='harvester.admin', id=harvest_source.name, class_='btn btn-primary', icon='wrench')}}
+    {% endif %}    
+  </div>
+{% block info %}
+<div class="modul-text_bild imagealignleft">
+    <!-- <h2 class="title">Image left</h2> -->
+    <div class="text textile">
+      {% if harvest_source.description %}
+        <p class="description">
+          {{ h.markdown_extract(harvest_source.description, 180) }}
+        </p>
+      {% else %}
+        <p class="empty">{{ _('There is no description for this organization') }}</p>
+      {% endif %}
+    {% link_for _('read more'), controller='harvester', action='about', id=harvest_source.name %}
+    </div>
+</div>
+{% endblock info %}
+{% endblock %}
+
+{% block primary_content_inner %}
+<div class="module-content">
+  <h1 class="results">{{ _('Harvest Jobs') }}</h1>
+
+  {% if jobs|length == 0 %}
+    <p class="empty">{{ _('No jobs yet for this source') }}</p>
+  {% else %}
+      {% for job in jobs %}
+  <article class="modul-card" data-add-clickable-area="smart">
+        <div class="card__body">
+          <div class="inner">
+            <h3 class="title">
+                <a href="{{ h.url_for('harvester.job_show', source=harvest_source.name, id=job.id) }}">
+                    {{ _('Job: ') }} {{ job.id }}
+                </a>
+              {% if job.status != 'Finished' %}
+                <span class="label">{{ job.status }}</span>
+              {% endif %}              
+            </h3>
+            <p>
+              {{ _('Started:') }}
+              <span class="automatic-local-datetime" data-datetime="{{ h.render_datetime(job.gather_started, date_format='%Y-%m-%dT%H:%M:%S%z') }}">
+                {{ h.render_datetime(job.gather_started, with_hours=True) or _('Not yet') }}
+              </span>
+              &mdash;
+              {{ _('Finished:') }}
+              <span class="automatic-local-datetime" data-datetime="{{ h.render_datetime(job.finished, date_format='%Y-%m-%dT%H:%M:%S%z') }}">
+                {{ h.render_datetime(job.finished, with_hours=True) or _('Not yet') }}
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="card__footer">
+          <div class="flexgrid grid--auto">
+            <div class="left">
+            {% if job.status == 'Finished' %}
+            <ul class="card__status status harvest_ul">
+              {% if 'errored' in job.stats and job.stats['errored'] > 0 %}
+                <li>
+                  <span class="pill pill--error pill--inverted" data-diff="error">
+                    {{ job.stats['errored'] }} {{ _('errors') }}
+                  </span>
+                </li>
+              {% endif %}
+              {% for action in ['added', 'updated', 'deleted', 'not modified'] %}
+                <li>
+                  <span 
+                    class="pill pill--message"
+                  data-diff="{{ action }}" title="{{ _(action) }}">
+                    {% if action in job.stats and job.stats[action] > 0 %}
+                      {{ job.stats[action] }}
+                    {% else %}
+                      0
+                    {% endif %}
+                    {{ _(action) }}
+                  </span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}              
+          </div>
+          </div>
+        </div>
+</article>
+      {% endfor %}
+
+  {% endif %}
+
+</div>
+{% endblock %}
+

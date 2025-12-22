@@ -1,0 +1,33 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+{% endblock %}
+
+
+{% block primary_content %}
+{% block content_primary_nav %}
+  {% 
+  set tabs = [ 
+      { "active": h.berlintheme_link_active(c.dataset_type ~ '.read'), "label": _('Datasets'), "link": url_for(c.dataset_type ~ '.read', id=harvest_source.name), "icon": "sitemap" },
+      { "active": h.berlintheme_link_active('harvester.about'), "label": _('About'), "link": url_for('harvester.about', id=harvest_source.name,), "icon": "info-circle" },
+  ] 
+  %}
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+{% endblock %}
+
+  <article class="module">
+    {% block page_header %}
+      <header class="module-content page-header">
+        {% block content_action %}
+        {% endblock %}
+      </header>
+    {% endblock %}
+    {% block primary_content_inner %}{% endblock %}
+  </article>
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    {% asset 'ckanext-harvest/harvest_css' %}
+    <link rel="stylesheet" href="https://www.berlin.de/i9f/r1/bundle/berlin_assetservice.css" />
+{% endblock %}
