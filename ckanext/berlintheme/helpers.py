@@ -1926,3 +1926,4 @@ class BerlinPage(BasePage):
         )
         params.update(kwargs)
         return super(BasePage, self).pager(*args, **params)
+        return _("Nein")

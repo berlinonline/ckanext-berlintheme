@@ -5,6 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.berlintheme.helpers as theme_helpers
 
+
 from ckanext.berlintheme import page_blueprint
 
 
@@ -86,7 +87,9 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
             'berlin_package_list_for_source': theme_helpers.bo_package_list_for_source,
-            'Page': theme_helpers.BerlinPage
+            'Page': theme_helpers.BerlinPage,
+            'berlin_convert_bool_to_string':
+                theme_helpers.bool_to_string ,
         }
 
     # -------------------------------------------------------------------
