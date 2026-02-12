@@ -18,7 +18,7 @@ Example:
         <div>
               <div class="image">
                 <div class="image__image">
-                  <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}">
+                  <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.title }}">
                 </div>
               </div>
             <h3 class="title">{{ organization.display_name }}</h3>
