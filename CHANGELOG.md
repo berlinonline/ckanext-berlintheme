@@ -1,6 +1,11 @@
 # Changelog
 
 ## Development
+## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
+
+_(2025-02-12)_
+- Changes in css styles and templates for styleguide
+
 ## [0.3.15](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.15)
 
 _(2025-11-27)_
