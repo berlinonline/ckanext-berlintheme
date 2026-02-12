@@ -1,0 +1,28 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Administration') }}{% endblock %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+    </h1>
+  </div>
+{% endblock page_heading %}
+
+{% block breadcrumb_content %}
+{% endblock %}
+
+{% block content_action %}
+{% endblock content_action %}
+
+{% block content_primary_nav %}
+    {% 
+    set tabs = [ 
+        { "active": h.berlintheme_link_active('admin.index'), "label": _('Sysadmins'), "link": url_for('admin.index'), "icon": "wrench" },
+        { "active": h.berlintheme_link_active('admin.config'), "label": _('Config'), "link": url_for('admin.config'), "icon": "check" },
+        { "active": h.berlintheme_link_active('admin.trash'), "label": _('Trash'), "link": url_for('admin.trash'), "icon": "trash" },
+    ] 
+    %}
+    {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+{% endblock %}

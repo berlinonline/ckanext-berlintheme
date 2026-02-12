@@ -3,216 +3,213 @@
 {% block subtitle %}{{ _('Datenschutzerklärung') }}{% endblock %}
 
 {% block breadcrumb_content %}
-<li class="active">{% link_for _('Datenschutzerklärung'), named_route='page_blueprint.privacy_policy' %}</li>
+  <li class="active">{% link_for _('Datenschutzerklärung'), named_route='page_blueprint.privacy_policy' %}</li>
 {% endblock %}
 
-{% block primary %}
-<article class="module">
-  <div class="module-content info-page">
-    <h1 class="page-heading">{{ _('Datenschutzerklärung für das Datenregister') }}</h1>
+{% block page_heading %}
+  <h1>{{ _('Datenschutzerklärung für das Datenregister') }}</h1>
+{% endblock page_heading %}
 
-    <h2 id="i_verantwortliche">I. Verantwortliche/r</h2>
+{% block primary_content %}
+  <h2 id="i_verantwortliche">I. Verantwortliche/r</h2>
 
-    <p>Verantwortliche/r im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze der Mitgliedsstaaten sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+  <p>Verantwortliche/r im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze der Mitgliedsstaaten sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
 
-    <strong>Senatskanzlei Berlin</strong><br/>
+  <strong>Senatskanzlei Berlin</strong><br/>
 
-    <address>
-    Abteilung VI: Open Data Berlin<br/>
+  <address>
+  Abteilung VI: Open Data Berlin<br/>
+  <strong>E-Mail:</strong><br/>
+  opendata@senatskanzlei.berlin.de<br/>
+  <strong>Anschrift:</strong><br/>
+  Martin-Hoffmann-Straße 16<br/>
+  12435 Berlin
+  </address>
+
+  <h2 id="ii_anschrift_dsb">II. Name und Anschrift des DSB (Datenschutzbeauftragten)</h2>
+
+  <strong>Der behördliche Datenschutzbeauftragte</strong><br/>
+  
+  <address>
     <strong>E-Mail:</strong><br/>
-    opendata@senatskanzlei.berlin.de<br/>
+    behdsb@senatskanzlei.berlin.de<br/>
     <strong>Anschrift:</strong><br/>
-    Martin-Hoffmann-Straße 16<br/>
-    12435 Berlin
-    </address>
+    Der Regierende Bürgermeister von Berlin<br/>
+    Senatskanzlei<br/>
+    Jüdenstraße 1<br/>
+    10178 Berlin
+  </address>
 
-    <h2 id="ii_anschrift_dsb">II. Name und Anschrift des DSB (Datenschutzbeauftragten)</h2>
+  <h2 id="iii_zentrale_dienste">III. Zentrale Dienste des Webportals</h2>
 
-    <strong>Der behördliche Datenschutzbeauftragte</strong><br/>
-    
-    <address>
-      <strong>E-Mail:</strong><br/>
-      behdsb@senatskanzlei.berlin.de<br/>
-      <strong>Anschrift:</strong><br/>
-      Der Regierende Bürgermeister von Berlin<br/>
-      Senatskanzlei<br/>
-      Jüdenstraße 1<br/>
-      10178 Berlin
-    </address>
+  <h3 id="iii_1_browserdaten">III.1. Browserdaten</h3>
 
-    <h2 id="iii_zentrale_dienste">III. Zentrale Dienste des Webportals</h2>
+  <p>Der technische Betreiber des Datenregisters, die BerlinOnline GmbH stellt die Webseite bereit und erhebt dabei Browserdaten (sogenannte Logfiles).</p>
 
-    <h3 id="iii_1_browserdaten">III.1. Browserdaten</h3>
+  <address>
+  BerlinOnline GmbH<br/>
+  Stefan-Heym-Platz 1<br/>
+  10367 Berlin
+  </address>
 
-    <p>Der technische Betreiber des Datenregisters, die BerlinOnline GmbH stellt die Webseite bereit und erhebt dabei Browserdaten (sogenannte Logfiles).</p>
+  <h4 id="iii_1_1_beschreibung">III.1.1. Beschreibung und Umfang der Datenverarbeitung</h4>
 
-    <address>
-    BerlinOnline GmbH<br/>
-    Stefan-Heym-Platz 1<br/>
-    10367 Berlin
-    </address>
+  <p>Bei jedem Zugriff von Nutzenden auf eine Seite aus dem Angebot des Webportals und bei jedem Abruf einer Datei werden Daten über diesen Vorgang erhoben.</p>
 
-    <h4 id="iii_1_1_beschreibung">III.1.1. Beschreibung und Umfang der Datenverarbeitung</h4>
+  <p>Diese Daten sind:</p>
 
-    <p>Bei jedem Zugriff von Nutzenden auf eine Seite aus dem Angebot des Webportals und bei jedem Abruf einer Datei werden Daten über diesen Vorgang erhoben.</p>
+  <ul>
+    <li>Browser-Typ und -Version</li>
+    <li>Verwendetes Betriebssystem</li>
+    <li>Webseite, von der aus Sie uns besuchen (Referrer-URL)</li>
+    <li>Webseite, die Sie besuchen</li>
+    <li>Datum und Uhrzeit Ihres Zugriffs</li>
+    <li>Ihre Internetprotokolldaten (IP-Adresse)</li>
+    <li>übertragene Datenmenge</li>
+    <li>Zugriffsstatus (Dateien übertragen, Datei nicht gefunden etc.)</li>
+  </ul>
 
-    <p>Diese Daten sind:</p>
+  <h4 id="iii_1_2_rechtsgrundlage">III.1.2. Rechtsgrundlage für die Datenverarbeitung</h4>
 
-    <ul>
-      <li>Browser-Typ und -Version</li>
-      <li>Verwendetes Betriebssystem</li>
-      <li>Webseite, von der aus Sie uns besuchen (Referrer-URL)</li>
-      <li>Webseite, die Sie besuchen</li>
-      <li>Datum und Uhrzeit Ihres Zugriffs</li>
-      <li>Ihre Internetprotokolldaten (IP-Adresse)</li>
-      <li>übertragene Datenmenge</li>
-      <li>Zugriffsstatus (Dateien übertragen, Datei nicht gefunden etc.)</li>
-    </ul>
+  <p>Rechtsgrundlage für die Verarbeitung der Daten ist das berechtigte Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse besteht in der sicheren Bereitstellung der durch die Nutzenden angefragten Webseite. Im Übrigen stellen die nachfolgend genannte Zwecke zugleich unsere berechtigten Interessen dar.</p>
 
-    <h4 id="iii_1_2_rechtsgrundlage">III.1.2. Rechtsgrundlage für die Datenverarbeitung</h4>
+  <h4 id="iii_1_3_zweck">III.1.3. Zweck der Datenverarbeitung</h4>
 
-    <p>Rechtsgrundlage für die Verarbeitung der Daten ist das berechtigte Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse besteht in der sicheren Bereitstellung der durch die Nutzenden angefragten Webseite. Im Übrigen stellen die nachfolgend genannte Zwecke zugleich unsere berechtigten Interessen dar.</p>
+  <p>Die Daten werden aus technischen Gründen, zur Aufrechterhaltung und Verbesserung der Funktionalität sowie Betriebssicherheit des Webportals verarbeitet.</p>
 
-    <h4 id="iii_1_3_zweck">III.1.3. Zweck der Datenverarbeitung</h4>
+  <h4 id="iii_1_4_dauer">III.1.4. Dauer der Speicherung</h4>
 
-    <p>Die Daten werden aus technischen Gründen, zur Aufrechterhaltung und Verbesserung der Funktionalität sowie Betriebssicherheit des Webportals verarbeitet.</p>
+  <p>Die Daten werden nach 5 Tagen gelöscht.</p>
 
-    <h4 id="iii_1_4_dauer">III.1.4. Dauer der Speicherung</h4>
+  <h2 id="iv_weitere_prozesse">IV. Weitere datenverarbeitende Prozesse</h2>
 
-    <p>Die Daten werden nach 5 Tagen gelöscht.</p>
+  <h3 id="iv_1_registrierung">IV.1. Registrierung im Datenregister</h3>
 
-    <h2 id="iv_weitere_prozesse">IV. Weitere datenverarbeitende Prozesse</h2>
+  <h4 id="iv_1_1_beschreibung">IV.1.1. Beschreibung und Umfang der Datenverarbeitung</h4>
 
-    <h3 id="iv_1_registrierung">IV.1. Registrierung im Datenregister</h3>
+  <p>Auf unserer Internetseite gibt es die Möglichkeit, einen Nutzeraccount zu registrieren.
+  Nutzeraccounts können nicht eigenständig, sondern nur auf Anfrage an <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> vom Systemadministrator erstellt werden, und nur für MitarbeiterInnen der Berliner Verwaltung.
+  Mit einem Nutzeraccount können Beiträge im Bereich „Datensätze“ erstellt werden.
+  Während der Registrierung werden die folgenden Daten erhoben:</p>
+  <ul>
+      <li>E-Mail-Adresse</li>
+      <li>Vor- und Nachname</li>
+      <li>Arbeitgeber / Behörde</li>
+  </ul>
 
-    <h4 id="iv_1_1_beschreibung">IV.1.1. Beschreibung und Umfang der Datenverarbeitung</h4>
+  <h4 id="iv_1_2_rechtsgrundlage">IV.1.2. Rechtsgrundlage für die Datenverarbeitung</h4>
 
-    <p>Auf unserer Internetseite gibt es die Möglichkeit, einen Nutzeraccount zu registrieren.
-    Nutzeraccounts können nicht eigenständig, sondern nur auf Anfrage an <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> vom Systemadministrator erstellt werden, und nur für MitarbeiterInnen der Berliner Verwaltung.
-    Mit einem Nutzeraccount können Beiträge im Bereich „Datensätze“ erstellt werden.
-    Während der Registrierung werden die folgenden Daten erhoben:</p>
-    <ul>
-        <li>E-Mail-Adresse</li>
-        <li>Vor- und Nachname</li>
-        <li>Arbeitgeber / Behörde</li>
-    </ul>
+  <p>Rechtsgrundlage für die Verarbeitung der Daten ist die Einwilligung des Nutzers nach Art. 6 Abs. 1 lit. a DSGVO.</p>
 
-    <h4 id="iv_1_2_rechtsgrundlage">IV.1.2. Rechtsgrundlage für die Datenverarbeitung</h4>
+  <h4 id="iv_1_3_zweck">IV.1.3. Zweck der Datenverarbeitung</h4>
 
-    <p>Rechtsgrundlage für die Verarbeitung der Daten ist die Einwilligung des Nutzers nach Art. 6 Abs. 1 lit. a DSGVO.</p>
+  <p>Die Verarbeitung der personenbezogenen Daten des Nutzers dient zur personalisierten Nutzung des Datenregisters, sowie zur Regulierung der Schreib- und Leserechte im Bereich „Datensätze“.</p>
 
-    <h4 id="iv_1_3_zweck">IV.1.3. Zweck der Datenverarbeitung</h4>
+  <h4 id="iv_1_4_dauer">IV.1.4. Dauer der Speicherung</h4>
 
-    <p>Die Verarbeitung der personenbezogenen Daten des Nutzers dient zur personalisierten Nutzung des Datenregisters, sowie zur Regulierung der Schreib- und Leserechte im Bereich „Datensätze“.</p>
+  <p>Die zu einem Nutzeraccount gehörenden Daten werden gelöscht, sobald der Nutzeraccount gelöscht wird.
+  Die Löschung des Nutzeraccounts kann beim Systemadministrator unter <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> beantragt werden.
+  Sämtliche durch diesen Nutzeraccount erstellen Inhalte im Bereich „Datensätze“ werden aufbewahrt.
+  Der Nutzername des gelöschten Accounts wird zu Dokumentationszwecken als Information zur Herkunft dieser Inhalte    (Ersteller) ebenfalls aufbewahrt.</p>
 
-    <h4 id="iv_1_4_dauer">IV.1.4. Dauer der Speicherung</h4>
+  <h3 id="iv_2_fehler_protokollierung">IV.2. Protokollierung von Fehlern</h3>
 
-    <p>Die zu einem Nutzeraccount gehörenden Daten werden gelöscht, sobald der Nutzeraccount gelöscht wird.
-    Die Löschung des Nutzeraccounts kann beim Systemadministrator unter <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> beantragt werden.
-    Sämtliche durch diesen Nutzeraccount erstellen Inhalte im Bereich „Datensätze“ werden aufbewahrt.
-    Der Nutzername des gelöschten Accounts wird zu Dokumentationszwecken als Information zur Herkunft dieser Inhalte    (Ersteller) ebenfalls aufbewahrt.</p>
+  <h4 id="iv_2_1_beschreibung">IV.2.1. Beschreibung und Umfang der Datenverarbeitung</h4>
 
-    <h3 id="iv_2_fehler_protokollierung">IV.2. Protokollierung von Fehlern</h3>
+  <p>Für die Sicherstellung der einwandfreien Funktion des Datenportals werden Programmfehler oder -hinweise nichtöffentlich protokolliert. Dabei werden die folgenden Daten gespeichert:</p>
 
-    <h4 id="iv_2_1_beschreibung">IV.2.1. Beschreibung und Umfang der Datenverarbeitung</h4>
+  <ul>
+    <li>Fehlertyp</li>
+    <li>Zeitpunkt des Fehlers</li>
+    <li>Fehlermeldung oder -Nachricht</li>
+  </ul>
 
-    <p>Für die Sicherstellung der einwandfreien Funktion des Datenportals werden Programmfehler oder -hinweise nichtöffentlich protokolliert. Dabei werden die folgenden Daten gespeichert:</p>
+  <p>Diese Informationen sind für Administratoren einsehbar und dienen der Nachvollziehbarkeit und Behebung von Störungen.</p>
 
-    <ul>
-      <li>Fehlertyp</li>
-      <li>Zeitpunkt des Fehlers</li>
-      <li>Fehlermeldung oder -Nachricht</li>
-    </ul>
+  <h4 id="iv_2_2_rechtsgrundlage">IV.2.2. Rechtsgrundlage für die Datenverarbeitung</h4>
 
-    <p>Diese Informationen sind für Administratoren einsehbar und dienen der Nachvollziehbarkeit und Behebung von Störungen.</p>
+  <p>Rechtsgrundlage für die Verarbeitung der Daten ist Art. 6 Abs. 1 lit. e DSGVO i.V.m. § 2 Abs. 1 Informationsverarbeitungsgesetz.</p>
 
-    <h4 id="iv_2_2_rechtsgrundlage">IV.2.2. Rechtsgrundlage für die Datenverarbeitung</h4>
+  <h4 id="iv_2_3_zweck">IV.2.3. Zweck der Datenverarbeitung</h4>
 
-    <p>Rechtsgrundlage für die Verarbeitung der Daten ist Art. 6 Abs. 1 lit. e DSGVO i.V.m. § 2 Abs. 1 Informationsverarbeitungsgesetz.</p>
+  <p>Die Verarbeitung der personenbezogenen Daten aus dem Fehlerprotokoll dient allein der Nachvollziehbarkeit und Behebung von Störungen.</p>
 
-    <h4 id="iv_2_3_zweck">IV.2.3. Zweck der Datenverarbeitung</h4>
+  <h4 id="iv_2_4">IV.2.4. Dauer der Speicherung</h4>
 
-    <p>Die Verarbeitung der personenbezogenen Daten aus dem Fehlerprotokoll dient allein der Nachvollziehbarkeit und Behebung von Störungen.</p>
+  <p>Die Daten werden nach 5 Tagen gelöscht.</p>
 
-    <h4 id="iv_2_4">IV.2.4. Dauer der Speicherung</h4>
+  <h3 id="iv_3_erstellung-von-inhalten">IV.3. Erstellung von Inhalten im Bereich „Datensätze“</h3>
 
-    <p>Die Daten werden nach 5 Tagen gelöscht.</p>
+  <h4 id="iv_3_1_beschreibung">IV.3.1. Beschreibung und Umfang der Datenverarbeitung</h4>
 
-    <h3 id="iv_3_erstellung-von-inhalten">IV.3. Erstellung von Inhalten im Bereich „Datensätze“</h3>
+  <p>Registrierte Nutzer haben die Möglichkeit, Inhalte im Datenregister im Bereich „Datensätze“ zu erstellen.
+  Bei den Inhalten handelt es sich um Datensätze: eine Reihe von beschreibenden Metadaten sowie der Link auf an anderer Stelle im Internet verfügbare primäre Daten.
+  Die so erstellten Datensätze sind zunächst nicht öffentlich und nur für andere registrierte Nutzer des Datenregisters einsehbar.
+  Nachdem die Datensätze vom Nutzer dafür freigeschaltet wurden, sind sie auch öffentlich im zentralen Datenportal des Landes Berlin (daten.berlin.de) zu sehen.</p>
+  <p>Beim Anlegen von Datensätzen wird neben dem Inhalt selbst erfasst, welcher Nutzer den Inhalt verfasst hat und wann dies geschehen ist.
+  Auch beim nachträglichen Modifizieren von Datensätzen werden Nutzer und Zeitpunkt erfasst.
+  Diese Informationen werden im nicht-öffentlichen Datenregister (datenregister.berlin.de) im Rahmen des Inhalts dargestellt.
+  Dabei wird der Benutzername des Nutzers angezeigt.
+  Im öffentlichen Datenportal (daten.berlin.de) wird diese Information nicht angezeigt.</p>
 
-    <h4 id="iv_3_1_beschreibung">IV.3.1. Beschreibung und Umfang der Datenverarbeitung</h4>
+  <h4 id="iv_3_2_zweck">IV.3.2. Zweck der Datenverarbeitung</h4>
+  <p>Da Nutzer Datensätze im Namen ihrer Behörde veröffentlichen, muss zu Dokumentationszwecken nachgehalten werden, welcher Nutzer die Veröffentlichung durchgeführt hat.
+  Außerdem dient die Verknüpfung von Datensätzen mit Nutzern der Regelung der Schreibrechte (nur die Nutzer einer Behörde haben Schreibrechte auf die Datensätze dieser Behörde).</p>
 
-    <p>Registrierte Nutzer haben die Möglichkeit, Inhalte im Datenregister im Bereich „Datensätze“ zu erstellen.
-    Bei den Inhalten handelt es sich um Datensätze: eine Reihe von beschreibenden Metadaten sowie der Link auf an anderer Stelle im Internet verfügbare primäre Daten.
-    Die so erstellten Datensätze sind zunächst nicht öffentlich und nur für andere registrierte Nutzer des Datenregisters einsehbar.
-    Nachdem die Datensätze vom Nutzer dafür freigeschaltet wurden, sind sie auch öffentlich im zentralen Datenportal des Landes Berlin (daten.berlin.de) zu sehen.</p>
-    <p>Beim Anlegen von Datensätzen wird neben dem Inhalt selbst erfasst, welcher Nutzer den Inhalt verfasst hat und wann dies geschehen ist.
-    Auch beim nachträglichen Modifizieren von Datensätzen werden Nutzer und Zeitpunkt erfasst.
-    Diese Informationen werden im nicht-öffentlichen Datenregister (datenregister.berlin.de) im Rahmen des Inhalts dargestellt.
-    Dabei wird der Benutzername des Nutzers angezeigt.
-    Im öffentlichen Datenportal (daten.berlin.de) wird diese Information nicht angezeigt.</p>
+  <h4 id="iv_3_3_dauer">IV.3.3 Dauer der Speicherung</h4>
+  <p>Die Daten bezüglich Ersteller und Erstellungsdatum (bzw. Modifizierer und Modifizierungsdatum) eines Datensatzes werden gelöscht, sobald der Datensatz gelöscht wird.
+  Der Nutzer kann den Datensatz selbstständig löschen, solange ein Nutzeraccount besteht und dieser Zugriffsrechte auf den Datensatz hat.
+  Alternativ kann ein Datensatz durch den Systemadministrator des Datenregisters gelöscht werden, der unter <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> erreichbar ist.</p>
 
-    <h4 id="iv_3_2_zweck">IV.3.2. Zweck der Datenverarbeitung</h4>
-    <p>Da Nutzer Datensätze im Namen ihrer Behörde veröffentlichen, muss zu Dokumentationszwecken nachgehalten werden, welcher Nutzer die Veröffentlichung durchgeführt hat.
-    Außerdem dient die Verknüpfung von Datensätzen mit Nutzern der Regelung der Schreibrechte (nur die Nutzer einer Behörde haben Schreibrechte auf die Datensätze dieser Behörde).</p>
+  <h3 id="iv_4_kontaktdaten">IV.4. Kontaktdaten für Datensätze</h3>
+  <h4 id="iv_4_1_beschreibung">IV.4.1. Beschreibung und Umfang der Datenverarbeitung</h4>
+  <p>Das Metadatenschema des Berliner Datenportals sieht die Angabe von Kontaktdaten für jeden Datensatz vor.
+  Empfohlen wird die Angabe von Funktions-E-Mails, doch auch die Angabe von Name und persönlicher E-Mail-Adresse einer Kontaktperson ist möglich.
+  In diesem Fall ist die Person, die diese Angaben macht (z.B. Internetredakteur) nicht zwingend identisch mit der Person, deren E-Mail-Adresse als Kontakt hinterlegt wird.</p>
 
-    <h4 id="iv_3_3_dauer">IV.3.3 Dauer der Speicherung</h4>
-    <p>Die Daten bezüglich Ersteller und Erstellungsdatum (bzw. Modifizierer und Modifizierungsdatum) eines Datensatzes werden gelöscht, sobald der Datensatz gelöscht wird.
-    Der Nutzer kann den Datensatz selbstständig löschen, solange ein Nutzeraccount besteht und dieser Zugriffsrechte auf den Datensatz hat.
-    Alternativ kann ein Datensatz durch den Systemadministrator des Datenregisters gelöscht werden, der unter <a href="mailto:opendata@berlin.de">opendata@berlin.de</a> erreichbar ist.</p>
+  <h4 id="iv_4_2_rechtsgrundlage">IV.4.2. Rechtsgrundlage für die Datenverarbeitung</h4>
+  <p>Rechtsgrundlage für die Verarbeitung der Daten ist Art. 6 Abs. 1 Buchst. e DSGVO in Verbindung mit § 13 Abs. 1 E-Government-Gesetz Berlin und § 2 Abs. 1 Informationsverarbeitungsgesetz.</p>
 
-    <h3 id="iv_4_kontaktdaten">IV.4. Kontaktdaten für Datensätze</h3>
-    <h4 id="iv_4_1_beschreibung">IV.4.1. Beschreibung und Umfang der Datenverarbeitung</h4>
-    <p>Das Metadatenschema des Berliner Datenportals sieht die Angabe von Kontaktdaten für jeden Datensatz vor.
-    Empfohlen wird die Angabe von Funktions-E-Mails, doch auch die Angabe von Name und persönlicher E-Mail-Adresse einer Kontaktperson ist möglich.
-    In diesem Fall ist die Person, die diese Angaben macht (z.B. Internetredakteur) nicht zwingend identisch mit der Person, deren E-Mail-Adresse als Kontakt hinterlegt wird.</p>
+  <h4 id="iv_4_3_zweck">IV.4.3. Zweck der Datenverarbeitung</h4>
+  <p>Die Kontaktdaten werden hinterlegt, um eine Interaktion der Benutzer des Datenportals mit der Verwaltung zu ermöglichen (z.B. Fragen zu Inhalt und Struktur der Daten).</p>
 
-    <h4 id="iv_4_2_rechtsgrundlage">IV.4.2. Rechtsgrundlage für die Datenverarbeitung</h4>
-    <p>Rechtsgrundlage für die Verarbeitung der Daten ist Art. 6 Abs. 1 Buchst. e DSGVO in Verbindung mit § 13 Abs. 1 E-Government-Gesetz Berlin und § 2 Abs. 1 Informationsverarbeitungsgesetz.</p>
-
-    <h4 id="iv_4_3_zweck">IV.4.3. Zweck der Datenverarbeitung</h4>
-    <p>Die Kontaktdaten werden hinterlegt, um eine Interaktion der Benutzer des Datenportals mit der Verwaltung zu ermöglichen (z.B. Fragen zu Inhalt und Struktur der Daten).</p>
-
-    <h4 id="iv_4_4_dauer">IV.4.4. Dauer der Speicherung</h4>
-    <p>Die Kontaktdaten können, als Teil der Datensatzbeschreibung, von allen registrierten Nutzern, die Schreibrechte auf dem entsprechenden Datensaz haben, gesetzt, geändert und gelöscht werden.
-    Davon abgesehen bleiben die Kontaktdaten gespeichert, bis der entsprechende Datensatz selber gelöscht wird.</p>
+  <h4 id="iv_4_4_dauer">IV.4.4. Dauer der Speicherung</h4>
+  <p>Die Kontaktdaten können, als Teil der Datensatzbeschreibung, von allen registrierten Nutzern, die Schreibrechte auf dem entsprechenden Datensaz haben, gesetzt, geändert und gelöscht werden.
+  Davon abgesehen bleiben die Kontaktdaten gespeichert, bis der entsprechende Datensatz selber gelöscht wird.</p>
 
 
-    <h3 id="v_empfaenger">V. Empfänger der personenbezogenen Daten</h3>
+  <h3 id="v_empfaenger">V. Empfänger der personenbezogenen Daten</h3>
 
-    <p>Die verantwortliche Stelle wird beim Betrieb des Berliner Datenportals durch die BerlinOnline GmbH (<a href="https://www.berlinonline.net/">https://www.berlinonline.net/</a>) als Auftragsverarbeiterin unterstützt. Diese ist als Dienstleisterin auf Grundlage einer Auftragsverarbeitungsvereinbarung nach Art. 28 DSGVO an der Verarbeitung personenbezogener Daten beteiligt.</p>
+  <p>Die verantwortliche Stelle wird beim Betrieb des Berliner Datenportals durch die BerlinOnline GmbH (<a href="https://www.berlinonline.net/" class="extern" title="Homepage der BerlinOnline GmbH">https://www.berlinonline.net/</a>) als Auftragsverarbeiterin unterstützt. Diese ist als Dienstleisterin auf Grundlage einer Auftragsverarbeitungsvereinbarung nach Art. 28 DSGVO an der Verarbeitung personenbezogener Daten beteiligt.</p>
 
-    <p>Darüber hinaus werden Ihre Daten nicht an außenstehende Stellen weitergeben.</p>
+  <p>Darüber hinaus werden Ihre Daten nicht an außenstehende Stellen weitergeben.</p>
 
-    <h3 id="vi_rechte">VI. Rechte der betroffenen Person</h3>
+  <h3 id="vi_rechte">VI. Rechte der betroffenen Person</h3>
 
-    <p>Sie haben gegenüber der verantwortlichen Stelle das Recht:</p>
+  <p>Sie haben gegenüber der verantwortlichen Stelle das Recht:</p>
 
-    <ol>
-    <li>auf Auskunft über die Verarbeitung ihrer personenbezogenen Daten (dazu gehören auch Auskünfte über Zweck, Empfänger und Dauer der Speicherung) nach Art. 15 DSGVO,</li>
-    <li>auf Berichtigung unrichtiger personenbezogener Daten (Art. 16 DSGVO),</li>
-    <li>auf Löschung gemäß Art. 17 DSGVO,</li>
-    <li>auf Einschränkung der Verarbeitung und Datenübertragbarkeit (Art. 18 und 20 DSGVO) sowie</li>
-    <li>der Verarbeitung Ihrer Daten jederzeit zu widersprechen (Art. 21 DSGVO). Legen Sie Widerspruch ein, werden Ihre personenbezogenen Daten nicht mehr verarbeitet. Eine Ausnahme besteht, soweit zwingende schutzwürdige Gründe bestehen, die gegenüber Ihren Interessen überwiegen.</li>
-    </ol>
+  <ol>
+  <li>auf Auskunft über die Verarbeitung ihrer personenbezogenen Daten (dazu gehören auch Auskünfte über Zweck, Empfänger und Dauer der Speicherung) nach Art. 15 DSGVO,</li>
+  <li>auf Berichtigung unrichtiger personenbezogener Daten (Art. 16 DSGVO),</li>
+  <li>auf Löschung gemäß Art. 17 DSGVO,</li>
+  <li>auf Einschränkung der Verarbeitung und Datenübertragbarkeit (Art. 18 und 20 DSGVO) sowie</li>
+  <li>der Verarbeitung Ihrer Daten jederzeit zu widersprechen (Art. 21 DSGVO). Legen Sie Widerspruch ein, werden Ihre personenbezogenen Daten nicht mehr verarbeitet. Eine Ausnahme besteht, soweit zwingende schutzwürdige Gründe bestehen, die gegenüber Ihren Interessen überwiegen.</li>
+  </ol>
 
-    <p>Eine einmal erteilte Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden. Die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt. In diesem Fall können wir Ihnen möglicherweise mit Ihrem Anliegen nicht mehr helfen. Der Widerruf ist zu richten an den behördlichen Datenschutzbeauftragten an die in Ziff. II genannte Kontaktadresse.</p>
+  <p>Eine einmal erteilte Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden. Die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt. In diesem Fall können wir Ihnen möglicherweise mit Ihrem Anliegen nicht mehr helfen. Der Widerruf ist zu richten an den behördlichen Datenschutzbeauftragten an die in Ziff. II genannte Kontaktadresse.</p>
 
-    <p>Zur Wahrung aller in dieser Ziffer genannten Rechte kann sich jeder Betroffene an den/die Datenschutzbeauftragte/n (siehe Ziffer II) wenden.</p>
+  <p>Zur Wahrung aller in dieser Ziffer genannten Rechte kann sich jeder Betroffene an den/die Datenschutzbeauftragte/n (siehe Ziffer II) wenden.</p>
 
-    <p>Zudem können Sie sich - wenn Sie der Auffassung sind, dass bei der Verarbeitung Ihrer Daten datenschutzrechtliche Vorschriften nicht beachtet werden - mit einer Beschwerde an die zuständige Aufsichtsbehörde wenden (Art. 77 DSGVO). Betroffene können ihre Beschwerde an die Behörde ihres Wohnsitzes, grundsätzlich aber auch an jede andere Datenschutzaufsichtsbehörde richten. Die zuständige Datenschutzaufsichtsbehörde ist die Berliner Beauftragte für Datenschutz und Informationsfreiheit, die sie wie folgt kontaktieren können:</p>
+  <p>Zudem können Sie sich - wenn Sie der Auffassung sind, dass bei der Verarbeitung Ihrer Daten datenschutzrechtliche Vorschriften nicht beachtet werden - mit einer Beschwerde an die zuständige Aufsichtsbehörde wenden (Art. 77 DSGVO). Betroffene können ihre Beschwerde an die Behörde ihres Wohnsitzes, grundsätzlich aber auch an jede andere Datenschutzaufsichtsbehörde richten. Die zuständige Datenschutzaufsichtsbehörde ist die Berliner Beauftragte für Datenschutz und Informationsfreiheit, die sie wie folgt kontaktieren können:</p>
 
-    <address>
-      <strong>Berliner Beauftragte für Datenschutz und Informationsfreiheit</strong><br/>
-      Alt-Moabit 59-61<br/>
-      10555 Berlin<br/>
-      Eingang: Alt-Moabit 60<br/>
-      Tel.: +49 30 13889-0<br/>
-      E-Mail: mailbox@datenschutz-berlin.de<br/>
-    </address>
-
-  </div>
-</article>
-{% endblock %}
+  <address>
+    <strong>Berliner Beauftragte für Datenschutz und Informationsfreiheit</strong><br/>
+    Alt-Moabit 59-61<br/>
+    10555 Berlin<br/>
+    Eingang: Alt-Moabit 60<br/>
+    Tel.: +49 30 13889-0<br/>
+    E-Mail: mailbox@datenschutz-berlin.de<br/>
+  </address>
+{% endblock primary_content %}
 
 {% block secondary %}{% endblock %}

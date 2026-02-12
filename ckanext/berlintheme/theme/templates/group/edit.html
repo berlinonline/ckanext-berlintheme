@@ -1,0 +1,7 @@
+{% extends "group/base_form_page.html" %}
+
+{% block breadcrumb_content %}
+  {{ super () }}
+  <li class="active">{% link_for _('Manage'), named_route=group_type+'.edit', id=group.name %}</li>
+{% endblock %}
+

@@ -1,6 +1,11 @@
 # Changelog
 
 ## Development
+## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
+
+_(2025-02-12)_
+- Changes in css styles and templates for styleguide
+
 ## [0.3.15](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.15)
 
 _(2025-11-27)_
@@ -8,6 +13,13 @@ _(2025-11-27)_
 - Add new `personal_data`, `personal_data_exemption` and `data_anonymized` fields to indicate if datasets contain contain personal data, are exempt from the requirement to anonymize the data or have been anonymized prior to publication. Input is implemented as interconnected checkboxes (via JS).
 - Set env variables for database and Solr index in scripts for running unit tests locally.
 - Fix failing Github CI (install curl).
+
+## [1.0.0-dev](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/1.0.0-dev)
+
+_(2025-09-09)_
+
+- Implement [berlin.de styleguide](https://styleguide.berlin.de/).
+- Set env variables for database and Solr index in scripts for running unit tests locally.
 
 ## [0.3.14](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.14)
 

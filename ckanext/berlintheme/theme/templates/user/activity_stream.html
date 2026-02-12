@@ -1,0 +1,26 @@
+{% extends "user/read.html" %}
+
+{% block subtitle %}{{ _('Activity Stream') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ user.display_name }}
+    </h1>
+    {% if h.check_access('user_update', user) %}
+      {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='button dp-button-pen' %}
+    {% endif %}
+  </div>
+{% endblock page_heading %}
+
+{% block primary_content_inner %}
+  {% set tabs = [ 
+    { "active": false, "label": _('Datasets'), "link": url_for('user.read', id=user.name) + "#user_tabs", "icon": "sitemap" },
+    { "active": true, "label": _('Activity Stream'), "icon": "clock" }
+  ] %}
+  {% if h.check_access('api_token_list', {'user': user['name']}) %}
+    {% do tabs.append({ "active": false, "label": _('API Tokens'), "link": url_for('user.api_tokens', id=user.name) + "#user_tabs", "icon": "key" })%}
+  {% endif %}
+  {% snippet 'snippets/tabs.html', tabs=tabs, user=user %}
+  {% snippet 'snippets/activity_stream.html', activity_stream=user_activity_stream, id=id, object_type='user' %}
+{% endblock %}

@@ -1,13 +1,27 @@
 # coding: utf-8
 
 import logging
-from ckan.lib.helpers import link_to
+import copy
+import requests
+from urllib.parse import urlencode
+
+import ckan.lib.helpers as helpers
 import ckan.logic as logic
 import ckan.model as model
 from ckan.common import c, config, _
 from ckanext.berlin_dataset_schema.schema import Schema
 import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
+from ckan.common import c, config, request
+from werkzeug.datastructures import MultiDict
+
+from ckanext.berlin_dataset_schema.schema import Schema
+
+from ckanext.harvest.model import HarvestJob
+from ckanext.harvest.helpers import get_harvest_source
+from ckanext.harvest.utils import (
+    DATASET_TYPE_NAME
+)
 
 LOG = logging.getLogger(__name__)
 get_action = logic.get_action
@@ -153,16 +167,16 @@ def group_select_options():
 # ids should be URIs, not just the label string
 def temporal_granularity_select_options():
     return [
-        {u'id': u'Keine', u'label': u'Keine'},
-        {u'id': u'5 Jahre', u'label': u'5 Jahre'},
-        {u'id': u'Jahr', u'label': u'Jahr'},
-        {u'id': u'Quartal', u'label': u'Quartal'},
-        {u'id': u'Monat', u'label': u'Monat'},
-        {u'id': u'Woche', u'label': u'Woche'},
-        {u'id': u'Tag', u'label': u'Tag'},
-        {u'id': u'Stunde', u'label': u'Stunde'},
-        {u'id': u'Minute', u'label': u'Minute'},
-        {u'id': u'Sekunde', u'label': u'Sekunde'},
+        {u'value': u'Keine', u'text': u'Keine'},
+        {u'value': u'5 Jahre', u'text': u'5 Jahre'},
+        {u'value': u'Jahr', u'text': u'Jahr'},
+        {u'value': u'Quartal', u'text': u'Quartal'},
+        {u'value': u'Monat', u'text': u'Monat'},
+        {u'value': u'Woche', u'text': u'Woche'},
+        {u'value': u'Tag', u'text': u'Tag'},
+        {u'value': u'Stunde', u'text': u'Stunde'},
+        {u'value': u'Minute', u'text': u'Minute'},
+        {u'value': u'Sekunde', u'text': u'Sekunde'},
     ]
 
 
@@ -170,24 +184,24 @@ def temporal_granularity_select_options():
 # ids should be URIs, not just the label string
 def geo_granularity_select_options():
     return [
-        {u'id': u'Keine', u'label': u'Keine'},
-        {u'id': u'Deutschland', u'label': u'Deutschland'},
-        {u'id': u'Berlin', u'label': u'Berlin'},
-        {u'id': u'Bezirk', u'label': u'Bezirk'},
-        {u'id': u'Ortsteil', u'label': u'Ortsteil'},
-        {u'id': u'Prognoseraum', u'label': u'Prognoseraum'},
-        {u'id': u'Bezirksregion', u'label': u'Bezirksregion'},
-        {u'id': u'Planungsraum', u'label': u'Planungsraum'},
-        {u'id': u'Block', u'label': u'Block'},
-        {u'id': u'Einschulbereich', u'label': u'Einschulbereich'},
-        {u'id': u'Kontaktbereich', u'label': u'Kontaktbereich'},
-        {u'id': u'PLZ', u'label': u'PLZ'},
-        {u'id': u'Stimmbezirk', u'label': u'Stimmbezirk'},
-        {u'id': u'Quartiersmanagement', u'label': u'Quartiersmanagement'},
-        {u'id': u'Wohnanlage', u'label': u'Wohnanlage'},
-        {u'id': u'Wahlkreis', u'label': u'Wahlkreis'},
-        {u'id': u'Hausnummer', u'label': u'Hausnummer'},
-        {u'id': u'GPS-Koordinaten', u'label': u'GPS-Koordinaten'},
+        {u'value': u'Keine', u'text': u'Keine'},
+        {u'value': u'Deutschland', u'text': u'Deutschland'},
+        {u'value': u'Berlin', u'text': u'Berlin'},
+        {u'value': u'Bezirk', u'text': u'Bezirk'},
+        {u'value': u'Ortsteil', u'text': u'Ortsteil'},
+        {u'value': u'Prognoseraum', u'text': u'Prognoseraum'},
+        {u'value': u'Bezirksregion', u'text': u'Bezirksregion'},
+        {u'value': u'Planungsraum', u'text': u'Planungsraum'},
+        {u'value': u'Block', u'text': u'Block'},
+        {u'value': u'Einschulbereich', u'text': u'Einschulbereich'},
+        {u'value': u'Kontaktbereich', u'text': u'Kontaktbereich'},
+        {u'value': u'PLZ', u'text': u'PLZ'},
+        {u'value': u'Stimmbezirk', u'text': u'Stimmbezirk'},
+        {u'value': u'Quartiersmanagement', u'text': u'Quartiersmanagement'},
+        {u'value': u'Wohnanlage', u'text': u'Wohnanlage'},
+        {u'value': u'Wahlkreis', u'text': u'Wahlkreis'},
+        {u'value': u'Hausnummer', u'text': u'Hausnummer'},
+        {u'value': u'GPS-Koordinaten', 'label': u'GPS-Koordinaten'},
     ]
 
 def sample_record_select_options():
@@ -1542,12 +1556,12 @@ def render_sample_record(value, **attrs):
     # TODO: that's obviously super inefficient to compute this every time...
     record_dict = {sample_record['id']: sample_record['label'] for sample_record in sample_record_select_options()}
     if value in record_dict:
-      return link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
+      return helpers.link_to(record_dict[value], f'https://musterdatenkatalog.de/def/musterdatensatz/{value}', **attrs)
     return ""
 
 def render_govdata_example_link(value):
     govdata_sparql_link = f"https://www.govdata.de/web/guest/sparql-assistent#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0ASELECT%20*%20WHERE%20%7B%0A%20%20%3Fdatensatz%0A%20%20%20%20dct%3Areferences%20%3Chttps%3A%2F%2Fmusterdatenkatalog.de%2Fdef%2Fmusterdatensatz%2F{value}%3E%20%3B%0A%20%20%20%20dct%3Atitle%20%3Ftitle%20%3B%0A%20%20.%0A%7D%20&endpoint=https%3A%2F%2Fwww.govdata.de%2Fsparql&requestMethod=GET&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bxml%2C*%2F*%3Bq%3D0.9&outputFormat=table"
-    return link_to("Beispiele bei GovData.de", govdata_sparql_link)
+    return helpers.link_to("Beispiele bei GovData.de", govdata_sparql_link)
 
 def hvd_category_select_options() -> list:
     return [
@@ -1654,7 +1668,7 @@ def render_hvd_category(value: str, **attrs) -> str:
     # TODO: that's obviously super inefficient to compute this every time...
     hvd_dict = {hvd_category['id']: hvd_category['label'] for hvd_category in hvd_category_select_options()}
     if value in hvd_dict:
-      return link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
+      return helpers.link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
     return ""
 
 def state_mapping():
@@ -1701,9 +1715,214 @@ def org_is_external(org: str) -> bool:
           return True
     return False
 
+def license_options(existing_license_id=None) -> list:
+    options = []
+    for license_id, license_desc in helpers.license_options(existing_license_id=existing_license_id):
+      options.append({'value': license_id, 'text': license_desc})
+    return options
+
+# functions that were previously in ckanext-datasetsnippets
+
+def resource_label(resource):
+  label = "Unbekannt"
+
+  if resource['name']:
+    name = resource['name']
+  else:
+    url = resource['url']
+    name = url[url.rfind("/") + 1:].split('?')[0]
+
+  if len(name) > 0:
+    label = name
+
+  return label
+
+def url_with_params(url: str, params: MultiDict) -> str:
+    '''Helper function to convert a base-URL (or path) and a dictionary with 
+       parameters to an URL string. Takes care of encoding issues in the 
+       parameter values, such that e.g. "köln" is encoded as "k%C3%B6ln".
+    '''
+    if not params:
+        return url
+    return url + u'?' + encode_params(params)
+
+def encode_params(params):
+    params = [(k, v.encode('utf-8') if isinstance(v, str) else str(v))
+              for k, v in params.items()]
+    return urlencode(params)
+   
+
+def get_middle_cells(current_page: int) -> list:
+    '''Helper function to get the middle part of the cells in the pagination
+      counter.'''
+    cells = []
+    cells.append({
+        "page_number": current_page - 3,
+        "label": "…",
+        "link": False,
+        "current": False
+    })
+    for index in range(current_page -2, current_page +3):
+        cells.append({
+            "page_number": index,
+            "label": str(index),
+            "link": True,
+            "current": True if (index == current_page) else False
+        })
+    cells.append({
+        "page_number": current_page + 3,
+        "label": "…",
+        "link": False,
+        "current": False
+    })
+    return cells
+
+def pagination_cells(current_page: int, page_count: int) -> list:
+    '''Helper function to return a list of cells for the pagination counter,
+      base on the max page count and the current page.'''
+    cells = []
+    cells.append({
+        "page_number": 1,
+        "label": "1",
+        "link": True,
+        "current": True if (1 == current_page) else False
+    })
+    # middle part
+    middle_cells = get_middle_cells(current_page)
+    for cell in middle_cells:
+        if cell['page_number'] > 1 and cell['page_number'] < page_count:
+            cells.append(cell)
+    cells.append({
+        "page_number": page_count ,
+        "label": str(page_count),
+        "link": True,
+        "current": True if (page_count == current_page) else False
+    })
+    return cells
+
+def pagination_url_for_page(page: int, base_path: str='dataset') -> str:
+    params_nopage = [(k, v) for k, v in request.params.items()
+                        if k != 'page']
+    params_nopage.append(('page', page))
+    base_path = base_path.strip('/')
+    return url_with_params(url=base_path, params=MultiDict(params_nopage))
+
+# def build_tab_dict(menu_item: str, title: str, icon: str, link: str, **kwargs) -> dict:
+#     menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
+#     _menu_items = config['routes.named_routes']
+#     if menu_item not in _menu_items:
+#         raise Exception('menu item `%s` cannot be found' % menu_item)
+#     item = copy.copy(_menu_items[menu_item])
+#     item.update(kwargs)
+#     active = helpers._link_active(item)
+#     needed = item.pop('needed')
+#     for need in needed:
+#         if need not in kwargs:
+#             raise Exception('menu item `%s` need parameter `%s`'
+#                             % (menu_item, need))
+#     tab = {
+#         "active": active,
+#         "label": title,
+#         "icon": icon,
+#         "link": link,
+#     }
+#     return tab
+
+def link_active(menu_item) -> bool:
+    menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
+    _menu_items = config['routes.named_routes']
+    if menu_item not in _menu_items:
+        raise Exception('menu item `%s` cannot be found' % menu_item)
+    menu_item = _menu_items[menu_item]
+    active = helpers._link_active(menu_item)
+    return active
+
 def bool_to_string(value: bool) -> str:
     '''Convert a boolean to a translated string _("Ja") or _("Nein").'''
     if value:
         return _("Ja")
     else:
         return _("Nein")
+
+def bo_package_list_for_source(source_id):
+    '''
+    Override the package_list_for_source harvester helper, so that we can set
+    the needed css classes for the package items.
+
+    Creates a dataset list with the ones belonging to a particular harvest
+    source.
+
+    It calls the package_list snippet and the pager.
+    '''
+    limit = 20
+    page = int(request.args.get('page', 1))
+    fq = '+harvest_source_id:"{0}"'.format(source_id)
+    search_dict = {
+        'fq': fq,
+        'rows': limit,
+        'sort': 'metadata_modified desc',
+        'start': (page - 1) * limit,
+    }
+
+    context = {'model': model, 'session': model.Session}
+    harvest_source = get_harvest_source(source_id)
+    owner_org = harvest_source.get('owner_org', '')
+    if owner_org:
+        user_member_of_orgs = [org['id'] for org
+                               in helpers.organizations_available('read')]
+        if (harvest_source and owner_org in user_member_of_orgs):
+            context['ignore_capacity_check'] = True
+
+    query = logic.get_action('package_search')(context, search_dict)
+
+    base_url = helpers.url_for(
+        '{0}.read'.format(DATASET_TYPE_NAME),
+        id=harvest_source['name']
+    )
+
+    def pager_url(q=None, page=None):
+        url = base_url
+        if page:
+            url += '?page={0}'.format(page)
+        return url
+
+    pager = helpers.Page(
+        collection=query['results'],
+        page=page,
+        url=pager_url,
+        item_count=query['count'],
+        items_per_page=limit
+    )
+    pager.items = query['results']
+
+    if query['results']:
+        list_class = "list--clean"
+        item_class = "dataset-item module-content"
+        out = helpers.snippet('snippets/package_list.html', packages=query['results'], list_class=list_class, item_class=item_class, truncate=120)
+        out += pager.pager()
+    else:
+        out = helpers.snippet('snippets/package_list_empty.html')
+
+    return out
+
+from ckan.lib.pagination import Page as BasePage
+import dominate.tags as tags
+from six import text_type
+
+class BerlinPage(BasePage):
+    """
+    Customize CKANs Page class and use different class for Pagination
+    """
+
+    def pager(self, *args, **kwargs):
+        with tags.div(cls=u"pagination") as wrapper:
+            tags.ul(u"$link_previous ~2~ $link_next", cls=u"pagination")
+        params = dict(
+            format=text_type(wrapper),
+            symbol_previous=u"«",
+            symbol_next=u"»",
+            curpage_attr={u"class": u"active"},
+            link_attr={},
+        )
+        params.update(kwargs)
+        return super(BasePage, self).pager(*args, **params)

@@ -1,0 +1,24 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
+
+{% block maintag %}<div class="row" role="main">{% endblock %}
+
+{% block page_heading %}
+  <h1>
+    {{ _("Confirm Delete") }}
+  </h1>
+{% endblock page_heading %}
+
+{% block primary_content %}
+  <div class="block message">
+    <p>{{ _('Are you sure you want to delete organization - {name}?').format(name=group_dict.name) }}</p>
+    <p>{{ _('Are you sure you want to delete this Organization? Note*: Deleting cannot be performed while public or private datasets belong to this organization.') }}</p>
+  </div>
+  {% block form %}
+    <form id="organization-confirm-delete-form" class="forma--base" action="{{ h.url_for(group_type + '.delete', id=group_dict.id) }}" method="post">
+      <a class="button button--light" href="{{ url_for(group_type+'.read', id=group_dict.name)}}" >{{ _('Cancel') }}</a>
+      <button class="button button--light" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
+    </form>
+  {% endblock form %}
+{% endblock primary_content %}
