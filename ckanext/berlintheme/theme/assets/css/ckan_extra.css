@@ -820,3 +820,7 @@ a.dr-tab-link {
   float: right;
   margin-top: 10px;
 }
+
+.berlin_form_display_inline_block {
+  display: inline-block;
+}
