@@ -167,10 +167,10 @@ class TestTemplates(object):
             assert dataset['maintainer_email'] in response.body
 
             # check presence of metadata attributes
-            assert u"Geografische Abdeckung" in response.body
-            assert u"Geografische Auflösung" in response.body
-            assert u"Zeitliche Auflösung" in response.body
-            assert u"Zeitliche Abdeckung von" in response.body
+            assert u"Geographischer Bezug" in response.body
+            assert u"Geographische Granularität" in response.body
+            assert u"Zeitliche Granularität" in response.body
+            assert u"Zeitlicher Bezug" in response.body
 
 
     def test_dataset_edit_template(self, app, user, datasets):
@@ -190,10 +190,10 @@ class TestTemplates(object):
             assert u"Geografische Abdeckung" in response.body
             assert u"Geografische Auflösung" in response.body
             assert u"Zeitliche Auflösung" in response.body
-            assert u"Zeitliche Auflösung" in response.body
+            assert u"Zeitraum von" in response.body
 
             # check presence of CSS classes
-            assert u"datasetform-required" in response.body
+            assert u"icon-required" in response.body
 
     def test_user_view_template(self, app, user):
         '''Sanity test of the user view template'''
@@ -228,7 +228,6 @@ class TestTemplates(object):
             status=200
         )
         assert warning_text in response.body
-        assert 'global_warning.css' in response.body
 
 @pytest.mark.ckan_config('ckan.plugins', f"{SCHEMA_PLUGIN} {THEME_PLUGIN} {AUTH_PLUGIN}")
 @pytest.mark.ckan_config('berlin.technical_groups', TECHNORG)

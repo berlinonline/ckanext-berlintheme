@@ -4,7 +4,7 @@
 
 
 {% block package_basic_fields_title %}
-  {{ form.input(
+  {{ form.wrapped_input(
     'title',
     id='field-title',
     label=_('Title'),
@@ -16,7 +16,7 @@
     is_required=h.berlin_required('title'),
     doc_link='titel'
   ) }}
-{% endblock %}
+{% endblock package_basic_fields_title %}
 
 {% block package_basic_fields_url %}
   {% set prefix = h.url_for('dataset.read', id='') %}
@@ -35,7 +35,7 @@
     attrs=attrs,
     is_required=true
   ) }}
-{% endblock %}
+{% endblock package_basic_fields_url %}
 
 {% block package_basic_fields_custom %}
   
@@ -53,25 +53,24 @@
 
   <div class="form-group">
     {% if h.berlin_required('groups') %}
-      <label for="field-category" class="control-label datasetform-required" title="{{ _("This field is required") }}">{{ _("Kategorie") }}</label>
+      <label for="field-category" class="form-label">{{ _("Kategorie") }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span></label>
     {% else %}
-      <label for="field-category" class="control-label">{{ _("Kategorie") }}</label>
+      <label for="field-category" class="form-label">{{ _("Kategorie") }}</label>
     {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-category" name="category" data-module="autocomplete">
-            {% for group in h.berlin_group_select_options()  %}
-              <option value="{{ group['value'] }}" {% if group['value'] == h.berlin_first_group_name(data) %}selected="selected"{% endif %}>{{ group['text'] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Kategorie'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#kategorie" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
+    <div class="dr-form-element">
+      <select id="field-category" name="category" data-module="autocomplete">
+        {% for group in h.berlin_group_select_options()  %}
+          <option value="{{ group['value'] }}" {% if group['value'] == h.berlin_first_group_name(data) %}selected="selected"{% endif %}>{{ group['text'] }}</option>
+        {% endfor %}
+      </select>
+      {% set link_text = "Dokumentation zum Attribut 'Kategorie'" %}
+      <a href="https://berlinonline.github.io/open-data-handbuch/#kategorie" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
     </div>
+    {% if errors.groups and errors.groups is iterable %}
+      <div class="message message--error" id="field-categoryInvalid">
+        {{ errors.groups | join(', ') }}    
+      </div>
+    {% endif %}
   </div>
   
   {{ form.input(
@@ -162,35 +161,17 @@
   ) }}
 {% endblock %}
 
-{% block package_basic_fields_license %}
-  <div class="form-group">
-    {% set error = errors.license_id %}
-    {% if h.berlin_required('license_id') %}
-      <label for="field-license" class="control-label datasetform-required" title="{{ _("This field is required") }}">{{ _("License") }}</label>
-    {% else %}
-      <label for="field-license" class="control-label">{{ _("Kategorie") }}</label>
-    {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-license" name="license_id" data-module="autocomplete">
-            {% set existing_license_id = data.get('license_id') %}
-            {% set empty_license = _('Please select the license') %}
-            <option value="">{{ empty_license }}</option>
-            {% for license_id, license_desc in h.license_options(existing_license_id) %}
-            <option value="{{ license_id }}" {% if existing_license_id == license_id %}selected="selected"{% endif %}>{{ license_desc }}</option>
-            {% endfor %}
-          </select>
-          {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Lizenz'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#lizenz" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock %}
+{{ form.select(
+  'license_id',
+  id='field-license',
+  label=_('License'),
+  options=h.berlin_license_options(),
+  selected=(data.license_id or 'cc-by'),
+  error=errors.license_id,
+  classes=[],
+  is_required=h.berlin_required('license_id'),
+  doc_link="lizenz"
+) }}
 
 {% block package_berlin_fields_attribution %}
   {{ form.input(
@@ -216,6 +197,7 @@
     value=data.date_released,
     error=errors.date_released,
     is_required=h.berlin_required('date_released'),
+    type='date',
     doc_link='veröffentlichungsdatum'
   ) }}
 {% endblock %}
@@ -229,6 +211,7 @@
     value=data.date_updated,
     error=errors.date_updated,
     is_required=h.berlin_required('date_updated'),
+    type='date',
     doc_link='aktualisierungsdatum'
   ) }}
 {% endblock %}
@@ -237,28 +220,17 @@
 
 {% block package_berlin_fields_temporal %}
 
-  <div class="form-group">
-    {% if h.berlin_required('temporal_granularity') %}
-      <label class="control-label datasetform-required" for="field-temporal_granularity" title="{{ _("This field is required") }}">{{ _("Zeitliche Auflösung") }}</label>
-    {% else %}
-      <label class="control-label" for="field-temporal_granularity">{{ _("Zeitliche Auflösung") }}</label>
-    {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-temporal_granularity" name="temporal_granularity" data-module="autocomplete">
-            {% for granularity in h.berlin_temporal_granularity_select_options()  %}
-              <option value="{{ granularity['id'] }}" {% if granularity['id'] in data.get('temporal_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Zeitliche Auflösung'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#zeitliche--auflösung" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{ form.select(
+    'temporal_granularity',
+    id='field-temporal_granularity',
+    label=_('Zeitliche Auflösung'),
+    options=h.berlin_temporal_granularity_select_options(),
+    selected=(data.temporal_granularity or 'Keine'),
+    error=errors.temporal_granularity,
+    classes=[],
+    is_required=h.berlin_required('temporal_granularity'),
+    doc_link="zeitliche--auflösung"
+  ) }}
 
   {{ form.input(
     'temporal_coverage_from',
@@ -268,6 +240,7 @@
     value=data.temporal_coverage_from,
     error=errors.temporal_coverage_from,
     is_required=h.berlin_required('temporal_coverage_from'),
+    type='date',
     doc_link='zeitliche-abdeckung'
   ) }}
 
@@ -279,6 +252,7 @@
     value=data.temporal_coverage_to,
     error=errors.temporal_coverage_to,
     is_required=h.berlin_required('temporal_coverage_to'),
+    type='date',
     doc_link='zeitliche-abdeckung'
   ) }}
 
@@ -288,28 +262,17 @@
 
 {% block package_berlin_fields_geographical %}
 
-  <div class="form-group">
-    {% if h.berlin_required('geographical_granularity') %}
-      <label class="control-label datasetform-required" for="field-geographical_granularity" title="{{ _("This field is required") }}">{{ _("Geografische Auflösung") }}</label>
-    {% else %}
-      <label class="control-label" for="field-geographical_granularity">{{ _("Geografische Auflösung") }}</label>
-    {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-geographical_granularity" name="geographical_granularity" data-module="autocomplete">
-            {% for granularity in h.berlin_geo_granularity_select_options()  %}
-              <option value="{{ granularity['id'] }}" {% if granularity['id'] in data.get('geographical_granularity', []) %}selected="selected"{% endif %}>{{ granularity['label'] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Geografische Auflösung'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#geographische-auflösung" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{ form.select(
+    'geographical_granularity',
+    id='field-geographical_granularity',
+    label=_('Geografische Auflösung'),
+    options=h.berlin_geo_granularity_select_options(),
+    selected=(data.temporal_granularity or 'Keine'),
+    error=errors.temporal_granularity,
+    classes=[],
+    is_required=h.berlin_required('geographical_granularity'),
+    doc_link="geographische--auflösung"
+  ) }}
 
   <div class="form-group">
     {% if h.berlin_required('geographical_coverage') %}
@@ -317,20 +280,14 @@
     {% else %}
       <label class="control-label" for="field-geographical_coverage">{{ _("Geografische Abdeckung") }}</label>
     {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-geographical_coverage" name="geographical_coverage" data-module="autocomplete">
-            {% for feature in h.berlin_geo_coverage_select_options()  %}
-              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('geographical_coverage', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Geografische Abdeckung'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#geographische-abdeckung" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
+    <div class="dr-form-element">
+      <select id="field-geographical_coverage" name="geographical_coverage" data-module="autocomplete">
+        {% for feature in h.berlin_geo_coverage_select_options()  %}
+          <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('geographical_coverage', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
+        {% endfor %}
+        {% set link_text = "Dokumentation zum Attribut 'Geografische Abdeckung'" %}
+      </select>
+      <a href="https://berlinonline.github.io/open-data-handbuch/#geographische-abdeckung" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
     </div>
   </div>
 
@@ -346,24 +303,16 @@
     {% else %}
       <label class="control-label" for="field-sample_record">{{ _("Musterdatensatz") }}</label>
     {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-sample_record" name="sample_record" data-module="autocomplete">
-            {% for feature in h.berlin_sample_record_select_options()  %}
-              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('sample_record', []) %}selected="selected"{% endif %}>{{ feature['label'] }}{% if feature['definition'] is defined %} ({{feature['definition']}}){% endif %}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'Musterdatensatz'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#musterdatensatz" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
+    <div class="dr-form-element">
+      <select id="field-sample_record" name="sample_record" data-module="autocomplete">
+        {% for feature in h.berlin_sample_record_select_options()  %}
+          <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('sample_record', []) %}selected="selected"{% endif %}>{{ feature['label'] }}{% if feature['definition'] is defined %} ({{feature['definition']}}){% endif %}</option>
+        {% endfor %}
+      </select>
+      {% set link_text = "Dokumentation zum Attribut 'Musterdatensatz'" %}
+      <a href="https://berlinonline.github.io/open-data-handbuch/#musterdatensatz" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
     </div>
   </div>
-
-  <hr/>
 
 {% endblock %}
 
@@ -375,20 +324,14 @@
     {% else %}
       <label class="control-label" for="field-hvd_category">{{ _("HVD-Kategorie") }}</label>
     {% endif %}
-    <div class="controls">
-      <div class="row">
-        <div class="col-xs-11">
-          <select id="field-hvd_category" name="hvd_category" data-module="autocomplete">
-            {% for feature in h.berlin_hvd_category_select_options()  %}
-              <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('hvd_category', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-xs-1">
-          {% set link_text = "Dokumentation zum Attribut 'HVD-Kategorie'" %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#high-value-datasets" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
+    <div class="dr-form-element">
+      <select id="field-hvd_category" name="hvd_category" data-module="autocomplete">
+        {% for feature in h.berlin_hvd_category_select_options()  %}
+          <option value="{{ feature['id'] }}" {% if feature['id'] in data.get('hvd_category', []) %}selected="selected"{% endif %}>{{ feature['label'] }}</option>
+        {% endfor %}
+      </select>
+      {% set link_text = "Dokumentation zum Attribut 'HVD-Kategorie'" %}
+      <a href="https://berlinonline.github.io/open-data-handbuch/#high-value-datasets" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
     </div>
   </div>
 
@@ -471,28 +414,22 @@
 
 
       {% set existing_org = data.owner_org or data.group_id %}
-      <div class="form-group control-medium">
+      <div class="form-group">
         {% if h.berlin_required('visibility') %}
           <label for="field-organizations" class="control-label datasetform-required" title="{{ _("This field is required") }}">{{ _('Organization') }}</label>
         {% else %}
           <label for="field-organizations" class="control-label">{{ _('Organization') }}</label>
         {% endif %}
-        <div class="controls">
-          <div class="row">
-            <div class="col-xs-11">
-              <select id="field-organizations" name="owner_org" data-module="autocomplete">
-                {% for organization in organizations_available %}
-                {# get out first org from users list only if there is not an existing org #}
-                {% set selected_org = (existing_org and existing_org == organization.id) or (not existing_org and not data.id and organization.id == organizations_available[0].id) %}
-                <option value="{{ organization.name }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.display_name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-xs-1">
-              {% set link_text = "Dokumentation zum Attribut 'Organisation'" %}
-              <a href="https://berlinonline.github.io/open-data-handbuch/#organisation" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-            </div>
-          </div>
+        <div class="dr-form-element">
+          <select id="field-organizations" name="owner_org" data-module="autocomplete">
+            {% for organization in organizations_available %}
+            {# get out first org from users list only if there is not an existing org #}
+            {% set selected_org = (existing_org and existing_org == organization.id) or (not existing_org and not data.id and organization.id == organizations_available[0].id) %}
+            <option value="{{ organization.name }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.display_name }}</option>
+            {% endfor %}
+          </select>
+          {% set link_text = "Dokumentation zum Attribut 'Organisation'" %}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#organisation" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
         </div>
       </div>
   {% endblock %}
@@ -504,20 +441,14 @@
       {% else %}
         <label for="field-private" class="control-label">{{ _('Visibility') }}</label>
       {% endif %}
-      <div class="controls">
-          <div class="row">
-            <div class="col-xs-11">
-              <select id="field-private" name="private" class="form-control">
-                {% for option in [('True', _('Private')), ('False', _('Public'))] %}
-                <option value="{{ option[0] }}" {% if option[0] == data.private|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-xs-1">
-              {% set link_text = "Dokumentation zum Attribut '{{ _('Visibility') }}'" %}
-              <a href="https://berlinonline.github.io/open-data-handbuch/#sichtbarkeit" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-            </div>
-          </div>
+      <div class="dr-form-element">
+        <select id="field-private" name="private" class="form-control">
+          {% for option in [('True', _('Private')), ('False', _('Public'))] %}
+          <option value="{{ option[0] }}" {% if option[0] == data.private|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
+          {% endfor %}
+        </select>
+        {% set link_text = "Dokumentation zum Attribut '{{ _('Visibility') }}'" %}
+        <a href="https://berlinonline.github.io/open-data-handbuch/#sichtbarkeit" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
       </div>
     </div>
   {% endblock %}

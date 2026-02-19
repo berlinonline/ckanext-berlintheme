@@ -1,0 +1,44 @@
+{# 
+  The header part above the list of search results (how many items found,
+  sorting selector)
+
+  Parameter:
+
+  - query
+  - count
+  - type
+  - sorting
+  - sorting_selected
+
+ #}
+
+<div class="dp-search-result-top">
+  <div class="dp-search-result-summary">
+    {% block search_title %}
+      {% if not error %}
+        {% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}
+      {% else %}
+        {{ _('Error') }}
+      {% endif %}
+    {% endblock search_title %}
+  </div>
+  <div class="dp-search-result-sort">
+    {% block search_sortby %}
+      {% if sorting %}
+        <div class="form-select form-group control-order-by">
+          <label for="field-order-by">{{ _('Order by') }}</label>
+          <select id="field-order-by" name="sort" class="form-control">
+            {% for label, value in sorting %}
+              {% if label and value %}
+                <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          {% block search_sortby_button %}
+          <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
+          {% endblock search_sortby_button %}
+        </div>
+      {% endif %}
+    {% endblock search_sortby%}
+  </div>
+</div>

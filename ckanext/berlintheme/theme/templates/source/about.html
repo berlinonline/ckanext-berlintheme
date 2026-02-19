@@ -1,0 +1,58 @@
+{% ckan_extends %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ harvest_source.title }}
+    </h1>
+    {% if h.check_access('harvest_source_update', {'id':harvest_source.id }) %}
+      {{ h.nav_link(_('Admin'), named_route='harvester.admin', id=harvest_source.name, class_='btn btn-primary', icon='wrench')}}
+    {% endif %}    
+  </div>
+{% block info %}
+<div class="modul-text_bild imagealignleft berlin_no_margin_bottom">
+    <!-- <h2 class="title">Image left</h2> -->
+    <div class="text textile">
+      {% if harvest_source.description %}
+        <p class="description">
+          {{ h.markdown_extract(harvest_source.description, 180) }}
+        </p>
+      {% else %}
+        <p class="empty">{{ _('There is no description for this organization') }}</p>
+      {% endif %}
+    {% link_for _('read more'), controller='harvester', action='about', id=harvest_source.name %}
+    </div>
+    <div class="modul-infofigures berlin_no_margin_bottom">
+        <div class="infofigures__inner">
+            <ul>
+                <li>
+                    <div class="infofigure">
+                        <h3 class="title">
+                            <span class="textfigure">{{ harvest_source.status['total_datasets'] }}</span>
+                        </h3>
+                        <div class="text">
+                            <p>
+                                {{ _('Datasets') }}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock info %}  
+{% endblock page_heading %}
+
+{% block primary_content_inner %}
+  <section class="module-content">
+    {% if harvest_source.notes %}
+      <p>{{ h.markdown_extract(harvest_source.notes)|urlize }}</p>
+    {% else %}
+      <p class="empty">{{ _('There is no description for this harvest source') }}</p>
+    {% endif %}
+  </section>
+  {% snippet "package/snippets/additional_info.html", pkg=harvest_source %}
+{% endblock %}

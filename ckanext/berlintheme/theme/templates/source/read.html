@@ -1,0 +1,71 @@
+{% extends "source/read_base.html" %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ harvest_source.title }}
+    </h1>
+    
+    {% if h.check_access('harvest_source_update', {'id':harvest_source.id }) %}
+      {{ h.nav_link(_('Admin'), named_route='harvester.admin', id=harvest_source.name, class_='btn btn-primary', icon='wrench')}}
+    {% endif %}    
+  </div>
+{% block info %}
+<div class="modul-text_bild imagealignleft berlin_no_margin_bottom">
+    <!-- <h2 class="title">Image left</h2> -->
+    <div class="text textile">
+      {% if harvest_source.description %}
+        <p class="description">
+          {{ h.markdown_extract(harvest_source.description, 180) }}
+        </p>
+      {% else %}
+        <p class="empty">{{ _('There is no description for this organization') }}</p>
+      {% endif %}
+    {% link_for _('read more'), controller='harvester', action='about', id=harvest_source.name %}
+    </div>
+    <div class="modul-infofigures berlin_no_margin_bottom">
+        <div class="infofigures__inner">
+            <ul>
+                <li>
+                    <div class="infofigure">
+                        <h3 class="title">
+                            <span class="textfigure">{{ harvest_source.status['total_datasets'] }}</span>
+                        </h3>
+                        <div class="text">
+                            <p>
+                                {{ _('Datasets') }}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock info %}  
+{% endblock page_heading %}
+
+{% block breadcrumb_content %}
+{% endblock %}
+
+{% block content_action %}
+{% endblock content_action %}
+
+{% block content_primary_nav %}
+    {% 
+    set tabs = [ 
+        { "active": h.berlintheme_link_active(c.dataset_type ~ '.read'), "label": _('Datasets'), "link": url_for(c.dataset_type ~ '.read', id=harvest_source.name), "icon": "sitemap" },
+        { "active": h.berlintheme_link_active('harvester.about'), "label": _('About'), "link": url_for('harvester.about', id=harvest_source.name,), "icon": "info-circle" },
+    ] 
+    %}
+    {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+{% endblock %}
+
+{% block primary_content_inner %}
+  <section class="module-content">
+    {{ h.berlin_package_list_for_source(harvest_source.id)  }}
+  </section>
+{% endblock %}

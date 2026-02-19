@@ -1,0 +1,89 @@
+{% ckan_extends %}
+
+{% set sorting_selected = sort_by_selected %}
+{% set sorting = [
+  (_('Relevance'), 'score desc, metadata_modified desc'),
+  (_('Name Ascending'), 'title_string asc'),
+  (_('Name Descending'), 'title_string desc'),
+  (_('Last Modified'), 'metadata_modified desc'),
+  (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+%}
+
+{% block primary_content_inner %}
+  <form id="dataset-search-form" class="dr-hero-search" method="get" data-module="select-switch">
+    {% block page_primary_action %}
+      {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+        <div class="page_primary_action float--right">
+          {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block groups_search_form %}
+      {% set facets = {
+        'fields': fields_grouped,
+        'search': search_facets,
+        'titles': facet_titles,
+        'translated_fields': translated_fields,
+        'remove_field': remove_field }
+      %}
+      {{ h.snippet('snippets/search_form_slot.html', query=q, placeholder=_('Search datasets...')) }}
+    {% endblock groups_search_form %}
+    <div class="panel--heavy">
+      <div class="fullwidth__inner">
+        <div class="row">
+          <div class="span4">
+            <button class="button button--filter js-facetingform-toggler" data-containerid="facetingform">Filter</button> 
+            <div class="filters modul-facetingform js-facetingform initialized isOverlayPalm isHidden" id="facetingform" style="display: none;">
+              <div class="facetingform__background" style="position: absolute; inset: 0px; background: rgba(0, 0, 0, 0.5);"></div>
+              <div class="facetingform__container">
+                <div class="container__head">
+                  <h2 class="title">Facettierung</h2>
+                  <button type="button" class="button button--clean close" aria-label="Filter schließen"><i class="bicon bicon-times bicon-2x" aria-hidden="true"></i></button>
+                </div>
+                <div class="container__body">
+                  <div class="facets">
+                    {% for facet in facet_titles %}
+                      {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span8">
+            {{ h.snippet('snippets/search_results_header.html', query=query, count=page.item_count, type='dataset', sorting=sorting, sorting_selected=sorting_selected )}}
+
+            {% block packages_list %}
+              {% if page.items %}
+                {{ h.snippet('snippets/package_list.html', packages=page.items, list_class='list--clean') }}
+              {% endif %}
+            {% endblock %}
+            {% block page_pagination %}
+              {% if c.page.page_count > 1 %}
+                {{ h.snippet('snippets/pagination.html',
+                  page=c.page.page,
+                  page_count=c.page.page_count,
+                  cells=h.berlintheme_pagination_cells(c.page.page, c.page.page_count),
+                  base_path=url_for(group_type ~ '.read', id=group_dict.name)
+                  )
+                }}
+              {% endif %}
+            {% endblock page_pagination %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock primary_content_inner %}
+
+{% block organization_facets %}
+  <div class="filters">
+    <div>
+      {% for facet in facet_titles %}
+        {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
+      {% endfor %}
+    </div>
+    <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a>
+  </div>
+{% endblock %}

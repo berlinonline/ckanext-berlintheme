@@ -1,0 +1,35 @@
+{# 
+
+  Template for rendering tabs. Unlike the example in the styleguide, each tab is
+  its own page. This only works by remocing the 'js-tabs' class and adding the roles
+  and aria-controls manually. 
+
+  tabs – a list of dicts such as this:
+
+  {
+    "active": true/f  alse,
+    "label": string to be displayed on the tab header,
+    "icon": icon to be displayed next to the label (a font-awesome name),
+    "link": link to the page behind the tab (only used for inactive)
+  }
+
+ #}
+ 
+
+<div class="modul-tabs dr-fake-tabs" id="user_tabs">
+  <ul class="tablist" role="tablist">
+    {% for tab in tabs %}
+      {% set label = tab['label'] %}
+      {% if tab['icon'] %}
+        {% set icon = ("<i class='bicon bicon-" + tab['icon'] + " aria-hidden='true'></i> ") | safe %}
+        {% set label = icon + label %}
+      {% endif %}
+      {% if tab['active'] %}
+        <li class="tab" role="tab" tabindex="0" aria-controls="panel1" id="tab-panel1" aria-selected="true">{{ label }}</li>
+      {% else %}
+        <li class="tab" role="tab" tabindex="-1"><a class="dr-tab-link" href="{{ tab['link'] }}">{{ label }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+

@@ -19,45 +19,71 @@
         </div>
       {% endif %}
     {% endblock %}
-    <h1>
-      {% block page_heading %}
-        {{ h.dataset_display_name(pkg) }}
-        {% if pkg.state.startswith('draft') %}
-          [{{ _('Draft') }}]
+
+    {% block package_text_image %}
+      <section class="modul-text_bild imagealignleft">
+        {% set preview_image = "/images/dataset_dummy.png" %}
+        {% if pkg.preview_image %}
+          {% set preview_image = h.sanitize_url(pkg.preview_image) %}
         {% endif %}
-        {% if pkg.state == 'deleted' %}
-          [{{ _('Deleted') }}]
-        {% endif %}
-      {% endblock %}
-    </h1>
-    {% block package_notes %}
-      {% if pkg.notes %}
-        <div class="notes embedded-content">
-          {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+        <div class="image">
+          <div class="image__image dataset">
+            <img src="{{ preview_image }}" alt="Vorschaugrafik zu Datensatz '{{ pkg.title }}'"/>
+          </div>
+          <p class="image__copyright">
+            {{ pkg.author }} |
+              {{ pkg.license_title }} ({{ pkg.license_id}})
+          </p>
         </div>
-      {% endif %}
-    {% endblock %}
-    {% block preview_image %}
-      {% if pkg.preview_image %}
-        <img
-          src="{{ h.sanitize_url(pkg.preview_image)}}"
-          alt="Vorschaugrafik zu Datensatz '{{ pkg.title }}'"
-          height="300"
-        />
-      {% endif %}
-    {% endblock %}
+        {% if pkg.notes %}
+          <div class="text">
+            {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+          </div>
+        {% endif %}
+      </section>
+    {% endblock package_text_image %}
   {% endblock %}
+
+  {% snippet "package/snippets/additional_info.html", pkg=pkg, dataset_path='dataset', context='register' %}
 
   {% block package_resources %}
-    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+      <div class="fullwidth panel--heavy block">
+        <div class="fullwidth__inner block">
+          {# <div class="modul-download panel--white block--halfgap">
+            <div class="left">
+              <div class="dp-resource-header">
+                <h3 class="title">daten.berlin.de Zugriffsstatistik, domain-basiert</h3>
+                <div class="dp-resource-icon-mini dp-resource-tabular">
+                  <div class="dp-resource-icon-label">
+                    CSV
+                  </div>
+                </div>
+              </div>
+              
+                <p class="text">
+                  Eine Zeile pro Monat, Spalten für page impressions, visits und visit_duration_avg_seconds.
+                </p>
+              
+              <ul class="caption list--clean">
+                <li class="doc-type">Format: CSV</li>
+              </ul>
+            </div>
+            <div class="right">
+              <a class="link button button--extern" href="https://berlinonline.github.io/berlin_dataportal_usage/data/current/daten_berlin_de.domain_stats.csv" target="_blank">Zur Ressource</a>
+            </div>
+          </div> #}
+        {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+      </div>
+    </div>
   {% endblock %}
 
-  {% block package_tags %}
+
+  {# {% block package_tags %}
     {% snippet "package/snippets/tags.html", tags=pkg.tags %}
   {% endblock %}
-
-  {% block package_additional_info %}
+ #}
+  {# {% block package_additional_info %}
     {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
-  {% endblock %}
+  {% endblock %} #}
 
 {% endblock %}

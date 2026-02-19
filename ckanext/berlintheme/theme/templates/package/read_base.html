@@ -1,9 +1,37 @@
 {% ckan_extends %}
 
 {% block content_primary_nav %}
-  {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
-  {{ h.build_nav_icon(dataset_type ~ '.groups', _('Kategorien'), id=pkg.id if is_activity_archive else pkg.name, icon='tags') }}
-  {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
+  {% set tabs = [ 
+    { "active": h.berlintheme_link_active(dataset_type ~ '.read'), "label": _('Dataset'), "link": url_for(dataset_type ~ '.read', id=pkg.id if is_activity_archive else pkg.name), "icon": "sitemap" },
+    { "active": h.berlintheme_link_active(dataset_type ~ '.groups'), "label": _('Kategorien'), "link": url_for(dataset_type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name), "icon": "tags" },
+    { "active": h.berlintheme_link_active(dataset_type ~ '.activity'), "label": _('Activity Stream'), "link": url_for(dataset_type ~ '.activity', id=pkg.id if is_activity_archive else pkg.name), "icon": "clock" }
+  ] %}
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+{% endblock %}
+
+{% block page_heading %}
+<div class="berlin-org-header">
+  <h1 class="berlin-h1-flex">
+    {{ h.dataset_display_name(pkg) }}
+    {% if pkg.state.startswith('draft') %}
+      [{{ _('Draft') }}]
+    {% endif %}
+    {% if pkg.state == 'deleted' %}
+      [{{ _('Deleted') }}]
+    {% endif %}
+  </h1>
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <a class="button dp-button-pen" href="{{ h.url_for('dataset.edit', id=pkg.name, _external=True) }}">{{ _('Manage') }}</a>
+    {% endif %}
+  {% endif %}
+</div>  
+{% endblock %}
+
+{% block content_action %}
+{% endblock %}
+
+{% block berlinde_content_action %}
 {% endblock %}
 
 {% block secondary_content %}
@@ -14,19 +42,6 @@
     {% snippet 'package/snippets/info.html', pkg=pkg %}
   {% endblock %}
 
-  {% block package_organization %}
-    {% if pkg.organization %}
-      {% set org = h.get_organization(pkg.organization.name) %}
-      {% if org %}
-        {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
-      {% else %}
-        {% snippet "snippets/technorg.html" %}
-      {% endif %}
-    {% endif %}
-  {% endblock %}
 
-  {% block package_license %}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
-  {% endblock %}
 
 {% endblock %}

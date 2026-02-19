@@ -1,0 +1,40 @@
+{#
+Renders a media item for a organization. This should be used in a list.
+
+organization - A organization dict.
+
+Example:
+
+    <ul class="media-grid">
+      {% for organization in organizations %}
+        {% snippet "organization/snippets/organization_item.html", organization=organization %}
+      {% endfor %}
+    </ul>
+#}
+{% set url = h.url_for(organization.type ~ '.read', id=organization.name) %}
+{% set link_title = _('View {organization_name}').format(organization_name=organization.display_name) %}
+<li>
+    <article class="modul-teaser" data-add-clickable-area="smart">
+        <div>
+              <div class="image">
+                <div class="image__image">
+                  <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.title }}">
+                </div>
+              </div>
+            <h3 class="title">{{ organization.display_name }}</h3>
+          <div class="teaser__meta">
+            <p class="text--meta">
+              {% if organization.package_count %}
+                {{ ungettext('{num} Dataset', '{num} Datasets',
+                organization.package_count).format(num=organization.package_count) }} 
+              {% else %}
+              {{ _('0 Datasets') }}
+              {% endif %}
+            </p>
+          </div>
+          <div class="inner">
+          <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
+        </div>
+      </div>
+    </article>
+</li>

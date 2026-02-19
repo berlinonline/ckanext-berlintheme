@@ -1,31 +1,189 @@
-{% ckan_extends %}
+  {#
+  Override the header on a page by page basis by extending this block. If
+  making sitewide header changes it is preferable to override the header.html
+  file.
+  #}
+  <header id="header">
+    <div class="header__row-portalbrand">
+        <div class="logo">
+            <a href="https://www.berlin.de" alt="Zur Startseite von Berlin.de">
+                <img class="logo" title="Berlin.de" src="https://www.berlin.de/css/berlin_de/foxtrot/images/logo_berlin_m_srgb.svg" alt="Berlin.de">
+            </a>
+        </div>
+    </div>
+  
+    <div class="header__row-pageheader">
+      <div class="pageheader__logo">
+        <div class="logo">
+          <div class="image__image">
+            <a href="{{ h.url_for('home.index') }}" title="Zur Startseite" rel="home" class="logo">
+              <img src="/images/logo_2.svg" alt="Berlin Open Data Logo mit Label 'Register'">
+            </a>
+          </div>
+        </div>
+      </div>
 
-{% block header_logo %}
-    <a class="logo" href="{{ h.url_for('home.index') }}">{% snippet 'snippets/berlin_open_data_logo.html' %}</a>
-{% endblock %}
+      <div class="pageheader__services">
+        <div id="servicebuttonAccessibility" class="service-button-overlay js-service-button-overlay accessibility">
+          <div class="service-button-overlay__button">
+            <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true"
+              aria-label="Overlay Öffnen: Barrierefreiheit">
+              <i class="icon bicon bicon-universal-access" aria-hidden="true"></i>
+              <span class="text">Barrierefrei</span>
+            </button>
+          </div>
+          <!--noindex--><!--googleoff: index-->
+          <div role="dialog" aria-labelledby="dialogtitle_accessibility"
+            class="service-button-overlay__overlay overlay js-overlay-container robots-nocontent" aria-modal="true"
+            hidden="hidden">
+            <div class="overlay__header">
+              <p id="dialogtitle_accessibility" class="heading">Barrierefreiheit</p>
+              <button type="button" class="close-button js-button-overlay-close"
+                aria-label="Overlay Schließen: Barrierefreiheit">
+                <i class="bicon bicon-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="overlay__body">
+              <dl>
+                <dt>Wie barrierefrei ist diese Webseite?</dt>
+                <dd>
+                  <p><a href="{{ h.url_for('page_blueprint.accessibility_statement') }}">Erklärung zur digitalen Barrierefreiheit</a></p>
+                </dd>
+                <dt>Wen können Sie bei Anmerkungen oder Fragen zur digitalen Barrierefreiheit (Feedbackoption) kontaktieren?
+                </dt>
+                <dd>
+                  <p>
+                    <a href="{{ h.url_for('page_blueprint.accessibility_statement') + '#contactbfe' }}">
+                      Kontakt zur Ansprechperson
+                    </a>
+                  </p>
+                </dd>
+                <dt>Wo gibt es zusätzliche Informationen zur Barrierefreiheit im Land Berlin?</dt>
+                <dd>
+                  <p>
+                    <a href="{{ h.url_for('page_blueprint.accessibility_statement') + '#contactbfelb' }}">
+                     Landesbeauftragte für digitale Barrierefreiheit
+                    </a>
+                </p>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <!--googleon: index--><!--/noindex-->
+        </div>
+        <div id="servicebuttonSearch" class="service-button-overlay js-service-button-overlay search fullwidth">
+          <div class="service-button-overlay__button">
+            <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true">
+              <i class="icon fa fa-search" aria-hidden="true"></i>
+              <span class="aural">{{ _('Öffnen') }}: {{ _('Search') }}</span>
+              <span class="text">{{ _('Search') }}</span>
+            </button>
+          </div>
+          <div class="service-button-overlay__overlay overlay js-overlay-container" aria-modal="true" hidden="hidden">
+            <div class="overlay__header">
+              <h2 class="heading"><span class="aural">{{ _('Search') }}</span></h2>
+              <button type="button" class="close-button js-button-overlay-close">
+                <i class="fas fa-times" aria-hidden="true"></i>
+                <span class="aural">{{ _('Schließen') }}: {{ _('Search') }}</span>
+              </button>
+            </div>
+            <div class="overlay__body">
+              <div class="search-container">
+                {% snippet 'home/snippets/search.html' %}
+              </div>
+            </div>
+          </div>
+        </div>
 
-{% block header_site_navigation_tabs %}
-  {% if c.userobj.sysadmin %}
-    {{ h.build_nav_main(
-      ('dataset.search', _('Datasets')),
-      ('organization.index', _('Organizations')),
-      ('group.index', _('Kategorien')),
-      ('user.index', _('User')),
-    ) }}
-    <li><a href="/harvest">Harvest</a></li>
-    {{ h.build_nav_main(
-      ('home.about', _('About'))
-    ) }}
-  {% elif c.userobj %}
-    {{ h.build_nav_main(
-      ('dataset.search', _('Datasets')),
-      ('organization.index', _('Organizations')),
-      ('group.index', _('Kategorien')),
-      ('home.about', _('About'))
-    ) }}
-  {% else %}
-    {{ h.build_nav_main(
-      ('home.about', _('About'))
-    ) }}
-  {% endif %}
-{% endblock %}
+        <div id="servicebuttonMenu" class="service-button-overlay js-service-button-overlay menu">
+          <div class="service-button-overlay__button">
+            <button type="button" class="icon-button js-button-overlay-open" aria-haspopup="true">
+              <i class="icon fa fa-bars" aria-hidden="true"></i>
+              <span class="aural">Öffnen: Hauptnavigation</span>
+              <span class="text">Menü</span>
+            </button>
+          </div>
+          <div class="service-button-overlay__overlay overlay js-overlay-container" aria-modal="true" hidden="hidden">
+            <div class="overlay__header">
+              <h2 class="heading"><span>Hauptnavigation</span></h2>
+              <button type="button" class="close-button js-button-overlay-close">
+                <i class="fas fa-times" aria-hidden="true"></i>
+                <span class="aural">Schließen: Hauptmenü</span>
+              </button>
+            </div>
+            <div class="overlay__body">
+                <nav id="navigation-primary" class="js-navigation-primary">
+                    <div class="tree-wrapper js-navigation-tree-wrapper">
+                        <h3 class="aural">Seitennavigation</h3>
+                            {# Iterate menu tree #}
+                            <ul class="navigation-tree tree__root">
+                              {% if c.userobj.sysadmin %}
+                                {{ h.build_nav_main(
+                                  ('home.index', _('Startseite')),
+                                  ('dataset.search', _('Datasets')),
+                                  ('organization.index', _('Organizations')),
+                                  ('group.index', _('Kategorien')),
+                                  ('user.index', _('User')),
+                                ) }}
+                                <li><a href="/harvest">Harvest</a></li>
+                                {{ h.build_nav_main(
+                                  ('home.about', _('About'))
+                                ) }}
+                              {% elif c.userobj %}
+                                {{ h.build_nav_main(
+                                  ('home.index', _('Startseite')),
+                                  ('dataset.search', _('Datasets')),
+                                  ('organization.index', _('Organizations')),
+                                  ('group.index', _('Kategorien')),
+                                  ('home.about', _('About'))
+                                ) }}
+                              {% else %}
+                                {{ h.build_nav_main(
+                                  ('home.about', _('About'))
+                                ) }}
+                              {% endif %}
+                            </ul>
+                    </div>
+                    <div class="navigation-meta">
+                      <h3 class="heading">Weiteres</h3>
+                      {# Iterate menu tree #}
+                      <ul>
+                        {% if c.userobj %}
+                          {% if c.userobj.sysadmin %}
+                            <li>
+                              <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                                {{ _('Admin') }}
+                              </a>
+                            </li>
+                          {% endif %}
+                          <li>
+                            <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" title="{{ _('View profile') }}">
+                              Profil ({{ c.userobj.display_name }})
+                            </a>
+                          </li>
+                          {% set new_activities = h.new_activities() %}
+                          <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+                            {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
+                            %}
+                            <a href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
+                              {{ _('Dashboard') }} ({{ new_activities }})
+                            </a>
+                          </li>
+                          <li>
+                            <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+                              {{ _('Log out') }}
+                            </a>
+                          </li>
+                        {% else %}
+                          <li>{% link_for _('Login'), named_route='user.login', class_='sub' %}</li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>

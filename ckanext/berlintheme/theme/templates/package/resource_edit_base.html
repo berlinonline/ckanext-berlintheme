@@ -1,0 +1,31 @@
+{% ckan_extends %}
+
+{% block page_heading %}
+<div class="berlin-org-header">
+  <h1 class="berlin-h1-flex">{{ res.name }}</h1>
+  {% if res %}
+      <a href="{{ h.url_for('resource.read', id=pkg.name, resource_id=res.id, package_type=pkg.type, _external=True) }}">{{ _('View resource') }}
+      </a>
+  {% endif %}  
+</div>
+{% endblock page_heading %}
+
+{% block content_action %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {% set tabs = [ 
+    { "active": h.berlintheme_link_active(pkg.type ~ '_resource.edit'), "label": _('Edit resource'), "link": url_for(pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id), "icon": "edit" },
+    { "active": h.berlintheme_link_active(pkg.type ~ '_resource.views'), "label": _('Views'), "link": url_for(pkg.type ~ '_resource.views', id=pkg.name, resource_id=res.id), "icon": "bars" },
+  ] %}
+
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{% block form_title %}{{ _('Edit resource') }}{% endblock %}</h1>
+  {% block form %}{% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock secondary_content %}

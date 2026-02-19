@@ -1,0 +1,49 @@
+{% extends "user/read_base.html" %}
+
+{% block page_primary_action %}
+  {% if h.check_access('package_create') and user.datasets %}
+    {% snippet 'snippets/add_dataset.html' %}
+  {% endif %}
+{% endblock %}
+
+{% block page_heading %}
+  <div class="berlin-org-header">
+    <h1 class="berlin-h1-flex">
+      {{ user.display_name }}
+    </h1>
+    {% if h.check_access('user_update', user) %}
+      {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='button dp-button-pen' %}
+    {% endif %}
+  </div>
+{% endblock page_heading %}
+
+{% block primary_content_inner %}
+  {% set tabs = [ 
+    { "active": true, "label": _('Datasets'), "icon": "sitemap" },
+    { "active": false, "label": _('Activity Stream'), "link": url_for('user.activity', id=user.name) + "#user_tabs", "icon": "clock" }
+  ] %}
+  {% if h.check_access('api_token_list', {'user': user['name']}) %}
+    {% do tabs.append({ "active": false, "label": _('API Tokens'), "link": url_for('user.api_tokens', id=user.name) + "#user_tabs", "icon": "key" })%}
+  {% endif %}
+  {% snippet 'snippets/tabs.html', tabs=tabs %}
+
+  {% if user.datasets %}
+    {% snippet 'snippets/package_list.html', packages=user.datasets, list_class='list--clean' %}
+  {% else %}
+
+    {% if is_myself %}
+      <p class="empty">
+        {{ _('You haven\'t created any datasets.') }}
+        {% if h.check_access('package_create') %}
+          {% link_for _('Create one now?'), named_route='dataset.new' %}
+        {% endif %}
+      </p>
+    {% else %}
+      <p class="empty">
+        {{ _('User hasn\'t created any datasets.') }}
+      </p>
+    {% endif %}
+  {% endif %}
+
+{% endblock primary_content_inner %}
+

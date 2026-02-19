@@ -1,6 +1,15 @@
 # Changelog
 
 ## Development
+## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
+
+_(2025-02-12)_
+- Implement [berlin.de styleguide](https://styleguide.berlin.de/).
+- Changes in css styles and templates for styleguide
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- fix github workflow (install ckanext-harvest)
+
+
 ## [0.3.15](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.15)
 
 _(2025-11-27)_
