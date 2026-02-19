@@ -1,13 +1,20 @@
 # Changelog
 
 ## Development
+## [0.4.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.1)
+
+_(2025-02-19)_
+
+- Add the results of the accessibility audit to the accessibility info page.
+- Turn some e-mail addresses on static pages into links.
+
 ## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
 
 _(2025-02-12)_
-- Implement [berlin.de styleguide](https://styleguide.berlin.de/).
-- Changes in css styles and templates for styleguide
-- Set env variables for database and Solr index in scripts for running unit tests locally.
-- fix github workflow (install ckanext-harvest)
+
+- Implement [Designsystem Berlin.de](https://designsystem.berlin.de).
+- Changes in CSS styles and templates for Designsystem Berlin.de.
+- Fix github workflow (install ckanext-harvest).
 
 
 ## [0.3.15](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.3.15)
