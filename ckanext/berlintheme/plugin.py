@@ -90,6 +90,7 @@ class BerlinTheme(plugins.SingletonPlugin):
             'Page': theme_helpers.BerlinPage,
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
+            'berlin_user_image': theme_helpers.user_image ,
         }
 
     # -------------------------------------------------------------------

@@ -20,7 +20,7 @@ Example:
         <div>
               <div class="image">
                 <div class="image__image">
-                  <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.title }}">
+                  <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.title }}" class="contain">
                 </div>
               </div>
             <h3 class="title">{{ group.display_name }}</h3>

@@ -1,6 +1,9 @@
 # Changelog
 
 ## Development
+
+- Make sure that user, organization and group images are not distorted in various places (lists, activity streams, detail pages), using the CSS `object-fit` attribute on new classes `cover` and `contain`.
+
 ## [0.4.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.1)
 
 _(2025-02-19)_

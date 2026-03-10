@@ -1844,6 +1844,15 @@ def bool_to_string(value: bool) -> str:
     else:
         return _("Nein")
 
+def user_image(user_id: str, classes: str, alttext: str = None, size=100) -> str:
+    '''Wrap CKAN Core's user_image() to add extra CSS classes.'''
+    import re
+    markup = str(helpers.user_image(user_id, size))
+    markup = re.sub(r'class="(.+?)"', fr'class="\1 {classes}"', markup)
+    if alttext:
+      markup = re.sub(r'alt="(.+?)"', fr'alt="{alttext}"', markup)
+    return helpers.literal(markup)
+
 def bo_package_list_for_source(source_id):
     '''
     Override the package_list_for_source harvester helper, so that we can set
