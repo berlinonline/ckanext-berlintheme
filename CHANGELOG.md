@@ -7,14 +7,14 @@
 
 ## [0.4.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.1)
 
-_(2025-02-19)_
+_(2026-02-19)_
 
 - Add the results of the accessibility audit to the accessibility info page.
 - Turn some e-mail addresses on static pages into links.
 
 ## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
 
-_(2025-02-12)_
+_(2026-02-12)_
 
 - Implement [Designsystem Berlin.de](https://designsystem.berlin.de).
 - Changes in CSS styles and templates for Designsystem Berlin.de.
