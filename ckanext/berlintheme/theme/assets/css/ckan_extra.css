@@ -109,6 +109,14 @@ img.contain, .activity.contain img {
   object-fit: contain;
 }
 
+/* Infofigures */
+
+.modul-infofigures .infofigure .title {
+  /* This should already be set. But somehow, when we're
+  using infofigures in a modul-text_bild, it's not. */
+  width: 100%;
+}
+
 /* Follow-Button */
 
 .follow_button a.button--fulltone {
