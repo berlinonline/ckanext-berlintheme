@@ -24,51 +24,50 @@
         <div class="image__image">
             <img src="{{ organization.image_display_url or h.url_for_static('/images/building-regular.svg') }}" width="200" alt="Logo von {{ organization.title }}" alt="Alternative Bildbeschreibung" >
         </div>
-        <!-- <p class="image__copyright">
-            @copyright
-        </p> -->
     </div>
-    <!-- <h2 class="title">Image left</h2> -->
     <div class="text textile">
-      {% if organization.description %}
-        <p class="description">
-          {{ h.markdown_extract(organization.description, 180) }}
-        </p>
-      {% else %}
-        <p class="empty">{{ _('There is no description for this organization') }}</p>
-      {% endif %}
-    {% link_for _('read more'), controller='organization', action='about', id=organization.name %}
+        {% if organization.description %}
+            <p class="description">
+                {{ h.markdown_extract(organization.description, 180) }}
+            </p>
+        {% else %}
+            <p class="empty">{{ _('There is no description for this organization') }}</p>
+        {% endif %}
+        {% link_for _('read more'), controller='organization', action='about', id=organization.name %}
+    </div>
 
-<div class="modul-infofigures">
-    <div class="infofigures__inner">
-        <ul class="flexgrid grid--3">
-            <li>
-                <div class="infofigure">
-                    <h3 class="title">
-                        <span class="textfigure">{{ organization.num_followers }}</span>
-                    </h3>
-                    <div class="text">
-                        <p>
-                            {{ _('Followers') }}
-                        </p>
+    <div class="modul-infofigures">
+        <div class="infofigures__inner">
+            <ul>
+                <li>
+                    <div class="infofigure">
+                        <div class="title">
+                            <span class="textfigure">{{ organization.num_followers }}</span>
+                            {{ _('Followers') }} hat diese Organisation.
+                        </div>
+                        <div class="text">
+                            {% block follow %}
+                                <div class="dr-center">
+                                    <div class="follow_button">
+                                        {{ h.follow_button('group', organization.id) }}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="infofigure">
-                    <h3 class="title">
-                        <span class="textfigure">{{ organization.package_count }}</span>
-                    </h3>
-                    <div class="text">
-                        <p>
-                            {{ _('Datasets') }}
-                        </p>
+                </li>
+                <li>
+                    <div class="infofigure">
+                        <div class="title">
+                            <span class="textfigure">{{ organization.package_count }}</span>
+                            {{ _('Datasets') }} hat diese Organisation.
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-    </div>
+
+
 </div>
 {% endblock info %}

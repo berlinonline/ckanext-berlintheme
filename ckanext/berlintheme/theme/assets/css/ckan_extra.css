@@ -109,6 +109,17 @@ img.contain, .activity.contain img {
   object-fit: contain;
 }
 
+/* Follow-Button */
+
+.follow_button a.button--fulltone {
+  /* we're using a link here, not an actual button, so the color needs to be adjusted */
+  color: #ffffff;
+}
+
+.dr-center {
+  display: flex;
+  justify-content: center;
+}
 
 /* Content Actions */
 
