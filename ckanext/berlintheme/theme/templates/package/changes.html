@@ -1,0 +1,71 @@
+{% extends "package/base.html" %}
+
+{% block subtitle %}{{ pkg_dict.name }} {{ g.template_title_delimiter }} Changes {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block breadcrumb_content_selected %}{% endblock %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li>{% link_for _('Changes'), named_route=dataset_type ~ '.activity', id=pkg_dict.name %}</li>
+  <li class="active">{% link_for activity_diffs[0].activities[1].id|truncate(30), named_route=dataset_type ~ '.changes', id=activity_diffs[0].activities[1].id %}</li>
+{% endblock %}
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      {% block package_changes_header %}
+        <h1 class="page-heading">{{ _('Changes') }}</h1>
+      {% endblock %}
+
+      {% set select_list1 = h.activity_list_select(pkg_activity_list, activity_diffs[-1].activities[0].id) %}
+      {% set select_list2 = h.activity_list_select(pkg_activity_list, activity_diffs[0].activities[1].id) %}
+      <form id="range_form" class="form--base panel--heavy" action="{{ h.url_for(dataset_type ~ '.changes_multiple') }}" data-module="select-switch" data-module-target="">
+        <div class="form-group form-group form-group--inline fullspace align-bottom">
+          <input type="hidden" name="current_old_id" value="{{ activity_diffs[-1].activities[0].id }}">
+          <input type="hidden" name="current_new_id" value="{{ activity_diffs[0].activities[1].id }}">
+          <div class="form-group">
+            <label for="changes_from" class="form-label">
+              Änderungen anzeigen von …
+            </label>
+            <select class="form-control select-time" form="range_form" name="old_id" id="changes_from">
+              {{ select_list1[1:]|join }}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="changes_to" class="form-label">
+              … bis:
+            </label>
+            <select class="form-control select-time" form="range_form" name="new_id" id="changes_to">
+              {{ select_list2|join }}
+            </select>
+          </div>
+        </div>
+      </form>
+
+      {# iterate through the list of activity diffs #}
+      <ul class="block list--clean list--fullwidth">
+        {% for i in range(activity_diffs|length) %}
+          <li>
+            <article class="modul-card">
+              {% snippet "package/snippets/change_item.html", activity_diff=activity_diffs[i], pkg_dict=pkg_dict %}
+
+              {# TODO: display metadata for more than most recent change #}
+              {% if i == 0 %}
+                {# button to show JSON metadata diff for the most recent change - not shown by default #}
+                <div class="row">
+                <button type="button" data-module="metadata-button" data-module-target="" class="button" value="Show metadata diff" id="metadata_button">Metadaten-Diff ein-/ausblenden</button>
+                </div>
+                <div id="metadata_diff" style="display:none;">
+                  {% block package_changes_diff %}
+                    {{ activity_diffs[0]['diff']|safe }}
+                  {% endblock %}
+                </div>
+              {% endif %}
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </article>
+{% endblock primary_content %}
+

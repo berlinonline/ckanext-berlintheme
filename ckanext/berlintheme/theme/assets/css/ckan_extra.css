@@ -859,3 +859,96 @@ a.dr-tab-link {
 .berlin_form_display_inline_block {
   display: inline-block;
 }
+
+/* Diffs */
+
+#metadata_diff {
+  margin-top: 15px;
+}
+
+.diffs {
+  display: grid;
+  grid-template-columns:
+    auto   /* current next */
+    auto   /* current index */
+    1fr    /* current content */
+    auto   /* incoming next */
+    auto   /* incoming index */
+    1fr;   /* incoming content */
+    border-top: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+}
+
+/* place cells */
+.diff_current {
+  grid-column: 1 / span 3;
+}
+
+.diff_incoming {
+  grid-column: 4 / span 3;
+}
+
+/* subgrid for internal layout */
+.diff_cell {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+
+/* ensure internal items map to the columns */
+.diff_next   { grid-column: 1; }
+.diff_index  { grid-column: 2; }
+.diff_content {
+  grid-column: 3;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.diff_subcell {
+  padding: 2px 4px;
+}
+
+.diff_incoming .diff_next::before {
+  content: "→";
+  margin-right: .3rem;
+  opacity: 0.6;
+}
+
+.diff_content:has(.diff_add) {
+  background-color: var(--color-message-success);
+}
+
+.diff_content:has(.diff_sub) {
+  background-color: var(--color-message-error);
+}
+
+.diff_content:has(.diff_chg) {
+  background-color: var(--color-message-info);
+}
+
+.diff_add, .diff_sub, .diff_chg {
+  font-weight: bold;
+}
+
+@media (max-width: 920px) {
+
+  .diffs {
+    grid-template-columns: auto auto minmax(0,1fr);
+  }
+
+  .diff_current,
+  .diff_incoming {
+    grid-column: 1 / span 3;
+  }
+
+  .diff_incoming .diff_next::before {
+    content: "↳";
+    margin-right: .3rem;
+    opacity: 0.6;
+  }
+}
