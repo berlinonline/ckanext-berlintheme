@@ -952,3 +952,16 @@ a.dr-tab-link {
     opacity: 0.6;
   }
 }
+
+/* Multiteaser for organizations and groups.
+  The teaser elements have titles, but no text content beneath them in `.inner`. 
+  That's why the h3 elements were flagged as confusing in a11y testing.
+  We reproduce the h3 style on a class instead. */
+
+.dr-multiteaser-title {
+  font-size: 1.0625em;
+  margin-bottom: 0.4em;
+  line-height: 1.353em;
+  color: #000000;
+  font-weight: 700;
+}
