@@ -23,7 +23,7 @@ Example:
       </div>
     </div>
     {% if resource.description %}
-      <p class="text">{{ url_is_edit }}
+      <p class="text">
         {{ h.markdown_extract(h.get_translated(resource, 'description'), extract_length=1000) }}
       </p>
     {% endif %}
