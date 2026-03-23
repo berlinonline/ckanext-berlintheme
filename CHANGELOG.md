@@ -6,6 +6,9 @@
 - Replace placeholder images for groups and organizations with SVGs (from fontawesome).
 - Re-introduce follow-button for groups and categories.
 - Fix activity display (use the right block, use designsystem elements).
+- Simplify resource item template by removing code that doesn't make sense in the context of Datenregister.
+- Fix accessibility barriers raised in report:
+  - 9.1.1.1a "Alternativtexte für Bedienelemente" (proper `aria-labels` for resource items)
 
 ## [0.4.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.1)
 

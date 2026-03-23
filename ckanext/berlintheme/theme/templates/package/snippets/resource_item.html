@@ -4,11 +4,6 @@ Renders an individual resource.
 resource - The resource to render
 package - A package object that the resources belong to.
 
-context
-  one of 'register' or 'portal'. 'register' indicates the template is being called in the 
-  Datenregister context (for dataset authors), while 'portal' indicates it is being called in the
-  Datenportal context (for the public).
-
 Example:
 
   {% snippet "datasetsnippets/snippets/resource_item.html", package=package, resources=package.resources %}
@@ -28,58 +23,33 @@ Example:
       </div>
     </div>
     {% if resource.description %}
-      <p class="text">
+      <p class="text">{{ url_is_edit }}
         {{ h.markdown_extract(h.get_translated(resource, 'description'), extract_length=1000) }}
       </p>
-        {% set can_edit = h.check_access('package_update', {'id':package.id }) %}
     {% endif %}
     <ul class="caption list--clean">
       <li class="doc-type">Format: {{ h.get_translated(resource, 'format') }}</li>
     </ul>
   </div>
   <div class="right">
-    {% if not c.user %}
-      {% if context == 'register' %}
-        <a class="link button" href="{{ h.url_for('resource.read', id=package.id, package_type=package.type, resource_id=resource.id) }}">{{ _('Ressource ansehen') }}</a>
+    <div class="card__functions functions">
+      {% if not is_activity_archive and resource.has_views %}
+        <a class="cardbutton berlin_no_background" href="{{url}}" aria-label="Voransicht der Ressource" title="Voransicht der Ressource">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
       {% else %}
-        <a class="link button button--extern" href="{{ resource.url }}" target="_blank">{{ _('Zur Ressource') }}</a>
+        <a class="cardbutton berlin_no_background" href="{{url}}" aria-label="Detailansicht der Ressource" title="Detailansicht der Ressource">
+          <i class="bicon bicon-info-circle" aria-hidden="true"></i>
+        </a>
       {% endif %}
-    {% else %}
-      {% if not url_is_edit %}
-        {% set can_edit = h.check_access('package_update', {'id':package.id }) %}
-        <div class="card__functions functions">
-          {% if not is_activity_archive and resource.has_views %}
-            <a class="cardbutton berlin_no_background" href="{{url}}" aria-label="Preview" title="Preview">
-              <i class="fa fa-eye" aria-hidden="true"></i>
-            </a>
-          {% else %}
-            <a class="cardbutton berlin_no_background" href="{{url}}" aria-label="Info" title="Info">
-              <i class="bicon bicon-info-circle" aria-hidden="true"></i>
-            </a>
-          {% endif %}
-            {% if context == 'register' %}
-            <a class="cardbutton berlin_no_background" href="{{resource.url}}" aria-label="Download" title="Download">
-              <i class="bicon bicon-download" aria-hidden="true"></i>
-            </a>
-            {% else %}
-            <a class="cardbutton berlin_no_background" href="{{resource.url}}" aria-label="External Resource" title="Go to resource">
-              <i class="bicon bicon-external-link" aria-hidden="true"></i>
-            </a>
-            {% endif %}
-          {% if can_edit %}
-            <a class="cardbutton berlin_no_background" href="{{ h.url_for(package.type ~ '_resource.edit', id=package.name, resource_id=resource.id) }}" aria-label="External Resource" title="Go to resource">
-              <i class="bicon bicon-edit" aria-hidden="true"></i>
-            </a>
-          {% endif %}
-          </div>
-      {% else %}
-      
-          {% if can_edit %}
-            <a class="cardbutton berlin_no_background" href="{{ h.url_for(package.type ~ '_resource.edit', id=package.name, resource_id=resource.id) }}" aria-label="External Resource" title="Go to resource">
-              <i class="bicon bicon-edit" aria-hidden="true"></i>
-            </a>
-          {% endif %}
+      <a class="cardbutton berlin_no_background" href="{{resource.url}}" aria-label="Zugriff auf Ressourcendaten" title="Zugriff auf Ressourcendaten">
+        <i class="bicon bicon-external-link" aria-hidden="true"></i>
+      </a>
+      {% if can_edit %}
+        <a class="cardbutton berlin_no_background" href="{{ h.url_for(package.type ~ '_resource.edit', id=package.name, resource_id=resource.id) }}" aria-label="Ressource bearbeiten" title="Ressource bearbeiten">
+          <i class="bicon bicon-edit" aria-hidden="true"></i>
+        </a>
       {% endif %}
-      </div>
-    {% endif %}
+    </div>
+  </div>
 </div>
