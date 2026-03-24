@@ -5,7 +5,7 @@
 {% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
 
 {% block page_heading %}
-  <div class="berlin-org-header">
+  <div class="berlin-header-action-group">
     <h1 class="berlin-h1-flex">
         {{ group_dict.display_name }}
         {% if h.berlin_org_is_external(group_dict.id) %}

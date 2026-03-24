@@ -1,7 +1,7 @@
 {% ckan_extends %}
 
 {% block page_heading %}
-<div class="berlin-org-header">
+<div class="berlin-header-action-group">
   <h1 class="berlin-h1-flex">{{ res.name }}</h1>
   {% if res %}
       <a href="{{ h.url_for('resource.read', id=pkg.name, resource_id=res.id, package_type=pkg.type, _external=True) }}">{{ _('View resource') }}
