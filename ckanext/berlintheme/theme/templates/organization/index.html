@@ -17,13 +17,14 @@
 {% endblock grid_pre_herounit %}
 
 {% block grid_herounit %}
-  {% block page_primary_action %}
-    {% if h.check_access('organization_create') %}
-      <div class="page_primary_action">
+  <div class="berlin-header-action-group">
+    <h1>{{ _('Organizations')}}</h1>
+    {% block page_primary_action %}
+      {% if h.check_access('organization_create') %}
         {% link_for _('Add Organization'), named_route=group_type+'.new', class_='button dp-button-plus' %}
-      </div>
-    {% endif %}
-  {% endblock %}
+      {% endif %}
+    {% endblock %}
+  </div>
   <div class="searchform-slot ">
     <div class="form-group">
       <label class="aural" for="organization_search">{{ _('Search organizations...') }}</label>
@@ -79,10 +80,6 @@
     </div>
   </div>
 {% endblock grid_maincontent %}
-
-{% block page_heading %}
-  <h1 class="dr-visually-hidden">{{ _('Organizations')}}</h1>
-{% endblock %}
 
 {% block primary_content_inner %}
   {% block organizations_list %}
