@@ -143,12 +143,6 @@ img.contain, .activity.contain img {
   }
 }
 
-@media print,(min-width: 73.8135rem ) {
-  .dr-content-header .dr-fake-tabs {
-    margin-top: -40px;
-  }
-}
-
 .dr-content-action-wrapper {
   margin-bottom: 20px;
   display: flex;
@@ -406,6 +400,7 @@ a.dr-tab-link {
 }
 
 .modul-tabs.dr-fake-tabs {
+  margin-top: 10px;
   margin-bottom: 0px;
 }
 
@@ -747,7 +742,6 @@ a.dr-tab-link {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 50px;  
 }
 
 .berlin-h1-flex {
@@ -899,4 +893,14 @@ a.dr-tab-link {
   line-height: 1.353em;
   color: #000000;
   font-weight: 700;
+}
+
+/* various */
+
+.dr-bottom-spacer {
+  margin-bottom: 50px;
+}
+
+.dr-no-bottom-spacer {
+  margin-bottom: 0;
 }
