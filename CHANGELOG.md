@@ -5,7 +5,7 @@
 - Make sure that user, organization and group images are not distorted in various places (lists, activity streams, detail pages), using the CSS `object-fit` attribute on new classes `cover` and `contain`.
 - Replace placeholder images for groups and organizations with SVGs (from fontawesome).
 - Re-introduce follow-button for groups and categories.
-- Fix activity display (use the right block, use designsystem elements).
+- Fix activity display (use the correct block, use designsystem elements, implement `IAction` interface to overwrite `activity_diff` action).
 - Simplify resource item template by removing code that doesn't make sense in the context of Datenregister.
 - Fix accessibility barriers raised in report:
   - 9.1.1.1a "Alternativtexte für Bedienelemente" (proper `aria-labels` for resource items)
