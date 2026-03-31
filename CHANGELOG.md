@@ -9,6 +9,7 @@
 - Simplify resource item template by removing code that doesn't make sense in the context of Datenregister.
 - Fix accessibility barriers raised in report:
   - 9.1.1.1a "Alternativtexte für Bedienelemente" (proper `aria-labels` for resource items)
+  - 9.1.1.1c "Leeres Alt-Attribut für Layoutgrafiken" (empty `alt` attribute for purely decorative images)
   - 9.1.3.1a "HTML-Strukturelemente für Überschriften" (improper use of `<h3>` on organization and category index pages)
   - 9.1.3.1a "HTML-Strukturelemente für Überschriften" (wrong position of `<h1>` on organization and category index pages)
 
