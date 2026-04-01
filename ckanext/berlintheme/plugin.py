@@ -1,16 +1,18 @@
 # coding: utf-8
 
 import os
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+
+import ckanext.berlintheme.action.get as action_get
 import ckanext.berlintheme.helpers as theme_helpers
-
-
 from ckanext.berlintheme import page_blueprint
 
 
 class BerlinTheme(plugins.SingletonPlugin):
 
+    plugins.implements(plugins.IActions)
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IBlueprint)
@@ -38,6 +40,7 @@ class BerlinTheme(plugins.SingletonPlugin):
         # try loading the new Page changes for pagination style
         try:
             import ckan.lib.helpers as core_helpers
+
             from ckanext.berlintheme.helpers import BerlinPage
             core_helpers.Page = BerlinPage
         except Exception:
@@ -90,6 +93,8 @@ class BerlinTheme(plugins.SingletonPlugin):
             'Page': theme_helpers.BerlinPage,
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
+            'user_image': theme_helpers.user_image ,
+            'linked_user': theme_helpers.linked_user ,
         }
 
     # -------------------------------------------------------------------
@@ -103,3 +108,16 @@ class BerlinTheme(plugins.SingletonPlugin):
         """
 
         return page_blueprint.page_blueprint
+
+    # -------------------------------------------------------------------
+    # Implementation IActions
+    # -------------------------------------------------------------------
+
+    def get_actions(self):
+        """Implementation of IActions.get_actions()
+
+        Actions functions that are provided by this plugin.
+        """
+        return {
+            'activity_diff': action_get.activity_diff ,
+        }

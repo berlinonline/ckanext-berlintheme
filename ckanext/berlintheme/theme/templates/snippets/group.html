@@ -14,57 +14,54 @@ Example:
 {% set url = h.url_for(controller='group', action='read', id=group.name) %}
 
 {% block info %}
-<div class="modul-text_bild imagealignleft">
+<div class="modul-text_bild imagealignleft dr-no-bottom-spacer">
     <div class="image">
         <div class="image__image">
-            <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" width="200" alt="Logo von {{ group.title }}" alt="Alternative Bildbeschreibung" >
+            <img src="{{ group.image_display_url or h.url_for_static('/images/folder-open-regular.svg') }}" width="200" alt=""/>
         </div>
-        <!-- <p class="image__copyright">
-            @copyright
-        </p> -->
     </div>
-    <!-- <h2 class="title">Image left</h2> -->
     <div class="text textile">
-      {% if group.description %}
-        <p class="description">
-          {{ h.markdown_extract(group.description, 180) }}
-        </p>
-      {% else %}
-        <p class="empty">{{ _('There is no description for this group') }}</p>
-      {% endif %}
-    {% link_for _('read more'), controller='group', action='about', id=group.name %}
+        {% if group.description %}
+            <p class="description">
+                {{ h.markdown_extract(group.description, 180) }}
+            </p>
+        {% else %}
+            <p class="empty">Diese Gruppe hat keine Beschreibung.</p>
+        {% endif %}
+        {% link_for _('read more'), controller='group', action='about', id=group.name %}
 
-<div class="modul-infofigures">
-    <div class="infofigures__inner">
-        <ul class="flexgrid grid--3">
-            <li>
-                <div class="infofigure">
-                    <h3 class="title">
-                        <span class="textfigure">{{ group.num_followers }}</span>
-                    </h3>
-                    <div class="text">
-                        <p>
-                            {{ _('Followers') }}
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="infofigure">
-                    <h3 class="title">
-                        <span class="textfigure">{{ group.package_count }}</span>
-                    </h3>
-                    <div class="text">
-                        <p>
-                            {{ _('Datasets') }}
-                        </p>
-                    </div>
-                </div>
-            </li>
-        </ul>
     </div>
-</div>      
-      
+
+    <div class="modul-infofigures">
+        <div class="infofigures__inner">
+            <ul>
+                <li>
+                    <div class="infofigure">
+                        <div class="title">
+                            <span class="textfigure">{{ group.num_followers }}</span>
+                            {{ _('Followers') }} hat diese Kategorie.
+                        </div>
+                        <div class="text">
+                            {% block follow %}
+                                <div class="dr-center">
+                                    <div class="follow_button">
+                                        {{ h.follow_button('group', group.id) }}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="infofigure">
+                        <div class="title">
+                            <span class="textfigure">{{ group.package_count }}</span>
+                            {{ _('Datasets') }} gibt es in dieser Kategorie.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 
 </div>

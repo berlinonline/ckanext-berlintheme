@@ -16,7 +16,7 @@
   <section class="dr-user-info">
     {% block user_image %}
       <div class="image">
-        {{ h.user_image(user.id, size=270) }}
+        {{ h.user_image(user.id, classes="contain", size=270) }}
       </div>
     {% endblock user_image %}
     <div class="text">

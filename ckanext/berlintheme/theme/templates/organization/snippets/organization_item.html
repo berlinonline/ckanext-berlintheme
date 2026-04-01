@@ -15,26 +15,24 @@ Example:
 {% set link_title = _('View {organization_name}').format(organization_name=organization.display_name) %}
 <li>
     <article class="modul-teaser" data-add-clickable-area="smart">
-        <div>
-              <div class="image">
-                <div class="image__image">
-                  <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.title }}">
-                </div>
-              </div>
-            <h3 class="title">{{ organization.display_name }}</h3>
-          <div class="teaser__meta">
-            <p class="text--meta">
-              {% if organization.package_count %}
-                {{ ungettext('{num} Dataset', '{num} Datasets',
-                organization.package_count).format(num=organization.package_count) }} 
-              {% else %}
-              {{ _('0 Datasets') }}
-              {% endif %}
-            </p>
-          </div>
-          <div class="inner">
-          <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
+      <div class="image">
+        <div class="image__image">
+          <img src="{{ organization.image_display_url or h.url_for_static('/images/building-regular.svg') }}" alt="" class="contain">
         </div>
+      </div>
+      <div class="title dr-multiteaser-title">{{ organization.display_name }}</div>
+      <div class="teaser__meta">
+        <p class="text--meta">
+          {% if organization.package_count %}
+            {{ ungettext('{num} Dataset', '{num} Datasets',
+              organization.package_count).format(num=organization.package_count) }} 
+          {% else %}
+            {{ _('0 Datasets') }}
+          {% endif %}
+        </p>
+      </div>
+      <div class="inner">
+        <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
     </article>
 </li>

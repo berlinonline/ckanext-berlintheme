@@ -1,9 +1,9 @@
 {% if following %}
-  <a href="{{ h.url_for(obj_type + '.unfollow', id=obj_id) }}" class="button button--light button--colored" data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="unfollow">
+  <a href="{{ h.url_for(obj_type + '.unfollow', id=obj_id) }}" class="button button--light button--fulltone" data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="unfollow" title="Dieser {{ _(obj_type)}} entfolgen">
     {{ _('Unfollow') }}
   </a>
 {% else %}
-  <a href="{{ h.url_for(obj_type + '.follow', id=obj_id) }}" class="button button--light button--colored" data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="follow">
+  <a href="{{ h.url_for(obj_type + '.follow', id=obj_id) }}" class="button button--light button--fulltone" data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="follow" title="Dieser {{ _(obj_type)}} folgen">
     {{ _('Follow') }}
   </a>
 {% endif %}

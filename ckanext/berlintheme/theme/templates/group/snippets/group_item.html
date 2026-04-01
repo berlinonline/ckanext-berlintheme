@@ -17,26 +17,25 @@ Example:
 
 <li>
     <article class="modul-teaser" data-add-clickable-area="smart">
-        <div>
-              <div class="image">
-                <div class="image__image">
-                  <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.title }}">
-                </div>
-              </div>
-            <h3 class="title">{{ group.display_name }}</h3>
-          <div class="teaser__meta">
-            <p class="text--meta">
-              {% if group.package_count %}
-                {{ ungettext('{num} Dataset', '{num} Datasets',
-                group.package_count).format(num=group.package_count) }} 
-              {% else %}
-              {{ _('0 Datasets') }}
-              {% endif %}
-            </p>
-          </div>
-          <div class="inner">
-          <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
+      <div class="image">
+        <div class="image__image">
+          <img src="{{ group.image_display_url or h.url_for_static('/images/folder-open-regular.svg') }}" alt="" class="contain">
         </div>
+      </div>
+      <div class="title dr-multiteaser-title">{{ group.display_name }}</div>
+
+      <div class="teaser__meta">
+        <p class="text--meta">
+          {% if group.package_count %}
+            {{ ungettext('{num} Dataset', '{num} Datasets',
+            group.package_count).format(num=group.package_count) }} 
+          {% else %}
+            {{ _('0 Datasets') }}
+          {% endif %}
+        </p>
+      </div>
+      <div class="inner">
+        <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
     </article>
 </li>

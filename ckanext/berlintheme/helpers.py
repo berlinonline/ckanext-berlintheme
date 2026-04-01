@@ -1844,6 +1844,45 @@ def bool_to_string(value: bool) -> str:
     else:
         return _("Nein")
 
+def user_image(user_id: str, classes: str="", alttext: str = None, size=100, include_alttext=False) -> str:
+    '''Wrap CKAN Core's user_image() to add extra CSS classes, set alttext or remove it.'''
+    import re
+    markup = str(helpers.user_image(user_id, size))
+    markup = re.sub(r'class="(.+?)"', fr'class="\1 {classes}"', markup)
+    if include_alttext:
+      if alttext:
+        markup = re.sub(r'alt="(.+?)"', fr'alt="{alttext}"', markup)
+    else:
+      markup = re.sub(r'alt="(.+?)"', 'alt=""', markup)
+    return helpers.literal(markup)
+
+def linked_user(user, maxlength=0, avatar=20):
+    '''Replace CKAN Core's linked_user() to make sure the alttext is removed.'''
+    LOG.info("linked_user replacement")
+    if not isinstance(user, model.User):
+        user_name = text_type(user)
+        user = model.User.get(user_name)
+        if not user:
+            return user_name
+    if user:
+        name = user.name if model.User.VALID_NAME.match(user.name) else user.id
+        displayname = user.display_name
+
+        if maxlength and len(user.display_name) > maxlength:
+            displayname = displayname[:maxlength] + '...'
+
+        return helpers.literal(u'{icon} {link}'.format(
+            icon=user_image(
+                user_id=user.id,
+
+                size=avatar
+            ),
+            link=helpers.link_to(
+                displayname,
+                helpers.url_for('user.read', id=name)
+            )
+        ))
+
 def bo_package_list_for_source(source_id):
     '''
     Override the package_list_for_source harvester helper, so that we can set

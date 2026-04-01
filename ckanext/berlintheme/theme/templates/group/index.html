@@ -17,13 +17,14 @@
 {% endblock grid_pre_herounit %}
 
 {% block grid_herounit %}
-  {% block page_primary_action %}
-    {% if h.check_access('group_create') %}
-      <div class="page_primary_action">
-        {% link_for _('Add Group'), named_route=group_type+'.new', class_='button dp-button-plus' %}
-      </div>
-    {% endif %}
-  {% endblock %}
+  <div class="berlin-header-action-group">
+    <h1>{{ _('Kategorien')}}</h1>
+    {% block page_primary_action %}
+      {% if h.check_access('group_create') %}
+        {% link_for _('Kategorie hinzufügen'), named_route=group_type+'.new', class_='button dp-button-plus' %}
+      {% endif %}
+    {% endblock %}
+  </div>
   <div class="searchform-slot ">
     <div class="form-group">
       <label class="aural" for="group_search">{{ _('Search groups...') }}</label>
@@ -79,11 +80,6 @@
     </div>
   </div>
 {% endblock grid_maincontent %}
-
-{% block page_heading %}
-  <h1 class="dr-visually-hidden">{{ _('Groups')}}</h1>
-{% endblock %}
-
 
 {% block primary_content_inner %}
   {% block groups_list %}

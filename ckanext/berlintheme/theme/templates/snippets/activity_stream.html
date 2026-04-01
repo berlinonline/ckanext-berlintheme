@@ -41,7 +41,7 @@ object_type - 'package', 'organization', 'group', 'user'
 
 #}
 {% block activity_stream %}
-  <ul class="activity list--clean">
+  <ul class="activity list--clean contain">
   {% set can_show_activity_detail = h.check_access('activity_list', {'id': id, 'include_data': True, 'object_type': object_type}) %}
   {% for activity in activity_stream %}
     {%- snippet "snippets/activities/{}.html".format(

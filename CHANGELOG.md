@@ -1,16 +1,32 @@
 # Changelog
 
 ## Development
+
+## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
+
+_(2026-04-01)_
+
+- Make sure that user, organization and group images are not distorted in various places (lists, activity streams, detail pages), using the CSS `object-fit` attribute on new classes `cover` and `contain`.
+- Replace placeholder images for groups and organizations with SVGs (from fontawesome).
+- Re-introduce follow-button for groups and categories.
+- Fix activity display (use the correct block, use designsystem elements, implement `IAction` interface to overwrite `activity_diff` action).
+- Simplify resource item template by removing code that doesn't make sense in the context of Datenregister.
+- Fix accessibility barriers raised in report:
+  - 9.1.1.1a "Alternativtexte für Bedienelemente" (proper `aria-labels` for resource items)
+  - 9.1.1.1c "Leeres Alt-Attribut für Layoutgrafiken" (empty `alt` attribute for purely decorative images)
+  - 9.1.3.1a "HTML-Strukturelemente für Überschriften" (improper use of `<h3>` on organization and category index pages)
+  - 9.1.3.1a "HTML-Strukturelemente für Überschriften" (wrong position of `<h1>` on organization and category index pages)
+
 ## [0.4.1](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.1)
 
-_(2025-02-19)_
+_(2026-02-19)_
 
 - Add the results of the accessibility audit to the accessibility info page.
 - Turn some e-mail addresses on static pages into links.
 
 ## [0.4.0](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.0)
 
-_(2025-02-12)_
+_(2026-02-12)_
 
 - Implement [Designsystem Berlin.de](https://designsystem.berlin.de).
 - Changes in CSS styles and templates for Designsystem Berlin.de.
