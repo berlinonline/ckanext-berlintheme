@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
+
+_(2026-04-01)_
+
 - Make sure that user, organization and group images are not distorted in various places (lists, activity streams, detail pages), using the CSS `object-fit` attribute on new classes `cover` and `contain`.
 - Replace placeholder images for groups and organizations with SVGs (from fontawesome).
 - Re-introduce follow-button for groups and categories.
