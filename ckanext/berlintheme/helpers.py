@@ -1807,27 +1807,6 @@ def pagination_url_for_page(page: int, base_path: str='dataset') -> str:
     base_path = base_path.strip('/')
     return url_with_params(url=base_path, params=MultiDict(params_nopage))
 
-# def build_tab_dict(menu_item: str, title: str, icon: str, link: str, **kwargs) -> dict:
-#     menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
-#     _menu_items = config['routes.named_routes']
-#     if menu_item not in _menu_items:
-#         raise Exception('menu item `%s` cannot be found' % menu_item)
-#     item = copy.copy(_menu_items[menu_item])
-#     item.update(kwargs)
-#     active = helpers._link_active(item)
-#     needed = item.pop('needed')
-#     for need in needed:
-#         if need not in kwargs:
-#             raise Exception('menu item `%s` need parameter `%s`'
-#                             % (menu_item, need))
-#     tab = {
-#         "active": active,
-#         "label": title,
-#         "icon": icon,
-#         "link": link,
-#     }
-#     return tab
-
 def link_active(menu_item) -> bool:
     menu_item = helpers.map_pylons_to_flask_route_name(menu_item)
     _menu_items = config['routes.named_routes']
