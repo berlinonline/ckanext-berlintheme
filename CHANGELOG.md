@@ -2,6 +2,8 @@
 
 ## Development
 
+- Add new template helper `berlin_build_extra_admin_tabs()` to add admin tabs defined using `add_ckan_admin_tab()` to the admin page.
+
 ## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
 
 _(2026-04-01)_

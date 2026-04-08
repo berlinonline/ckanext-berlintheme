@@ -1858,7 +1858,6 @@ def user_image(user_id: str, classes: str="", alttext: str = None, size=100, inc
 
 def linked_user(user, maxlength=0, avatar=20):
     '''Replace CKAN Core's linked_user() to make sure the alttext is removed.'''
-    LOG.info("linked_user replacement")
     if not isinstance(user, model.User):
         user_name = text_type(user)
         user = model.User.get(user_name)
@@ -1882,6 +1881,30 @@ def linked_user(user, maxlength=0, avatar=20):
                 helpers.url_for('user.read', id=name)
             )
         ))
+
+def build_extra_admin_tabs() -> list:
+    '''Build extra tabs used in ``admin/base.html`` for values
+    defined in the config option ``ckan.admin_tabs``. Typically this is
+    populated by extensions.
+
+    Use instead of core's `build_extra_admin_nav()` when using the
+    `snippets/tabs.html` template.
+    '''
+    admin_tabs_dict = config.get('ckan.admin_tabs')
+    # admin_tabs_dict has: {'versions_blueprint.versions': {'label': 'Versions', 'icon': 'list'}}
+    # we want: { "active": h.berlintheme_link_active('versions_blueprint.versions'), "label": _('Versions'), "link": url_for('versions_blueprint.versions'), "icon": "list" }
+    tabs = []
+    if admin_tabs_dict:
+        for route, admin_tab in admin_tabs_dict.items():
+            extra_tab = {
+                'active': link_active(route),
+                'label': admin_tab['label'],
+                'link': helpers.url_for(route)
+            }
+            if admin_tab['icon']:
+                extra_tab['icon'] = admin_tab['icon']
+            tabs.append(extra_tab)
+    return tabs
 
 def bo_package_list_for_source(source_id):
     '''

@@ -90,9 +90,8 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
             'berlin_package_list_for_source': theme_helpers.bo_package_list_for_source,
+            'berlin_build_extra_admin_tabs': theme_helpers.build_extra_admin_tabs,
             'Page': theme_helpers.BerlinPage,
-            'berlin_convert_bool_to_string':
-                theme_helpers.bool_to_string ,
             'user_image': theme_helpers.user_image ,
             'linked_user': theme_helpers.linked_user ,
         }
