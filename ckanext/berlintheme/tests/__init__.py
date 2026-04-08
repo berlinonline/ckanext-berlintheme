@@ -43,15 +43,13 @@ def user(orgs):
 
 
 @pytest.fixture
-def datasets(orgs):
+def datasets(orgs, sysadmin):
     '''Fixture to create some datasets.'''
-
-    sysadminuser = factories.Sysadmin()
 
     group = factories.Group()
     data = {
         "id": group['id'],
-        "username": sysadminuser['name'],
+        "username": sysadmin['name'],
         "role": "editor"
     }
     core_test_helpers.call_action("group_member_create", **data)
@@ -59,7 +57,7 @@ def datasets(orgs):
     org = orgs[REGULORG]
     data = {
         "id": org['id'],
-        "username": sysadminuser['name'],
+        "username": sysadmin['name'],
         "role": "editor",
     }
     core_test_helpers.call_action("organization_member_create", **data)
@@ -118,9 +116,22 @@ def datasets(orgs):
     for dataset_dict in dataset_dicts:
         core_test_helpers.call_action(
             "package_create",
-            context={"user": sysadminuser['id']},
+            context={"user": sysadmin['id']},
             **dataset_dict
         )
 
     return dataset_dicts
 
+@pytest.fixture
+def patched_dataset(datasets, sysadmin):
+    dataset = datasets[0]
+    patch_dict = {
+        'id': dataset['name'],
+        'title': "Ein toller neuer Titel"
+    }
+    response = core_test_helpers.call_action(
+        "package_patch",
+        context={"user": sysadmin['id']},
+        **patch_dict
+    )
+    return response

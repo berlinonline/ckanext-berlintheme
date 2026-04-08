@@ -1,13 +1,12 @@
 # coding: utf-8
 """Sanity tests for the various view and edit templates."""
 
-import pytest
-
-from ckanext.berlintheme.tests import orgs, user, datasets, REGULORG, TECHNORG
-
 import ckan.plugins.toolkit as toolkit
 import ckan.tests.factories as factories
 import ckan.tests.helpers as core_test_helpers
+import pytest
+
+from ckanext.berlintheme.tests import REGULORG, TECHNORG, datasets, orgs, sysadmin, user
 
 THEME_PLUGIN = 'berlintheme'
 SCHEMA_PLUGIN = 'berlin_dataset_schema'
