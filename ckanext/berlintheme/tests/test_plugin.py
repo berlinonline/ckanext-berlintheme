@@ -7,19 +7,13 @@ import pytest
 import ckan.logic as logic
 import ckan.model as model
 
+from ckanext.berlintheme.tests import orgs, user
+
 PLUGIN_NAME = 'berlintheme'
 
 LOG = logging.getLogger(__name__)
 get_action = logic.get_action
 
-
-@pytest.fixture
-def user():
-    '''Fixture to create a logged-in user.'''
-    user = model.User(name="vera_musterer", password=u"testtest")
-    model.Session.add(user)
-    model.Session.commit()
-    return user
 
 @pytest.mark.ckan_config('ckan.plugins', f"{PLUGIN_NAME}")
 @pytest.mark.usefixtures('clean_db', 'clean_index', 'with_plugins')
