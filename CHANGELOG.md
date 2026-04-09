@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
+
+_(2026-04-09)_
+
 - Add new template helper `berlin_build_extra_admin_tabs()` to add admin tabs defined using `add_ckan_admin_tab()` to the admin page.
 - Move custom `get.status_show()` API method and versions admin tab template from [ckanext-berlinauth](https://github.com/berlinonline/ckanext-berlinauth) to here.
 - Restructure unit tests so that fixtures are in [ckanext/berlintheme/tests/__init__.py](ckanext/berlintheme/tests/__init__.py).
