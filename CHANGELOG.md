@@ -6,6 +6,7 @@
 - Move custom `get.status_show()` API method and versions admin tab template from [ckanext-berlinauth](https://github.com/berlinonline/ckanext-berlinauth) to here.
 - Restructure unit tests so that fixtures are in [ckanext/berlintheme/tests/__init__.py](ckanext/berlintheme/tests/__init__.py).
 - Add unit test for custom `activity_diff()`.
+- Fix layout of select form in group-list template.
 
 ## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
 

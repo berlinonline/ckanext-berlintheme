@@ -170,6 +170,15 @@ img.contain, .activity.contain img {
   margin-top: 5px;
 }
 
+form.dr-add-group>.form-group {
+  justify-content: space-between;
+}
+
+form.dr-add-group .dr-select {
+  flex-grow: 3;
+}
+
+
 /* New dataset */
 
 .dr-stages-wrapper {
