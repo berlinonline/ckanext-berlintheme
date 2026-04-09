@@ -17,6 +17,39 @@ The plugin implements the following CKAN interfaces:
 
 This plugin has been tested with CKAN 2.9.11 (which requires Python 3).
 
+## Version Numbers for Plugins
+
+The CKAN API's [status_show](https://docs.ckan.org/en/2.9/api/#ckan.logic.action.get.status_show) method includes a list of plugins as configured in the `ckan.plugins` setting.
+`ckanext-berlintheme` includes an extended version of `status_show`  that also shows the version number of each plugin.
+This assumes that the plugin module defines a `__version__` attribute that contains the version number.
+If there is no `__version__` attribute, the version number will be `unknown`:
+
+```json
+{
+  "help": "http://ckandev.bln/api/3/action/help_show?name=status_show",
+  "success": true,
+  "result": {
+    "site_title": "Datenregister Dev",
+    "site_description": "",
+    "site_url": "http://ckandev.bln",
+    "ckan_version": "2.9.11",
+    "error_emails_to": null,
+    "locale_default": "en",
+    "extensions": {
+      "stats": {
+        "version": "unknown"
+      },
+      "berlintheme": {
+        "version": "0.3.6"
+      },
+      "berlinauth": {
+        "version": "0.2.6"
+      }
+    }
+  }
+}
+```
+
 ## Custom Settings
 
 ### Global Warning Message

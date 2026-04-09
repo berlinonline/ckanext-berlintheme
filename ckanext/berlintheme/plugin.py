@@ -7,7 +7,7 @@ import ckan.plugins.toolkit as toolkit
 
 import ckanext.berlintheme.action.get as action_get
 import ckanext.berlintheme.helpers as theme_helpers
-from ckanext.berlintheme import page_blueprint
+from ckanext.berlintheme import page_blueprint, versions_blueprint
 
 
 class BerlinTheme(plugins.SingletonPlugin):
@@ -36,6 +36,8 @@ class BerlinTheme(plugins.SingletonPlugin):
         page_list.append('about')
         page_list.append('datenschutzerklaerung')
         config['berlin.public_pages'] = ' '.join(page_list)
+
+        toolkit.add_ckan_admin_tab(config, 'versions_blueprint.versions', "Versions", icon='file')
 
         # try loading the new Page changes for pagination style
         try:
@@ -85,14 +87,12 @@ class BerlinTheme(plugins.SingletonPlugin):
             'berlintheme_pagination_url_for_page': theme_helpers.pagination_url_for_page ,
             'berlintheme_pagination_cells': theme_helpers.pagination_cells ,
             'berlintheme_url_with_params': theme_helpers.url_with_params ,
-            # 'berlintheme_build_tab_dict': theme_helpers.build_tab_dict ,
             'berlintheme_link_active': theme_helpers.link_active ,
             'berlin_convert_bool_to_string':
                 theme_helpers.bool_to_string ,
             'berlin_package_list_for_source': theme_helpers.bo_package_list_for_source,
+            'berlin_build_extra_admin_tabs': theme_helpers.build_extra_admin_tabs,
             'Page': theme_helpers.BerlinPage,
-            'berlin_convert_bool_to_string':
-                theme_helpers.bool_to_string ,
             'user_image': theme_helpers.user_image ,
             'linked_user': theme_helpers.linked_user ,
         }
@@ -107,7 +107,10 @@ class BerlinTheme(plugins.SingletonPlugin):
         https://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.IBlueprint.get_blueprint
         """
 
-        return page_blueprint.page_blueprint
+        return [
+            page_blueprint.page_blueprint,
+            versions_blueprint.versions_blueprint
+        ]
 
     # -------------------------------------------------------------------
     # Implementation IActions
@@ -120,4 +123,5 @@ class BerlinTheme(plugins.SingletonPlugin):
         """
         return {
             'activity_diff': action_get.activity_diff ,
+            'status_show': action_get.status_show ,
         }

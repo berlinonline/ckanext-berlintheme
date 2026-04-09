@@ -19,7 +19,7 @@
           {{ h.markdown_extract(harvest_source.description, 180) }}
         </p>
       {% else %}
-        <p class="empty">{{ _('There is no description for this organization') }}</p>
+        <p class="empty">{{ _('There is no description for this harvester.') }}</p>
       {% endif %}
     {% link_for _('read more'), controller='harvester', action='about', id=harvest_source.name %}
     </div>
@@ -48,6 +48,8 @@
 {% endblock page_heading %}
 
 {% block breadcrumb_content %}
+  <li>{{ h.nav_link(_('Harvester'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
+  <li><a href="{{ url_for('harvest.read', id=harvest_source.name) }}">{{ harvest_source.title }}</a></li>
 {% endblock %}
 
 {% block content_action %}

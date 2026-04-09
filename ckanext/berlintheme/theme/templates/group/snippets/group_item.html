@@ -2,6 +2,7 @@
 Renders a media item for a group. This should be used in a list.
 
 group - A group dict.
+package_id - the current package id
 
 Example:
 
@@ -35,6 +36,11 @@ Example:
         </p>
       </div>
       <div class="inner">
+        {% if package_id and h.check_access('package_update', {'id': package_id }) %}
+          {% if group.user_member %}
+            <button name="group_remove.{{ group.id }}" value="{{ _('Remove') }}" class="link remove" title="{{ _('Remove dataset from this group') }}">{{ _('Remove') }}</button>
+          {% endif %}
+        {% endif %}
         <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
     </article>
