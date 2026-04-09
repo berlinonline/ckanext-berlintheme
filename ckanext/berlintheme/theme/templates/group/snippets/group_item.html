@@ -35,6 +35,9 @@ Example:
         </p>
       </div>
       <div class="inner">
+        {% if group.user_member %}
+          <button name="group_remove.{{ group.id }}" value="{{ _('Remove') }}" class="link remove" title="{{ _('Remove dataset from this group') }}">{{ _('Remove') }}</button>
+        {% endif %}
         <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
     </article>

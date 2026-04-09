@@ -94,6 +94,25 @@
   border: 0;
 }
 
+button.remove:after {
+  margin-left: 0.3em;
+  line-height: 1;
+  vertical-align: -1px;
+  content: "";
+  background-color: currentColor;
+  display: inline-block;
+  overflow: hidden;
+  width: 0.8em;
+  height: 0.8em;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position-x: center;
+  -webkit-mask-position-y: bottom;
+  mask-position: bottom center;
+  -webkit-mask-image: var(--dpicon-trash);
+  mask-image: var(--dpicon-trash);
+}
+
 /* object fit */
 
 .modul-teaser .image img {
