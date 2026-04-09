@@ -10,6 +10,8 @@
 - (Re-)Add remove button in group-list template.
 - Select and remove button on package's group list are only visible if user can edit the package.
 - Fix spacing on harvest index page.
+- Fix missing icons for harvest detail page.
+- Fix breadcrumbs for harvest pages.
 
 ## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
 
