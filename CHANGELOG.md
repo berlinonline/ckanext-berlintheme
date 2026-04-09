@@ -9,6 +9,7 @@
 - Fix layout of select form in group-list template.
 - (Re-)Add remove button in group-list template.
 - Select and remove button on package's group list are only visible if user can edit the package.
+- Fix spacing on harvest index page.
 
 ## [0.4.2](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.2)
 
