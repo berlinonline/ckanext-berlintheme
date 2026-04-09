@@ -55,7 +55,7 @@ jobs:
         git clone https://github.com/berlinonline/ckanext-berlin_dataset_schema
         pip install -e ckanext-berlin_dataset_schema
         pip install -r ckanext-berlin_dataset_schema/requirements.txt
-        git clone https://github.com/berlinonline/ckanext-berlinauth
+        git clone -b develop https://github.com/berlinonline/ckanext-berlinauth
         pip install -e ckanext-berlinauth
         pip install -r ckanext-berlinauth/requirements.txt
     - name: Setup extension (CKAN >= 2.9)
