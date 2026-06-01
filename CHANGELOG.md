@@ -2,6 +2,8 @@
 
 ## Development
 
+- Add missing button for adding new resources to datasets.
+
 ## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
 
 _(2026-04-09)_
