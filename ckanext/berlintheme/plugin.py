@@ -4,18 +4,20 @@ import os
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.lib.plugins import DefaultTranslation
 
 import ckanext.berlintheme.action.get as action_get
 import ckanext.berlintheme.helpers as theme_helpers
 from ckanext.berlintheme import page_blueprint, versions_blueprint
 
 
-class BerlinTheme(plugins.SingletonPlugin):
+class BerlinTheme(plugins.SingletonPlugin, DefaultTranslation):
 
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IConfigurer, inherit=False)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IBlueprint)
+    plugins.implements(plugins.ITranslation)
 
     def update_config(self, config):  
         our_public_dir = os.path.join('theme', 'public')
