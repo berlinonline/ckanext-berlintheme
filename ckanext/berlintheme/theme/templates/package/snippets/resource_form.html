@@ -27,7 +27,8 @@
         placeholder=_('https://example.com/data/statistik.csv'),
         value=data.url,
         error=errors.url,
-        doc_link='url'
+        doc_link='url',
+        is_required=h.berlin_required('resources/url')
       )}}
     {% endblock %}
 
@@ -39,7 +40,8 @@
         placeholder=_('eg. January 2011 Gold Prices'),
         value=data.name,
         error=errors.name,
-        doc_link='titel-1'
+        doc_link='titel-1',
+        is_required=h.berlin_required('resources/name')
       )}}
     {% endblock %}
 
@@ -51,7 +53,8 @@
         placeholder=_('Some useful notes about the data'),
         value=data.description,
         error=errors.description,
-        doc_link='beschreibung-1'
+        doc_link='beschreibung-1',
+        is_required=h.berlin_required('resources/description')
       )}}
     {% endblock %}
 
@@ -66,7 +69,8 @@
         error=errors.format,
         classes=['control-medium'],
         attrs=format_attrs,
-        doc_link='format'
+        doc_link='format',
+        is_required=h.berlin_required('resources/format')
       ) %}
       {% endcall %}
     {% endblock %}
@@ -86,6 +90,10 @@
       {{ form.input('mimetype_inner', id='field-mimetype-inner', label=_('MIME Type'), placeholder=_('eg. application/json'), value=data.mimetype_inner, error=errors.mimetype_inner, classes=[]) }}
     {% endif %}
   {% endblock %}
+
+  <p aria-hidden="true">
+    <span class="icon-required">*</span> {{ _('Required') }}
+  </p>
 
   <div class="form-actions">
     {% block delete_button %}
