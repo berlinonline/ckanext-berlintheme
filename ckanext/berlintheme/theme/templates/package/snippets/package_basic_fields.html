@@ -53,7 +53,7 @@
 
   <div class="form-group">
     {% if h.berlin_required('groups') %}
-      <label for="field-category" class="form-label">{{ _("Kategorie") }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span></label>
+      <label for="field-category" class="form-label">{{ _("Kategorie") }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">({{ _('Required') }})</span></label>
     {% else %}
       <label for="field-category" class="form-label">{{ _("Kategorie") }}</label>
     {% endif %}
