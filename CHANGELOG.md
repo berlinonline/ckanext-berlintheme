@@ -9,6 +9,7 @@
 - Mark required metadata in resource form.
 - Use a standard select instead of a JS-select2 element for the group/category selector to (hopefully) fix a longstanding bug.
 - Translate error message for missing/not-authorized group.
+- Fix "Finish" ("Beenden") button in resource form for new datasets (`go-metadata` value was missing).
 
 ## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
 
