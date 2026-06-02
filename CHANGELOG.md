@@ -8,6 +8,7 @@
 - Remove "Edit resource" header from resource edit form, to avoid multiple `<h1>` and to match structure of the dataset edit form.
 - Mark required metadata in resource form.
 - Use a standard select instead of a JS-select2 element for the group/category selector to (hopefully) fix a longstanding bug.
+- Translate error message for missing/not-authorized group.
 
 ## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
 

@@ -4,3 +4,5 @@ msgstr "Ressource hinzufügen"
 msgid "Required"
 msgstr "Pflichtfeld"
 
+msgid "Group '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
+msgstr "Gruppe '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."

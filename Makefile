@@ -22,3 +22,6 @@ clean_bde:
 	rm ckanext/berlintheme/theme/assets/js/berlin_assetservice.js
 	rm ckanext/berlintheme/theme/assets/css/fontawesome.all.min.css
 	rm ckanext/berlintheme/theme/assets/css/berlin_assetservice.css
+
+errors:
+	python setup.py compile_catalog -f
