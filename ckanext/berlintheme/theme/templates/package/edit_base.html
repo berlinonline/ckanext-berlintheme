@@ -22,9 +22,9 @@
       {% endif %}
     {% endif %}    
   </h1>
-    {% if pkg %}
-      <a class="link" href="{{ h.url_for('dataset.read', id=pkg.name, _external=True) }}">{{ _('View dataset') }}</a>
-    {% endif %}
+  {% if pkg %}
+    <a class="link" href="{{ h.url_for('dataset.read', id=pkg.name, _external=True) }}">{{ _('View dataset') }}</a>
+  {% endif %}
   </div>
 {% endblock %}
 
