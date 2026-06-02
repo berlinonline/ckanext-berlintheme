@@ -1,2 +1,6 @@
 msgid "Add resource"
 msgstr "Ressource hinzufügen"
+
+msgid "Required"
+msgstr "Pflichtfeld"
+
