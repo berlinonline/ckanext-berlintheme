@@ -51,28 +51,18 @@
     doc_link="art"
   ) }}
 
-  <div class="form-group">
-    {% if h.berlin_required('groups') %}
-      <label for="field-category" class="form-label">{{ _("Kategorie") }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">({{ _('Required') }})</span></label>
-    {% else %}
-      <label for="field-category" class="form-label">{{ _("Kategorie") }}</label>
-    {% endif %}
-    <div class="dr-form-element">
-      <select id="field-category" name="category" data-module="autocomplete">
-        {% for group in h.berlin_group_select_options()  %}
-          <option value="{{ group['value'] }}" {% if group['value'] == h.berlin_first_group_name(data) %}selected="selected"{% endif %}>{{ group['text'] }}</option>
-        {% endfor %}
-      </select>
-      {% set link_text = "Dokumentation zum Attribut 'Kategorie'" %}
-      <a href="https://berlinonline.github.io/open-data-handbuch/#kategorie" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-    </div>
-    {% if errors.groups and errors.groups is iterable %}
-      <div class="message message--error" id="field-categoryInvalid">
-        {{ errors.groups | join(', ') }}    
-      </div>
-    {% endif %}
-  </div>
-  
+  {{ form.select(
+    'category',
+    id='field-category',
+    label=_('Kategorie'),
+    options=h.berlin_group_select_options(),
+    selected=(h.berlin_first_group_name(data) or 'empty'),
+    error=errors.groups,
+    classes=[],
+    is_required=h.berlin_required('groups'),
+    doc_link="kategorie"
+  ) }}
+
   {{ form.input(
     'author',
     id='field-author',
