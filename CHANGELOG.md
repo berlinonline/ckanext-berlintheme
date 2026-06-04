@@ -10,6 +10,7 @@
 - Use a standard select instead of a JS-select2 element for the group/category selector to (hopefully) fix a longstanding bug.
 - Translate error message for missing/not-authorized group.
 - Fix "Finish" ("Beenden") button in resource form for new datasets (`go-metadata` value was missing).
+- Only output "undefined" for metadata fields when they are truly undefined, not when they are `0`, `""` or `None`.
 
 ## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
 
