@@ -2,6 +2,20 @@
 
 ## Development
 
+## [0.4.4](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.4)
+
+_(2026-06-08)_
+
+- Add missing button for adding new resources to datasets.
+- Implement the `ITranslation` interface. Initially this is only for fixing the German translation of "Add resource", but in the future it might be useful for other strings as well.
+- Translate "Required" -> "Pflichtfeld".
+- Remove "Edit resource" header from resource edit form, to avoid multiple `<h1>` and to match structure of the dataset edit form.
+- Mark required metadata in resource form.
+- Use a standard select instead of a JS-select2 element for the group/category selector to (hopefully) fix a longstanding bug.
+- Translate error message for missing/not-authorized group.
+- Fix "Finish" ("Beenden") button in resource form for new datasets (`go-metadata` value was missing).
+- Only output "undefined" for metadata fields when they are truly undefined, not when they are `0`, `""` or `None`.
+
 ## [0.4.3](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.3)
 
 _(2026-04-09)_

@@ -29,7 +29,7 @@ context
 {% if value or context == 'register' %}
   {% set rendered_value = 'undefiniert' %}
   {% set value_class = '' %}
-  {% if value %}
+  {% if value is defined %}
     {% set rendered_value = render_function(value) if render_function else value %}
   {% else %}
     {% set value_class = ' dp-undefined' %}

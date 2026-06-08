@@ -337,7 +337,7 @@ Complete example:
     {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
     <div class="form-group{{ " " ~ classes | join(' ') }}">
       {% if is_required %}
-        <label class="form-label" for="{{ for }}" title="{{ _("This field is required") }}">{{ label or _('Custom') }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span></label>
+        <label class="form-label" for="{{ for }}" title="{{ _("This field is required") }}">{{ label or _('Custom') }} <span class="icon-required" aria-hidden="true">*</span><span class="aural">({{ _('Required') }})</span></label>
       {% else %}
         <label class="form-label" for="{{ for }}">{{ label or _('Custom') }}</label>
       {% endif %}
@@ -488,7 +488,7 @@ Example:
   #}
   {% macro required_message() %}
   <p class="form-description">
-    Hinweis: Pflichfelder sind mit einem <span class="control-required icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span> markiert.
+    Hinweis: Pflichfelder sind mit einem <span class="control-required icon-required" aria-hidden="true">*</span><span class="aural">({{ _('Required') }})</span> markiert.
   </p>
   {% endmacro %}
 

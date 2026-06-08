@@ -12,6 +12,7 @@ The plugin implements the following CKAN interfaces:
 - [IBlueprint](http://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.IBlueprint)
 - [IConfigurer](http://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.IConfigurer)
 - [ITemplateHelpers](http://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.ITemplateHelpers)
+- [ITranslation](https://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.ITranslation)
 
 ## Requirements
 
@@ -40,7 +41,7 @@ If there is no `__version__` attribute, the version number will be `unknown`:
         "version": "unknown"
       },
       "berlintheme": {
-        "version": "0.3.6"
+        "version": "0.4.3"
       },
       "berlinauth": {
         "version": "0.2.6"
