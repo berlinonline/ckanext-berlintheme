@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.4.4](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.4)
+
+_(2026-06-08)_
+
 - Add missing button for adding new resources to datasets.
 - Implement the `ITranslation` interface. Initially this is only for fixing the German translation of "Add resource", but in the future it might be useful for other strings as well.
 - Translate "Required" -> "Pflichtfeld".
