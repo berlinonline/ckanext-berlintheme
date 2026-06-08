@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.4.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.6)
+
+_(2026-06-08)_
+
+- Add missing template `ckanext/berlintheme/theme/templates/package/new_resource_not_draft.html`.
+
 ## [0.4.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.5)
 
 _(2026-06-08)_
