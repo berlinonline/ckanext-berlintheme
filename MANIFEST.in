@@ -1,2 +1,3 @@
 recursive-include ckanext/berlintheme/theme *
+recursive-include ckanext/berlintheme/i18n *
 include ckanext/berlintheme/VERSION

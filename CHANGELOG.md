@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.4.5](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.5)
+
+_(2026-06-08)_
+
+- Fix `Manifest.in` to include the `i18n` folder.
+
 ## [0.4.4](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.4)
 
 _(2026-06-08)_
