@@ -2,6 +2,9 @@
 
 ## Development
 
+- Fix accessibility barriers raised in report:
+  - 9.1.1.1b "Alternativtexte für Grafiken und Objekte" (proper `alt`-text for website logo).
+
 ## [0.4.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.6)
 
 _(2026-06-08)_

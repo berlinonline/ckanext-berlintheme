@@ -6,3 +6,6 @@ msgstr "Pflichtfeld"
 
 msgid "Group '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
 msgstr "Gruppe '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."
+
+msgid "Datenregister Logo"
+msgstr "Logo des Datenregisters"
