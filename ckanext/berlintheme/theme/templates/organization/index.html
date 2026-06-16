@@ -47,7 +47,7 @@
   <div class="panel">
     <div class="fullwidth__inner">
         <div class="dp-search-result-top">
-          <div class="dp-search-result-summary">
+          <h2 class="dp-search-result-summary">
             {% block search_title %}
               {% if not error %}
                 {% snippet 'snippets/search_result_text.html', query=q, count=page.item_count, type='organization' %}
@@ -55,7 +55,7 @@
                 {{ _('Error') }}
               {% endif %}
             {% endblock search_title %}
-          </div>
+          </h2>
           <div class="dp-search-result-sort">
             {% block search_sortby %}
               {% if sorting %}

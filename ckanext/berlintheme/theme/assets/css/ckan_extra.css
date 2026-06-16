@@ -277,6 +277,12 @@ form.dr-add-group .dr-select {
     color: rgb(0, 0, 0);
     font-weight: 700;
     flex-grow: 1;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.dp-search-result-summary.dp-user {
+  margin-bottom: 12px;
 }
 
 .dr-facet-head-container {

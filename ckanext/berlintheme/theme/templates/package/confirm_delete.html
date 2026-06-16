@@ -23,6 +23,9 @@
 {% endblock %}
 
 {% block main_content %}
+  {% block page_heading %}
+    <h1>{{ _('Delete dataset') }}</h1>
+  {% endblock %}
   {% block form %}
     {% set dataset = h.dataset_display_name(pkg_dict) %}
     <p>{{ _('Are you sure you want to delete dataset - {name}?').format(name=dataset) }}</p>
