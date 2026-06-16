@@ -7,6 +7,7 @@
   - 9.1.3.1a "HTML-Strukturelemente für Überschriften"
     - missing `h1` headers on various pages (dataset index, dashboard, add/delete packages and resources)
     - missing `h2` headers for index pages (datasets, organizations, groups and users)
+  - 9.1.3.1b "HTML-Strukturelemente für Listen" (unnecessary `li`-elements in resource details)
 - Don't translate "dashboard", it's common enough in German, and more recognizable than "Übersicht".
 - Show new activities count in menu entry for dashboard only if there are any. Show as pill.
 

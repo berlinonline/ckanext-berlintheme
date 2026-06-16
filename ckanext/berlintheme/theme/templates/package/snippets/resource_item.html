@@ -27,9 +27,7 @@ Example:
         {{ h.markdown_extract(h.get_translated(resource, 'description'), extract_length=1000) }}
       </p>
     {% endif %}
-    <ul class="caption list--clean">
-      <li class="doc-type">Format: {{ h.get_translated(resource, 'format') }}</li>
-    </ul>
+    <p class="caption">Format: {{ h.get_translated(resource, 'format') }}</p>
   </div>
   <div class="right">
     <div class="card__functions functions">
