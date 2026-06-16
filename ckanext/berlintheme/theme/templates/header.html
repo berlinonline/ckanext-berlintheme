@@ -166,7 +166,10 @@
                             {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
                             %}
                             <a href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
-                              {{ _('Dashboard') }} ({{ new_activities }})
+                              Dashboard
+                            {% if new_activities > 0 %}
+                              <span class="pill pill--info pill--inverted">{{ new_activities }}</span>
+                            {% endif %}
                             </a>
                           </li>
                           <li>

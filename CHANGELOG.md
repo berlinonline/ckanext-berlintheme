@@ -6,6 +6,8 @@
   - 9.1.1.1b "Alternativtexte für Grafiken und Objekte" (proper `alt`-text for website logo).
   - 9.1.3.1a "HTML-Strukturelemente für Überschriften"
     - missing `h2` headers for index pages (datasets, organizations, groups and users)
+- Don't translate "dashboard", it's common enough in German, and more recognizable than "Übersicht".
+- Show new activities count in menu entry for dashboard only if there are any. Show as pill.
 
 ## [0.4.6](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.6)
 
