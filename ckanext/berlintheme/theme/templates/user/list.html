@@ -15,11 +15,10 @@
 {% endblock grid_herounit %}
 
 {% block grid_maincontent %}
-  <div class="fullwidth panel">
+  <div class="panel">
     <div class="fullwidth__inner">
         <div class="dp-search-result-top">
-          <div class="dp-search-result-summary">
-            <p>
+          <h2 class="dp-search-result-summary dp-user">
               {% block search_title %}
                 {% if not error %}
                   {% if q %}
@@ -31,8 +30,7 @@
                   {{ _('Error') }}
                 {% endif %}
               {% endblock search_title %}
-            </p>
-          </div>
+          </h2>
         </div>
       {{ super() }}
     </div>

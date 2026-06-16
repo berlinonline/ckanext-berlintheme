@@ -13,7 +13,7 @@
  #}
 
 <div class="dp-search-result-top">
-  <div class="dp-search-result-summary">
+  <h2 class="dp-search-result-summary">
     {% block search_title %}
       {% if not error %}
         {% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}
@@ -21,7 +21,7 @@
         {{ _('Error') }}
       {% endif %}
     {% endblock search_title %}
-  </div>
+  </h2>
   <div class="dp-search-result-sort">
     {% block search_sortby %}
       {% if sorting %}
