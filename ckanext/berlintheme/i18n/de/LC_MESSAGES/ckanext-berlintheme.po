@@ -1,6 +1,12 @@
 msgid "Add resource"
 msgstr "Ressource hinzufügen"
 
+msgid "Delete dataset"
+msgstr "Datensatz löschen"
+
+msgid "Delete resource"
+msgstr "Ressource löschen"
+
 msgid "Required"
 msgstr "Pflichtfeld"
 
@@ -9,3 +15,9 @@ msgstr "Gruppe '%(groupname)s' existiert nicht oder kann von '%(username)s' nich
 
 msgid "Datenregister Logo"
 msgstr "Logo des Datenregisters"
+
+msgid "Are you sure you want to delete dataset - {name}?"
+msgstr "Sind Sie sicher, dass Sie den Datensatz „{name}“ löschen wollen?"
+
+msgid "Are you sure you want to delete resource - {name}?"
+msgstr "Sind Sie sicher, dass Sie die Ressource „{name}“ löschen wollen?"
