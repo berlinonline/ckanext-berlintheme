@@ -8,6 +8,8 @@
           {{ _('View resource') }}
         </a>
     </div>
+  {% else %}
+    <h1>{{ _('Add resource') }}</h1>
   {% endif %}
 {% endblock page_heading %}
 
