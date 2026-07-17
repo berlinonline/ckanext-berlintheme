@@ -176,7 +176,7 @@
   ) }}
 {% endblock %}
 
-<hr/>
+{{ form.divider() }}
 
 {% block package_berlin_fields_date_released %}
   {{ form.input(
@@ -206,7 +206,7 @@
   ) }}
 {% endblock %}
 
-<hr/>
+{{ form.divider() }}
 
 {% block package_berlin_fields_temporal %}
 
@@ -246,7 +246,7 @@
     doc_link='zeitliche-abdeckung'
   ) }}
 
-  <hr/>
+  {{ form.divider() }}
 
 {% endblock %}
 
@@ -281,7 +281,7 @@
     </div>
   </div>
 
-  <hr/>
+  {{ form.divider() }}
 
 {% endblock %}
 
@@ -325,7 +325,7 @@
     </div>
   </div>
 
-  <hr/>
+  {{ form.divider() }}
 
 {% endblock %}
 
@@ -368,7 +368,7 @@
   ) }}
 {% endblock package_data_anonymized %}
 
-<hr/>
+{{ form.divider() }}
 
 {% block package_basic_fields_tags %}
   {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}

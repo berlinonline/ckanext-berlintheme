@@ -537,3 +537,11 @@ Example:
     {% if is_upload_enabled %}</div>{% endif %}
 
   {% endmacro %}
+
+{#
+  Element to create a visible divider between groups of form elements that belong together.
+  The element should be hidden from screen readers.
+#}
+{% macro divider() %}
+  <hr role="presentation"/>
+{% endmacro %}

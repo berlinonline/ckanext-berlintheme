@@ -2,6 +2,9 @@
 
 ## Development
 
+- Fix accessibility barriers raised in report:
+  - 9.1.3.1d "Inhalt gegliedert" (hide `<hr>` elements in forms from screen readers).
+
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
 _(2026-06-16)_
