@@ -18,20 +18,20 @@ Examples:
 {{ form.input('title', label=_('Title'), value=data.title, error=errors.title) }}
 
 #}
-{% macro input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
+{% macro input(name, id='', label='', value='', placeholder='', helptext='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
   {%- set extra_html = caller() if caller -%}
 
-  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
-    <input id="{{ id or name }}" {{ 'class=" is-invalid"' if error }} type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
+  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=placeholder) %}
+    <input id="{{ id or name }}" class="form-control {{ 'is-invalid' if error }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ attributes(attrs) }} />
   {% endcall %}
 {% endmacro %}
 
 {% macro wrapped_input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
   {%- set extra_html = caller() if caller -%}
 
-  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link) %}
+  {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=placeholder) %}
     <div class="dr-input-wrapper">
-      <input id="{{ id or name }}" {{ 'class=" is-invalid"' if error }} type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
+      <input id="{{ id or name }}" class="form-control {{ 'is-invalid' if error }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ attributes(attrs) }} />
     </div>
   {% endcall %}
 {% endmacro %}
@@ -149,14 +149,13 @@ Complete example:
   {% macro markdown(name, id='', label='', value='', placeholder='', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link='') %}
   {% set classes = (classes|list) %}
   {% do classes.append('control-full') %}
-  {% set markdown_tooltip = "<pre><p>__Bold text__ or _italic text_</p><p># title<br>## secondary title<br>### etc</p><p>* list<br>* of<br>* items</p><p>http://auto.link.ed/</p></pre><p><b><a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'>Full markdown syntax</a></b></p><p class='text-muted'><b>Please note:</b> HTML tags are stripped out for security reasons</p>" %}
 
   {%- set extra_html = caller() if caller -%}
   {%- set help -%}
-    <small id="{{ id or name }}Help" class="formgroup__help">Sie können hier Markdown-Formatierung verwenden.</small>
+    {{ placeholder }} Sie können hier Markdown-Formatierung verwenden.
   {%- endset -%}
   {% call input_block(id or name, label or name, error, classes, control_classes=["editor"], extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=help) %}
-  <textarea id="{{ id or name }}" name="{{ name }}" cols="20" rows="5" placeholder="{{ placeholder }}" {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
+  <textarea id="{{ id or name }}" name="{{ name }}" cols="20" rows="5" aria-describedby="{{ id or name }}Help" {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
   {% endcall %}
   {% endmacro %}
 
@@ -351,13 +350,13 @@ Complete example:
         {{ caller() }}
         {{ extra_html }}
       {% endif %}
+      {% if help %}
+        <small id="{{ for }}Help" class="formgroup__help">{{ help }}</small>
+      {% endif %}
       {% if error and error is iterable %}
         <div class="message message--error" id="{{ for }}Invalid">
           {{ error|join(', ') }}    
         </div>
-      {% endif %}
-      {% if help %}
-        {{ help | safe }}
       {% endif %}
     </div>
   {% endmacro %}
