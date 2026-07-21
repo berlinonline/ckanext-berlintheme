@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const exemptionCheckbox = document.getElementById("field-personal_data_exemption");
     const anonymizedCheckbox = document.getElementById("field-data_anonymized");
 
-    const exemptionGroup = exemptionCheckbox.closest(".form-group");
-    const anonGroup = anonymizedCheckbox.closest(".form-group");
+    const exemptionGroup = exemptionCheckbox.closest(".form-check");
+    const anonGroup = anonymizedCheckbox.closest(".form-check");
 
     function toggleGroups() {
         if (personalDataCheckbox.checked) {

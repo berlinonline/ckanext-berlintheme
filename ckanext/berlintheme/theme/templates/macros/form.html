@@ -82,26 +82,33 @@ Example:
 {% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false, doc_link="") %}
 {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
 {%- set extra_html = caller() if caller -%}
-<div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
-<div class="controls">
-  <div class="row">
-    <div class="col-xs-11">
-      <label class="checkbox" for="{{ id or name }}">
-        <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
-        {{ label or name }}
-        {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-        {% if error and error is iterable %}<strong class="error-inline">{{ error | unique | join(', ') }}</strong>{% endif %}
-      </label>
-      {{ extra_html }}
+<div class="form-check">
+  <input id="{{ id or name }}" class="form-check-input" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
+  <label class="form-check-label" for="{{ id or name }}">
+    {{ label or name }}
+    {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
+  </label>
+  {% if error and error is iterable %}
+    <div class="message message--error" id="{{ id or name }}Invalid">
+      {{ error|join(', ') }}    
     </div>
-    <div class="col-xs-1">
-      {% if name != 'remember' %}
-        <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-      {% endif %}
-    </div>
+  {% endif %}
+</div>
+
+{# <div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
+  <div class="dr-form-element">
+        <label class="checkbox" for="{{ id or name }}">
+          <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
+          {{ label or name }}
+          {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
+          {% if error and error is iterable %}<strong class="error-inline">{{ error | unique | join(', ') }}</strong>{% endif %}
+        </label>
+        {{ extra_html }}
+        {% if doc_link and name != 'remember' %}
+          <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
+        {% endif %}
   </div>
-</div>
-</div>
+</div> #}
 {% endmacro %}
 
 {#

@@ -8,6 +8,7 @@
   - 9.1.3.5 "Eingabefelder zu Nutzerdaten vermitteln den Zweck" (use `autocomplete` attribute to allow browser to prepopulate input fields on login form and user form).
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
+- Fix rendering of checkboxes (use Designsystem Berlin.de markup).
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
