@@ -197,6 +197,14 @@ form.dr-add-group .dr-select {
   flex-grow: 3;
 }
 
+.select2-container.form-control {
+  padding: 0;
+}
+
+.select2-container.form-control ul.select2-choices {
+  border: 0;
+}
+
 
 /* New dataset */
 
