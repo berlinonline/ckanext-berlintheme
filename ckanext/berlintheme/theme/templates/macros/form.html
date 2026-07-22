@@ -253,16 +253,28 @@ Complete example:
   {{ form.prepend('slug', id='field-slug', prepend='/dataset/', label=_('Slug'), value=data.slug, error=errors.slug) }}
 
   #}
-  {% macro prepend(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false) %}
+  {% macro prepend(name, id='', label='', prepend='', value='', placeholder='', helptext='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, doc_link="") %}
   {# We manually append the error here as it needs to be inside the .input-group block #}
   {% set classes = (classes|list) %}
   {% do classes.append('error') if error %}
   {%- set extra_html = caller() if caller -%}
-  {% call input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
+  {% call input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required, help=helptext) %}
   <div class="input-group">
     {% if prepend %}<span class="input-group-addon">{{ prepend }}</span>{%- endif -%}
-    <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }} />
-    {% if error and error is iterable %}<div class="message message--error">{{ error|join(', ') }}</div>{% endif %}
+    <input id="{{ id or name }}"
+      type="{{ type }}"
+      name="{{ name }}"
+      value="{{ value | empty_and_escape }}"
+      {% if placeholder %}
+        placeholder="{{ placeholder }}"
+      {% endif %}
+      {% if helptext %}
+        aria-describedby="{{ id or name }}Help"
+      {% endif %}
+      {{ attributes(attrs) }} />
+    {% if error and error is iterable %}
+      <div class="message message--error">{{ error|join(', ') }}</div>
+    {% endif %}
   </div>
   {% endcall %}
   {% endmacro %}

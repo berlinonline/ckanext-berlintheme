@@ -1,5 +1,6 @@
 {% import 'macros/form.html' as form %}
 
+{% asset 'berlintheme/slug_preview_patch_js' %}
 {% asset 'berlintheme/toggle_personal_data_js' %}
 
 
@@ -30,6 +31,7 @@
     label=_('URL'),
     prepend=prefix,
     placeholder=_('eg. my-dataset'),
+    helptext=_('Eindeutiger Maschinenname des Datensatzes. Wird Teil der URL.'),
     value=data.name,
     error=errors.name,
     attrs=attrs,

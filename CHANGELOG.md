@@ -8,6 +8,7 @@
   - 9.1.3.5 "Eingabefelder zu Nutzerdaten vermitteln den Zweck" (use `autocomplete` attribute to allow browser to prepopulate input fields on login form and user form).
   - 9.1.4.3 "Kontraste von Texten ausreichend" (replace `date` classes in all activity snippets with Designsystem's `text--meta` class).
   - 9.2.4.5 "Alternative Zugangswege" (add a sitemap at `/sitemap`).
+  - 9.2.4.6 "Aussagekräftige Überschriften und Beschriftungen" (improve accessibility of several buttons by adding `aria-label` and better aural text).
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).

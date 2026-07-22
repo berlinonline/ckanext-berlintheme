@@ -22,3 +22,12 @@ toggle_personal_data_js:
   contents:
     - js/toggle_personal_data.js
   output: berlintheme/%(version)s_toggle_personal_data.js
+
+slug_preview_patch_js:
+  contents:
+    - js/slug_preview_patch.js
+  output: berlintheme/%(version)s_slug_preview_patch.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
