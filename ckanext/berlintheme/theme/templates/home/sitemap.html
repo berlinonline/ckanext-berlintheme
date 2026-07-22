@@ -1,0 +1,74 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Sitemap') }}{% endblock %}
+
+{% block page_heading %}
+  <h1>
+    {{ _('Datenregister Sitemap') }}
+  </h1>
+{% endblock page_heading %}
+
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Sitemap'), named_route='page_blueprint.sitemap' %}</li>
+{% endblock %}
+
+{% block primary_content %}
+
+  <div class="modul-linklist">
+
+    <h2>{{ _('Datasets')}}</h2>
+    <ul>
+      <li><a href="{{ h.url_for('dataset.search') }}">{{ _('Liste aller Datensätze und Suche') }}</a></li>
+      <li><a href="{{ h.url_for('organization.index') }}">{{ _('Datensätze nach Organisationen listen') }}</a></li>
+      <li><a href="{{ h.url_for('group.index') }}">{{ _('Datensätze nach Kategorien listen') }}</a></li>
+      {% if h.check_access('package_create') %}
+        <li><a href="{{ h.url_for('dataset.new') }}">{{ _('Add Dataset') }}</a></li>
+      {% endif %}
+    </ul>
+
+    <h2>{{ _('Kategorien')}}</h2>
+    <ul>
+      <li><a href="{{ h.url_for('group.index') }}">{{ _('Liste aller Kategorien') }}</a></li>
+    </ul>
+
+    <h2>{{ _('Organizations')}}</h2>
+    <ul>
+      <li><a href="{{ h.url_for('organization.index') }}">{{ _('Liste aller Organisationen') }}</a></li>
+    </ul>
+
+    <h2>{{ _('User')}}</h2>
+    <ul>
+      <li>
+        <a href="{{ h.url_for('user.read', id=c.userobj.name) }}"
+          title="{{ _('View profile') }}">Profil ({{ c.userobj.display_name }})</a>
+      </li>
+        <ul>
+          <li><a href="{{ h.url_for('user.edit', id=c.userobj.name) }}"
+              title="{{ _('Profil bearbeiten') }}">{{ _('Profil bearbeiten') }}</a></li>
+          <li><a href="{{  url_for('user.read', id=c.userobj.name) + "#user_tabs" }}">{{ _('Datasets') }}</a></li>
+          <li><a href="{{  url_for('user.activity', id=c.userobj.name) + "#user_tabs" }}">{{ _('Activity Stream') }}</a></li>
+          {% if h.check_access('api_token_list', {'user': c.userobj['name']}) %}
+            <li><a href="{{  url_for('user.api_tokens', id=c.userobj.name) + "#user_tabs" }}">{{ _('API Tokens') }}</a></li>
+          {% endif %}
+        </ul>
+      <li><a href="{{ h.url_for('dashboard.index') }}" title="User Dashboard">Dashboard</a></li>
+        <ul>
+          <li><a href="{{ h.url_for('dashboard.datasets') }}" title="{{ _('My Datasets')}}">{{ _('My Datasets')}}</a></li>
+          <li><a href="{{ h.url_for('dashboard.organizations') }}" title="{{ _('My Organizations')}}">{{ _('My Organizations')}}</a></li>
+          <li><a href="{{ h.url_for('dashboard.groups') }}" title="{{ _('Meine Kategorien')}}">{{ _('Meine Kategorien')}}</a></li>
+        </ul>
+    </ul>
+
+    <h2>{{ _('Über das Datenregister') }}</h2>
+    <ul>
+      <li><a href="{{ h.url_for('home.index') }}">{{ _('Startseite') }}</a></li>
+      <li><a href="{{ h.url_for('home.about') }}" title="Impressum des Datenregisters">{{ _('Impressum') }}</a></li>
+      <li><a href="{{ h.url_for('page_blueprint.privacy_policy') }}" title="Datenschutzerklärung des Datenregisters">{{ _('Datenschutzerklärung') }}</a>
+      <li><a href="{{ h.url_for('page_blueprint.accessibility_statement') }}" title="Barrierefreiheitserklärung des Datenregisters">{{ _('Barrierefreiheitserklärung') }}</a>
+      <li><a href="{{ h.url_for('page_blueprint.sitemap') }}" title="Sitemap des Datenregisters">{{ _('Sitemap') }}</a>
+    </ul>
+  
+  </div>
+
+{% endblock primary_content %}
