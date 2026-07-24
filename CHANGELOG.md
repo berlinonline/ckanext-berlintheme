@@ -13,6 +13,7 @@
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).
 - Add all activity snippet templates (`templates/snippets/activities`) from CKAN Core 2.9.11.
+- Add an `inner_classes` parameter to template macros to set classes for the form element itself (rather than the `form-group`).
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
