@@ -10,8 +10,11 @@ msgstr "Ressource löschen"
 msgid "Required"
 msgstr "Pflichtfeld"
 
-msgid "Group '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
-msgstr "Gruppe '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."
+msgid "Please choose a category."
+msgstr "Bitte wählen sie eine Kategorie."
+
+msgid "Category '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
+msgstr "Die Kategorie '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."
 
 msgid "Datenregister Logo"
 msgstr "Logo des Datenregisters"
@@ -21,3 +24,27 @@ msgstr "Sind Sie sicher, dass Sie den Datensatz „{name}“ löschen wollen?"
 
 msgid "Are you sure you want to delete resource - {name}?"
 msgstr "Sind Sie sicher, dass Sie die Ressource „{name}“ löschen wollen?"
+
+msgid "Please enter the publisher of this dataset."
+msgstr "Bitte geben sie die veröffentlichende Stelle des Datensatzes an."
+
+msgid "Please enter the date when this dataset was first published."
+msgstr "Bitte geben sie das Datum an, zu dem der Datensatz zuerst veröffentlicht wurde."
+
+msgid "Please enter an e-mail address where users can ask questions about this dataset."
+msgstr "Bitte geben sie eine Kontaktadresse an, unter der Nutzer:innen Fragen zum Datensatz stellen können."
+
+msgid "Please enter a unique id for this dataset."
+msgstr "Bitte wählen sie eine eindeutige Id für den Datensatz."
+
+msgid "Please enter a description for this dataset."
+msgstr "Bitte geben sie eine Beschreibung des Datensatzes ein."
+
+msgid "Please enter the title of this dataset."
+msgstr "Bitte geben sie dem Datensatz einen Titel."
+
+msgid "URL seems to be invalid: \"{value}\""
+msgstr "Die URL \"{value}\" ist nicht valide."
+
+msgid "Date format incorrect. Use ISO8601: YYYY-MM-DD."
+msgstr "Das Datumsformat ist nicht korrekt. Bitte benutzen sie ISO8601: JJJJ-MM-DD."

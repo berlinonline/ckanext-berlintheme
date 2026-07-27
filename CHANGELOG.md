@@ -2,7 +2,7 @@
 
 ## Development
 
-- Fix accessibility barriers raised in report:
+- Fix accessibility barriers raised in the 2026-01 report:
   - 9.1.3.1d "Inhalt gegliedert" (hide `<hr>` elements in forms from screen readers).
   - 9.1.3.1h "Beschriftung von Formularelementen programmatisch ermittelbar" (move helptext in form elements from `placeholder` attributes to `formgroup__help` elements).
   - 9.1.3.5 "Eingabefelder zu Nutzerdaten vermitteln den Zweck" (use `autocomplete` attribute to allow browser to prepopulate input fields on login form and user form).
@@ -14,12 +14,13 @@
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).
 - Add all activity snippet templates (`templates/snippets/activities`) from CKAN Core 2.9.11.
 - Add an `inner_classes` parameter to template macros to set classes for the form element itself (rather than the `form-group`).
+- Add missing translations for some error messages, fix other ones.
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
 _(2026-06-16)_
 
-- Fix accessibility barriers raised in report:
+- Fix accessibility barriers raised in the 2026-01 report:
   - 9.1.1.1b "Alternativtexte für Grafiken und Objekte" (proper `alt`-text for website logo).
   - 9.1.3.1a "HTML-Strukturelemente für Überschriften"
     - missing `h1` headers on various pages (dataset index, dashboard, add/delete packages and resources)
