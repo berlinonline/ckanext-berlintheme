@@ -1,3 +1,5 @@
+# Note: some msgstrs include soft hyphens! (\u00AD)
+
 msgid "Add resource"
 msgstr "Ressource hinzufügen"
 
@@ -10,12 +12,6 @@ msgstr "Ressource löschen"
 msgid "Required"
 msgstr "Pflichtfeld"
 
-msgid "Please choose a category."
-msgstr "Bitte wählen sie eine Kategorie."
-
-msgid "Category '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
-msgstr "Die Kategorie '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."
-
 msgid "Datenregister Logo"
 msgstr "Logo des Datenregisters"
 
@@ -24,6 +20,16 @@ msgstr "Sind Sie sicher, dass Sie den Datensatz „{name}“ löschen wollen?"
 
 msgid "Are you sure you want to delete resource - {name}?"
 msgstr "Sind Sie sicher, dass Sie die Ressource „{name}“ löschen wollen?"
+
+# -------------------
+# Form Error Messages
+# -------------------
+
+msgid "Please choose a category."
+msgstr "Bitte wählen sie eine Kategorie."
+
+msgid "Category '%(groupname)s' does not exist or cannot be edited by '%(username)s'."
+msgstr "Die Kategorie '%(groupname)s' existiert nicht oder kann von '%(username)s' nicht bearbeitet werden."
 
 msgid "Please enter the publisher of this dataset."
 msgstr "Bitte geben sie die veröffentlichende Stelle des Datensatzes an."
@@ -48,3 +54,88 @@ msgstr "Die URL \"{value}\" ist nicht valide."
 
 msgid "Date format incorrect. Use ISO8601: YYYY-MM-DD."
 msgstr "Das Datumsformat ist nicht korrekt. Bitte benutzen sie ISO8601: JJJJ-MM-DD."
+
+# ----------------
+# Attribute Labels
+# ----------------
+
+msgid "Attribution Text"
+msgstr "Text für Namensnennung"
+
+msgid "Publisher"
+msgstr "Veröffentlich­ende Stelle"
+
+msgid "Publisher E-Mail"
+msgstr "E-Mail-Adresse Veröffentlich­ende Stelle"
+
+msgid "Source"
+msgstr "Quelle"
+
+msgid "Type"
+msgstr "Art"
+
+msgid "Data Anonymized"
+msgstr "Daten wurden anonymisiert"
+
+msgid "Date Released"
+msgstr "Veröffentlichungsdatum"
+
+msgid "Date Updated"
+msgstr "Aktualisierungsdatum"
+
+msgid "Geographical Coverage"
+msgstr "Geografische Abdeckung"
+
+msgid "Geographical Granularity"
+msgstr "Geografische Auflösung"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "HVD Category"
+msgstr "HVD-Kategorie"
+
+msgid "Contact Person"
+msgstr "Kontaktperson"
+
+msgid "Contact E-Mail"
+msgstr "Kontakt-E-Mail"
+
+msgid "Unique Identifier"
+msgstr "Eindeutiger Bezeichner"
+
+msgid "Description"
+msgstr "Kurz­be­schreib­ung"
+
+msgid "Contains Personal Data"
+msgstr "Enthält Personenbezogene Daten"
+
+msgid "Exempt from Personal Data Restrictions"
+msgstr "Ausgenommen von Beschränkungen wegen personenbezogenen Daten"
+
+msgid "Preview Image"
+msgstr "Vorschaubild"
+
+msgid "Resources"
+msgstr "Ressourcen"
+
+msgid "Reference to Musterdatenkatalog"
+msgstr "Musterdatensatz"
+
+msgid "Tags"
+msgstr "Tags"
+
+msgid "Temporal Coverage From"
+msgstr "Zeitraum von …"
+
+msgid "Temporal Coverage To"
+msgstr "... bis"
+
+msgid "Temporal Granularity"
+msgstr "Zeitliche Auflösung"
+
+msgid "Webpage"
+msgstr "Webadresse"
+
+msgid "Person Responsible for Publication"
+msgstr "Veröffentlich­­Dende Person"

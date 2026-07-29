@@ -94,6 +94,7 @@ class BerlinTheme(plugins.SingletonPlugin, DefaultTranslation):
                 theme_helpers.bool_to_string ,
             'berlin_package_list_for_source': theme_helpers.bo_package_list_for_source,
             'berlin_build_extra_admin_tabs': theme_helpers.build_extra_admin_tabs,
+            'berlin_label_for_attribute': theme_helpers.label_for_attribute,
             'Page': theme_helpers.BerlinPage,
             'user_image': theme_helpers.user_image ,
             'linked_user': theme_helpers.linked_user ,

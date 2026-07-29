@@ -15,6 +15,7 @@
 - Add all activity snippet templates (`templates/snippets/activities`) from CKAN Core 2.9.11.
 - Add an `inner_classes` parameter to template macros to set classes for the form element itself (rather than the `form-group`).
 - Add missing translations for some error messages, fix other ones.
+- Add custom labels for various dataset metadata attributes, as well as translations. E.g. `author` -> `Publisher` / `Veröffentlichende Stelle`.
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 

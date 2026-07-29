@@ -8,7 +8,7 @@
   {{ form.wrapped_input(
     'title',
     id='field-title',
-    label=_('Title'),
+    label=_(h.berlin_label_for_attribute('title')),
     helptext=_('Kurzer, bezeichnender Titel. Soll eindeutig auf den Inhalt schließen lassen.'),
     value=data.title,
     error=errors.title,
@@ -44,7 +44,7 @@
   {{ form.select(
     'berlin_type',
     id='field-berlin_type',
-    label=_('Art'),
+    label=_(h.berlin_label_for_attribute('berlin_type')),
     options=h.berlin_type_mapping_select_options(),
     selected=(data.berlin_type or 'datensatz'),
     error=errors.berlin_type,
@@ -55,8 +55,8 @@
 
   {{ form.select(
     'category',
-    id='field-category',
-    label=_('Kategorie'),
+    id='field-groups',
+    label=_(h.berlin_label_for_attribute('groups')),
     options=h.berlin_group_select_options(),
     selected=(h.berlin_first_group_name(data) or 'empty'),
     error=errors.groups,
@@ -68,7 +68,7 @@
   {{ form.input(
     'author',
     id='field-author',
-    label=_('Veröffentlich\u00ADende Stelle'),
+    label=_(h.berlin_label_for_attribute('author')),
     helptext=_('Möglichst genau die verantwortliche Organisationseinheit'),
     value=data.author,
     error=errors.author,
@@ -79,7 +79,7 @@
   {{ form.input(
     'maintainer',
     id='field-maintainer',
-    label=_('Kontaktperson'),
+    label=_(h.berlin_label_for_attribute('maintainer')),
     helptext=_('Persönlicher Ansprechpartner zum Datensatz (inhaltliche Verantwortung)'),
     value=data.maintainer,
     error=errors.maintainer,
@@ -91,7 +91,7 @@
   {{ form.input(
     'maintainer_email',
     id='field-maintainer_email',
-    label=_('Kontakt-E-Mail'),
+    label=_(h.berlin_label_for_attribute('maintainer_email')),
     helptext=_('Ansprechpartner zum Datensatz sind unter dieser Email zu erreichen.'),
     value=data.maintainer_email,
     error=errors.maintainer_email,
@@ -116,7 +116,7 @@
 
   {{ form.input(
     'url',
-    label=_('Webadresse'),
+    label=_(h.berlin_label_for_attribute('url')),
     id='field-url',
     helptext=_('Die URL, unter der der Datensatz näher beschrieben wird'),
     value=data.url,
@@ -128,7 +128,7 @@
 
   {{ form.input(
     'preview_image',
-    label=_('Vorschaubild'),
+    label=_(h.berlin_label_for_attribute('preview_image')),
     id='field-preview_image',
     helptext=_('Die URL eines Vorschaubildes'),
     value=data.preview_image,
@@ -144,7 +144,7 @@
   {{ form.markdown(
     'notes',
     id='field-notes',
-    label=_('Kurz\u00ADbe\u00ADschreib\u00ADung'),
+    label=_(h.berlin_label_for_attribute('notes')),
     helptext=_('Beschreibung des Datensatzes (max. 1000 Zeichen). Soll kurz gehalten sein; insbesondere sollte der erste Satz zusammenfassen, was genau enthalten ist.'),
     value=data.notes,
     error=errors.notes,
@@ -156,7 +156,7 @@
 {{ form.select(
   'license_id',
   id='field-license',
-  label=_('License'),
+  label=_(h.berlin_label_for_attribute('license_id')),
   options=h.berlin_license_options(),
   selected=(data.license_id or 'cc-by'),
   error=errors.license_id,
@@ -168,7 +168,7 @@
 {% block package_berlin_fields_attribution %}
   {{ form.input(
     'attribution_text',
-    label=_('Text für Namensnennung'),
+    label=_(h.berlin_label_for_attribute('attribution_text')),
     id='field-attribution_text',
     helptext=_('Der exakte Text, der im Rahmen der Namensnennung anzugeben ist.'),
     value=data.attribution_text,
@@ -183,7 +183,7 @@
 {% block package_berlin_fields_date_released %}
   {{ form.input(
     'date_released',
-    label=_('Veröffentlichingsdatum'),
+    label=_(h.berlin_label_for_attribute('date_released')),
     id='field-date_released',
     helptext=_('Wann wurden die Daten ursprünglich veröffentlicht? Das Datum kann vor der Eintragung ins Datenregister liegen.'),
     value=data.date_released,
@@ -197,7 +197,7 @@
 {% block package_berlin_fields_date_updated %}
   {{ form.input(
     'date_updated',
-    label=_('Aktualisierungsdatum'),
+    label=_(h.berlin_label_for_attribute('date_updated')),
     id='field-date_updated',
     helptext=_('Wann wurden die Daten zuletzt aktualisiert? Das Datum kann vor der Eintragung ins Datenregister liegen.'),
     value=data.date_updated,
@@ -215,7 +215,7 @@
   {{ form.select(
     'temporal_granularity',
     id='field-temporal_granularity',
-    label=_('Zeitliche Auflösung'),
+    label=_(h.berlin_label_for_attribute('temporal_granularity')),
     options=h.berlin_temporal_granularity_select_options(),
     selected=(data.temporal_granularity or 'Keine'),
     error=errors.temporal_granularity,
@@ -226,7 +226,7 @@
 
   {{ form.input(
     'temporal_coverage_from',
-    label=_('Zeitraum von ...'),
+    label=_(h.berlin_label_for_attribute('temporal_coverage_from')),
     id='field-temporal_coverage_from',
     helptext=_('Welchen Zeitraum decken die Daten ab?'),
     value=data.temporal_coverage_from,
@@ -238,7 +238,7 @@
 
   {{ form.input(
     'temporal_coverage_to',
-    label=_('... bis'),
+    label=_(h.berlin_label_for_attribute('temporal_coverage_to')),
     id='field-temporal_coverage_to',
     helptext=_('Welchen Zeitraum decken die Daten ab?'),
     value=data.temporal_coverage_to,
@@ -257,7 +257,7 @@
   {{ form.select(
     'geographical_granularity',
     id='field-geographical_granularity',
-    label=_('Geografische Auflösung'),
+    label=_(h.berlin_label_for_attribute('geographical_granularity')),
     options=h.berlin_geo_granularity_select_options(),
     selected=(data.temporal_granularity or 'Keine'),
     error=errors.temporal_granularity,
@@ -270,7 +270,7 @@
     {% if h.berlin_required('geographical_coverage') %}
       <label class="control-label" for="field-geographical_coverage datasetform-required" title="{{ _("This field is required") }}">{{ _("Geografische Abdeckung") }}</label>
     {% else %}
-      <label class="control-label" for="field-geographical_coverage">{{ _("Geografische Abdeckung") }}</label>
+      <label class="control-label" for="field-geographical_coverage">{{ _(h.berlin_label_for_attribute('geographical_coverage')) }}</label>
     {% endif %}
     <div class="dr-form-element">
       <select id="field-geographical_coverage" name="geographical_coverage" data-module="autocomplete">
@@ -293,7 +293,7 @@
     {% if h.berlin_required('sample_record') %}
       <label class="control-label" for="field-sample_record datasetform-required" title="{{ _("This field is required") }}">{{ _("Musterdatensatz") }}</label>
     {% else %}
-      <label class="control-label" for="field-sample_record">{{ _("Musterdatensatz") }}</label>
+      <label class="control-label" for="field-sample_record">{{ _(h.berlin_label_for_attribute('sample_record')) }}</label>
     {% endif %}
     <div class="dr-form-element">
       <select id="field-sample_record" name="sample_record" data-module="autocomplete">
@@ -314,7 +314,7 @@
     {% if h.berlin_required('hvd_category') %}
       <label class="control-label" for="field-hvd_category datasetform-required" title="{{ _("This field is required") }}">{{ _("HVD-Kategorie") }}</label>
     {% else %}
-      <label class="control-label" for="field-hvd_category">{{ _("HVD-Kategorie") }}</label>
+      <label class="control-label" for="field-hvd_category">{{ _(h.berlin_label_for_attribute('hvd_category')) }}</label>
     {% endif %}
     <div class="dr-form-element">
       <select id="field-hvd_category" name="hvd_category" data-module="autocomplete">
@@ -383,7 +383,7 @@
   {{ form.input(
     'tag_string',
     id='field-tags',
-    label=_('Tags'),
+    label=_(h.berlin_label_for_attribute('tags')),
     placeholder=_('eg. economy, mental health, government'),
     value=data.tag_string,
     error=errors.tags,

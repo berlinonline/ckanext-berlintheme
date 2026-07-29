@@ -26,6 +26,40 @@ from ckanext.harvest.utils import (
 LOG = logging.getLogger(__name__)
 get_action = logic.get_action
 
+ATTRIBUTE_LABEL_MATCHING = {
+  'attribution_text': "Attribution Text",
+  'author': "Publisher",
+  'author_email': "Publisher E-Mail",
+  'berlin_source': "Source",
+  'berlin_type': "Type",
+  'data_anonymized': "Data Anonymized",
+  'date_released': "Date Released",
+  'date_updated': "Date Updated",
+  'geographical_coverage': "Geographical Coverage",
+  'geographical_granularity': "Geographical Granularity",
+  'groups': "Category",
+  'hvd_category': "HVD Category",
+  'license_id': "License",
+  'maintainer': "Contact Person",
+  'maintainer_email': "Contact E-Mail",
+  'name': "Unique Identifier",
+  'notes': "Description",
+  'personal_data': "Contains Personal Data",
+  'personal_data_exemption': "Exempt from Personal Data Restrictions",
+  'preview_image': "Preview Image",
+  'resources': "Resources",
+  'sample_record': "Reference to Musterdatenkatalog",
+  'tags': "Tags",
+  'temporal_coverage_from': "Temporal Coverage From",
+  'temporal_coverage_to': "Temporal Coverage To",
+  'temporal_granularity': "Temporal Granularity",
+  'title': "Title",
+  'url': "Webpage",
+  'username': "Person Responsible for Publication",
+}
+
+UNKNOWN = "Unknown"
+
 def required(attribute):
     return Schema().required(attribute)
 
@@ -1885,6 +1919,7 @@ def build_extra_admin_tabs() -> list:
             tabs.append(extra_tab)
     return tabs
 
+
 def bo_package_list_for_source(source_id):
     '''
     Override the package_list_for_source harvester helper, so that we can set
@@ -1945,6 +1980,20 @@ def bo_package_list_for_source(source_id):
         out = helpers.snippet('snippets/package_list_empty.html')
 
     return out
+
+def label_for_attribute(attribute: str) -> str:
+  """
+  Helper function for getting a UI label for a metadata attribute name.
+  Return UNKNOWN if no mapping has been defined.
+
+  Args:
+      attribute (str): the metadata attribute
+
+  Returns:
+      str: the untranslated English UI label
+  """
+
+  return ATTRIBUTE_LABEL_MATCHING.get(attribute, UNKNOWN)
 
 from ckan.lib.pagination import Page as BasePage
 import dominate.tags as tags
