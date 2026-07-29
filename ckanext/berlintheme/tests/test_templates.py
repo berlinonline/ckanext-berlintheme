@@ -71,10 +71,10 @@ class TestTemplates(object):
             assert dataset['maintainer_email'] in response.body
 
             # check presence of metadata attributes
-            assert u"Geografische Abdeckung" in response.body
-            assert u"Geografische Auflösung" in response.body
-            assert u"Zeitliche Auflösung" in response.body
-            assert u"Zeitraum von" in response.body
+            assert u"Geographical Coverage" in response.body
+            assert u"Geographical Granularity" in response.body
+            assert u"Temporal Granularity" in response.body
+            assert u"Temporal Coverage From" in response.body
 
             # check presence of CSS classes
             assert u"icon-required" in response.body

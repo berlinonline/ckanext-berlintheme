@@ -268,7 +268,7 @@
 
   <div class="form-group">
     {% if h.berlin_required('geographical_coverage') %}
-      <label class="control-label" for="field-geographical_coverage datasetform-required" title="{{ _("This field is required") }}">{{ _("Geografische Abdeckung") }}</label>
+      <label class="control-label" for="field-geographical_coverage datasetform-required" title="{{ _("This field is required") }}">{{ _(h.berlin_label_for_attribute('geographical_coverage')) }}</label>
     {% else %}
       <label class="control-label" for="field-geographical_coverage">{{ _(h.berlin_label_for_attribute('geographical_coverage')) }}</label>
     {% endif %}
