@@ -459,8 +459,10 @@ Example:
     <div class="message--error">
       <h3 class="title">{{ _('The form contains invalid entries:') }}</h3>
       <ul>
-        {% for key, error in errors.items() %}
-          <li data-field-label="{{ key }}">{% if key %}{{ key }}: {% endif %}{{ error }}</li>
+        {% for key in h.berlin_dataset_attribute_order() %}
+          {% if key in errors %}
+            <li data-field-label="{{ key }}">{% if key %}<a href="#field-{{ key }}">{{ _(h.berlin_label_for_attribute(key)) }}</a>: {% endif %}{{ errors[key][0] }}</li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>

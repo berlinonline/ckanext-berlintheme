@@ -1,7 +1,7 @@
-{% import 'macros/form.html' as form %}
+{% import 'macros/form.html' as form with context %}
 {% set action = g.form_action or '' %}
 
-{% block errors %}{{ form.errors(error_summary) }}{% endblock %}
+{% block errors %}{{ form.errors(errors) }}{% endblock %}
 
 
 {# This provides a full page that renders a form for adding a dataset. It can

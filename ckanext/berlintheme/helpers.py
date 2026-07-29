@@ -58,6 +58,40 @@ ATTRIBUTE_LABEL_MATCHING = {
   'username': "Person Responsible for Publication",
 }
 
+ATTRIBUTE_ORDER = [
+  'title',
+  'name',
+  'berlin_type',
+  'groups',
+  'author',
+  'author_email',
+  'maintainer',
+  'maintainer_email',
+  'username',
+  'url',
+  'preview_image',
+  'notes',
+  'license_id',
+  'attribution_text',
+  'date_released',
+  'date_updated',
+  'temporal_granularity',
+  'temporal_coverage_from',
+  'temporal_coverage_to',
+  'geographical_granularity',
+  'geographical_coverage',
+  'sample_record',
+  'hvd_category',
+  'personal_data',
+  'personal_data_exemption',
+  'data_anonymized',
+  'tags',
+  'organizations',
+  'state',
+  'berlin_source',
+  'resources',
+]
+
 UNKNOWN = "Unknown"
 
 def required(attribute):
@@ -1994,6 +2028,15 @@ def label_for_attribute(attribute: str) -> str:
   """
 
   return ATTRIBUTE_LABEL_MATCHING.get(attribute, UNKNOWN)
+
+def dataset_attribute_order() -> list:
+  """Helper function for getting the ordered list of metadata attributes
+  as they are supposed to appear in the dataset form.
+
+  Returns:
+      list: list of attribute names
+  """
+  return ATTRIBUTE_ORDER
 
 from ckan.lib.pagination import Page as BasePage
 import dominate.tags as tags
