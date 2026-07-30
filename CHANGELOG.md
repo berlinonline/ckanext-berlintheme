@@ -17,6 +17,7 @@
 - Add missing translations for some error messages, fix other ones.
 - Add custom labels for various dataset metadata attributes, as well as translations. E.g. `author` -> `Publisher` / `Veröffentlichende Stelle`.
 - Ensure that the overview/list of error messages above the dataset form has the same order as in the form.
+- Fix rendering of links in dataset page / additional info (links were relative to site didn't work).
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 

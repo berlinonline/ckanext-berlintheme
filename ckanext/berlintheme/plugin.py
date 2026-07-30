@@ -82,6 +82,8 @@ class BerlinTheme(plugins.SingletonPlugin, DefaultTranslation):
                 theme_helpers.hvd_category_select_options ,
             'berlin_render_hvd_category':
                 theme_helpers.render_hvd_category ,
+            'berlin_render_link':
+                theme_helpers.render_link ,
             'berlin_org_is_external':
                 theme_helpers.org_is_external ,
             'berlin_license_options': theme_helpers.license_options ,

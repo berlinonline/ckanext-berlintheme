@@ -1739,6 +1739,9 @@ def render_hvd_category(value: str, **attrs) -> str:
       return helpers.link_to(hvd_dict[value], f'http://data.europa.eu/bna/{value}', **attrs)
     return ""
 
+def render_link(link: str, **attrs) -> str:
+    return helpers.link_to(link, link, **attrs)
+
 def state_mapping():
     return {
         'active': u'veröffentlicht',
