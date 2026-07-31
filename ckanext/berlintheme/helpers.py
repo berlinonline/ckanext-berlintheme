@@ -45,7 +45,7 @@ ATTRIBUTE_LABEL_MATCHING = {
   'name': "Unique Identifier",
   'notes': "Description",
   'personal_data': "Contains Personal Data",
-  'personal_data_exemption': "Exempt from Personal Data Restrictions",
+  'personal_data_exemption': "Personal Data Exemption",
   'preview_image': "Preview Image",
   'resources': "Resources",
   'sample_record': "Reference to Musterdatenkatalog",

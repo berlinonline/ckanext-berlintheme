@@ -75,7 +75,7 @@ msgid "Type"
 msgstr "Art"
 
 msgid "Data Anonymized"
-msgstr "Daten wurden anonymisiert"
+msgstr "Daten anonymisiert"
 
 msgid "Date Released"
 msgstr "Veröffentlichungsdatum"
@@ -110,8 +110,8 @@ msgstr "Kurz­be­schreib­ung"
 msgid "Contains Personal Data"
 msgstr "Enthält Personenbezogene Daten"
 
-msgid "Exempt from Personal Data Restrictions"
-msgstr "Ausgenommen von Beschränkungen wegen personenbezogenen Daten"
+msgid "Personal Data Exemption"
+msgstr "Ausnahmeregelung Personenbezogene Daten"
 
 msgid "Preview Image"
 msgstr "Vorschaubild"
