@@ -31,3 +31,8 @@ slug_preview_patch_js:
     preload:
       - base/main
       - base/ckan
+
+berlin_link_input_js:
+  contents:
+    - js/berlin-link-input.js
+  output: berlintheme/%(version)s_berlin-link-input.js

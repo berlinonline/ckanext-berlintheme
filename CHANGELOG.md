@@ -9,6 +9,7 @@
   - 9.1.4.3 "Kontraste von Texten ausreichend" (replace `date` classes in all activity snippets with Designsystem's `text--meta` class).
   - 9.2.4.5 "Alternative Zugangswege" (add a sitemap at `/sitemap`).
   - 9.2.4.6 "Aussagekräftige Überschriften und Beschriftungen" (improve accessibility of several buttons by adding `aria-label` and better aural text).
+  - 9.3.3.1 "Fehlererkennung/Fehlermeldungen schwer zu finden" (set focus on first invalid input when there are errors in a form).
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).
@@ -18,6 +19,7 @@
 - Add custom labels for various dataset metadata attributes, as well as translations. E.g. `author` -> `Publisher` / `Veröffentlichende Stelle`.
 - Ensure that the overview/list of error messages above the dataset form has the same order as in the form.
 - Fix rendering of links in dataset page / additional info (links were relative to site didn't work).
+- Add `aria-invalid="true"` to invalid fields in a form.
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 

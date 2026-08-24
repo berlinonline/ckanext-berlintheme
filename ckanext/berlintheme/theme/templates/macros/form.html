@@ -22,8 +22,13 @@ Examples:
 #}
 {% macro input(name, id='', label='', value='', placeholder='', helptext='', type='text', error="", classes=[], inner_classes=['form-control'], attrs={}, is_required=false, doc_link="") %}
   {%- set extra_html = caller() if caller -%}
+  {%- set ns = namespace(descriptions=[]) -%}
   {%- if error -%}
     {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+  {%- endif -%}
+  {%- if helptext -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Help"] -%}
   {%- endif -%}
 
   {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=helptext) %}
@@ -35,8 +40,11 @@ Examples:
       {% if placeholder %}
         placeholder="{{ placeholder }}"
       {% endif %}
-      {% if helptext %}
-        aria-describedby="{{ id or name }}Help"
+      {% if ns.descriptions %}
+        aria-describedby="{{ ns.descriptions | join(' ') }}"
+      {% endif %}
+      {% if error %}
+        aria-invalid="true"
       {% endif %}
       {{ attributes(attrs) }} />
   {% endcall %}
@@ -44,8 +52,13 @@ Examples:
 
 {% macro wrapped_input(name, id='', label='', value='', placeholder='', helptext='', type='text', error="", classes=[], inner_classes=['form-control'], attrs={}, is_required=false, doc_link="") %}
   {%- set extra_html = caller() if caller -%}
+  {%- set ns = namespace(descriptions=[]) -%}
   {%- if error -%}
     {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+  {%- endif -%}
+  {%- if helptext -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Help"] -%}
   {%- endif -%}
 
   {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, doc_link=doc_link, help=helptext) %}
@@ -58,8 +71,11 @@ Examples:
         {% if placeholder %}
           placeholder="{{ placeholder }}"
         {% endif %}
-        {% if helptext %}
-          aria-describedby="{{ id or name }}Help"
+        {% if ns.descriptions %}
+          aria-describedby="{{ ns.descriptions | join(' ') }}"
+        {% endif %}
+        {% if error %}
+          aria-invalid="true"
         {% endif %}
         {{ attributes(attrs) }} />
     </div>
@@ -85,36 +101,38 @@ Example:
 {{ form.checkbox('remember', checked=true) }}
 
 #}
-{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', error="", classes=[], attrs={}, is_required=false, doc_link="") %}
-{% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
-{%- set extra_html = caller() if caller -%}
-<div class="form-check">
-  <input id="{{ id or name }}" class="form-check-input" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
-  <label class="form-check-label" for="{{ id or name }}">
-    {{ label or name }}
-    {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-  </label>
-  {% if error and error is iterable %}
-    <div class="message message--error" id="{{ id or name }}Invalid">
-      {{ error|join(', ') }}    
-    </div>
-  {% endif %}
-</div>
-
-{# <div class="form-group{{ " " ~ classes | join(" ") }}{% if error %} error{% endif %}">
-  <div class="dr-form-element">
-        <label class="checkbox" for="{{ id or name }}">
-          <input id="{{ id or name }}" type="checkbox" name="{{ name }}" value="{{ value | empty_and_escape }}" {{ "checked " if checked }} {{ attributes(attrs) }} />
-          {{ label or name }}
-          {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
-          {% if error and error is iterable %}<strong class="error-inline">{{ error | unique | join(', ') }}</strong>{% endif %}
-        </label>
-        {{ extra_html }}
-        {% if doc_link and name != 'remember' %}
-          <a href="https://berlinonline.github.io/open-data-handbuch/#{{ doc_link }}" aria-label="{{ link_text }}" title="{{ link_text }}" target="_blank"><i class="fa fa-info-circle"></i></a>
-        {% endif %}
+{% macro checkbox(name, id='', label='', value='', checked=false, placeholder='', helptext='', error="", classes=[], inner_classes=['form-check-input'], attrs={}, is_required=false, doc_link="") %}
+  {% set link_text = "Dokumentation zum Attribut '" ~ label ~ "'" %}
+  {%- set extra_html = caller() if caller -%}
+  {%- set ns = namespace(descriptions=[]) -%}
+  {%- if error -%}
+    {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+  {%- endif -%}
+  <div class="form-check">
+    <input id="{{ id or name }}"
+      class="{{ inner_classes | join(' ') }}"
+      type="checkbox"
+      name="{{ name }}"
+      value="{{ value | empty_and_escape }}"
+      {{ "checked " if checked }} {{ attributes(attrs) }}
+      {%- if ns.descriptions -%}
+        aria-describedby="{{ ns.descriptions | join(' ') }}"
+      {%- endif -%}
+      {% if error %}
+        aria-invalid="true"
+      {% endif %}
+    />
+    <label class="form-check-label" for="{{ id or name }}">
+      {{ label or name }}
+      {% if is_required %}<span title="{{ _("This field is required") }}" class="control-required">*</span> {% endif %}
+    </label>
+    {% if error and error is iterable %}
+      <div class="message message--error" id="{{ id or name }}Invalid">
+        {{ error|join(', ') }}    
+      </div>
+    {% endif %}
   </div>
-</div> #}
 {% endmacro %}
 
 {#
@@ -153,8 +171,13 @@ Complete example:
 {% macro select(name, id='', label='', helptext='', options='', selected='', error='', classes=[], inner_classes=['form-control'], attrs={}, is_required=false, doc_link='') %}
   {% set classes = (classes|list) %}
   {% do classes.append('control-select') %}
+  {%- set ns = namespace(descriptions=[]) -%}
   {%- if error -%}
     {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+  {%- endif -%}
+  {%- if helptext -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Help"] -%}
   {%- endif -%}
 
   {%- set extra_html = caller() if caller -%}
@@ -162,8 +185,11 @@ Complete example:
     <select id="{{ id or name }}"
       name="{{ name }}"
       class="{{ inner_classes | join(' ') }}"
-      {% if helptext %}
-        aria-describedby="{{ id or name }}Help"
+      {% if ns.descriptions %}
+        aria-describedby="{{ ns.descriptions | join(' ') }}"
+      {% endif %}
+      {% if error %}
+        aria-invalid="true"
       {% endif %}
       {{ attributes(attrs) }}>
       {% for option in options %}
@@ -195,8 +221,13 @@ Complete example:
   {% macro markdown(name, id='', label='', value='', placeholder='', helptext='', error="", classes=[], inner_classes=["form-control"], attrs={}, is_required=false, doc_link='') %}
   {% set classes = (classes|list) %}
   {% do classes.append('control-full') %}
+  {%- set ns = namespace(descriptions=[]) -%}
   {%- if error -%}
     {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+  {%- endif -%}
+  {%- if helptext -%}
+    {%- set ns.descriptions = ns.descriptions + [(id or name) + "Help"] -%}
   {%- endif -%}
 
   {%- set extra_html = caller() if caller -%}
@@ -209,8 +240,11 @@ Complete example:
       name="{{ name }}"
       cols="20"
       rows="5"
-      {% if helptext %}
-        aria-describedby="{{ id or name }}Help"
+      {% if ns.descriptions %}
+        aria-describedby="{{ ns.descriptions | join(' ') }}"
+      {% endif %}
+      {% if error %}
+        aria-invalid="true"
       {% endif %}
       {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
   {% endcall %}
@@ -281,8 +315,13 @@ Complete example:
     {# We manually append the error here as it needs to be inside the .input-group block #}
     {% set classes = (classes|list) %}
     {% do classes.append('error') if error %}
+    {%- set ns = namespace(descriptions=[]) -%}
     {%- if error -%}
       {%- set inner_classes = inner_classes + ['is-invalid'] -%}
+      {%- set ns.descriptions = ns.descriptions + [(id or name) + "Invalid"] -%}
+    {%- endif -%}
+    {%- if helptext -%}
+      {%- set ns.descriptions = ns.descriptions + [(id or name) + "Help"] -%}
     {%- endif -%}
     {%- set extra_html = caller() if caller -%}
     {% call input_block(id or name, label or name, error, classes=classes, extra_html=extra_html, is_required=is_required, help=helptext) %}
@@ -296,8 +335,11 @@ Complete example:
         {% if placeholder %}
           placeholder="{{ placeholder }}"
         {% endif %}
-        {% if helptext %}
-          aria-describedby="{{ id or name }}Help"
+        {% if ns.descriptions %}
+          aria-describedby="{{ ns.descriptions | join(' ') }}"
+        {% endif %}
+        {% if error %}
+          aria-invalid="true"
         {% endif %}
         {{ attributes(attrs) }} />
     </div>
@@ -461,18 +503,13 @@ Example:
       <ul>
         {% for key in h.berlin_dataset_attribute_order() %}
           {% if key in errors %}
-            <li data-field-label="{{ key }}">{% if key %}<a href="#field-{{ key }}">{{ _(h.berlin_label_for_attribute(key)) }}</a>: {% endif %}{{ errors[key][0] }}</li>
+            <li data-field-label="{{ key }}">{% if key %}<a href="#field-{{ key }}" data-module="berlin-link-input" data-module-field="{{ key }}" aria-label="'{{ _(h.berlin_label_for_attribute(key)) }}' korrigieren">{{ _(h.berlin_label_for_attribute(key)) }}</a>: {% endif %}{{ errors[key][0] }}</li>
           {% endif %}
         {% endfor %}
       </ul>
     </div>
   {% endif %}
 {% endmacro %}
-
-<div class="message--error">
-        <h3 class="title">Headline</h3>
-        <p>Text lorem ipsum dolor sit amet, consectetuer elit. Aenean commodo ligula eget dolor.</p>    
-</div>
 
   {#
   Renders an info box with a description. This will usually be used with in a
