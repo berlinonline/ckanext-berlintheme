@@ -7,6 +7,10 @@
 
 <form id="resource-edit" class="dataset-form dataset-resource-form panel--heavy" method="post" action="{{ action }}" data-module="basic-form resource-form" enctype="multipart/form-data">
 
+  <p class="form-description">
+    Hinweis: Pflichfelder sind mit einem  <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span> markiert.
+  </p>
+
   {% block stages %}
     {# An empty stages variable will not show the stages #}
     {% if stage %}
@@ -59,7 +63,10 @@
     {% endblock %}
 
     {% block basic_fields_format %}
-      {% set format_attrs = {'data-module': 'autocomplete', 'data-module-source': '/api/2/util/resource/format_autocomplete?incomplete=?'} %}
+      {% set format_attrs = {
+        'data-module': 'autocomplete',
+        'data-module-source': '/api/2/util/resource/format_autocomplete?incomplete=?',
+      } %}
       {% call form.input(
         'format',
         id='field-format',
@@ -90,10 +97,6 @@
       {{ form.input('mimetype_inner', id='field-mimetype-inner', label=_('MIME Type'), placeholder=_('eg. application/json'), value=data.mimetype_inner, error=errors.mimetype_inner, classes=[]) }}
     {% endif %}
   {% endblock %}
-
-  <p aria-hidden="true">
-    <span class="icon-required">*</span> {{ _('Required') }}
-  </p>
 
   <div class="form-actions">
     {% block delete_button %}

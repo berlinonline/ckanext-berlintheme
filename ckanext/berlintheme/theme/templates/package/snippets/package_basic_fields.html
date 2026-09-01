@@ -263,7 +263,19 @@
     error=errors.temporal_granularity,
     classes=[],
     is_required=h.berlin_required('geographical_granularity'),
-    doc_link="geographische--auflösung"
+    doc_link="geographische-auflösung"
+  ) }}
+
+  {{ form.select(
+    'geographical_coverage',
+    id='field-geographical_coverage2',
+    label=_(h.berlin_label_for_attribute('geographical_coverage')),
+    options=h.berlin_geo_coverage_select_options(),
+    selected=(data.geographical_coverage or 'Keine'),
+    error=errors.geographical_coverage,
+    classes=[],
+    is_required=h.berlin_required('geographical_coverage'),
+    doc_link="geographische-abdeckung"
   ) }}
 
   <div class="form-group">

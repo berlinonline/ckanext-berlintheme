@@ -46,6 +46,9 @@ Examples:
       {% if error %}
         aria-invalid="true"
       {% endif %}
+      {% if is_required %}
+        required aria-required="true"
+      {% endif %}
       {{ attributes(attrs) }} />
   {% endcall %}
 {% endmacro %}
@@ -76,6 +79,9 @@ Examples:
         {% endif %}
         {% if error %}
           aria-invalid="true"
+        {% endif %}
+        {% if is_required %}
+          required aria-required="true"
         {% endif %}
         {{ attributes(attrs) }} />
     </div>
@@ -121,6 +127,9 @@ Example:
       {%- endif -%}
       {% if error %}
         aria-invalid="true"
+      {% endif %}
+      {% if is_required %}
+        required aria-required="true"
       {% endif %}
     />
     <label class="form-check-label" for="{{ id or name }}">
@@ -191,6 +200,9 @@ Complete example:
       {% if error %}
         aria-invalid="true"
       {% endif %}
+      {% if is_required %}
+        required aria-required="true"
+      {% endif %}
       {{ attributes(attrs) }}>
       {% for option in options %}
         <option value="{{ option.value }}"{% if option.value == selected %} selected{% endif %}>{{ option.text or option.value }}</option>
@@ -246,6 +258,9 @@ Complete example:
       {% if error %}
         aria-invalid="true"
       {% endif %}
+      {% if is_required %}
+        required aria-required="true"
+      {% endif %}
       {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
   {% endcall %}
   {% endmacro %}
@@ -285,6 +300,9 @@ Complete example:
         cols="{{ cols }}"
         rows="{{ rows }}"
         placeholder="{{ placeholder }}"
+        {% if is_required %}
+          required aria-required="true"
+        {% endif %}
         {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
     {% endcall %}
   {% endmacro %}
@@ -340,6 +358,9 @@ Complete example:
         {% endif %}
         {% if error %}
           aria-invalid="true"
+        {% endif %}
+        {% if is_required %}
+          required aria-required="true"
         {% endif %}
         {{ attributes(attrs) }} />
     </div>

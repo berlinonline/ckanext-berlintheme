@@ -15,17 +15,42 @@ Example:
 {% set password_error = true if error_summary %}
 
 <form action="{{ action }}" method="post" class="form--base panel--heavy">
+  <p class="form-description">
+    Hinweis: Pflichfelder sind mit einem  <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span> markiert.
+  </p>
   {{ form.errors(errors=error_summary) }}
 
-  {{ form.input('login', label=_("Username"), id='field-login', value="", error=username_error, classes=["control-medium"], attrs={'autocomplete': 'username'}) }}
+  {{ form.input('login',
+    label=_("Username"),
+    id='field-login',
+    value="",
+    error=username_error,
+    classes=["control-medium"],
+    attrs={'autocomplete': 'username'},
+    is_required=True
+  ) }}
 
-  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"], attrs={'autocomplete': 'current-password'}) }}
+  {{ form.input('password',
+    label=_("Password"),
+    id='field-password',
+    type="password",
+    value="",
+    error=password_error,
+    classes=["control-medium"],
+    attrs={'autocomplete': 'current-password'},
+    is_required=True
+  ) }}
 
-  {{ form.checkbox('remember', label=_("Remember me"), id='field-remember', checked=true, value="63072000") }}
+  {{ form.checkbox('remember',
+    label=_("Remember me"),
+    id='field-remember',
+    checked=true,
+    value="63072000"
+  ) }}
 
   <div class="form-actions">
     {% block login_button %}
-    <button class="button" type="submit">{{ _('Login') }}</button>
+      <button class="button" type="submit">{{ _('Login') }}</button>
     {% endblock %}
   </div>
 </form>
