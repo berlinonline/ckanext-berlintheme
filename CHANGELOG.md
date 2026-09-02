@@ -2,6 +2,8 @@
 
 ## Development
 
+- Add information about bunny.net / Bunny CDN to `privacy_policy.html`.
+
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
 _(2026-06-16)_
