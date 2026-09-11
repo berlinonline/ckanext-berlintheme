@@ -14,7 +14,7 @@ Example:
 {% set url = h.url_for(organization.type ~ '.read', id=organization.name) %}
 {% set link_title = _('View {organization_name}').format(organization_name=organization.display_name) %}
 <li>
-    <article class="modul-teaser" data-add-clickable-area="smart">
+    <div class="modul-teaser" data-add-clickable-area="smart">
       <div class="image">
         <div class="image__image">
           <img src="{{ organization.image_display_url or h.url_for_static('/images/building-regular.svg') }}" alt="" class="contain">
@@ -34,5 +34,5 @@ Example:
       <div class="inner">
         <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
-    </article>
+    </div>
 </li>

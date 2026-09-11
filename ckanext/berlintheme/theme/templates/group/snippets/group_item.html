@@ -17,7 +17,7 @@ Example:
 {% set link_title = _('View {group_name}').format(group_name=group.display_name) %}
 
 <li>
-    <article class="modul-teaser" data-add-clickable-area="smart">
+    <div class="modul-teaser" data-add-clickable-area="smart">
       <div class="image">
         <div class="image__image">
           <img src="{{ group.image_display_url or h.url_for_static('/images/folder-open-regular.svg') }}" alt="" class="contain">
@@ -43,5 +43,5 @@ Example:
         {% endif %}
         <a class="more float--right" data-mainlink="true" href="{{ url }}" aria-label="{{ link_title }}" title="{{ link_title }}">Ansehen</a>
       </div>
-    </article>
+    </div>
 </li>

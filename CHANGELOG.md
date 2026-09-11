@@ -11,6 +11,8 @@
   - 9.2.4.6 "Aussagekräftige Überschriften und Beschriftungen" (improve accessibility of several buttons by adding `aria-label` and better aural text).
   - 9.3.3.1 "Fehlererkennung/Fehlermeldungen schwer zu finden" (set focus on first invalid input when there are errors in a form).
   - 9.3.3.2 "Beschriftungen von Formularelementen vorhanden" (indicate required input fields both visually and programmatically).
+  - 9.4.1.2 "Name, Rolle, Wert verfügbar"
+    - "Unnötige `article`-Tags definiert" (replace unnecessary `article` tags with `div` tags).
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).
