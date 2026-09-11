@@ -3,6 +3,8 @@
 ## Development
 
 - Fix accessibility barriers raised in the 2026-01 report:
+  - 9.1.3.1a "HTML-Strukturelemente für Überschriften"
+    - wrong header levels for dataset lists in user profiles
   - 9.1.3.1d "Inhalt gegliedert" (hide `<hr>` elements in forms from screen readers).
   - 9.1.3.1h "Beschriftung von Formularelementen programmatisch ermittelbar" (move helptext in form elements from `placeholder` attributes to `formgroup__help` elements).
   - 9.1.3.5 "Eingabefelder zu Nutzerdaten vermitteln den Zweck" (use `autocomplete` attribute to allow browser to prepopulate input fields on login form and user form).

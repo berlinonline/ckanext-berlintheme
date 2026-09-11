@@ -28,7 +28,7 @@
   {% snippet 'snippets/tabs.html', tabs=tabs %}
 
   {% if user.datasets %}
-    {% snippet 'snippets/package_list.html', packages=user.datasets, list_class='list--clean' %}
+    {% snippet 'snippets/package_list.html', packages=user.datasets, list_class='list--clean', header_level="2" %}
   {% else %}
 
     {% if is_myself %}

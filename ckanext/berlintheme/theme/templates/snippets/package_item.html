@@ -7,6 +7,7 @@ hide_resources - If true hides the resources (default: false).
 banner         - If true displays a popular banner (default: false).
 truncate       - The length to trucate the description to (default: 180)
 truncate_title - The length to truncate the title to (default: 80).
+header_level   - h-element level for the card header (default: 3)
 
 Example:
 
@@ -17,14 +18,15 @@ Example:
 {% set truncate_title = truncate_title or 80 %}
 {% set title = package.title or package.name %}
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
+{% set header_level = header_level or 3 %}
 
 {% block package_item %}
   <li class="{{ item_class or "dataset-item" }}">
-    <article class="modul-card">
+    <div class="modul-card">
       {% block content %}
         {% block heading %}
           <header class="card__header">
-            <h3 class="title">
+            <h{{ header_level }} class="title">
               {% block heading_private %}
                 {% if package.private %}
                   <span class="dataset-private label label-inverse">
@@ -44,7 +46,7 @@ Example:
                 {% endif %}
                 {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
               {% endblock %}
-            </h2>
+            </h{{ header_level }}>
           </header>
         {% endblock heading %}
         <div class="card__body">
@@ -93,6 +95,6 @@ Example:
           </div>        
         {% endif %}
       {% endblock content%}
-    </article>
+    </div>
   </li>
 {% endblock package_item %}
