@@ -1,5 +1,4 @@
-*.pyc
-._*
+**/__pycache__/
 ckanext_berlintheme.egg-info/**
 .coverage
 htmlcov/
