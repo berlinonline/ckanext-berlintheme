@@ -9,6 +9,7 @@
   - 9.1.3.1d "Inhalt gegliedert" (hide `<hr>` elements in forms from screen readers).
   - 9.1.3.1h "Beschriftung von Formularelementen programmatisch ermittelbar" (move helptext in form elements from `placeholder` attributes to `formgroup__help` elements).
   - 9.1.3.5 "Eingabefelder zu Nutzerdaten vermitteln den Zweck" (use `autocomplete` attribute to allow browser to prepopulate input fields on login form and user form).
+  - 9.2.4.1 "Bereiche überspringbar" (add missing links at the top of the page to each area of the content).
   - 9.1.4.3 "Kontraste von Texten ausreichend" (replace `date` classes in all activity snippets with Designsystem's `text--meta` class).
   - 9.2.4.5 "Alternative Zugangswege" (add a sitemap at `/sitemap`).
   - 9.2.4.6 "Aussagekräftige Überschriften und Beschriftungen" (improve accessibility of several buttons by adding `aria-label` and better aural text).
@@ -27,6 +28,7 @@
 - Fix rendering of links in dataset page / additional info (links were relative to site didn't work).
 - Add `aria-invalid="true"` to invalid fields in a form.
 - Add `required aria-required="true"` to required fields in a form.
+- Add `base.html` template to add navigation to jump to main areas of page.
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
