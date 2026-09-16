@@ -141,6 +141,13 @@ msgid "Person Responsible for Publication"
 msgstr "Veröffentlich­­Dende Person"
 
 # ----------------
+# Activities
+# ----------------
+
+msgid "{actor} updated their profile"
+msgstr "{actor} hat das Profil aktualisiert"
+
+# ----------------
 # Various
 # ----------------
 

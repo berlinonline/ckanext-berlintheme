@@ -30,6 +30,7 @@
 - Add `aria-invalid="true"` to invalid fields in a form.
 - Add `required aria-required="true"` to required fields in a form.
 - Add `base.html` template to add navigation to jump to main areas of page.
+- Provide better (gender-neutral) translation for "{} updated their profile".
 
 ## [0.4.7](https://github.com/berlinonline/ckanext-berlintheme/releases/tag/0.4.7)
 
