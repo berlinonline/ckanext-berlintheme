@@ -139,3 +139,10 @@ msgstr "Webadresse"
 
 msgid "Person Responsible for Publication"
 msgstr "Veröffentlich­­Dende Person"
+
+# ----------------
+# Various
+# ----------------
+
+msgid "Breadcrumb"
+msgstr "Navigationspfad"

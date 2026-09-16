@@ -17,6 +17,7 @@
   - 9.3.3.2 "Beschriftungen von Formularelementen vorhanden" (indicate required input fields both visually and programmatically).
   - 9.4.1.2 "Name, Rolle, Wert verfügbar"
     - "Unnötige `article`-Tags definiert" (replace unnecessary `article` tags with `div` tags).
+    - "Fehlender Navigationsbereich" (provide appropriate `aria-label` for breadcrumb navigation).
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).

@@ -38,7 +38,7 @@
         <div id="layout-grid__area--contentheader">
           {% if self.breadcrumb_content() | trim %}
             <div id="content-header">
-              <nav class="breadcrumb" aria-label="Sie befinden sich hier">
+              <nav class="breadcrumb" aria-label="{{ _('Breadcrumb') }}">
                   <ol class="breadcrumb">
                     <li>
                       <a href="{{ h.url_for('home.index') }}">Datenregister</a>
