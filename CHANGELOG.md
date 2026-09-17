@@ -16,6 +16,7 @@
   - 9.3.3.1 "Fehlererkennung/Fehlermeldungen schwer zu finden" (set focus on first invalid input when there are errors in a form).
   - 9.3.3.2 "Beschriftungen von Formularelementen vorhanden" (indicate required input fields both visually and programmatically).
   - 9.4.1.2 "Name, Rolle, Wert verfügbar"
+    - "Für Schaltfläche wurde ein unpassender Zustand definiert" (add `aria-haspopup="dialog"` to the info buttons in the facceted search UI).
     - "Unnötige `article`-Tags definiert" (replace unnecessary `article` tags with `div` tags).
     - "Unpassender barrierefreier Name für Schaltfläche" (add an appropriate `aria-label` to the info buttons in the facceted search UI).
     - "Fehlender Navigationsbereich" (provide appropriate `aria-label` for breadcrumb navigation).
