@@ -5,12 +5,23 @@
 
         {% set id_prefix = h.berlin_facet_prefix(name) %}
         {% set title = title or h.get_facet_title(name) %}
+        {% set label = 'Hilfe zu \"' + title + '\"'%}
+        {% set auralopentext = label %}
+        {% set auralclosetext = 'Overlay Schließen' %}
         <legend class="facet__head">
           <button data-collapsible-trigger="opened" class="facet-title opened" type="button" aria-controls="facet_{{id_prefix}}"
             aria-expanded="true">
             <span class="text">{{title}}</span>
-            <a href="#" role="button" class="js-formhelp-flyin-overlay qmark-icon" title="Hilfe"
-              data-original-title="{{ h.berlin_description_for_facet(name) }}" data-title="Hilfe: {{title}}" aria-expanded="false">?</a>
+            <a href="#"
+              role="button"
+              class="js-formhelp-flyin-overlay qmark-icon"
+              title="{{ label }}""
+              data-original-title="{{ h.berlin_description_for_facet(name) }}"
+              data-title="Hilfe: {{title}}"
+              aria-expanded="false"
+              data-auralopentext="{{ auralopentext }}"
+              data-auralclosetext="{{ auralclosetext }}"
+              aria-label="{{ auralopentext }}">?</a>
           </button>
         </legend>
 
