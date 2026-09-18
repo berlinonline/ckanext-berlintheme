@@ -9,7 +9,7 @@
 {% block subtitle %}{{ _('Organizations') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Organizations'), named_route=group_type+'.index' %}</li>
+  <li><span class="active" aria-current="page">{{ _('Organizations') }}</span></li>
 {% endblock %}
 
 {% block grid_pre_herounit %}

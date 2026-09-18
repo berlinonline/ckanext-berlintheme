@@ -6,7 +6,7 @@
 
 {% block breadcrumb_content %}
   {{ h.build_nav('user.index', _('Users')) }}
-  {{ h.build_nav('user.read', user.display_name|truncate(35), id=user.name) }}
+  <li><span class="active" aria-current="page">{{ user.display_name|truncate(35) }}</span></li>
 {% endblock %}
 
 {% block content_action %}

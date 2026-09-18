@@ -10,7 +10,7 @@
 
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('About'), controller='home', action='about' %}</li>
+  <li><span class="active" aria-current="page">{{ _('About') }}</span></li>
 {% endblock %}
 
 {% block primary_content %}

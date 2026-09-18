@@ -1,8 +1,8 @@
 {% extends "source/admin_base.html" %}
 
 {% block breadcrumb_content %}
-  <li>{{ h.nav_link(_('Harvest Sources'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
-  <li class="active">{{ h.nav_link(_('Create Harvest Source'), named_route='{0}_new'.format(c.dataset_type)) }}</li>
+  <li>{{ h.nav_link(_('Harvester'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
+  <li><span class="active" aria-current="page">{{ _('Create Harvest Source') }}</span></li>
 {% endblock %}
 
 {% block actions_content %}

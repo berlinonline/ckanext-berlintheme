@@ -49,7 +49,7 @@
 
 {% block breadcrumb_content %}
   <li>{{ h.nav_link(_('Harvester'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
-  <li><a href="{{ url_for('harvest.read', id=harvest_source.name) }}">{{ harvest_source.title }}</a></li>
+  <li><span class="active" aria-current="page">{{ harvest_source.title }}</span></li>
 {% endblock %}
 
 {% block content_action %}

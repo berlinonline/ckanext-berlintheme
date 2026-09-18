@@ -3,7 +3,7 @@
 {% block subtitle %}{{ _('Barrierefreiheitserklärung') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Barrierefreiheitserklärung'), named_route='page_blueprint.accessibility_statement' %}</li>
+  <li><span class="active" aria-current="page">{{ _('Barrierefreiheitserklärung') }}</span></li>
 {% endblock %}
 
 {% block page_heading %}

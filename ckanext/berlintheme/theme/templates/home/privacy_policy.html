@@ -3,7 +3,7 @@
 {% block subtitle %}{{ _('Datenschutzerklärung') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Datenschutzerklärung'), named_route='page_blueprint.privacy_policy' %}</li>
+  <li><span class="active" aria-current="page">{{ _('Datenschutzerklärung') }}</span></li>
 {% endblock %}
 
 {% block page_heading %}

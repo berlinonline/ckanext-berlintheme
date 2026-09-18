@@ -25,7 +25,7 @@
 {% block subtitle %}{{ _(dataset_type.title()) }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+  <li><span class="active" aria-current="page">{{ _(dataset_type.title() + 's') }}</span></li>
 {% endblock %}
 
 {% block page_heading %}{% endblock page_heading %}

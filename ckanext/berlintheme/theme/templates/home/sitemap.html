@@ -10,7 +10,7 @@
 
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Sitemap'), named_route='page_blueprint.sitemap' %}</li>
+  <li><span class="active" aria-current="page">{{ _('Sitemap') }}</span></li>
 {% endblock %}
 
 {% block primary_content %}

@@ -5,7 +5,7 @@
 {% block breadcrumb_content %}
     {{ super() }}
     {% if pkg %}
-	<li class="active">{% link_for _('Edit'), named_route=pkg.type ~ '.edit', id=pkg.name %}</li>
+      <li><span class="active" aria-current="page">{{ _('Edit') }}</span></li>
     {% endif %}
 {% endblock %}
 

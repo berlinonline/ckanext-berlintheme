@@ -4,7 +4,8 @@
 
 {% block breadcrumb_content %}
   <li class="active">{{ h.nav_link(_('Harvester'), named_route='{0}_search'.format(c.dataset_type)) }}</li>
-  <li class="active"><a href="">{{ _('Admin') }}</a></li>
+  <li><a href="{{ url_for('harvest.read', id=harvest_source.name) }}">{{ harvest_source.title }}</a></li>
+  <li><span class="active" aria-current="page">{{ _('Admin') }}</span></li>
 {% endblock %}
 
 {% block page_heading %}
