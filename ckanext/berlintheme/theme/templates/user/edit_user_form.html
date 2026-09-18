@@ -3,6 +3,10 @@
 <form id="user-edit-form" class="dataset-form form--base panel--heavy" method="post" action="{{ action }}" enctype="multipart/form-data">
   {{ form.errors(error_summary) }}
 
+  <p class="form-description">
+    Hinweis: Pflichtfelder sind mit <span aria-hidden="true">einem <span class="icon-required">*</span></span><span class="aural">(Pflichtfeld)</span> markiert.
+  </p>
+
   <fieldset>
     <legend>{{ _('Change details') }}</legend>
     {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
@@ -43,10 +47,6 @@
 
     {{ form.input('password2', type='password', label=_('Confirm Password'), id='field-password-confirm', value=data.password2, error=errors.password2, classes=['control-medium'], attrs={'autocomplete': 'new-password', 'class': 'form-control'}) }}
   </fieldset>
-
-  <p aria-hidden="true">
-    <span class="icon-required">*</span> {{ _('Required') }}
-  </p>
 
   <div class="form-actions">
     {% block delete_button %}

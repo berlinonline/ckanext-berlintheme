@@ -20,6 +20,7 @@
     - "Unnötige `article`-Tags definiert" (replace unnecessary `article` tags with `div` tags).
     - "Unpassender barrierefreier Name für Schaltfläche" (add an appropriate `aria-label` to the info buttons in the facceted search UI).
     - "Fehlender Navigationsbereich" (provide appropriate `aria-label` for breadcrumb navigation).
+    - "Unangemessene Verwendung von ARIA-Attributen" (clearly mark form description with info about required fields both visibly and for a11y tools)
 - Fix rendering of `is-invalid` classes, add missing `form-control` classes to `input` elements.
 - Fix CSS for tag input element (select2).
 - Fix rendering of checkboxes (use Designsystem Berlin.de markup).

@@ -8,7 +8,7 @@
 then itself be extended to add/remove blocks of functionality. #}
 <form id="dataset-edit" class="dataset-form form--base panel--heavy" method="post" action="{{ action }}" data-module="basic-form" novalidate>
   <p class="form-description">
-    Hinweis: Pflichfelder sind mit einem  <span class="icon-required" aria-hidden="true">*</span><span class="aural">(Pflichtfeld)</span> markiert.
+    Hinweis: Pflichtfelder sind mit <span aria-hidden="true">einem <span class="icon-required">*</span></span><span class="aural">(Pflichtfeld)</span> markiert.
   </p>
   {% block stages %}
     {{ h.snippet('package/snippets/stages.html', stages=stage) }}
